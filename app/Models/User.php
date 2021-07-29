@@ -18,17 +18,16 @@ class User extends Authenticatable
      */
 
     protected $fillable = [
-        'first_name',
-        'last_name',
-        'gender',
-        'birthday',
-        'specialist',
-        'status',
-        'type',
-        'address',
+        'username',
         'email',
+        'country_code',
         'mobile',
+        'whatsapp_mobile',
         'password',
+        'type',
+        'status',
+        'avatar',
+        'trading_certification',
         'remember_token',
         'device_token',
     ];
@@ -50,4 +49,38 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+     
+  
+
+
+    public function verifyUser()
+    {
+        return $this->hasOne(VerifyUser::class);
+    }
+
+    public function userToken()
+    {
+        return $this->hasOne(UserToken::class);
+    }
+
+     /**
+    * Verify user mobile number
+    * @return true
+    */
+    public function verify()
+    {
+        $this->verified = true;
+
+        $this->save();
+
+        $this->verifyUser()->delete();
+    }
+      /**
+     * Get all favorite of properties.
+     */
+    public function favorite()
+    {
+        return $this->belongsToMany(Realestate::class,'favourites')->withPivot('user_id', 'property_id');
+    }
 }

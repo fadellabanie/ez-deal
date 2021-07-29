@@ -2,9 +2,10 @@
 
 namespace App\Http\Requests\Api\Auth;
 
+use App\Rules\Phone;
 use App\Http\Requests\Api\APIRequest;
 
-class LoginRequest extends APIRequest
+class VerifyRequest extends APIRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +25,9 @@ class LoginRequest extends APIRequest
     public function rules()
     {
         return [
-            'mobile' =>'required|exists:users,mobile',
-            'password' => 'required',
+           // 'mobile' => ['required',new Phone],
+            'mobile' => ['required'],
+            'verification_code' => 'required|numeric'
         ];
     }
 }

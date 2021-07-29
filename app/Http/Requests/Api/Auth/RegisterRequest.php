@@ -25,14 +25,8 @@ class RegisterRequest extends APIRequest
     public function rules()
     {
         return [
-            'first_name' => 'required',
-            'last_name' => 'required',
-            'gender' => 'required',
-            'specialist' =>  'required',
-            'birthday' => 'required',
-            'status' =>  'required',
+            'username' => 'required',
             'type' =>  'required',
-            'address' =>  'required',
             'email' =>  'required|unique:users,email',
             'mobile' =>  'required',
             'password' => 'required',

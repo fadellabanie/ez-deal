@@ -2,17 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\API\V1\AuthController;
-use App\Http\Controllers\API\V1\CallController;
-use App\Http\Controllers\API\V1\CaseController;
-use App\Http\Controllers\API\V1\TaskController;
-use App\Http\Controllers\API\V1\ReportController;
-use App\Http\Controllers\API\V1\ConstantController;
-use App\Http\Controllers\API\V1\AttendanceController;
-use App\Http\Controllers\API\V1\CallMangerController;
-use App\Http\Controllers\API\V1\MeasurementController;
-use App\Http\Controllers\API\V1\NotificationController;
-use App\Http\Controllers\API\V1\MedicalRecordController;
+use App\Http\Controllers\API\V1\Auth\AuthController;
+
 
 /*
 |--------------------------------------------------------------------------

@@ -18,7 +18,6 @@ class CreateContractTypesTable extends Migration
             $table->id();
             $table->string('ar_name');
             $table->string('en_name');
-            $table->timestamps();
         });
         DB::table('contract_types')->insert([
             'ar_name' => 'تجاري/ة',

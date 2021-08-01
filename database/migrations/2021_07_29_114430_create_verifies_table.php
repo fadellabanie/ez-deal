@@ -20,7 +20,7 @@ class CreateVerifiesTable extends Migration
             $table->string('type')->nullable();
             $table->string('verification_code')->nullable();
             $table->string('verification_expiry_minutes');
-            $table->timestamp('verification_updated_at');
+           // $table->timestamp('verification_updated_at');
             $table->timestamps();
         });
     }

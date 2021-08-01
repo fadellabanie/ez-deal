@@ -25,11 +25,15 @@ class RegisterRequest extends APIRequest
     public function rules()
     {
         return [
-            'username' => 'required',
-            'type' =>  'required',
+            'username' => 'required|min:4|max:100',
+            'type' =>  'required|in:personal,company',
             'email' =>  'required|unique:users,email',
-            'mobile' =>  'required',
-            'password' => 'required',
+            'mobile' =>  'required|unique:users,mobile',
+            'password' => 'required|min:8',
+            'device_token' => 'required',
+            'country_code' => 'required',
+            'device_type' => 'required|in:android,ios',
+            'device_id' => 'required',
         ];
     }
 }

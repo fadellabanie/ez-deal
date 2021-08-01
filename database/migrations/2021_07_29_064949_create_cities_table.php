@@ -1,8 +1,9 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 class CreateCitiesTable extends Migration
 {
@@ -15,13 +16,25 @@ class CreateCitiesTable extends Migration
     {
         Schema::create('cities', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('governorate_id');
+            $table->unsignedBigInteger('country_id');
             $table->string('ar_name');
             $table->string('en_name');
             $table->string('icon');
             $table->string('status');
             $table->timestamps();
         });
+        DB::table('countries')->insert([
+            'country_id' => 1,
+            'ar_name' => 'جده',
+            'en_name' => 'Jeddah',
+            'icon' => 'image.png',
+        ]);
+        DB::table('countries')->insert([
+            'country_id' => 1,
+            'ar_name' => 'مكة المكرمة',
+            'en_name' => 'makkah',
+            'icon' => 'image.png',
+        ]);
     }
 
     /**

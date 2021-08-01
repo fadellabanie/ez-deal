@@ -2,14 +2,20 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Services\Translatable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class City extends Model
-{
-    use HasFactory;
+{  
+    
+    use HasFactory,Translatable;
+
+    protected $translatedAttributes = [
+        'name'
+    ];
     protected $fillable = [
-        'governorate_id',
+        'country_id',
         'ar_name',
         'en_name',
         'icon',

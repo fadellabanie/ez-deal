@@ -22,10 +22,10 @@ class UserResource extends JsonResource
             'email' => $this->email,
             'trading_certification' => $this->trading_certification,
             'avatar' => asset($this->avatar),
-            'status' => $this->status,
+           // 'status' => $this->status,
             'type' => $this->type,
             'created_at' => (string) $this->created_at,
-            'verified' => (bool) $this->hasVerifiedEmail(),
+            'verified' =>(string) $this->verified_at,
             'token_type' => 'Bearer',
             'access_token' => $this->remember_token,
         ];

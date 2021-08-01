@@ -1,10 +1,11 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
-class CreateGovernoratesTable extends Migration
+class CreateCountriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +14,7 @@ class CreateGovernoratesTable extends Migration
      */
     public function up()
     {
-        Schema::create('governorates', function (Blueprint $table) {
+        Schema::create('countries', function (Blueprint $table) {
             $table->id();
             $table->string('ar_name');
             $table->string('en_name');
@@ -21,6 +22,11 @@ class CreateGovernoratesTable extends Migration
             $table->boolean('status')->default(false);
             $table->timestamps();
         });
+        DB::table('countries')->insert([
+            'ar_name' => 'Saudi arabia',
+            'en_name' => 'سعوديه',
+            'icon' => 'image.png',
+        ]);
     }
 
     /**
@@ -30,6 +36,6 @@ class CreateGovernoratesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('governorates');
+        Schema::dropIfExists('countries');
     }
 }

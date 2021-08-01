@@ -7,12 +7,14 @@ use App\Models\User;
 use App\Models\Verify;
 use App\Models\UserToken;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\UserResource;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Api\Auth\LoginRequest;
 use App\Http\Requests\Api\Auth\VerifyRequest;
 use App\Http\Requests\Api\Auth\RegisterRequest;
+use App\Http\Requests\Api\Auth\ChangePasswordRequest;
 
 class AuthController extends Controller
 {
@@ -29,31 +31,28 @@ class AuthController extends Controller
             'email' => $request->email,
             'mobile' => $request->mobile,
             'country_code' => $request->country_code,
-            //'whatsapp_mobile' => $request->whatsapp_mobile,
-            //'avatar' => upload($request->avatar, 'users'),
             'trading_certification' => $request->trading_certification,
             'password' => bcrypt($request->password),
             'device_token' => $request->device_token,
-           
+
         ]);
 
         $token = $user->createToken('Token-Login')->accessToken;
 
         $user->update([
-            'remember_token' => $token,
-            'device_token' => $request->device_token,
+            'remember_token' => $token
         ]);
-
+        
         $user->userToken()->create([
             'token' => $token,
             'device_id' => $request->device_id,
             'device_type' => $request->device_type,
         ]);
-         
-        $this->sendCode($request->mobile);
+
+        $this->sendCode($request->mobile, $user->id,'register');
 
         return $this->successStatus(__("send code to your number"));
-      //  return $this->respondWithItem(new UserResource($user));
+        //  return $this->respondWithItem(new UserResource($user));
     }
     /**
      * Login
@@ -64,41 +63,44 @@ class AuthController extends Controller
     {
 
         if (!Auth::attempt($request->only('mobile', 'password'))) {
-
             return $this->errorStatus(__('Unauthorized'));
         }
         $user = Auth::user();
 
+        if(!$user->verified_at){
+            return $this->errorStatus(__('not verified'));
+        }
         $token = $user->createToken('Token-Login')->accessToken;
 
         $user->update([
             'remember_token' => $token,
             'device_token' => $request->device_token,
         ]);
+        /*
+        $data = DB::table('oauth_access_tokens')->where('user_id',$passenger->id)->get();
 
+        if($data){
+           DB::table('oauth_access_tokens')->where('user_id',$passenger->id)->delete();
+          }
+          */
         return $this->respondWithItem(new UserResource($user));
     }
 
-    public function show(Request $request)
-    {
-        $user = User::find($request->user_id);
-
-        return $this->respondWithItem(new UserResource($user));
-    }
+  
     /**
      * Send Code Use SMS 
      * @param  LoginRequest $request
      * @return mixed
      */
-    public function sendCode($mobile)
+    public function sendCode($mobile, $user_id,$type)
     {
         $verificationCode = 4444;
         //$verificationCode = mt_rand(1000, 9999);
-     
         Verify::create([
+            'user_id' => $user_id,
             'mobile' => $mobile,
             'verification_code' => $verificationCode,
-            'type' => 'check',
+            'type' => $type,
             'verification_expiry_minutes' => Carbon::now()->addMinute(5),
         ]);
         $mobile = (int)$mobile;
@@ -108,6 +110,29 @@ class AuthController extends Controller
         // Unifonic::send($mobile, $message);
 
         return $this->successStatus(__('Send SMS Successfully Please Check Your Phone ' . $verificationCode));
+    }
+
+    /**
+     * Send Code Use SMS 
+     * @param  LoginRequest $request
+     * @return mixed
+     */
+    public function verifyChangePassword(ChangePasswordRequest $request)
+    {
+        $this->sendCode($request->mobile,Auth::id(),'change-password');
+     
+        return $this->successStatus(__('Send SMS Successfully Please Check Your Phone'));
+    }  
+    /**
+     * Send Code Use SMS 
+     * @param  LoginRequest $request
+     * @return mixed
+     */
+    public function changePassword(Request $request)
+    {
+        $user = User::find(Auth::id());
+        $user->update(['password'=>bcrypt($request->new_password)]);
+        return $this->successStatus(__('password change successfully'));
     }
     /**
      * Check Captains 
@@ -129,24 +154,23 @@ class AuthController extends Controller
             return $this->errorStatus(__('Verification code is wrong'));
         }
 
-
         if (Carbon::parse($verify->verification_expiry_minutes)->lte(Carbon::now())) {
             return $this->errorStatus(__('Verification code is expired'));
         }
+        $verify->delete();
 
-        //    $data = DB::table('oauth_access_tokens')->where('user_id',$passenger->id)->get();
-
-        //    if($data){
-        //     DB::table('oauth_access_tokens')->where('user_id',$passenger->id)->delete();
-        //    }
-        $token = $user->createToken('Token-User')->accessToken;
-
-        $user->update([
-            'remember_token' => $token,
-            
-        ]);
-
+        if($request->type == 'change-password'){
+            return $this->successStatus(__('Verification code is valid'));
+        }
+       
+        $user->update(['verified_at' => now()]);
         return $this->respondWithItem(new UserResource($user));
+    }
+
+
+    public function show()
+    {
+        return $this->respondWithItem(new UserResource(Auth::user()));
     }
     /**
      * Logout Passenger
@@ -156,6 +180,8 @@ class AuthController extends Controller
     {
         Auth::user()->token()->revoke();
 
-        return $this->respondWithMessage(__('successfully logout'));
+        return $this->successStatus(__('successfully logout'));
     }
+
+
 }

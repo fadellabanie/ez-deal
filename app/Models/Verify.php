@@ -15,6 +15,6 @@ class Verify extends Model
     * @var array
     */
    protected $fillable = [
-       'mobile','type','verification_code','verification_expiry_minutes'
+       'user_id','mobile','type','verification_code','verification_expiry_minutes'
    ];
 }

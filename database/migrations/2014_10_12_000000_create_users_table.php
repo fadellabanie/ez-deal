@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration
             $table->text('trading_certification');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
+            $table->timestamp('verified_at')->nullable();
             $table->string('password');
             $table->string('avatar')->nullable();
             $table->string('type');

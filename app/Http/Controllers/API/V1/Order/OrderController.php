@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\API\V1\RealEstate;
 
+use App\Models\Order;
 use App\Models\RealEstate;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Captains\Auth\StoreRequest;
-use App\Http\Resources\RealEstates\RealEstateCollection;
-use App\Models\Order;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Resources\Orders\OrderCollection;
+use App\Http\Requests\Captains\Auth\StoreRequest;
 
 class OrderController extends Controller
 {

@@ -2,9 +2,11 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\API\V1\GeneralController;
 use App\Http\Controllers\API\V1\ConstantController;
 use App\Http\Controllers\API\V1\Auth\AuthController;
 use App\Http\Controllers\API\V1\RealEstate\OrderController;
+use App\Http\Controllers\API\V1\RealEstate\RealEstateController;
 
 
 /*
@@ -40,8 +42,10 @@ Route::group(['prefix' => 'v1'], function () {
         
         Route::get('cities', [ConstantController::class, 'getCity']);
         Route::get('counties', [ConstantController::class, 'getCountry']);
+        Route::post('upload', [GeneralController::class, 'upload']);
 
         Route::apiResource('orders',OrderController::class);
+        Route::apiResource('real-estates',RealEstateController::class);
        // Route::apiResource('case', CaseController::class);
        
        // Route::Post('send-notification', [NotificationController::class, 'send']);

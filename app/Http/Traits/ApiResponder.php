@@ -93,4 +93,104 @@ trait ApiResponder
     }
 
 
+    public function respondWithMessage($message)
+    {
+        return $this->setStatusCode(200)
+            ->respond([
+                'status' => $this->getSuccess(),
+                'message' => $message
+            ]);
+    }
+
+    public function respondNoContent($message = 'No content')
+    {
+        return $this->setStatusCode(204)
+            ->respond([
+                'http_code' => $this->getStatusCode(),
+                'message' => $message
+            ]);
+    }
+
+    public function respondCreated($data, $message = 'Resource created successfully')
+    {
+        return $this->setStatusCode(201)
+            ->respond([
+                'status' => $this->getSuccess(),
+                'message' => $message,
+                'data' => $data,
+               
+            ]);
+    }
+
+    protected function respondWithError($message)
+    {
+        if (! is_array($message)) {
+            $message = [
+                'body' => [$message]
+            ];
+        }
+
+        return $this->respond([
+            'http_code' => $this->getStatusCode(),
+            'error' => [
+                'message' => $message,
+            ]
+        ]);
+    }
+
+    /**
+     * Generates a Response with a 403 HTTP header and a given message.
+     *
+     * @return Response
+     */
+    public function errorForbidden($message = 'Forbidden')
+    {
+        return $this->setStatusCode(403)
+          ->respondWithError($message);
+    }
+
+    /**
+     * Generates a Response with a 500 HTTP header and a given message.
+     *
+     * @return Response
+     */
+    public function errorInternalError($message = 'Internal Error')
+    {
+        return $this->setStatusCode(500)
+          ->respondWithError($message);
+    }
+
+    /**
+     * Generates a Response with a 404 HTTP header and a given message.
+     *
+     * @return Response
+     */
+    public function errorNotFound($message = 'Resource Not Found')
+    {
+        return $this->setStatusCode(404)
+          ->respondWithError($message);
+    }
+
+    /**
+     * Generates a Response with a 401 HTTP header and a given message.
+     *
+     * @return Response
+     */
+    public function errorUnauthorized($message = 'Unauthorized')
+    {
+        return $this->setStatusCode(401)
+          ->respondWithError($message);
+    }
+
+    /**
+     * Generates a Response with a 400 HTTP header and a given message.
+     *
+     * @return Response
+     */
+    public function errorWrongArgs($message)
+    {
+        return $this->setStatusCode(400)
+          ->respondWithError($message);
+    }
+
 }

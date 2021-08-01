@@ -8,15 +8,15 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class RealEstate extends Model
 {
-    use HasFactory;
+    public $table ='realestates';
     use HasFactory;
     protected $fillable = [
         'user_id',
         'realestate_type_id',
         'contract_type_id',
         'city_id',
-        'governorates_id',
-        'Neighborhood',
+        'country_id',
+        'neighborhood',
         'price',
         'space',
         'number_building',
@@ -60,5 +60,10 @@ class RealEstate extends Model
     {
         return $this->belongsTo(RealestateType::class);
     }
+    public function medias()
+    {
+        return $this->hasMany(RealestateMedia::class,'realestate_id');
+    }
+
 }
 

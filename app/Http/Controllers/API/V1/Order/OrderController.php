@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Resources\Orders\OrderCollection;
-use App\Http\Requests\Captains\Auth\StoreRequest;
+use App\Http\Requests\Api\Orders\StoreRequest;
 
 class OrderController extends Controller
 {
@@ -19,9 +19,9 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $order = Order::owner()->active()->paginate();
+        $orders = Order::owner()->active()->paginate();
 
-        return new OrderCollection($order);
+        return new OrderCollection($orders);
     }
 
     /**
@@ -33,8 +33,8 @@ class OrderController extends Controller
     public function store(StoreRequest $request)
     {
         $request['user_id'] = Auth::id();
-
-        RealEstate::create($request->all());
+       // dd($request->all());
+        Order::create($request->all());
 
         return $this->successStatus(__("Add Real Estate Success"));
     }

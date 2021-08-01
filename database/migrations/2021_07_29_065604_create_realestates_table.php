@@ -19,8 +19,8 @@ class CreateRealestatesTable extends Migration
             $table->unsignedBigInteger('realestate_type_id')->index();
             $table->unsignedBigInteger('contract_type_id')->index();
             $table->unsignedBigInteger('city_id')->index();
-            $table->unsignedBigInteger('governorates_id')->index();
-            $table->string('Neighborhood');
+            $table->unsignedBigInteger('country_id')->index();
+            $table->string('neighborhood');
             $table->float('price');
             $table->float('space');
             $table->float('number_building');
@@ -32,7 +32,7 @@ class CreateRealestatesTable extends Migration
             $table->boolean('parking')->default(false);
             $table->boolean('ac')->default(false);
             $table->boolean('furniture')->default(false);
-            $table->text('note');
+            $table->text('note')->nullable();
             $table->boolean('is_active')->default(false);
             $table->integer('number_of_views')->default(0);
             $table->string('status')->nullable();

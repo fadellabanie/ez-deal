@@ -19,12 +19,12 @@ class CreateCountriesTable extends Migration
             $table->string('ar_name');
             $table->string('en_name');
             $table->string('icon');
-            $table->boolean('status')->default(false);
+            $table->boolean('status')->default(true);
             $table->timestamps();
         });
         DB::table('countries')->insert([
-            'ar_name' => 'Saudi arabia',
-            'en_name' => 'سعوديه',
+            'en_name' => 'Saudi arabia',
+            'ar_name' => 'سعوديه',
             'icon' => 'image.png',
         ]);
     }

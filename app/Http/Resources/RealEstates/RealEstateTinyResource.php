@@ -26,6 +26,7 @@ class RealEstateTinyResource extends JsonResource
             'street_number' => $this->street_number,
             'view' => $this->view,
             'number_of_views' => $this->number_of_views,
+            'image' => asset($this->medias->first()->image),
         ];
     }
 }

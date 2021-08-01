@@ -4,10 +4,12 @@ namespace App\Http\Controllers\API\V1\RealEstate;
 
 use App\Models\RealEstate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Captains\Auth\StoreRequest;
-use App\Http\Resources\RealEstates\RealEstateCollection;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\Api\RealEstates\StoreRequest;
+use App\Http\Resources\RealEstates\RealEstateCollection;
+use App\Http\Resources\RealEstates\RealEstateLargeResource;
 
 class RealEstateController extends Controller
 {
@@ -18,7 +20,7 @@ class RealEstateController extends Controller
      */
     public function index()
     {
-        $realEstates = RealEstate::owner()->active()->paginate();
+        $realEstates = RealEstate::active()->paginate();
 
         return new RealestateCollection($realEstates);
     }
@@ -33,8 +35,13 @@ class RealEstateController extends Controller
     {
         $request['user_id'] = Auth::id();
 
-        RealEstate::create($request->all());
-
+        $realEstate = RealEstate::create($request->all());
+        foreach ($request->images as $key => $image) {
+            DB::table('realestate_media')->insert([
+                'realestate_id' => $realEstate->id,
+                'image' => $image,
+            ]);
+        }
         return $this->successStatus(__("Add Real Estate Success"));
     }
 
@@ -46,7 +53,12 @@ class RealEstateController extends Controller
      */
     public function show($id)
     {
-        //
+        $realEstate = RealEstate::whereId($id)->active()->first();
+        if(!$realEstate)  return $this->respondNoContent();
+       
+        $realEstate->increment('number_of_views', 1);
+
+        return new RealEstateLargeResource($realEstate);
     }
 
     /**

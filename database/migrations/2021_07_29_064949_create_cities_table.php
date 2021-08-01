@@ -20,16 +20,16 @@ class CreateCitiesTable extends Migration
             $table->string('ar_name');
             $table->string('en_name');
             $table->string('icon');
-            $table->string('status');
+            $table->boolean('status')->default(true);
             $table->timestamps();
         });
-        DB::table('countries')->insert([
+        DB::table('cities')->insert([
             'country_id' => 1,
             'ar_name' => 'جده',
             'en_name' => 'Jeddah',
             'icon' => 'image.png',
         ]);
-        DB::table('countries')->insert([
+        DB::table('cities')->insert([
             'country_id' => 1,
             'ar_name' => 'مكة المكرمة',
             'en_name' => 'makkah',

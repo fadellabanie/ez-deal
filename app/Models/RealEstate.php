@@ -32,6 +32,7 @@ class RealEstate extends Model
         'is_active',
         'number_of_views',
         'status',
+        'type',
         'lat',
         'lng',
         'address',

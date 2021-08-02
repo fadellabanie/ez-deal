@@ -167,11 +167,6 @@ class AuthController extends Controller
         return $this->respondWithItem(new UserResource($user));
     }
 
-
-    public function show()
-    {
-        return $this->respondWithItem(new UserResource(Auth::user()));
-    }
     /**
      * Logout Passenger
      * @return mixed

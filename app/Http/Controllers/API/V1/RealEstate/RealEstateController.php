@@ -23,6 +23,17 @@ class RealEstateController extends Controller
         $realEstates = RealEstate::active()->paginate();
 
         return new RealestateCollection($realEstates);
+    }  
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function listOnMap()
+    {
+        $realEstates = RealEstate::where('city_id',Auth::user()->city_id)->active()->get();
+
+        return new RealestateCollection($realEstates);
     }
 
     /**

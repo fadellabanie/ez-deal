@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\V1\GeneralController;
 use App\Http\Controllers\API\V1\ConstantController;
 use App\Http\Controllers\API\V1\Auth\AuthController;
+use App\Http\Controllers\API\V1\Users\UserController;
 use App\Http\Controllers\API\V1\RealEstate\OrderController;
 use App\Http\Controllers\API\V1\RealEstate\RealEstateController;
 
@@ -33,7 +34,7 @@ Route::group(['prefix' => 'v1'], function () {
 
     Route::group(['middleware' => 'auth:api'], function () {
         Route::get('logout', [AuthController::class, 'logout']);
-        Route::get('show-profile', [AuthController::class, 'show']);
+        Route::get('show-profile', [UserController::class, 'show']);
         Route::post('verify-change-password', [AuthController::class, 'verifyChangePassword']);
         Route::post('change-password', [AuthController::class, 'changePassword']);
 
@@ -46,6 +47,7 @@ Route::group(['prefix' => 'v1'], function () {
 
         Route::apiResource('orders',OrderController::class);
         Route::apiResource('real-estates',RealEstateController::class);
+        Route::get('list-on-map',[RealEstateController::class,'listOnMap']);
        // Route::apiResource('case', CaseController::class);
        
        // Route::Post('send-notification', [NotificationController::class, 'send']);

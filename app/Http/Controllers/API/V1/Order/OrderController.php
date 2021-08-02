@@ -19,6 +19,17 @@ class OrderController extends Controller
      */
     public function index()
     {
+        $orders = Order::active()->paginate();
+
+        return new OrderCollection($orders);
+    } 
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function myOrder()
+    {
         $orders = Order::owner()->active()->paginate();
 
         return new OrderCollection($orders);
@@ -33,8 +44,12 @@ class OrderController extends Controller
     public function store(StoreRequest $request)
     {
         $request['user_id'] = Auth::id();
-       // dd($request->all());
+      
         Order::create($request->all());
+
+        $title = __("Create");
+        $body = __("Create Order Success");
+        $this->send(Auth::user()->device_token, $title, $body);
 
         return $this->successStatus(__("Add Real Estate Success"));
     }
@@ -71,6 +86,11 @@ class OrderController extends Controller
     public function destroy(RealEstate $realEstate)
     {
         $realEstate->delete();
+
+        $title = __("Delete");
+        $body = __("Delete Your Order Success");
+        $this->send(Auth::user()->device_token, $title, $body);
+
         return $this->successStatus();
     }
 }

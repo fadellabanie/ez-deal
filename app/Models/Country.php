@@ -19,4 +19,9 @@ class Country extends Model
         'icon',
         'status',
     ];
+
+    public function cities()
+    {
+        return $this->hasMany(City::class);
+    }
 }

@@ -42,14 +42,14 @@ class AuthController extends Controller
         $user->update([
             'remember_token' => $token
         ]);
-        
+
         $user->userToken()->create([
             'token' => $token,
             'device_id' => $request->device_id,
             'device_type' => $request->device_type,
         ]);
 
-        $this->sendCode($request->mobile, $user->id,'register');
+        $this->sendCode($request->mobile, $user->id, 'register');
 
         return $this->successStatus(__("send code to your number"));
         //  return $this->respondWithItem(new UserResource($user));
@@ -67,7 +67,7 @@ class AuthController extends Controller
         }
         $user = Auth::user();
 
-        if(!$user->verified_at){
+        if (!$user->verified_at) {
             return $this->errorStatus(__('not verified'));
         }
         $token = $user->createToken('Token-Login')->accessToken;
@@ -86,13 +86,13 @@ class AuthController extends Controller
         return $this->respondWithItem(new UserResource($user));
     }
 
-  
+
     /**
      * Send Code Use SMS 
      * @param  LoginRequest $request
      * @return mixed
      */
-    public function sendCode($mobile, $user_id,$type)
+    public function sendCode($mobile, $user_id, $type)
     {
         $verificationCode = 4444;
         //$verificationCode = mt_rand(1000, 9999);
@@ -119,10 +119,10 @@ class AuthController extends Controller
      */
     public function verifyChangePassword(ChangePasswordRequest $request)
     {
-        $this->sendCode($request->mobile,Auth::id(),'change-password');
-     
+        $this->sendCode($request->mobile, Auth::id(), 'change-password');
+
         return $this->successStatus(__('Send SMS Successfully Please Check Your Phone'));
-    }  
+    }
     /**
      * Send Code Use SMS 
      * @param  LoginRequest $request
@@ -131,7 +131,7 @@ class AuthController extends Controller
     public function changePassword(Request $request)
     {
         $user = User::find(Auth::id());
-        $user->update(['password'=>bcrypt($request->new_password)]);
+        $user->update(['password' => bcrypt($request->new_password)]);
         return $this->successStatus(__('password change successfully'));
     }
     /**
@@ -159,11 +159,16 @@ class AuthController extends Controller
         }
         $verify->delete();
 
-        if($request->type == 'change-password'){
+        if ($request->type == 'change-password') {
             return $this->successStatus(__('Verification code is valid'));
         }
-       
+
         $user->update(['verified_at' => now()]);
+
+        $title = __("Welcome");
+        $body = __("Welcome To Ez Deal");
+        $this->send($user->device_token, $title, $body);
+
         return $this->respondWithItem(new UserResource($user));
     }
 
@@ -177,6 +182,4 @@ class AuthController extends Controller
 
         return $this->successStatus(__('successfully logout'));
     }
-
-
 }

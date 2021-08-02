@@ -46,6 +46,7 @@ Route::group(['prefix' => 'v1'], function () {
         Route::post('upload', [GeneralController::class, 'upload']);
 
         Route::apiResource('orders',OrderController::class);
+        Route::get('my-order',[OrderController::class,'myOrder']);
         Route::apiResource('real-estates',RealEstateController::class);
         Route::get('list-on-map',[RealEstateController::class,'listOnMap']);
        // Route::apiResource('case', CaseController::class);

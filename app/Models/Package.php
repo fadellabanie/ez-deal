@@ -14,7 +14,8 @@ class Package extends Model
         'name',
         'description',
     ];
-    protected $fillable = [
+
+    protected $fillable = [ 
         'ar_name',
         'en_name',
         'ar_description',
@@ -23,4 +24,9 @@ class Package extends Model
         'days',
         'status',
     ];
+
+    public function attribute()
+    {
+        return $this->belongsToMany(Attribute::class,'package_attribute');
+    }
 }

@@ -21,4 +21,10 @@ class City extends Model
         'icon',
         'status',
     ];
+
+    public function country()
+    {
+        return $this->belongsTo(Country::class);
+    }
+
 }

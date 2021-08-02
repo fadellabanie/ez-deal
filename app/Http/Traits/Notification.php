@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Services;
+namespace App\Http\Traits;
 
-
-class Notification
+trait Notification
 {
     public function send($to, $title, $message)
     {

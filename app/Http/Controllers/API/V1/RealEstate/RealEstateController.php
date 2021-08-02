@@ -23,7 +23,7 @@ class RealEstateController extends Controller
         $realEstates = RealEstate::active()->paginate();
 
         return new RealestateCollection($realEstates);
-    }  
+    }
     /**
      * Display a listing of the resource.
      *
@@ -31,7 +31,7 @@ class RealEstateController extends Controller
      */
     public function listOnMap()
     {
-        $realEstates = RealEstate::where('city_id',Auth::user()->city_id)->active()->get();
+        $realEstates = RealEstate::where('city_id', Auth::user()->city_id)->active()->get();
 
         return new RealestateCollection($realEstates);
     }
@@ -53,6 +53,10 @@ class RealEstateController extends Controller
                 'image' => $image,
             ]);
         }
+        $title = __("Create");
+        $body = __("Create Real Estate Success wait for Active by Support");
+        $this->send(Auth::user()->device_token, $title, $body);
+
         return $this->successStatus(__("Add Real Estate Success"));
     }
 
@@ -65,8 +69,8 @@ class RealEstateController extends Controller
     public function show($id)
     {
         $realEstate = RealEstate::whereId($id)->active()->first();
-        if(!$realEstate)  return $this->respondNoContent();
-       
+        if (!$realEstate)  return $this->respondNoContent();
+
         $realEstate->increment('number_of_views', 1);
 
         return new RealEstateLargeResource($realEstate);
@@ -93,6 +97,11 @@ class RealEstateController extends Controller
     public function destroy(RealEstate $realEstate)
     {
         $realEstate->delete();
+
+        $title = __("Delete");
+        $body = __("Delete Real Estate Success");
+        $this->send(Auth::user()->device_token, $title, $body);
+
         return $this->successStatus();
     }
 }

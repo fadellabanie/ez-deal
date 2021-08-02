@@ -3,12 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Http\Traits\ApiResponder;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use App\Http\Traits\Notification;
 use Illuminate\Foundation\Bus\DispatchesJobs;
-use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class Controller extends BaseController
 {
-    use AuthorizesRequests, DispatchesJobs, ValidatesRequests, ApiResponder;
+    use AuthorizesRequests, DispatchesJobs, ValidatesRequests, ApiResponder,Notification;
 }

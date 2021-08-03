@@ -5,7 +5,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\V1\GeneralController;
 use App\Http\Controllers\API\V1\ConstantController;
 use App\Http\Controllers\API\V1\Auth\AuthController;
+use App\Http\Controllers\API\V1\Home\HomeController;
 use App\Http\Controllers\API\V1\Users\UserController;
+use App\Http\Controllers\API\V1\Stories\StoryController;
 use App\Http\Controllers\API\V1\RealEstate\OrderController;
 use App\Http\Controllers\API\V1\RealEstate\RealEstateController;
 
@@ -44,6 +46,9 @@ Route::group(['prefix' => 'v1'], function () {
         Route::get('cities', [ConstantController::class, 'getCity']);
         Route::get('counties', [ConstantController::class, 'getCountry']);
         Route::post('upload', [GeneralController::class, 'upload']);
+
+        Route::get('home',[HomeController::class,'home']);
+        Route::apiResource('stories',StoryController::class);
 
         Route::apiResource('orders',OrderController::class);
         Route::get('my-order',[OrderController::class,'myOrder']);

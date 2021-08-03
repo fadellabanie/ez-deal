@@ -23,6 +23,7 @@ class RealEstate extends Model
         'age_building',
         'street_width',
         'street_number',
+        'video_url',
         'view',
         'elevator',
         'parking',

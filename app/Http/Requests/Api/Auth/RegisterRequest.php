@@ -29,7 +29,7 @@ class RegisterRequest extends APIRequest
             'type' =>  'required|in:personal,company',
             'email' =>  'required|unique:users,email',
             'mobile' =>  'required|unique:users,mobile',
-            'password' => 'required|min:8',
+            'password' => 'required|min:8|max:15',
             'device_token' => 'required',
             'country_code' => 'required',
             'device_type' => 'required|in:android,ios',

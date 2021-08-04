@@ -21,6 +21,9 @@ class CreateUsersTable extends Migration
             $table->string('country_code');
             $table->string('mobile');
             $table->string('whatsapp_mobile')->nullable();
+            $table->unsignedBigInteger('city_id')->index();
+            $table->unsignedBigInteger('package_id')->nullable()->index();
+            $table->date('subscribe_to')->nullable();
             $table->text('trading_certification');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();

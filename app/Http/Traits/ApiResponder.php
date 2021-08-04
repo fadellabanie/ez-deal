@@ -111,13 +111,13 @@ trait ApiResponder
             ]);
     }
 
-    public function respondCreated($data, $message = 'Resource created successfully')
+    public function respondCreated($message = 'Resource created successfully')
     {
         return $this->setStatusCode(201)
             ->respond([
                 'status' => $this->getSuccess(),
                 'message' => $message,
-                'data' => $data,
+                //'data' => $data,
                
             ]);
     }

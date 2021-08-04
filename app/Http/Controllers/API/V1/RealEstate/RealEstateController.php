@@ -73,7 +73,7 @@ class RealEstateController extends Controller
 
         $realEstate->increment('number_of_views', 1);
 
-        return new RealEstateLargeResource($realEstate);
+        return $this->respondWithItem(new RealEstateLargeResource($realEstate));
     }
 
     /**

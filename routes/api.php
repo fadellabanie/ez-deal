@@ -9,6 +9,7 @@ use App\Http\Controllers\API\V1\Home\HomeController;
 use App\Http\Controllers\API\V1\Users\UserController;
 use App\Http\Controllers\API\V1\Stories\StoryController;
 use App\Http\Controllers\API\V1\RealEstate\OrderController;
+use App\Http\Controllers\API\V1\Favorites\FavoriteController;
 use App\Http\Controllers\API\V1\RealEstate\RealEstateController;
 
 
@@ -52,8 +53,13 @@ Route::group(['prefix' => 'v1'], function () {
 
         Route::apiResource('orders',OrderController::class);
         Route::get('my-order',[OrderController::class,'myOrder']);
+
         Route::apiResource('real-estates',RealEstateController::class);
         Route::get('list-on-map',[RealEstateController::class,'listOnMap']);
+
+        Route::get('my-favorite',[FavoriteController::class,'myFavorite']);
+        Route::post('add-favorite',[FavoriteController::class,'addFavorite']);
+        Route::post('un-favorite',[FavoriteController::class,'unFavorite']);
        // Route::apiResource('case', CaseController::class);
        
        // Route::Post('send-notification', [NotificationController::class, 'send']);

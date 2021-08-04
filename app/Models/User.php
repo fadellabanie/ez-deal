@@ -31,6 +31,9 @@ class User extends Authenticatable
         'remember_token',
         'device_token',
         'verified_at',
+        'city_id',
+        'package_id',
+        'subscribe_to',
     ];
 
     /**

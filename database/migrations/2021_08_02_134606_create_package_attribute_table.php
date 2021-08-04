@@ -16,6 +16,10 @@ class CreatePackageAttributeTable extends Migration
         Schema::create('package_attribute', function (Blueprint $table) {
             $table->unsignedBigInteger('package_id')->index();
             $table->unsignedBigInteger('attribute_id')->index();
+            $table->string('type');
+            $table->integer('count')->nullable();
+            $table->date('from')->nullable();
+            $table->date('to')->nullable();
 
             $table->foreign('package_id')->references('id')->on('packages')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('attribute_id')->references('id')->on('attributes')->onDelete('cascade')->onUpdate('cascade');

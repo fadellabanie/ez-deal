@@ -8,10 +8,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\Api\Stories\StoreRequest;
 use App\Http\Resources\Stories\StoryCollection;
-use App\Http\Requests\Api\RealEstates\StoreRequest;
-use App\Http\Resources\RealEstates\RealEstateCollection;
-use App\Http\Resources\RealEstates\RealEstateLargeResource;
 
 class StoryController extends Controller
 {
@@ -35,7 +33,17 @@ class StoryController extends Controller
      */
     public function store(StoreRequest $request)
     {
-       
+        
+        Story::create([
+            'user_id' => Auth::id(),
+            'city_id' => Auth::user()->city_id,
+            'start_date' => now(),
+            'end_date' => now(),
+            'title' => $request->title,
+            'image' => $request->image,
+        ]);
+
+        return $this->respondCreated();
     }
 
     /**

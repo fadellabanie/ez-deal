@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Favorite extends Model
 {
@@ -13,6 +14,11 @@ class Favorite extends Model
         'real_estate_id',
         'user_id',
     ];
+    public function scopeOwner($query)
+    {
+        return $query->where('user_id', Auth::id());
+    }
+    
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');

@@ -31,6 +31,7 @@ class AuthController extends Controller
             'email' => $request->email,
             'mobile' => $request->mobile,
             'country_code' => $request->country_code,
+            'city_id' => $request->city_id,
             'trading_certification' => $request->trading_certification,
             'password' => bcrypt($request->password),
             'device_token' => $request->device_token,

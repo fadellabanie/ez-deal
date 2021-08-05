@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Api\RealEstates\StoreRequest;
+use App\Http\Requests\Api\RealEstates\UpdateRequest;
 use App\Http\Resources\RealEstates\RealEstateCollection;
 use App\Http\Resources\RealEstates\RealEstateLargeResource;
 
@@ -83,9 +84,24 @@ class RealEstateController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateRequest $request, $id)
     {
-        //
+        $request['user_id'] = Auth::id();
+
+        $realEstate = RealEstate::whereId($id)->where('user_id', Auth::id())->first();
+
+        if(!$realEstate) return $this->errorNotFound();
+
+        $realEstate->update($request->all());
+
+        foreach ($request->images as $key => $image) {
+            DB::table('realestate_media')->insert([
+                'realestate_id' => $realEstate->id,
+                'image' => $image,
+            ]);
+        }
+        return $this->successStatus(__("Update Real Estate Success"));
+
     }
 
     /**

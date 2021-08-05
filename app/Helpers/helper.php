@@ -4,6 +4,20 @@
  * Get list of languages
  */
 
+use App\Models\City;
+
+if (!function_exists('getCountry')) {
+	function getCountry($city_id)
+	{
+		$city = City::whereId($city_id)->select('country_id')->first();
+		return $city->country_id;
+	}
+}
+
+/**
+ * Get list of languages
+ */
+
 if (!function_exists('getFullName')) {
 	function getFullName($user)
 	{

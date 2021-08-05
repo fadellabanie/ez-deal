@@ -15,6 +15,7 @@ class Story extends Model
         'title',
         'image',
         'city_id',
+        'country_id',
         'start_date',
         'end_date',
         'status',
@@ -24,9 +25,14 @@ class Story extends Model
     {
         return $query->where('status', true);
     } 
-     public function scopeMyStory($query)
+     public function scopeMyCityStory($query)
     {
         return $query->where('city_id', Auth::user()->city_id);
+    }  
+    public function scopeMyCountryStory($query)
+    {
+
+        return $query->where('country_id', getCountry(Auth::user()->city_id));
     }
     public function user()
     {

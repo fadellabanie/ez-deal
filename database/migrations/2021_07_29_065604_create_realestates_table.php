@@ -37,6 +37,8 @@ class CreateRealestatesTable extends Migration
             $table->boolean('is_active')->default(false);
             $table->integer('number_of_views')->default(0);
             $table->string('type')->nullable();
+            $table->string('type_of_owner')->nullable();
+            $table->string('number_card')->nullable();
             $table->string('status')->nullable();
             $table->decimal('lat', 10, 8)->nullable();
             $table->decimal('lng', 11, 8)->nullable();

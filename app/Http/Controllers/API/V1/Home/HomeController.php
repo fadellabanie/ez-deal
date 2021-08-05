@@ -22,12 +22,17 @@ class HomeController extends Controller
     public function home()
     {
 
-        $stories = Story::MyStory()->WhereDate('end_date', '<=', now())->active()->get();
-        $data['stories'] = StoryTinyResource::collection($stories);
+        $cityStories = Story::MyCityStory()->WhereDate('end_date', '>=', now())->active()->get();
+        $data['cityStories'] = StoryTinyResource::collection($cityStories);
+
+        ##################################### 
+        
+        $countryStories = Story::MyCountryStory()->WhereDate('end_date', '>=', now())->active()->get();
+        $data['countryStories'] = StoryTinyResource::collection($countryStories);
 
         #####################################
         
-        $homeBanners = HomeBanner::MyStory()->WhereDate('end_date', '<=', now())->active()->get();
+        $homeBanners = HomeBanner::MyStory()->WhereDate('end_date', '>=', now())->active()->get();
         $data['home_banners'] = HomeBannerTinyResource::collection($homeBanners); 
 
         #####################################

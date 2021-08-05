@@ -4,7 +4,7 @@ namespace App\Http\Requests\Api\RealEstates;
 
 use App\Http\Requests\Api\APIRequest;
 
-class StoreRequest extends APIRequest
+class UpdateRequest extends APIRequest
 {
     /**
      * Determine if the user is authorized to make this request.

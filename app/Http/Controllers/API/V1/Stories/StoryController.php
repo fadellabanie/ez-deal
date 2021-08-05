@@ -37,6 +37,7 @@ class StoryController extends Controller
         Story::create([
             'user_id' => Auth::id(),
             'city_id' => Auth::user()->city_id,
+            'country_id' => getCountry(Auth::user()->city_id),
             'start_date' => now(),
             'end_date' => now(),
             'title' => $request->title,

@@ -34,6 +34,8 @@ class RealEstate extends Model
         'number_of_views',
         'status',
         'type',
+        'type_of_owner',
+        'number_card',
         'lat',
         'lng',
         'address',

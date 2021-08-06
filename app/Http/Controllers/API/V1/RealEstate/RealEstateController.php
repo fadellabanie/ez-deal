@@ -86,6 +86,7 @@ class RealEstateController extends Controller
      */
     public function update(UpdateRequest $request, $id)
     {
+      
         $request['user_id'] = Auth::id();
 
         $realEstate = RealEstate::whereId($id)->where('user_id', Auth::id())->first();
@@ -110,8 +111,12 @@ class RealEstateController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(RealEstate $realEstate)
+    public function destroy($id)
     {
+
+        $realEstate = RealEstate::whereId($id)->where('user_id', Auth::id())->first();
+        if (!$realEstate) return $this->errorNotFound(__("Real Estate Not Found"));
+
         $realEstate->delete();
 
         $title = __("Delete");

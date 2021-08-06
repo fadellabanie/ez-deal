@@ -23,12 +23,12 @@ class HomeController extends Controller
     {
 
         $cityStories = Story::MyCityStory()->WhereDate('end_date', '>=', now())->active()->get();
-        $data['cityStories'] = StoryTinyResource::collection($cityStories);
+        $data['city_stories'] = StoryTinyResource::collection($cityStories);
 
         ##################################### 
         
         $countryStories = Story::MyCountryStory()->WhereDate('end_date', '>=', now())->active()->get();
-        $data['countryStories'] = StoryTinyResource::collection($countryStories);
+        $data['country_stories'] = StoryTinyResource::collection($countryStories);
 
         #####################################
         

@@ -20,6 +20,7 @@ class CreateOrdersTable extends Migration
             $table->unsignedBigInteger('contract_type_id')->index();
             $table->unsignedBigInteger('city_id')->index();
             $table->unsignedBigInteger('country_id')->index();
+            $table->string('name');
             $table->float('price');
             $table->float('space');
             $table->float('number_building');

@@ -26,7 +26,7 @@ class VerifyRequest extends APIRequest
     {
         return [
            // 'mobile' => ['required',new Phone],
-           'mobile' => ['required|exists:users,mobile'],
+           'mobile' => 'required|exists:users,mobile',
            'verification_code' => 'required|numeric'
         ];
     }

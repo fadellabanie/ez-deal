@@ -58,11 +58,11 @@ class RealEstate extends Model
     }
     public function contractType()
     {
-        return $this->belongsTo(ContractType::class);
+        return $this->belongsTo(ContractType::class,'contract_type_id');
     }
     public function realestateType()
     {
-        return $this->belongsTo(RealestateType::class);
+        return $this->belongsTo(RealestateType::class,'realestate_type_id');
     }
     public function medias()
     {

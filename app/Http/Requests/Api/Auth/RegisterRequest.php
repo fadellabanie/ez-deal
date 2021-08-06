@@ -34,6 +34,7 @@ class RegisterRequest extends APIRequest
             'country_code' => 'required',
             'device_type' => 'required|in:android,ios',
             'device_id' => 'required',
+            'city_id' => 'required',
         ];
     }
 }

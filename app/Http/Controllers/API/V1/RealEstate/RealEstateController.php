@@ -24,15 +24,19 @@ class RealEstateController extends Controller
      */
     public function index(Request $request)
     {
-        $realEstates = RealEstate::when('city_id', function ($q) use ($request) {
-            $q->where('city_id', $request->city_id);
-        })->when('realestate_type_id', function ($q) use ($request) {
-            $q->where('realestate_type_id', $request->realestate_type_id);
-        })->when('contract_type_id', function ($q) use ($request) {
-            $q->where('contract_type_id', $request->contract_type_id);
-        })->when('search', function ($q) use ($request) {
-            $q->where('name', 'like', '%' . $request->search . '%');
-        })->active()->orderBy('type', 'DESC')->paginate();
+
+        $realEstates = RealEstate::when($request->filled('city_id'), function ($q) use ($request) {
+                $q->where('city_id', $request->city_id);
+            })->when($request->filled('realestate_type_id'), function ($q) use ($request) {
+                $q->where('realestate_type_id', $request->realestate_type_id);
+            })
+            ->when($request->filled('contract_type_id'), function ($q) use ($request) {
+                $q->where('contract_type_id', $request->contract_type_id);
+            })
+            ->when($request->filled('search'), function ($q) use ($request) {
+                $q->where('name', 'like', '%' . $request->search . '%');
+            })
+            ->active()->orderBy('type', 'DESC')->paginate();
 
         return new RealestateCollection($realEstates);
     }
@@ -62,9 +66,9 @@ class RealEstateController extends Controller
         $upgradeFactory = new UpgradeFactory();
         $upgrade = $upgradeFactory->initialize($feature->slug, $request->real_estate_id);
 
-        $response = $upgrade->upgrade();
+        $upgrade->upgrade();
 
-        return $this->successStatus($response);
+        return $this->successStatus();
     }
 
     /**
@@ -77,6 +81,7 @@ class RealEstateController extends Controller
     {
         $request['user_id'] = Auth::id();
         $request['end_date'] = Carbon::now()->addDays(15);
+        $request['type'] = 'normal';
 
         $realEstate = RealEstate::create($request->all());
         foreach ($request->images as $key => $image) {
@@ -117,7 +122,7 @@ class RealEstateController extends Controller
      */
     public function update(UpdateRequest $request, $id)
     {
-      
+
         $request['user_id'] = Auth::id();
 
         $realEstate = RealEstate::whereId($id)->where('user_id', Auth::id())->first();

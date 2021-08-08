@@ -29,6 +29,7 @@ class CreateStoriesTable extends Migration
         DB::table('stories')->insert([
             'user_id' =>  1,
             'city_id' =>  1,
+            'country_id' =>  1,
             'title' => 'stories 1',
             'image' => 'image.png',
             'start_date' => now(),

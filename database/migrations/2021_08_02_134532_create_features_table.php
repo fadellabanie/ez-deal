@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAttributesTable extends Migration
+class CreateFeaturesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -24,6 +24,7 @@ class CreateAttributesTable extends Migration
             $table->float('price');
             $table->integer('count');
             $table->string('icon');
+            $table->string('is_active');
             $table->timestamps();
         });
 

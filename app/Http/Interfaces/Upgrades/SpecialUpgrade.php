@@ -15,7 +15,7 @@ class SpecialUpgrade implements UpgradeableInterface
     public function upgrade()
     {
         RealEstate::whereId($this->real_estate_id)->update([
-            'type' =>  'Special'
+            'type' =>  'special'
         ]);
     }
 }

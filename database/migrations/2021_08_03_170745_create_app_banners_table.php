@@ -18,8 +18,8 @@ class CreateAppBannersTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id')->index();
             $table->unsignedBigInteger('city_id')->index();
-            $table->string('ar_title');
-            $table->string('en_title');
+            $table->string('ar_name');
+            $table->string('en_name');
             $table->string('ar_description');
             $table->string('en_description');
             $table->string('image');
@@ -28,10 +28,9 @@ class CreateAppBannersTable extends Migration
             $table->boolean('status')->default(false);
             $table->timestamps();
         });
-        DB::table('stories')->insert([
+        DB::table('app_banners')->insert([
             'user_id' =>  1,
             'city_id' =>  1,
-            'title' => 'stories 1',
             'ar_name' => 'silver',
             'en_name' => 'silver',
             'ar_description' => 'silver',

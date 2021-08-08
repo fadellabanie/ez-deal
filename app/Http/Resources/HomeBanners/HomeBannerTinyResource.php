@@ -18,7 +18,7 @@ class HomeBannerTinyResource extends JsonResource
        
         return [
             'id' => $this->id,
-            'title' => $this->title,
+            'name' => $this->name,
             'image' => asset($this->image),
         ];
     }

@@ -43,6 +43,7 @@ class UserController extends Controller
    
     public function report(Request $request)
     {
+        
         ReportUser::create([
             'user_id' => Auth::id(),
             'suspicious_user_id' => $request->user_id,

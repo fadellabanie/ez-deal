@@ -4,11 +4,9 @@ namespace App\Http\Controllers\API\V1;
 
 use App\Models\City;
 use App\Models\Country;
-use App\Models\Governorate;
 use App\Models\ContractType;
 use App\Models\RealestateType;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Resources\Constants\CityResource;
 use App\Http\Resources\Constants\CountryResource;
 use App\Http\Resources\Constants\ContractTypeResource;

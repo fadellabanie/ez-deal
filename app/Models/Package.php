@@ -16,17 +16,17 @@ class Package extends Model
     ];
 
     protected $fillable = [ 
+        'slug',
         'ar_name',
         'en_name',
         'ar_description',
         'en_description',
-        'price',
-        'days',
+        'icon',
         'status',
     ];
 
-    public function attribute()
+    public function feature()
     {
-        return $this->belongsToMany(Attribute::class,'package_attribute');
+        return $this->belongsToMany(Features::class,'package_feature');
     }
 }

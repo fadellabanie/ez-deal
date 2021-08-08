@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAttributesTable extends Migration
+class CreateSnapchatOrdersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,15 @@ class CreateAttributesTable extends Migration
      */
     public function up()
     {
-        Schema::create('attributes', function (Blueprint $table) {
+        Schema::create('snapchat_orders', function (Blueprint $table) {
             $table->id();
-            $table->string('ar_name');
-            $table->string('en_name');
-            $table->string('ar_description');
-            $table->string('en_description');
+            $table->unsignedBigInteger('real_estate_id')->index();
+            $table->boolean('status')->default(false);
+
             $table->timestamps();
+
+            $table->foreign('real_estate_id')->references('id')->on('realestates')->onDelete('cascade');
+
         });
     }
 
@@ -30,6 +32,6 @@ class CreateAttributesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('attributes');
+        Schema::dropIfExists('snapchat_orders');
     }
 }

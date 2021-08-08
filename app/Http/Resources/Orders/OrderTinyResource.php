@@ -18,6 +18,7 @@ class OrderTinyResource extends JsonResource
        
         return [
             'id' => $this->id,
+            'user_mobile' => $this->user->mobile,
             'city' => $this->city->name,
             'price' => $this->price,
             'space' => $this->space,
@@ -26,6 +27,7 @@ class OrderTinyResource extends JsonResource
             'street_number' => $this->street_number,
             'view' => $this->view,
             'number_of_views' => $this->number_of_views,
+            'address' => $this->address,
         ];
     }
 }

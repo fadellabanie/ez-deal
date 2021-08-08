@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use App\Services\Translatable;
 
-class HomeBanner extends Model
+class AppBanner extends Model
 {
     use HasFactory,Translatable;
 

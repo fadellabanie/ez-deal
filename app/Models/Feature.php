@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Services\Translatable;
 
-class Attribute extends Model
+class Feature extends Model
 {
     use HasFactory,Translatable;
 
@@ -17,12 +17,20 @@ class Attribute extends Model
     protected $fillable = [
         'ar_name',
         'en_name',
+        'slug',
         'ar_description',
         'en_description',
+        'price',
+        'days',
+        'icon',
+        'is_active',
     ];
-
+    public function scopeActive($query)
+    {
+        return $query->where('is_active', true);
+    } 
     public function package()
     {
-        return $this->belongsToMany(Package::class,'package_attribute');
+        return $this->belongsToMany(Package::class,'package_feature');
     }
 }

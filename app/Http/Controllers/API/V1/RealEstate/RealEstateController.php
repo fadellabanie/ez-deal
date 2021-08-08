@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\API\V1\RealEstate;
 
+use Carbon\Carbon;
+use App\Models\Feature;
 use App\Models\RealEstate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Interfaces\Upgrades\UpgradeFactory;
 use App\Http\Requests\Api\RealEstates\StoreRequest;
 use App\Http\Requests\Api\RealEstates\UpdateRequest;
 use App\Http\Resources\RealEstates\RealEstateCollection;
@@ -19,9 +22,17 @@ class RealEstateController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $realEstates = RealEstate::active()->paginate();
+        $realEstates = RealEstate::when('city_id', function ($q) use ($request) {
+            $q->where('city_id', $request->city_id);
+        })->when('realestate_type_id', function ($q) use ($request) {
+            $q->where('realestate_type_id', $request->realestate_type_id);
+        })->when('contract_type_id', function ($q) use ($request) {
+            $q->where('contract_type_id', $request->contract_type_id);
+        })->when('search', function ($q) use ($request) {
+            $q->where('name', 'like', '%' . $request->search . '%');
+        })->active()->orderBy('type', 'DESC')->paginate();
 
         return new RealestateCollection($realEstates);
     }
@@ -36,6 +47,25 @@ class RealEstateController extends Controller
 
         return new RealestateCollection($realEstates);
     }
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function upgrade(Request $request)
+    {
+        $realEstate = RealEstate::find($request->real_estate_id);
+        if (!$realEstate)  return $this->respondNoContent();
+
+        $feature = Feature::find($request->feature_id);
+
+        $upgradeFactory = new UpgradeFactory();
+        $upgrade = $upgradeFactory->initialize($feature->slug, $request->real_estate_id);
+
+        $response = $upgrade->upgrade();
+
+        return $this->successStatus($response);
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -46,6 +76,7 @@ class RealEstateController extends Controller
     public function store(StoreRequest $request)
     {
         $request['user_id'] = Auth::id();
+        $request['end_date'] = Carbon::now()->addDays(15);
 
         $realEstate = RealEstate::create($request->all());
         foreach ($request->images as $key => $image) {
@@ -90,7 +121,7 @@ class RealEstateController extends Controller
 
         $realEstate = RealEstate::whereId($id)->where('user_id', Auth::id())->first();
 
-        if(!$realEstate) return $this->errorNotFound();
+        if (!$realEstate) return $this->errorNotFound();
 
         $realEstate->update($request->all());
 
@@ -101,7 +132,6 @@ class RealEstateController extends Controller
             ]);
         }
         return $this->successStatus(__("Update Real Estate Success"));
-
     }
 
     /**

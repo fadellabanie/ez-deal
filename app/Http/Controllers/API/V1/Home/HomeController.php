@@ -3,14 +3,15 @@
 namespace App\Http\Controllers\API\V1\Home;
 
 use App\Models\Story;
+use App\Models\AppBanner;
+use App\Models\AppSetting;
 use App\Models\HomeBanner;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Http\Resources\Constants\AppSettingResource;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Stories\StoryTinyResource;
+use App\Http\Resources\Constants\AppSettingResource;
 use App\Http\Resources\HomeBanners\HomeBannerTinyResource;
-use App\Models\AppSetting;
 
 class HomeController extends Controller
 {
@@ -32,7 +33,7 @@ class HomeController extends Controller
 
         #####################################
         
-        $homeBanners = HomeBanner::MyStory()->WhereDate('end_date', '>=', now())->active()->get();
+        $homeBanners = AppBanner::MyStory()->WhereDate('end_date', '>=', now())->active()->get();
         $data['home_banners'] = HomeBannerTinyResource::collection($homeBanners); 
 
         #####################################

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\API\V1\RealEstate;
+namespace App\Http\Controllers\API\V1\Packages;
 
 use App\Models\Order;
 use App\Models\RealEstate;
@@ -11,8 +11,9 @@ use App\Http\Requests\Api\Orders\StoreRequest;
 use App\Http\Resources\Orders\OrderCollection;
 use App\Http\Requests\Api\Orders\UpdateRequest;
 use App\Http\Resources\Orders\OrderLargeResource;
+use App\Models\Attribute;
 
-class OrderController extends Controller
+class PackageController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,21 +22,8 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders = Order::active()->paginate();
 
-        return new OrderCollection($orders);
     } 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function myOrder()
-    {
-        $orders = Order::owner()->active()->paginate();
-
-        return new MyOrderCollection($orders);
-    }
 
     /**
      * Store a newly created resource in storage.

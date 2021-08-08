@@ -16,6 +16,7 @@ class RealEstate extends Model
         'contract_type_id',
         'city_id',
         'country_id',
+        'name',
         'neighborhood',
         'price',
         'space',
@@ -39,6 +40,7 @@ class RealEstate extends Model
         'lat',
         'lng',
         'address',
+        'end_date',
     ];
     public function scopeActive($query)
     {

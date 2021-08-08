@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateHomeBannersTable extends Migration
+class CreateReportUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,19 +13,18 @@ class CreateHomeBannersTable extends Migration
      */
     public function up()
     {
-        Schema::create('home_banners', function (Blueprint $table) {
+        Schema::create('report_users', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id')->index();
-            $table->unsignedBigInteger('city_id')->index();
-            $table->string('ar_title');
-            $table->string('en_title');
-            $table->string('ar_description');
-            $table->string('en_description');
-            $table->string('image');
+            $table->unsignedBigInteger('suspicious_user_id')->index();
             $table->date('start_date');
             $table->date('end_date');
-            $table->boolean('status')->default(false);
+            $table->boolean('status');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('suspicious_user_id')->references('id')->on('users')->onDelete('cascade');
+
         });
     }
 
@@ -36,6 +35,6 @@ class CreateHomeBannersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('home_banners');
+        Schema::dropIfExists('report_users');
     }
 }

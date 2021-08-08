@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Resources\RealEstates;
+namespace App\Http\Resources\Orders;
 
 use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class RealEstateTinyResource extends JsonResource
+class OrderTinyResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -18,16 +18,16 @@ class RealEstateTinyResource extends JsonResource
        
         return [
             'id' => $this->id,
+            'user_mobile' => $this->user->mobile,
             'city' => $this->city->name,
             'price' => $this->price,
             'space' => $this->space,
-            'number_building' => $this->number_building,
+            'age_building' => $this->age_building,
             'street_width' => $this->street_width,
             'street_number' => $this->street_number,
             'view' => $this->view,
             'number_of_views' => $this->number_of_views,
-            'type_of_owner' => $this->type_of_owner,
-            'image' => asset($this->medias->first()->image),
+            'address' => $this->address,
         ];
     }
 }

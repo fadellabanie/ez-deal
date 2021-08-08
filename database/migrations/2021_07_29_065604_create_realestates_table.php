@@ -20,6 +20,7 @@ class CreateRealestatesTable extends Migration
             $table->unsignedBigInteger('contract_type_id')->index();
             $table->unsignedBigInteger('city_id')->index();
             $table->unsignedBigInteger('country_id')->index();
+            $table->string('name');
             $table->string('neighborhood');
             $table->float('price');
             $table->float('space');
@@ -43,6 +44,7 @@ class CreateRealestatesTable extends Migration
             $table->decimal('lat', 10, 8)->nullable();
             $table->decimal('lng', 11, 8)->nullable();
             $table->string('address')->nullable();
+            $table->date('end_date');
             $table->timestamps();
         });
     }

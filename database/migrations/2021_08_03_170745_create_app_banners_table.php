@@ -5,7 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
 
-class CreateStoriesTable extends Migration
+class CreateAppBannersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,11 +14,14 @@ class CreateStoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('stories', function (Blueprint $table) {
+        Schema::create('app_banners', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id')->index();
             $table->unsignedBigInteger('city_id')->index();
-            $table->string('title');
+            $table->string('ar_title');
+            $table->string('en_title');
+            $table->string('ar_description');
+            $table->string('en_description');
             $table->string('image');
             $table->date('start_date');
             $table->date('end_date');
@@ -29,6 +32,10 @@ class CreateStoriesTable extends Migration
             'user_id' =>  1,
             'city_id' =>  1,
             'title' => 'stories 1',
+            'ar_name' => 'silver',
+            'en_name' => 'silver',
+            'ar_description' => 'silver',
+            'en_description' => 'silver',
             'image' => 'image.png',
             'start_date' => now(),
             'end_date' => now()->addDays(15),
@@ -36,6 +43,7 @@ class CreateStoriesTable extends Migration
             'updated_at' => now(),
         ]);
     }
+
     /**
      * Reverse the migrations.
      *
@@ -43,6 +51,6 @@ class CreateStoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('stories');
+        Schema::dropIfExists('app_banners');
     }
 }

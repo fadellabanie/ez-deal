@@ -16,6 +16,7 @@ use App\Http\Requests\Api\Auth\UpdateRequest;
 use App\Http\Requests\Api\Auth\VerifyRequest;
 use App\Http\Requests\Api\Auth\RegisterRequest;
 use App\Http\Requests\Api\Auth\ChangePasswordRequest;
+use App\Models\ReportUser;
 
 class UserController extends Controller
 {
@@ -40,5 +41,14 @@ class UserController extends Controller
         return $this->successStatus(__("Update profile successfully"));
     }
    
+    public function report(Request $request)
+    {
+        ReportUser::create([
+            'user_id' => Auth::id(),
+            'suspicious_user_id' => $request->user_id,
+        ]);
 
+        return $this->successStatus(__("Report user successfully"));
+
+    }
 }

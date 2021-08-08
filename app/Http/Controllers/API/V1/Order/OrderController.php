@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\API\V1\RealEstate;
+namespace App\Http\Controllers\API\V1\Order;
 
 use App\Models\Order;
 use App\Models\RealEstate;
@@ -24,7 +24,7 @@ class OrderController extends Controller
         $orders = Order::active()->paginate();
 
         return new OrderCollection($orders);
-    } 
+    }
     /**
      * Display a listing of the resource.
      *
@@ -46,7 +46,7 @@ class OrderController extends Controller
     public function store(StoreRequest $request)
     {
         $request['user_id'] = Auth::id();
-      
+
         Order::create($request->all());
 
         $title = __("Create");
@@ -82,9 +82,9 @@ class OrderController extends Controller
     public function update(UpdateRequest $request, $id)
     {
         $request['user_id'] = Auth::id();
-       $order = Order::whereId($id)->where('user_id', Auth::id())->first();
-       if(!$order) return $this->errorNotFound();
-      
+        $order = Order::whereId($id)->where('user_id', Auth::id())->first();
+        if (!$order) return $this->errorNotFound();
+
         Order::whereId($id)->update($request->all());
 
 
@@ -97,9 +97,12 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(RealEstate $realEstate)
+    public function destroy($id)
     {
-        $realEstate->delete();
+        $order = Order::whereId($id)->where('user_id', Auth::id())->first();
+        if (!$order) return $this->errorNotFound(__("Order Not Found"));
+
+        $order->delete();
 
         $title = __("Delete");
         $body = __("Delete Your Order Success");

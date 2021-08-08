@@ -27,6 +27,15 @@ trait ApiResponder
     {
         return $this->success;
     }
+   /**
+     * Getter for statusCode
+     *
+     * @return int
+     */
+    public function getFailure()
+    {
+        return $this->failure;
+    }
 
     /**
      * Setter for statusCode
@@ -61,7 +70,16 @@ trait ApiResponder
         ]);
     }
 
+    public function respondNoContent($message = 'No content')
+    {
+        return $this->setStatusCode(204)
+       ->respond([
+            'status' => $this->getFailure(),
+            'message' => $message,
+        ]);
 
+           
+    }
 
     public function respondWithItem($item, $message = 'Success Request')
     {
@@ -88,7 +106,6 @@ trait ApiResponder
             'status' => $this->getSuccess(),
             'message' => $message,
             'data' => $collection,
-            
         ]);
     }
 
@@ -102,14 +119,7 @@ trait ApiResponder
             ]);
     }
 
-    public function respondNoContent($message = 'No content')
-    {
-        return $this->setStatusCode(204)
-            ->respond([
-                'http_code' => $this->getStatusCode(),
-                'message' => $message
-            ]);
-    }
+  
 
     public function respondCreated($message = 'Resource created successfully')
     {
@@ -159,7 +169,7 @@ trait ApiResponder
         return $this->setStatusCode(500)
           ->respondWithError($message);
     }
-
+  
     /**
      * Generates a Response with a 404 HTTP header and a given message.
      *
@@ -168,7 +178,10 @@ trait ApiResponder
     public function errorNotFound($message = 'Resource Not Found')
     {
         return $this->setStatusCode(404)
-          ->respondWithError($message);
+       ->respond([
+            'status' => $this->getFailure(),
+            'message' => $message,
+        ]);
     }
 
     /**

@@ -27,6 +27,7 @@ class Order extends Model
         'parking',
         'ac',
         'furniture',
+        'name',
         'note',
         'is_active',
         'number_of_views',

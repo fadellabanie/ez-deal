@@ -7,10 +7,10 @@ use App\Http\Controllers\API\V1\ConstantController;
 use App\Http\Controllers\API\V1\Auth\AuthController;
 use App\Http\Controllers\API\V1\Home\HomeController;
 use App\Http\Controllers\API\V1\Users\UserController;
+use App\Http\Controllers\API\V1\Order\OrderController;
 use App\Http\Controllers\API\V1\Stories\StoryController;
 use App\Http\Controllers\API\V1\Packages\FeatureController;
 use App\Http\Controllers\API\V1\Packages\PackageController;
-use App\Http\Controllers\API\V1\RealEstate\OrderController;
 use App\Http\Controllers\API\V1\Favorites\FavoriteController;
 use App\Http\Controllers\API\V1\RealEstate\RealEstateController;
 

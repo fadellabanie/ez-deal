@@ -17,6 +17,7 @@ class CreateReportUsersTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id')->index();
             $table->unsignedBigInteger('suspicious_user_id')->index();
+            $table->text('note')->nullable();
             $table->date('start_date')->nullable();
             $table->date('end_date')->nullable();
             $table->boolean('status')->default(false);

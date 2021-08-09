@@ -21,6 +21,7 @@ class Package extends Model
         'en_name',
         'ar_description',
         'en_description',
+        'price',
         'icon',
         'status',
     ];

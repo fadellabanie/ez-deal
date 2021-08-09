@@ -11,6 +11,7 @@ class ReportUser extends Model
     protected $fillable = [
         'user_id',
         'suspicious_user_id',
+        'note',
         'start_date',
         'end_date',
         'status',

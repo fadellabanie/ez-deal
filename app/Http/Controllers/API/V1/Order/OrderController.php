@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Api\Orders\StoreRequest;
+use App\Http\Resources\Orders\MyOrderCollection;
 use App\Http\Resources\Orders\OrderCollection;
 use App\Http\Requests\Api\Orders\UpdateRequest;
 use App\Http\Resources\Orders\OrderLargeResource;

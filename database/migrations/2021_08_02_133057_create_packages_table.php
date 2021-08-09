@@ -21,6 +21,7 @@ class CreatePackagesTable extends Migration
             $table->string('en_name');
             $table->string('ar_description');
             $table->string('en_description');
+            $table->float('price');
             $table->string('icon');
             $table->boolean('status')->default(true);
             $table->timestamps();
@@ -31,6 +32,7 @@ class CreatePackagesTable extends Migration
             'en_name' => 'gold',
             'ar_description' => 'gold',
             'en_description' => 'gold',
+            'price' => 100,
             'icon' => 'image.png',
             'created_at' => now(),
             'updated_at' => now(),
@@ -41,6 +43,7 @@ class CreatePackagesTable extends Migration
             'en_name' => 'silver',
             'ar_description' => 'silver',
             'en_description' => 'silver',
+            'price' => 222,
             'icon' => 'image.png',
             'created_at' => now(),
             'updated_at' => now(),
@@ -51,6 +54,7 @@ class CreatePackagesTable extends Migration
             'en_name' => 'bronze',
             'ar_description' => 'bronze',
             'en_description' => 'bronze',
+            'price' => 33,
             'icon' => 'image.png',
             'created_at' => now(),
             'updated_at' => now(),

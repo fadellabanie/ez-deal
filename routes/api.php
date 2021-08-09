@@ -41,6 +41,7 @@ Route::group(['prefix' => 'v1'], function () {
         Route::get('logout', [AuthController::class, 'logout']);
         Route::get('show-profile', [UserController::class, 'show']);
         Route::post('report', [UserController::class, 'report']);
+        Route::post('subscription', [UserController::class, 'subscription']);
         Route::post('verify-change-password', [AuthController::class, 'verifyChangePassword']);
         Route::post('change-password', [AuthController::class, 'changePassword']);
 

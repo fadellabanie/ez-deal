@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Services\Translatable;
 
-class Feature extends Model
+class Attribute extends Model
 {
     use HasFactory,Translatable;
 
@@ -29,5 +29,12 @@ class Feature extends Model
     {
         return $query->where('is_active', true);
     } 
-   
+    public function package()
+    {
+        return $this->belongsToMany(Package::class,'package_attribute');
+    }
+      public function user()
+    {
+        return $this->belongsToMany(User::class,'user_attribute');
+    }
 }

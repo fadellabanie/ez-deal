@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePackageFeatureTable extends Migration
+class CreatePackageAttributeTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,17 @@ class CreatePackageFeatureTable extends Migration
      */
     public function up()
     {
-        Schema::create('package_feature', function (Blueprint $table) {
+        Schema::create('package_attribute', function (Blueprint $table) {
             $table->unsignedBigInteger('package_id')->index();
-            $table->unsignedBigInteger('feature_id')->index();
+            $table->unsignedBigInteger('attribute_id')->index();
             $table->string('type');
             $table->integer('count')->nullable();
+            $table->integer('days')->nullable();
             $table->date('from')->nullable();
             $table->date('to')->nullable();
-
+            
             $table->foreign('package_id')->references('id')->on('packages')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('feature_id')->references('id')->on('features')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('attribute_id')->references('id')->on('attributes')->onDelete('cascade')->onUpdate('cascade');
         });
        
     }

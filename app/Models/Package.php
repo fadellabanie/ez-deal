@@ -26,8 +26,8 @@ class Package extends Model
         'status',
     ];
 
-    public function feature()
+    public function attribute()
     {
-        return $this->belongsToMany(Features::class,'package_feature');
+        return $this->belongsToMany(Attribute::class,'package_attribute');
     }
 }

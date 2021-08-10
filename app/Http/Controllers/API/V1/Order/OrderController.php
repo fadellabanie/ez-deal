@@ -15,6 +15,12 @@ use App\Http\Resources\Orders\OrderLargeResource;
 
 class OrderController extends Controller
 {
+
+    public function __construct()
+    {
+
+        $this->middleware('check.user.subscribe')->only('index');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -22,6 +28,7 @@ class OrderController extends Controller
      */
     public function index()
     {
+
         $orders = Order::active()->paginate();
 
         return new OrderCollection($orders);

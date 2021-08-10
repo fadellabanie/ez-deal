@@ -14,6 +14,11 @@ use App\Http\Resources\Constants\RealEstateTypeResource;
 
 class ConstantController extends Controller
 {
+
+    const GOLD_PACKAGE = 'gold';
+    const SILVER_PACKAGE = 'silver';
+    const BRONZE_PACKAGE = 'bronze';
+    const BROMO_PACKAGE = 'bromo';
     /**
      * Display a listing of the resource.
      *

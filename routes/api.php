@@ -36,14 +36,15 @@ Route::group(['prefix' => 'v1'], function () {
     Route::post('login', [AuthController::class, 'login']);
     Route::post('register', [AuthController::class, 'register']);
     Route::post('verify', [AuthController::class, 'check']);
-
+    Route::post('verify-change-password', [AuthController::class, 'verifyChangePassword']);
+    Route::post('change-password', [AuthController::class, 'changePassword']);
+    
     Route::group(['middleware' => 'auth:api'], function () {
         Route::get('logout', [AuthController::class, 'logout']);
         Route::get('show-profile', [UserController::class, 'show']);
         Route::post('report', [UserController::class, 'report']);
         Route::post('subscription', [UserController::class, 'subscription']);
-        Route::post('verify-change-password', [AuthController::class, 'verifyChangePassword']);
-        Route::post('change-password', [AuthController::class, 'changePassword']);
+       
 
         Route::get('real-estate-types', [ConstantController::class, 'getRealEstateType']);
         Route::get('contract-types', [ConstantController::class, 'getContractType']);

@@ -1,11 +1,11 @@
 <?php
 
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
-class CreateFeaturesTable extends Migration
+class CreateAttributesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class CreateFeaturesTable extends Migration
      */
     public function up()
     {
-        Schema::create('features', function (Blueprint $table) {
+        Schema::create('attributes', function (Blueprint $table) {
             $table->id();
             $table->string('slug');
             $table->string('ar_name');
@@ -87,6 +87,42 @@ class CreateFeaturesTable extends Migration
             'icon' => 'image.png',
             'created_at' => now(),
             'updated_at' => now(),
+        ]); 
+        DB::table('features')->insert([
+            'slug' =>  'live-chat',
+            'ar_name' => 'live-chat',
+            'en_name' => 'live-chat',
+            'ar_description' => 'live-chat',
+            'en_description' => 'live-chat',
+            'price' => 0,
+            'count' => 0,
+            'icon' => 'image.png',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]); 
+        DB::table('features')->insert([
+            'slug' =>  'live-chat',
+            'ar_name' => 'live-chat',
+            'en_name' => 'live-chat',
+            'ar_description' => 'live-chat',
+            'en_description' => 'live-chat',
+            'price' => 0,
+            'count' => 0,
+            'icon' => 'image.png',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+        DB::table('features')->insert([
+            'slug' =>  'live-chat',
+            'ar_name' => 'live-chat',
+            'en_name' => 'live-chat',
+            'ar_description' => 'live-chat',
+            'en_description' => 'live-chat',
+            'price' => 0,
+            'count' => 0,
+            'icon' => 'image.png',
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
     }
 
@@ -97,6 +133,6 @@ class CreateFeaturesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('features');
+        Schema::dropIfExists('attributes');
     }
 }

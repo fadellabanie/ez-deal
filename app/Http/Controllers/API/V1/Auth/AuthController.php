@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Api\Auth\LoginRequest;
 use App\Http\Requests\Api\Auth\VerifyRequest;
 use App\Http\Requests\Api\Auth\RegisterRequest;
+use App\Http\Controllers\API\V1\ConstantController;
 use App\Http\Requests\Api\Auth\ChangePasswordRequest;
 
 class AuthController extends Controller
@@ -35,6 +36,7 @@ class AuthController extends Controller
             'trading_certification' => $request->trading_certification,
             'password' => bcrypt($request->password),
             'device_token' => $request->device_token,
+            'package_id' =>  4 , ## BROMO_PACKAGE,
 
         ]);
 

@@ -81,11 +81,19 @@ class User extends Authenticatable
 
         $this->verifyUser()->delete();
     }
-      /**
+    /**
      * Get all favorite of properties.
      */
     public function favorite()
     {
         return $this->belongsToMany(Realestate::class,'favourites')->withPivot('user_id', 'property_id');
+    } 
+    
+    /**
+     * Get all favorite of properties.
+     */
+    public function attribute()
+    {
+        return $this->belongsToMany(Attribute::class,'user_attribute','attribute_id','user_id')->withPivot('user_id', 'property_id');
     }
 }

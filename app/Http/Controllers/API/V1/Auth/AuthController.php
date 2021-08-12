@@ -136,7 +136,10 @@ class AuthController extends Controller
     {
         $user = User::find(Auth::id());
         $user->update(['password' => bcrypt($request->new_password)]);
-        return $this->successStatus(__('password change successfully'));
+
+        return $this->respondWithItem(new UserResource($user));
+
+        
     }
     /**
      * Check Captains 

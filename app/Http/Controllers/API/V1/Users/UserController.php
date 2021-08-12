@@ -4,20 +4,14 @@ namespace App\Http\Controllers\API\V1\Users;
 
 use Carbon\Carbon;
 use App\Models\User;
-use App\Models\Verify;
-use App\Models\UserToken;
 use App\Models\ReportUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\UserResource;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Requests\Api\Auth\LoginRequest;
 use App\Http\Requests\Api\Auth\UpdateRequest;
-use App\Http\Requests\Api\Auth\VerifyRequest;
-use App\Http\Requests\Api\Auth\RegisterRequest;
-use App\Http\Resources\Orders\MyOrderCollection;
-use App\Http\Requests\Api\Auth\ChangePasswordRequest;
+
 
 class UserController extends Controller
 {

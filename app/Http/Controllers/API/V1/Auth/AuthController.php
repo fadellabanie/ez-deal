@@ -166,9 +166,9 @@ class AuthController extends Controller
         }
         $verify->delete();
 
-        if ($request->type == 'change-password') {
-            return $this->successStatus(__('Verification code is valid'));
-        }
+        // if ($request->type == 'change-password') {
+        //     return $this->successStatus(__('Verification code is valid'));
+        // }
 
         $user->update(['verified_at' => now()]);
 

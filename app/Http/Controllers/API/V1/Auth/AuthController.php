@@ -134,7 +134,7 @@ class AuthController extends Controller
      */
     public function changePassword(Request $request)
     {
-        $user = User::find(Auth::id());
+        $user = User::where('mobile',$request->mobile);
         $user->update(['password' => bcrypt($request->new_password)]);
 
         return $this->respondWithItem(new UserResource($user));

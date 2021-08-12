@@ -122,7 +122,8 @@ class AuthController extends Controller
      */
     public function verifyChangePassword(ChangePasswordRequest $request)
     {
-        $this->sendCode($request->mobile, Auth::id(), 'change-password');
+        $user = User::where('mobile',$request->mobile)->first();
+        $this->sendCode($request->mobile,$user->id, 'change-password');
 
         return $this->successStatus(__('Send SMS Successfully Please Check Your Phone'));
     }

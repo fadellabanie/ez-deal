@@ -25,7 +25,7 @@ class ChangePasswordRequest extends APIRequest
     public function rules()
     {
         return [
-            'mobile' => ['required|exists:users,mobile'],
+            'mobile' => 'required|exists:users,mobile',
         ];
     }
 }

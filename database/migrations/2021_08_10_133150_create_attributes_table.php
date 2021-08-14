@@ -28,19 +28,31 @@ class CreateAttributesTable extends Migration
             $table->timestamps();
         });
 
-        DB::table('features')->insert([
-            'slug' =>  'special',
-            'ar_name' => 'special',
-            'en_name' => 'special',
-            'ar_description' => 'special',
-            'en_description' => 'special',
+        DB::table('attributes')->insert([
+            'slug' =>  'special-real-estate',
+            'ar_name' => 'special-real-estate',
+            'en_name' => 'special-real-estate',
+            'ar_description' => 'special-real-estate',
+            'en_description' => 'special-real-estate',
             'price' => 100,
             'count' => 5,
             'icon' => 'image.png',
             'created_at' => now(),
             'updated_at' => now(),
         ]);
-        DB::table('features')->insert([
+        DB::table('attributes')->insert([
+            'slug' =>  'normal-real-estate',
+            'ar_name' => 'normal-real-estate',
+            'en_name' => 'normal-real-estate',
+            'ar_description' => 'normal-real-estate',
+            'en_description' => 'normal-real-estate',
+            'price' => 100,
+            'count' => 5,
+            'icon' => 'image.png',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+        DB::table('attributes')->insert([
             'slug' =>  'city-story',
             'ar_name' => 'city-story',
             'en_name' => 'city-story',
@@ -52,7 +64,7 @@ class CreateAttributesTable extends Migration
             'created_at' => now(),
             'updated_at' => now(),
         ]);
-        DB::table('features')->insert([
+        DB::table('attributes')->insert([
             'slug' =>  'country-story',
             'ar_name' => 'country-story',
             'en_name' => 'country-story',
@@ -64,7 +76,7 @@ class CreateAttributesTable extends Migration
             'created_at' => now(),
             'updated_at' => now(),
         ]);
-        DB::table('features')->insert([
+        DB::table('attributes')->insert([
             'slug' =>  'banner',
             'ar_name' => 'banner',
             'en_name' => 'banner',
@@ -76,7 +88,7 @@ class CreateAttributesTable extends Migration
             'created_at' => now(),
             'updated_at' => now(),
         ]);
-        DB::table('features')->insert([
+        DB::table('attributes')->insert([
             'slug' =>  'snap-chat',
             'ar_name' => 'snap-chat',
             'en_name' => 'snap-chat',
@@ -88,7 +100,7 @@ class CreateAttributesTable extends Migration
             'created_at' => now(),
             'updated_at' => now(),
         ]);
-        DB::table('features')->insert([
+        DB::table('attributes')->insert([
             'slug' =>  'live-chat',
             'ar_name' => 'live-chat',
             'en_name' => 'live-chat',
@@ -100,86 +112,25 @@ class CreateAttributesTable extends Migration
             'created_at' => now(),
             'updated_at' => now(),
         ]);
-
-        DB::table('features')->insert([
-            'slug' =>  'normal advertisement',
-            'ar_name' => 'اعلان عادي',
-            'en_name' => 'normal advertisement',
-            'ar_description' => 'normal advertisement',
-            'en_description' => 'normal advertisement',
+        DB::table('attributes')->insert([
+            'slug' =>  'order',
+            'ar_name' => 'order',
+            'en_name' => 'order',
+            'ar_description' => 'order',
+            'en_description' => 'order',
             'price' => 100,
             'count' => 100,
             'icon' => 'image.png',
             'created_at' => now(),
             'updated_at' => now(),
         ]);
-        DB::table('features')->insert([
-            'slug' =>  'normal advertisement',
-            'ar_name' => 'اعلان عادي',
-            'en_name' => 'normal advertisement',
-            'ar_description' => 'normal advertisement',
-            'en_description' => 'normal advertisement',
+        DB::table('attributes')->insert([
+            'slug' =>  'show-order',
+            'ar_name' => 'show-order',
+            'en_name' => 'show-order',
+            'ar_description' => 'show-order',
+            'en_description' => 'show-order',
             'price' => 100,
-            'count' => 250,
-            'icon' => 'image.png',
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]); 
-        DB::table('features')->insert([
-            'slug' =>  'normal advertisement',
-            'ar_name' => 'اعلان عادي',
-            'en_name' => 'normal advertisement',
-            'ar_description' => 'normal advertisement',
-            'en_description' => 'normal advertisement',
-            'price' => 100,
-            'count' => 50,
-            'icon' => 'image.png',
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
-        DB::table('features')->insert([
-            'slug' =>  'live-chat',
-            'ar_name' => 'live-chat',
-            'en_name' => 'live-chat',
-            'ar_description' => 'live-chat',
-            'en_description' => 'live-chat',
-            'price' => 0,
-            'count' => 0,
-            'icon' => 'image.png',
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
-        DB::table('features')->insert([
-            'slug' =>  'live-chat',
-            'ar_name' => 'live-chat',
-            'en_name' => 'live-chat',
-            'ar_description' => 'live-chat',
-            'en_description' => 'live-chat',
-            'price' => 0,
-            'count' => 0,
-            'icon' => 'image.png',
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
-        DB::table('features')->insert([
-            'slug' =>  'live-chat',
-            'ar_name' => 'live-chat',
-            'en_name' => 'live-chat',
-            'ar_description' => 'live-chat',
-            'en_description' => 'live-chat',
-            'price' => 0,
-            'count' => 0,
-            'icon' => 'image.png',
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
-        DB::table('features')->insert([
-            'slug' =>  'live-chat',
-            'ar_name' => 'live-chat',
-            'en_name' => 'live-chat',
-            'ar_description' => 'live-chat',
-            'en_description' => 'live-chat',
-            'price' => 0,
             'count' => 0,
             'icon' => 'image.png',
             'created_at' => now(),

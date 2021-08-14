@@ -19,7 +19,7 @@ class PackageController extends Controller
      */
     public function index()
     {
-        $packages =  Package::get();
+        $packages =  Package::active()->get();
 
         return new PackageCollection($packages);
 

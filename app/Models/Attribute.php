@@ -31,10 +31,10 @@ class Attribute extends Model
     } 
     public function package()
     {
-        return $this->belongsToMany(Package::class,'package_attribute');
+        return $this->belongsToMany(Package::class,'package_attribute','attribute_id','package_id');
     }
       public function user()
     {
-        return $this->belongsToMany(User::class,'user_attribute');
+        return $this->belongsToMany(User::class,'user_attribute','attribute_id','user_id');
     }
 }

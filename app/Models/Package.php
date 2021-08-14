@@ -25,9 +25,13 @@ class Package extends Model
         'icon',
         'status',
     ];
-
-    public function attribute()
+    public function scopeActive($query)
     {
-        return $this->belongsToMany(Attribute::class,'package_attribute');
+        return $query->where('status', true);
+    } 
+
+    public function attributes()
+    {
+        return $this->belongsToMany(Attribute::class,'package_attribute','package_id','attribute_id');
     }
 }

@@ -18,8 +18,9 @@ class OrderController extends Controller
 
     public function __construct()
     {
-
         $this->middleware('check.user.subscribe')->only('index');
+        //$this->middleware('check.user.limit.normal.order')->only('store');
+        $this->middleware('check.user.limit.feature.attribute:order')->only('store');
     }
     /**
      * Display a listing of the resource.
@@ -28,7 +29,6 @@ class OrderController extends Controller
      */
     public function index()
     {
-
         $orders = Order::active()->paginate();
 
         return new OrderCollection($orders);
@@ -54,7 +54,7 @@ class OrderController extends Controller
     public function store(StoreRequest $request)
     {
         $request['user_id'] = Auth::id();
-
+       
         Order::create($request->all());
 
         $title = __("Create");

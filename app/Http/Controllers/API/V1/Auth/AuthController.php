@@ -36,8 +36,7 @@ class AuthController extends Controller
             'trading_certification' => $request->trading_certification,
             'password' => bcrypt($request->password),
             'device_token' => $request->device_token,
-            'package_id' =>  4 , ## BROMO_PACKAGE,
-
+          
         ]);
 
         $token = $user->createToken('Token-Login')->accessToken;

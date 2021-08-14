@@ -17,6 +17,10 @@ use App\Http\Resources\RealEstates\RealEstateLargeResource;
 
 class RealEstateController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('check.user.limit.feature.attribute:RealEstate')->only('store');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -79,21 +83,9 @@ class RealEstateController extends Controller
      */
     public function store(StoreRequest $request)
     {
-
-        $attribute = DB::table('user_attribute')
-        ->where('user_id',Auth::id())
-        ->where('attribute_id',)
-        ->where('is_expiry',true)
-        ->first();
-       
-        if (!$attribute || $attribute->) {
-
-            return $this->errorStatus('You are in SILVER PACKAGE please upgrade');
-        }
-
         $request['user_id'] = Auth::id();
         $request['end_date'] = Carbon::now()->addDays(15);
-        $request['type'] = 'normal';
+        $request['type'] = $request->type;
 
         $realEstate = RealEstate::create($request->all());
         foreach ($request->images as $key => $image) {

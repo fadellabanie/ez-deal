@@ -24,7 +24,7 @@ class CreatePackageAttributeTable extends Migration
             // $table->date('to')->nullable();
 
             $table->foreign('package_id')->references('id')->on('packages')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('attribute_id')->references('id')->on('attributes')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('attribute_id')->references('id')->on('attributes');
         });
         DB::table('package_attribute')->insert([
             'package_id' =>  1,

@@ -32,6 +32,7 @@ class CreateUsersTable extends Migration
             $table->string('avatar')->nullable();
             $table->string('type');
             $table->string('status')->nullable();
+            $table->boolean('is_dark')->default(false);
             $table->text('remember_token')->nullable();
             $table->text('device_token')->nullable();
 

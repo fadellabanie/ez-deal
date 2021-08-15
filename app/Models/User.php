@@ -34,6 +34,7 @@ class User extends Authenticatable
         'city_id',
         'package_id',
         'subscribe_to',
+        'is_dark',
     ];
 
     /**

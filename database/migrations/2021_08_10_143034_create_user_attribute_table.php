@@ -19,10 +19,10 @@ class CreateUserAttributeTable extends Migration
             $table->unsignedBigInteger('attribute_id')->index();
             $table->integer('count')->nullable();
             $table->date('expiry_date')->nullable();
-            $table->boolean('is_expiry')->nullable();
-
+            $table->boolean('is_expiry')->default(false);
+            $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('attribute_id')->references('id')->on('attributes')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('attribute_id')->references('id')->on('attributes');
         });
     }
 

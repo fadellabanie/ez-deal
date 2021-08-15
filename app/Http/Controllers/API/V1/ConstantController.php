@@ -19,6 +19,10 @@ class ConstantController extends Controller
     const SILVER_PACKAGE = 'silver';
     const BRONZE_PACKAGE = 'bronze';
     const BROMO_PACKAGE = 'bromo';
+
+
+    const ORDER = 'order';
+    const SPECIAL = 'special';
     /**
      * Display a listing of the resource.
      *

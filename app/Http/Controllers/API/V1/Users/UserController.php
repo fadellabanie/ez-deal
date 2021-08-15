@@ -11,7 +11,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\UserResource;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Api\Auth\UpdateRequest;
-
+use App\Services\SubscriptionService;
 
 class UserController extends Controller
 {
@@ -49,10 +49,12 @@ class UserController extends Controller
     }
     public function subscription(Request $request)
     {     
-        User::whereId(Auth::id())->update([
-            'package_id' => $request->package_id,
-            'subscribe_to' => now()->addYear(),
-        ]);
+
+        $response = SubscriptionService::subscription($request);
+    
+        if (! $response['success']) {     
+            return $this->errorStatus($response['message']);
+        }
 
         $title = __("Subscription");
         $body = __("Subscription package Success");

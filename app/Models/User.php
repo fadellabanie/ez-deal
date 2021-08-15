@@ -95,6 +95,6 @@ class User extends Authenticatable
      */
     public function attribute()
     {
-        return $this->belongsToMany(Attribute::class,'user_attribute','attribute_id','user_id')->withPivot('user_id', 'property_id');
+        return $this->belongsToMany(Attribute::class,'user_attribute','user_id','attribute_id')->withPivot('count', 'expiry_date','is_expiry');
     }
 }

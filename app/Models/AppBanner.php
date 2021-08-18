@@ -29,9 +29,9 @@ class AppBanner extends Model
     {
         return $query->where('status', true);
     } 
-     public function scopeMyStory($query)
+     public function scopeMyStory($query,$city_id =1 )
     {
-        return $query->where('city_id', Auth::user()->city_id);
+        return $query->where('city_id',$city_id);
     }
     public function user()
     {

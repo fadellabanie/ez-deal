@@ -12,6 +12,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\Stories\StoryTinyResource;
 use App\Http\Resources\Constants\AppSettingResource;
 use App\Http\Resources\HomeBanners\HomeBannerTinyResource;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -22,18 +23,23 @@ class HomeController extends Controller
      */
     public function home()
     {
-
-        $cityStories = Story::MyCityStory()->WhereDate('end_date', '>=', now())->active()->get();
+        if (auth('api')->check()) {
+          $city_id =  Auth::user()->city_id ;
+        }else{
+            $city_id = 1;
+        }
+       
+        $cityStories = Story::MyCityStory($city_id)->WhereDate('end_date', '>=', now())->active()->get();
         $data['city_stories'] = StoryTinyResource::collection($cityStories);
 
         ##################################### 
         
-        $countryStories = Story::MyCountryStory()->WhereDate('end_date', '>=', now())->active()->get();
+        $countryStories = Story::MyCountryStory($city_id)->WhereDate('end_date', '>=', now())->active()->get();
         $data['country_stories'] = StoryTinyResource::collection($countryStories);
 
         #####################################
         
-        $homeBanners = AppBanner::MyStory()->WhereDate('end_date', '>=', now())->active()->get();
+        $homeBanners = AppBanner::MyStory($city_id)->WhereDate('end_date', '>=', now())->active()->get();
         $data['home_banners'] = HomeBannerTinyResource::collection($homeBanners); 
 
         #####################################

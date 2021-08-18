@@ -25,14 +25,13 @@ class Story extends Model
     {
         return $query->where('status', true);
     } 
-     public function scopeMyCityStory($query)
+     public function scopeMyCityStory($query,$city_id = 1)
     {
-        return $query->where('city_id', Auth::user()->city_id);
+        return $query->where('city_id',$city_id);
     }  
-    public function scopeMyCountryStory($query)
+    public function scopeMyCountryStory($query,$city_id)
     {
-
-        return $query->where('country_id', getCountry(Auth::user()->city_id));
+        return $query->where('country_id', getCountry($city_id));
     }
     public function user()
     {

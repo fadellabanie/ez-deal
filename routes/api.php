@@ -39,6 +39,10 @@ Route::group(['prefix' => 'v1'], function () {
     Route::post('verify-change-password', [AuthController::class, 'verifyChangePassword']);
     Route::post('change-password', [AuthController::class, 'changePassword']);
     
+
+    Route::get('home',[HomeController::class,'home']);
+
+    
     Route::group(['middleware' => 'auth:api'], function () {
         Route::get('logout', [AuthController::class, 'logout']);
         Route::get('show-profile', [UserController::class, 'show']);
@@ -54,7 +58,6 @@ Route::group(['prefix' => 'v1'], function () {
         Route::get('counties', [ConstantController::class, 'getCountry']);
         Route::post('upload', [GeneralController::class, 'upload']);
         
-        Route::get('home',[HomeController::class,'home']);
         Route::apiResource('stories',StoryController::class);
 
         Route::apiResource('orders',OrderController::class);

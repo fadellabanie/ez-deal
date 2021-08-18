@@ -17,6 +17,7 @@ class CreatePackagesTable extends Migration
         Schema::create('packages', function (Blueprint $table) {
             $table->id();
             $table->string('slug');
+            $table->string('color');
             $table->string('ar_name');
             $table->string('en_name');
             $table->string('ar_description');
@@ -29,6 +30,7 @@ class CreatePackagesTable extends Migration
         });
         DB::table('packages')->insert([
             'slug' =>  'silver',
+            'color' =>  '#12455',
             'ar_name' => 'silver',
             'en_name' => 'silver',
             'ar_description' => 'silver',
@@ -42,6 +44,7 @@ class CreatePackagesTable extends Migration
 
         DB::table('packages')->insert([
             'slug' =>  'gold',
+            'color' =>  '#234133',
             'ar_name' => 'gold',
             'en_name' => 'gold',
             'ar_description' => 'gold',
@@ -55,6 +58,7 @@ class CreatePackagesTable extends Migration
        
         DB::table('packages')->insert([
             'slug' =>  'bronze',
+            'color' =>  '#114164',
             'ar_name' => 'bronze',
             'en_name' => 'bronze',
             'ar_description' => 'bronze',
@@ -67,6 +71,7 @@ class CreatePackagesTable extends Migration
         ]);  
         DB::table('packages')->insert([
             'slug' =>  'bromo',
+            'color' =>  '#234164',
             'ar_name' => 'bromo',
             'en_name' => 'bromo',
             'ar_description' => 'bromo',

@@ -10,8 +10,8 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\UserResource;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Requests\Api\Auth\UpdateRequest;
 use App\Services\SubscriptionService;
+use App\Http\Requests\Api\Users\UpdateRequest;
 
 class UserController extends Controller
 {
@@ -21,17 +21,25 @@ class UserController extends Controller
         return $this->respondWithItem(new UserResource(Auth::user()));
     }
 
-    public function update(UpdateRequest $request,$id)
+    public function update(UpdateRequest $request)
     {
-        $user = User::find($id);
+        $user = User::find(AUth::id());
 
         if(!$user) $this->errorNotFound();
-
+       // dd($request->image);
+       if($request->has('avatar')){
         $user->update([
             'email' => $request->email,
-            'username' => $request->username,
-            'image' => upload($request->username,'users'),
-        ]);
+            'name' => $request->username,
+            'avatar' => upload($request->avatar,'users'),
+        ]); 
+       }else{
+
+           $user->update([
+               'email' => $request->email,
+               'name' => $request->username,
+            ]);
+        }
 
         return $this->successStatus(__("Update profile successfully"));
     }

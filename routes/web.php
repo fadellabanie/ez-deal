@@ -22,3 +22,7 @@ Route::get('/test', function () {
     $test =  Hash::make('12345678');
     return $test;
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

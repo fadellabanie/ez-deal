@@ -44,6 +44,7 @@ Route::group(['prefix' => 'v1'], function () {
         Route::get('show-profile', [UserController::class, 'show']);
         Route::post('report', [UserController::class, 'report']);
         Route::post('subscription', [UserController::class, 'subscription']);
+        Route::post('update', [UserController::class, 'update']);
        
 
         Route::get('real-estate-types', [ConstantController::class, 'getRealEstateType']);

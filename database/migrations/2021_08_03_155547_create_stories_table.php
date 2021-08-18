@@ -32,8 +32,34 @@ class CreateStoriesTable extends Migration
             'country_id' =>  1,
             'title' => 'stories 1',
             'image' => 'image.png',
+            'status' => true,
+
             'start_date' => now(),
-            'end_date' => now()->addDays(15),
+            'end_date' => now()->addDays(350),
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+          DB::table('stories')->insert([
+            'user_id' =>  1,
+            'city_id' => 2,
+            'country_id' =>  1,
+            'title' => 'stories 1',
+            'image' => 'image.png',
+            'status' => true,
+
+            'start_date' => now(),
+            'end_date' => now()->addDays(350),
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]); DB::table('stories')->insert([
+            'user_id' =>  1,
+            'city_id' => 2,
+            'country_id' =>  1,
+            'title' => 'stories 1',
+            'image' => 'image.png',
+            'status' => true,
+            'start_date' => now(),
+            'end_date' => now()->addDays(350),
             'created_at' => now(),
             'updated_at' => now(),
         ]);

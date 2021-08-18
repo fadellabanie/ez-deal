@@ -54,6 +54,7 @@ class OrderController extends Controller
     public function store(StoreRequest $request)
     {
         $request['user_id'] = Auth::id();
+        $request['is_active'] = true;
        
         Order::create($request->all());
 

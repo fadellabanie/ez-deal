@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Api\Auth;
+namespace App\Http\Requests\Api\Users;
 
 use App\Rules\Phone;
 use App\Http\Requests\Api\APIRequest;
+use Illuminate\Support\Facades\Auth;
 
 class UpdateRequest extends APIRequest
 {
@@ -25,9 +26,9 @@ class UpdateRequest extends APIRequest
     public function rules()
     {
         return [
-            'email' => 'required|string|email|unique:users,email',
-            'username' => 'required',
-            'image' => 'required|mimes:jpeg,png,jpg,svg|max:2048',
+            'email' => 'nullable|string|email|unique:users,email,'.Auth::user()->id,
+            'username' => 'nullable',
+            'avatar' => 'nullable|mimes:jpeg,png,jpg,svg|max:2048',
         ];
     }
 }

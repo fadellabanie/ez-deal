@@ -18,6 +18,7 @@ class CreateOrdersTable extends Migration
             $table->unsignedBigInteger('user_id')->index();
             $table->unsignedBigInteger('realestate_type_id')->index();
             $table->unsignedBigInteger('contract_type_id')->index();
+            $table->unsignedBigInteger('view_id')->index();
             $table->unsignedBigInteger('city_id')->index();
             $table->unsignedBigInteger('country_id')->index();
             $table->string('name');

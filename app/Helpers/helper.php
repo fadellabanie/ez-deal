@@ -5,6 +5,7 @@
  */
 
 use App\Models\City;
+use Carbon\Carbon;
 
 if (!function_exists('getCountry')) {
 	function getCountry($city_id)
@@ -13,6 +14,19 @@ if (!function_exists('getCountry')) {
 		return $city->country_id;
 	}
 }
+
+if (!function_exists('userType')) {
+	function userType($type)
+	{
+		if($type == 'personal'){
+			return '<div class="badge badge-light-success fw-bolder">'.__("Personal").'</div>';
+		}elseif($type == 'company'){
+			return '<div class="badge badge-light-info fw-bolder">'.__("Company").'</div>';
+		}
+	}
+}
+
+
 
 /**
  * Get list of languages

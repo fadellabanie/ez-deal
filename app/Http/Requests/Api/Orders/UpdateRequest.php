@@ -27,6 +27,7 @@ class UpdateRequest extends APIRequest
         return [
             'realestate_type_id' => 'required|exists:realestate_types,id',
             'contract_type_id' => 'required|exists:contract_types,id',
+            'view_id' => 'required|exists:views,id',
             'price' => 'required|gt:0|numeric',
             'space' => 'required|gt:0|numeric',
             'number_building' => 'required|gt:0|numeric',

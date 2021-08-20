@@ -13,6 +13,7 @@ class Order extends Model
         'user_id',
         'realestate_type_id',
         'contract_type_id',
+        'view_id',
         'city_id',
         'country_id',
         'Neighborhood',
@@ -59,5 +60,9 @@ class Order extends Model
     public function realestateType()
     {
         return $this->belongsTo(RealestateType::class);
+    } 
+    public function view()
+    {
+        return $this->belongsTo(View::class);
     }
 }

@@ -1,5 +1,5 @@
 <base href="">
-<title>@yield('title')</title>
+<title>{{__("Ez Deal")}} |@yield('title')</title>
 <meta name="description"
     content="The most advanced Bootstrap Admin Theme on Themeforest trusted by 94,000 beginners and professionals. Multi-demo, Dark Mode, RTL support and complete React, Angular, Vue &amp; Laravel versions. Grab your copy now and get life-time updates for free." />
 <meta name="keywords"
@@ -25,5 +25,6 @@
 <link href="{{asset('dashboard/assets/plugins/global/plugins.bundle.css')}}" rel="stylesheet" type="text/css" />
 <link href="{{asset('dashboard/assets/css/style.bundle.css')}}" rel="stylesheet" type="text/css" />
 <!--end::Global Stylesheets Bundle-->
+
 
 @livewireStyles

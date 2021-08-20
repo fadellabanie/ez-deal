@@ -60,6 +60,10 @@ class User extends Authenticatable
   
 
 
+    public function city()
+    {
+        return $this->belongsTo(City::class);
+    } 
     public function verifyUser()
     {
         return $this->hasOne(VerifyUser::class);

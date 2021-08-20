@@ -14,6 +14,7 @@ class RealEstate extends Model
         'user_id',
         'realestate_type_id',
         'contract_type_id',
+        'view_id',
         'city_id',
         'country_id',
         'name',
@@ -70,6 +71,9 @@ class RealEstate extends Model
     {
         return $this->hasMany(RealestateMedia::class,'realestate_id');
     }
-
+    public function view()
+    {
+        return $this->belongsTo(View::class);
+    }
 }
 

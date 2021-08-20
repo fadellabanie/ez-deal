@@ -53,9 +53,10 @@ Route::group(['prefix' => 'v1'], function () {
 
         Route::get('real-estate-types', [ConstantController::class, 'getRealEstateType']);
         Route::get('contract-types', [ConstantController::class, 'getContractType']);
-        
         Route::get('cities', [ConstantController::class, 'getCity']);
         Route::get('counties', [ConstantController::class, 'getCountry']);
+        Route::get('views', [ConstantController::class, 'getView']);
+        
         Route::post('upload', [GeneralController::class, 'upload']);
         
         Route::apiResource('stories',StoryController::class);

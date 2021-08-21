@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\UserResource;
 use Illuminate\Support\Facades\Auth;
+use App\Services\SubscriptionService;
 use App\Http\Requests\Api\Auth\LoginRequest;
 use App\Http\Requests\Api\Auth\VerifyRequest;
 use App\Http\Requests\Api\Auth\RegisterRequest;
@@ -38,6 +39,9 @@ class AuthController extends Controller
             'device_token' => $request->device_token,
           
         ]);
+        $request['package_id'] = $user->package_id;
+        $request['user_id'] = $user->id;
+        SubscriptionService::subscription($request);
 
         $token = $user->createToken('Token-Login')->accessToken;
 
@@ -50,6 +54,7 @@ class AuthController extends Controller
             'device_id' => $request->device_id,
             'device_type' => $request->device_type,
         ]);
+       
 
         $this->sendCode($request->mobile, $user->id, 'register');
 

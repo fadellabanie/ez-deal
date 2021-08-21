@@ -32,23 +32,32 @@ class CheckUserLimitFeatureAttribute
          
             $attribute =  Attribute::where('slug', $attribute_slug)->first();
         }
-     
+      
         $user_attribute =  DB::table('user_attribute')
-            ->where('user_id', AUth::id())
+            ->where('user_id', Auth::id())
             ->where('attribute_id', $attribute->id)
             ->where('is_expiry', false)
-            ->whereDate('expiry_date', '>', now())->first();
+            ->whereDate('expiry_date', '>', now())
+            ->first();
+            ## fadel edit fast
+        if(Auth::user()->package_id == 4){
+            DB::table('user_attribute')
+            ->where('user_id', Auth::id())
+            ->where('attribute_id', $attribute->id)
+            ->decrement('count');
+            return $next($request);
+        }
 
         if (!$user_attribute || $user_attribute->count == 0) {
             DB::table('user_attribute')
-                ->where('user_id', AUth::id())
+                ->where('user_id', Auth::id())
                 ->where('attribute_id', $attribute->id)
                 ->update(['is_expiry' => true]);
             return $this->errorStatus('plz upgrade your account');
         }
 
         DB::table('user_attribute')
-            ->where('user_id', AUth::id())
+            ->where('user_id', Auth::id())
             ->where('attribute_id', $attribute->id)
             ->decrement('count');
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Models\Order;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -14,7 +15,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        return view('dashboard.orders.index');
     }
 
     /**
@@ -24,7 +25,8 @@ class OrderController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.orders.create');
+
     }
 
     /**
@@ -44,9 +46,10 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Order $order)
     {
-        //
+        return view('dashboard.orders.show',compact('order'));
+
     }
 
     /**

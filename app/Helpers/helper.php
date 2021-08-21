@@ -4,14 +4,39 @@
  * Get list of languages
  */
 
-use App\Models\City;
 use Carbon\Carbon;
+use App\Models\City;
+use App\Models\ContractType;
+use App\Models\RealestateType;
+use Illuminate\Support\Facades\Storage;
 
 if (!function_exists('getCountry')) {
 	function getCountry($city_id)
 	{
 		$city = City::whereId($city_id)->select('country_id')->first();
 		return $city->country_id;
+	}
+}
+
+if (!function_exists('cities')) {
+	function cities()
+	{
+		$cities = City::get();
+		return $cities;
+	}
+}
+if (!function_exists('contractTypes')) {
+	function contractTypes()
+	{
+		$contractTypes = ContractType::get();
+		return $contractTypes;
+	}
+}
+if (!function_exists('realestateType')) {
+	function realestateType()
+	{
+		$realestateTypes = RealestateType::get();
+		return $realestateTypes;
 	}
 }
 
@@ -22,6 +47,24 @@ if (!function_exists('userType')) {
 			return '<div class="badge badge-light-success fw-bolder">'.__("Personal").'</div>';
 		}elseif($type == 'company'){
 			return '<div class="badge badge-light-info fw-bolder">'.__("Company").'</div>';
+		}
+	}
+}
+if (!function_exists('uploadToPublic')) {
+	function uploadToPublic($folder,$image)
+	{
+		return 'uploads/'.Storage::disk('public_new')->put($folder,$image);
+
+	}
+}
+if (!function_exists('isActive')) {
+	function isActive($type)
+	{
+		
+		if($type == 1){
+			return '<div class="badge badge-light-success fw-bolder">'.__("Active").'</div>';
+		}elseif($type == 0){
+			return '<div class="badge badge-light-danger fw-bolder">'.__("Not Active").'</div>';
 		}
 	}
 }

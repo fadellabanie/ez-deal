@@ -66,6 +66,31 @@ class CreatePackageAttributeTable extends Migration
             'package_id' =>  2,
             'attribute_id' => 1,
         ]);
+
+        DB::table('package_attribute')->insert([
+            'package_id' =>  4,
+            'attribute_id' => 1,
+        ]);
+        DB::table('package_attribute')->insert([
+            'package_id' =>  4,
+            'attribute_id' => 2,
+        ]);
+        DB::table('package_attribute')->insert([
+            'package_id' =>  4,
+            'attribute_id' => 3,
+        ]);
+        DB::table('package_attribute')->insert([
+            'package_id' =>  4,
+            'attribute_id' => 4,
+        ]);
+        DB::table('package_attribute')->insert([
+            'package_id' =>  4,
+            'attribute_id' => 5,
+        ]);
+        DB::table('package_attribute')->insert([
+            'package_id' =>  4,
+            'attribute_id' => 6,
+        ]);
     }
 
     /**

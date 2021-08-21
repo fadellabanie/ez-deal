@@ -57,7 +57,7 @@ class UserController extends Controller
     }
     public function subscription(Request $request)
     {     
-
+        $request['user_id'] = Auth::id();
         $response = SubscriptionService::subscription($request);
     
         if (! $response['success']) {     

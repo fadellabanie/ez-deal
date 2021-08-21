@@ -35,7 +35,6 @@ class StoreRequest extends APIRequest
             'street_width' => 'required|gt:0|numeric',
             'street_number' => 'required|gt:0|numeric',
             'video_url' => 'nullable',
-            'view' => 'required',
             'city_id' => 'required|exists:cities,id',
             'country_id' => 'required|exists:countries,id',
             'elevator' => 'required|boolean',

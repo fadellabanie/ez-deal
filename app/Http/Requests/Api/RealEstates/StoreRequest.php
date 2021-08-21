@@ -34,7 +34,6 @@ class StoreRequest extends APIRequest
             'age_building' => 'required|gt:0',
             'street_width' => 'required|gt:0',
             'street_number' => 'required|gt:0',
-            'view' => 'required',
             'city_id' => 'required',
             'country_id' => 'required',
             'elevator' => 'required|boolean',

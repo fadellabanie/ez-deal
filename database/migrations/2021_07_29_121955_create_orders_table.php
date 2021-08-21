@@ -28,7 +28,6 @@ class CreateOrdersTable extends Migration
             $table->float('age_building');
             $table->float('street_width');
             $table->integer('street_number');
-            $table->string('view');
             $table->boolean('elevator')->default(false);
             $table->boolean('parking')->default(false);
             $table->boolean('ac')->default(false);

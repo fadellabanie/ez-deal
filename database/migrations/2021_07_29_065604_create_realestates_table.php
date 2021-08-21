@@ -30,7 +30,6 @@ class CreateRealestatesTable extends Migration
             $table->float('street_width');
             $table->integer('street_number');
             $table->string('video_url')->nullable();
-            $table->string('view');
             $table->boolean('elevator')->default(false);
             $table->boolean('parking')->default(false);
             $table->boolean('ac')->default(false);

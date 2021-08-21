@@ -77,6 +77,8 @@ class CreatePackagesTable extends Migration
             'ar_description' => 'bromo',
             'en_description' => 'bromo',
             'price' => 0,
+             'days' => 90,
+
             'icon' => 'image.png',
             'status' => false,
             'created_at' => now(),

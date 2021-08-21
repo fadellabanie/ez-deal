@@ -3,3 +3,4 @@
 
 
 @livewireScripts
+@yield('scripts')

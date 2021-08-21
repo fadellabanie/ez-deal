@@ -23,8 +23,9 @@ class SubscriptionService
 
         try {
             $package = Package::with('attributes')->whereId($data['package_id'])->first();
-
-            $user = User::whereId(Auth::id())->first();
+          
+            $user = User::whereId($data['user_id'])->first();
+           
             $user->update([
                 'package_id' => $data['package_id'],
                 'subscribe_to' => now()->addDays($package->days),

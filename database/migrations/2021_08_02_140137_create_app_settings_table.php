@@ -1,4 +1,4 @@
-<?php
+rush-hours-24-from<?php
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;

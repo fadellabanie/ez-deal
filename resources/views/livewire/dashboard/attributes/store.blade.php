@@ -6,7 +6,7 @@
             data-bs-target="#kt_account_profile_details" aria-expanded="true"
             aria-controls="kt_account_profile_details">
             <div class="card-title m-0">
-                <h3 class="fw-bolder m-0">{{__("Create Package")}}</h3>
+                <h3 class="fw-bolder m-0">{{__("Create Attribute")}}</h3>
             </div>
         </div>
         <div id="kt_account_profile_details" class="collapse show">
@@ -14,7 +14,7 @@
                 <div class="card-body border-top p-9">
                     <!--begin::Input group-->
                     <div class="row mb-6">
-                        <x-label class="required">{{__("Package Name")}}</x-label>
+                        <x-label class="required">{{__("Attribute Name")}}</x-label>
                         <div class="col-lg-8">
                             <div class="row">
                                 <div class="col-lg-6 fv-row">
@@ -32,7 +32,7 @@
 
                     <!--begin::Input group-->
                     <div class="row mb-6">
-                        <x-label class="required">{{__("Package Description")}}</x-label>
+                        <x-label class="required">{{__("Attribute Description")}}</x-label>
                         <div class="col-lg-8">
                             <div class="row">
                                 <div class="col-lg-6 fv-row">
@@ -46,30 +46,7 @@
                             </div>
                         </div>
                     </div>
-                    <!--end::Input group-->
-
-                    <!--begin::Input group-->
-                    <div class="row mb-6">
-                        <x-label>
-                            <span class="required">{{__("Attributes")}}</span>
-                            <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip"
-                                title="Phone number must be active"></i>
-                        </x-label>
-                        <div class="col-lg-8 fv-row" wire:ignore>
-                            <select  wire:model="attribute_ids" aria-label="Select a attributes" data-control="select2"
-                            data-placeholder="Select a attributes..."  id="attribute_ids" name="attribute_ids"
-                            class="form-select form-select-solid form-select-lg fw-bold @error('attribute_ids') is-invalid @enderror" multiple="multiple">
-                            <option value="">Select a Attribute...</option>
-                            @foreach ($attributes as $attribute)
-                            <option value="{{$attribute->id}}">{{$attribute->en_name}}</option>
-                            @endforeach
-                        </select>   
-                        
-                        
-                    </div>
-                    <x-error field="attribute_ids" />
-                    </div>
-                    <!--end::Input group-->
+                    <!--end::Input group-->               
                     
                     <!--begin::Input group-->
                     <div class="row mb-6">
@@ -98,19 +75,6 @@
                     <!--end::Input group-->
 
                     <!--begin::Input group-->
-                    <div class="row mb-6">
-                        <x-label>
-                            <span class="required">{{__("Color")}}</span>
-                            <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip"
-                                title="Phone number must be active"></i>
-                        </x-label>
-                        <div class="col-lg-8 fv-row">
-                            <x-input type="color" field="color" wire:model="color" placeholder="color" />
-                        </div>
-                    </div>
-                    <!--end::Input group-->
-
-                    <!--begin::Input group-->
                     <div class="row mb-0">
                         <!--begin::Label-->
                         <label class="col-lg-4 col-form-label fw-bold fs-6">{{__("Status")}}</label>
@@ -118,7 +82,7 @@
                         <!--begin::Label-->
                         <div class="col-lg-8 d-flex align-items-center">
                             <div class="form-check form-check-solid form-switch fv-row">
-                                <input class="form-check-input w-45px h-30px" type="checkbox" wire:model="status"
+                                <input class="form-check-input w-45px h-30px" type="checkbox" wire:model="is_active"
                                     id="allowmarketing" checked="checked" />
                                 <label class="form-check-label" for="allowmarketing"></label>
                             </div>
@@ -180,7 +144,7 @@
 
 
                 <div class="card-footer d-flex justify-content-end py-6 px-9">
-                    <a href="{{route('packages.index')}}"
+                    <a href="{{route('attributes.index')}}"
                         class="btn btn-light btn-active-light-primary me-2">{{__("Back")}}</a>
                     <button type="button" class="btn btn-primary" wire:click.prevent="submit()"
                         wire:loading.attr="disabled"

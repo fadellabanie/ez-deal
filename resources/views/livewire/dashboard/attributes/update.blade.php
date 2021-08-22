@@ -6,7 +6,7 @@
             data-bs-target="#kt_account_profile_details" aria-expanded="true"
             aria-controls="kt_account_profile_details">
             <div class="card-title m-0">
-                <h3 class="fw-bolder m-0">{{__("Update Package")}}</h3>
+                <h3 class="fw-bolder m-0">{{__("Update Attribute")}}</h3>
             </div>
         </div>
         <div id="kt_account_profile_details" class="collapse show">
@@ -14,15 +14,15 @@
                 <div class="card-body border-top p-9">
                     <!--begin::Input group-->
                     <div class="row mb-6">
-                        <x-label class="required">{{__("Package Name")}}</x-label>
+                        <x-label class="required">{{__("Attribute Name")}}</x-label>
                         <div class="col-lg-8">
                             <div class="row">
                                 <div class="col-lg-6 fv-row">
-                                    <x-input type="text" field="ar_name" wire:model="package.ar_name"
+                                    <x-input type="text" field="ar_name" wire:model="attribute.ar_name"
                                         placeholder="Arabic name" />
                                 </div>
                                 <div class="col-lg-6 fv-row">
-                                    <x-input type="text" field="en_name" wire:model="package.en_name"
+                                    <x-input type="text" field="en_name" wire:model="attribute.en_name"
                                         placeholder="English name" />
                                 </div>
                             </div>
@@ -32,15 +32,15 @@
 
                     <!--begin::Input group-->
                     <div class="row mb-6">
-                        <x-label class="required">{{__("Package Description")}}</x-label>
+                        <x-label class="required">{{__("Attribute Description")}}</x-label>
                         <div class="col-lg-8">
                             <div class="row">
                                 <div class="col-lg-6 fv-row">
-                                    <x-input type="text" field="ar_description" wire:model="package.ar_description"
+                                    <x-input type="text" field="ar_description" wire:model="attribute.ar_description"
                                         placeholder="Arabic description" />
                                 </div>
                                 <div class="col-lg-6 fv-row">
-                                    <x-input type="text" field="en_description" wire:model="package.en_description"
+                                    <x-input type="text" field="en_description" wire:model="attribute.en_description"
                                         placeholder="English description" />
                                 </div>
                             </div>
@@ -56,7 +56,7 @@
                                 title="Phone number must be active"></i>
                         </x-label>
                         <div class="col-lg-8 fv-row">
-                            <x-input type="number" field="price" wire:model="package.price" placeholder="price" />
+                            <x-input type="number" field="price" wire:model="attribute.price" placeholder="price" />
                         </div>
                     </div>
                     <!--end::Input group-->
@@ -69,20 +69,7 @@
                                 title="Phone number must be active"></i>
                         </x-label>
                         <div class="col-lg-8 fv-row">
-                            <x-input type="number" field="days" wire:model="package.days" placeholder="days" />
-                        </div>
-                    </div>
-                    <!--end::Input group-->
-
-                    <!--begin::Input group-->
-                    <div class="row mb-6">
-                        <x-label>
-                            <span class="required">{{__("Color")}}</span>
-                            <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip"
-                                title="Phone number must be active"></i>
-                        </x-label>
-                        <div class="col-lg-8 fv-row">
-                            <x-input type="color" field="color" wire:model="package.color" placeholder="color" />
+                            <x-input type="number" field="days" wire:model="attribute.days" placeholder="days" />
                         </div>
                     </div>
                     <!--end::Input group-->
@@ -96,7 +83,7 @@
                         <div class="col-lg-8 d-flex align-items-center">
                             <div class="form-check form-check-solid form-switch fv-row">
                                 <input class="form-check-input w-45px h-30px" type="checkbox"
-                                    wire:model="package.status" id="allowmarketing" checked="checked" />
+                                    wire:model="attribute.is_active" id="allowmarketing" checked="checked" />
                                 <label class="form-check-label" for="allowmarketing"></label>
                             </div>
                         </div>
@@ -149,9 +136,9 @@
                                 <div class="symbol symbol-750 mt-5">
                                     <img alt="" src="{{ $icon->temporaryUrl() }}" />
                                 </div>
-                                @elseif($package->icon)
+                                @elseif($attribute->icon)
                                 <div class="symbol symbol-150 mt-5">
-                                    <img alt="" src="{{ asset($package->icon) }}" />
+                                    <img alt="" src="{{ asset($attribute->icon) }}" />
                                 </div>
                                 @endif
                             </div>
@@ -164,7 +151,7 @@
 
 
                 <div class="card-footer d-flex justify-content-end py-6 px-9">
-                    <a href="{{route('packages.index')}}"
+                    <a href="{{route('attributes.index')}}"
                         class="btn btn-light btn-active-light-primary me-2">{{__("Back")}}</a>
                     <button type="button" class="btn btn-primary" wire:click.prevent="submit()"
                         wire:loading.attr="disabled"

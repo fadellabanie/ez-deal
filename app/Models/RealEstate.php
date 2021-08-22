@@ -26,7 +26,6 @@ class RealEstate extends Model
         'street_width',
         'street_number',
         'video_url',
-        'view',
         'elevator',
         'parking',
         'ac',

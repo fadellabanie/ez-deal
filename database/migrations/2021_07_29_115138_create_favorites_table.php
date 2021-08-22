@@ -15,10 +15,10 @@ class CreateFavoritesTable extends Migration
     {
         Schema::create('favorites', function (Blueprint $table) {
             $table->unsignedBigInteger('user_id')->index();
-            $table->unsignedBigInteger('realestate_id')->index();
+            $table->unsignedBigInteger('real_estate_id')->index();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('realestate_id')->references('id')->on('realestates')->onDelete('cascade');
+            $table->foreign('real_estate_id')->references('id')->on('realestates')->onDelete('cascade');
         });
     }
 

@@ -17,9 +17,11 @@ class RealEstateTinyResource extends JsonResource
      */
     public function toArray($request)
     {
+       
         $is_favorites = DB::table('favorites')
         ->where('real_estate_id',$this->id)
         ->where('user_id',Auth::id())->first();
+       
         return [
             'id' => $this->id,
             'city' => $this->city->name,

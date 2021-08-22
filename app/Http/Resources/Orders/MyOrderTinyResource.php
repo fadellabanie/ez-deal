@@ -5,7 +5,7 @@ namespace App\Http\Resources\Orders;
 use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class OrderTinyResource extends JsonResource
+class MyOrderTinyResource extends JsonResource
 {
     /**
      * Transform the resource into an array.

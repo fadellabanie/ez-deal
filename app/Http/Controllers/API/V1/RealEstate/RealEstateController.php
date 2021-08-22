@@ -14,6 +14,7 @@ use App\Http\Requests\Api\RealEstates\StoreRequest;
 use App\Http\Requests\Api\RealEstates\UpdateRequest;
 use App\Http\Resources\RealEstates\RealEstateCollection;
 use App\Http\Resources\RealEstates\RealEstateLargeResource;
+use App\Http\Resources\RealEstatesMap\RealEstateMapCollection;
 
 class RealEstateController extends Controller
 {
@@ -41,7 +42,7 @@ class RealEstateController extends Controller
                 $q->where('name', 'like', '%' . $request->search . '%');
             })
             ->active()->orderBy('type', 'DESC')->paginate();
-
+           
         return new RealestateCollection($realEstates);
     }
     /**
@@ -52,8 +53,8 @@ class RealEstateController extends Controller
     public function listOnMap()
     {
         $realEstates = RealEstate::where('city_id', Auth::user()->city_id)->active()->get();
-
-        return new RealestateCollection($realEstates);
+     
+        return new RealEstateMapCollection($realEstates);
     }
     /**
      * Display a listing of the resource.

@@ -23,7 +23,6 @@ class Order extends Model
         'age_building',
         'street_width',
         'street_number',
-        'view',
         'elevator',
         'parking',
         'ac',

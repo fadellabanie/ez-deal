@@ -32,7 +32,7 @@ class CheckUserLimitFeatureAttribute
          
             $attribute =  Attribute::where('slug', $attribute_slug)->first();
         }
-      
+      //dd($attribute);
         $user_attribute =  DB::table('user_attribute')
             ->where('user_id', Auth::id())
             ->where('attribute_id', $attribute->id)

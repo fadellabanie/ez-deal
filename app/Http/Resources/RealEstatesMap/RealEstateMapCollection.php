@@ -7,7 +7,7 @@ use Illuminate\Http\Resources\Json\ResourceCollection;
 class RealEstateMapCollection extends ResourceCollection
 {
 
-    public $collects = RealEstateTinyMapResource::class;
+    public $collects = RealEstateMapTinyResource::class;
 
     /**
      * Transform the resource into an array.

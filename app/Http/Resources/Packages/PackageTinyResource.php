@@ -21,6 +21,7 @@ class PackageTinyResource extends JsonResource
             'name' => $this->name,
             'description' => $this->description,
             'price' => $this->price,
+            'color' => $this->color,
             'icon' => $this->icon,
             
         ];

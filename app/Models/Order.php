@@ -16,7 +16,7 @@ class Order extends Model
         'view_id',
         'city_id',
         'country_id',
-        'Neighborhood',
+        'neighborhood',
         'price',
         'space',
         'number_building',

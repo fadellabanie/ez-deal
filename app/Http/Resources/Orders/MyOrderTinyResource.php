@@ -28,6 +28,8 @@ class MyOrderTinyResource extends JsonResource
             'view' => $this->view,
             'number_of_views' => $this->number_of_views,
             'address' => $this->address,
+            'neighborhood' => $this->neighborhood,
+            'status' => $this->status,
         ];
     }
 }

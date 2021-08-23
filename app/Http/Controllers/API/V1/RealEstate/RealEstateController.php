@@ -45,6 +45,19 @@ class RealEstateController extends Controller
            
         return new RealestateCollection($realEstates);
     }
+
+     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function myRealEstate()
+    {
+        $realEstates = RealEstate::owner()->paginate();
+
+        return new RealestateCollection($realEstates);
+    }
+
     /**
      * Display a listing of the resource.
      *

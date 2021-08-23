@@ -40,7 +40,7 @@ class OrderController extends Controller
      */
     public function myOrder()
     {
-        $orders = Order::owner()->active()->paginate();
+        $orders = Order::owner()->paginate();
 
         return new MyOrderCollection($orders);
     }

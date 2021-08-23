@@ -64,8 +64,6 @@
                             <option value="{{$attribute->id}}">{{$attribute->en_name}}</option>
                             @endforeach
                         </select>   
-                        
-                        
                     </div>
                     <x-error field="attribute_ids" />
                     </div>

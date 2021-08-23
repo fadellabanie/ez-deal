@@ -21,6 +21,15 @@ class RealEstateMapTinyResource extends JsonResource
             'lat' => $this->lat,
             'lng' => $this->lng,
             'type' => $this->type,
+            'city' => $this->city->name,
+            'price' => $this->price,
+            'space' => $this->space,
+            'number_building' => $this->number_building,
+            'street_width' => $this->street_width,
+            'street_number' => $this->street_number,
+            'view' => $this->view,
+            'number_of_views' => $this->number_of_views,
+            'image' => asset($this->medias->first()->image),
         ];
     }
 }

@@ -73,7 +73,9 @@ Route::group(['prefix' => 'v1'], function () {
 
         Route::get('my-favorite',[FavoriteController::class,'myFavorite']);
         Route::post('add-favorite',[FavoriteController::class,'addFavorite']);
+
         Route::post('un-favorite',[FavoriteController::class,'unFavorite']);
+
        // Route::apiResource('case', CaseController::class);
        
        // Route::Post('send-notification', [NotificationController::class, 'send']);

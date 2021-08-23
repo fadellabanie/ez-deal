@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::group(['prefix' => 'admin','middleware'=>'auth'], function () {
+Route::group(['prefix' => 'admin','as' => 'admin.','middleware'=>'auth'], function () {
     Route::get('/',[App\Http\Controllers\Dashboard\HomeController::class,'index'])->name('admin');
 
     Route::resource('users', App\Http\Controllers\Dashboard\UserController::class);

@@ -14,6 +14,7 @@ class Favorite extends Model
         'real_estate_id',
         'user_id',
     ];
+
     public function scopeOwner($query)
     {
         return $query->where('user_id', Auth::id());

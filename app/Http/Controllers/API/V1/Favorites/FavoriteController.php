@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Api\Favorites\StoreRequest;
-use App\Http\Resources\RealEstates\RealEstateCollection;
+use App\Http\Resources\Favorites\FavoriteCollection;
 
 class FavoriteController extends Controller
 {
@@ -15,8 +15,8 @@ class FavoriteController extends Controller
     public function myFavorite()
     {
         $favorites =  Favorite::with('realEstate')->Owner()->get();
-
-        return new RealestateCollection($favorites);
+     
+        return new FavoriteCollection($favorites);
     } 
 
     public function addFavorite(StoreRequest $request)

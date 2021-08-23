@@ -25,7 +25,7 @@ class OrderTinyResource extends JsonResource
             'number_building' => $this->number_building,
             'street_width' => $this->street_width,
             'street_number' => $this->street_number,
-            'view' => $this->view,
+            'view' => $this->view->name,
             'number_of_views' => $this->number_of_views,
             'address' => $this->address,
         ];

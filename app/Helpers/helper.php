@@ -25,6 +25,7 @@ if (!function_exists('cities')) {
 		return $cities;
 	}
 }
+
 if (!function_exists('contractTypes')) {
 	function contractTypes()
 	{
@@ -43,45 +44,45 @@ if (!function_exists('realestateType')) {
 if (!function_exists('userType')) {
 	function userType($type)
 	{
-		if($type == 'personal'){
-			return '<div class="badge badge-light-success fw-bolder">'.__("Personal").'</div>';
-		}elseif($type == 'company'){
-			return '<div class="badge badge-light-info fw-bolder">'.__("Company").'</div>';
+		if ($type == 'personal') {
+			return '<div class="badge badge-light-success fw-bolder">' . __("Personal") . '</div>';
+		} elseif ($type == 'company') {
+			return '<div class="badge badge-light-info fw-bolder">' . __("Company") . '</div>';
+		} elseif ($type == 'admin') {
+			return '<div class="badge badge-light-waring fw-bolder">' . __("admin") . '</div>';
 		}
 	}
 }
-if (!function_exists('uploadToPublic')) {
-	function uploadToPublic($folder,$image)
+if (!function_exists('users')) {
+	function users()
 	{
-		return 'uploads/'.Storage::disk('public_new')->put($folder,$image);
-
+		return [
+			'name' => 'admin',
+			'name' => 'personal',
+			'name' => 'company',
+		];
+	}
+}
+if (!function_exists('uploadToPublic')) {
+	function uploadToPublic($folder, $image)
+	{
+		return 'uploads/' . Storage::disk('public_new')->put($folder, $image);
 	}
 }
 if (!function_exists('isActive')) {
 	function isActive($type)
 	{
-		
-		if($type == 1){
-			return '<div class="badge badge-light-success fw-bolder">'.__("Active").'</div>';
-		}elseif($type == 0){
-			return '<div class="badge badge-light-danger fw-bolder">'.__("Not Active").'</div>';
+
+		if ($type == 1) {
+			return '<div class="badge badge-light-success fw-bolder">' . __("Active") . '</div>';
+		} elseif ($type == 0) {
+			return '<div class="badge badge-light-danger fw-bolder">' . __("Not Active") . '</div>';
 		}
 	}
 }
 
 
 
-/**
- * Get list of languages
- */
-
-if (!function_exists('getFullName')) {
-	function getFullName($user)
-	{
-		if ($user == null) return '';
-		return $user->first_name . ' ' . $user->last_name;
-	}
-}
 
 /**
  * Upload

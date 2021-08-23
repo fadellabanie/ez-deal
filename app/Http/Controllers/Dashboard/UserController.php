@@ -15,8 +15,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users =User::paginate(10);
-        return view('dashboard.users.index',compact('users'));
+        return view('dashboard.users.index');
     }
 
     /**
@@ -37,7 +36,8 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return view('dashboard.users.create');
+
     }
 
     /**
@@ -48,7 +48,8 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        //
+        return view('dashboard.users.show',compact('user'));
+
     }
 
     /**
@@ -59,7 +60,8 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        return view('dashboard.users.edit',compact('user'));
+
     }
 
     /**

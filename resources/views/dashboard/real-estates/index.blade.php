@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title',__('Attributes'))
+@section('title',__('Real Estate'))
 @section('content')
 
 <!--begin::Toolbar-->
@@ -9,19 +9,19 @@
         <div class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
             <h1 class="d-flex align-items-center text-dark fw-bolder fs-3 my-1">{{__("Dashboard")}}
                 <span class="h-20px border-gray-200 border-start ms-3 mx-2"></span>
-                <small class="text-muted fs-7 fw-bold my-1 ms-1">{{__("Mange Attributes")}}</small>
+                <small class="text-muted fs-7 fw-bold my-1 ms-1">{{__("Mange Real Estate")}}</small>
             </h1>
         </div>
         <div class="d-flex align-items-center py-1">
           
-            <a href="{{route('admin.attributes.create')}}" class="btn btn-sm btn-primary">{{__("Create")}}</a>
+            <a href="{{route('admin.real-estates.create')}}" class="btn btn-sm btn-primary">{{__("Create")}}</a>
         </div>
     </div>
 </div>
 
 <div class="post d-flex flex-column-fluid" id="kt_post">
     <div id="kt_content_container" class="container">
-        @livewire('dashboard.attributes.datatable')
+        @livewire('dashboard.real-estates.datatable')
     </div>
 </div>
 

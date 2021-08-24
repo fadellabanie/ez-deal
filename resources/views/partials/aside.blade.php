@@ -52,7 +52,7 @@
                     </div>
                 </div>
                 <div class="menu-item">
-                    <a class="menu-link {{Request::segment(2) == ' ' ? active : ""}}" href="{{route('admin')}}">
+                    <a class="menu-link {{Request::segment(2) == ' ' ? active : ""}}" href="{{route('admin.admin')}}">
                         <span class="menu-icon">
                             <!--begin::Svg Icon | path: icons/duotone/Design/PenAndRuller.svg-->
                             <span class="svg-icon svg-icon-2">
@@ -75,7 +75,7 @@
 
                 <div class="menu-item">
                     <a class="menu-link   {{Request::segment(2) == 'users' ? "active" : ""}}"
-                        href="{{route('users.index')}}">
+                        href="{{route('admin.users.index')}}">
                         <span class="menu-icon">
                             <!--begin::Svg Icon | path: icons/duotone/Design/PenAndRuller.svg-->
                             <span class="svg-icon svg-icon-2">
@@ -98,7 +98,7 @@
                 
                 <div class="menu-item">
                     <a class="menu-link   {{Request::segment(2) == 'packages' ? "active" : ""}}"
-                        href="{{route('packages.index')}}">
+                        href="{{route('admin.packages.index')}}">
                         <span class="menu-icon">
                             <!--begin::Svg Icon | path: icons/duotone/Design/PenAndRuller.svg-->
                             <span class="svg-icon svg-icon-2">
@@ -121,7 +121,7 @@
 
                     <div class="menu-item">
                     <a class="menu-link   {{Request::segment(2) == 'attributes' ? "active" : ""}}"
-                        href="{{route('attributes.index')}}">
+                        href="{{route('admin.attributes.index')}}">
                         <span class="menu-icon">
                             <!--begin::Svg Icon | path: icons/duotone/Design/PenAndRuller.svg-->
                             <span class="svg-icon svg-icon-2">
@@ -144,7 +144,7 @@
               
                 <div class="menu-item">
                     <a class="menu-link   {{Request::segment(2) == 'orders' ? "active" : ""}}"
-                        href="{{route('orders.index')}}">
+                        href="{{route('admin.orders.index')}}">
                         <span class="menu-icon">
                             <!--begin::Svg Icon | path: icons/duotone/Design/PenAndRuller.svg-->
                             <span class="svg-icon svg-icon-2">

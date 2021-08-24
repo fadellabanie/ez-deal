@@ -26,6 +26,8 @@ class CreateCountriesTable extends Migration
             'en_name' => 'Saudi arabia',
             'ar_name' => 'سعوديه',
             'icon' => 'image.png',
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
     }
 

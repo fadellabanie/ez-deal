@@ -14,7 +14,7 @@
         </div>
         <div class="d-flex align-items-center py-1">
           
-            <a href="{{route('packages.create')}}" class="btn btn-sm btn-primary">{{__("Create")}}</a>
+            <a href="{{route('admin.packages.create')}}" class="btn btn-sm btn-primary">{{__("Create")}}</a>
         </div>
     </div>
 </div>

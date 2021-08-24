@@ -6,6 +6,7 @@ use Laravel\Passport\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Http\Controllers\Dashboard\ConstantController;
 
 class User extends Authenticatable
 {
@@ -56,8 +57,11 @@ class User extends Authenticatable
         'verified_at' => 'datetime',
     ];
 
-     
-  
+    public function scopeNotAdmin($query)
+    {
+        return $query->where('type','!=',ConstantController::ADMIN);
+    } 
+    
 
 
     public function city()

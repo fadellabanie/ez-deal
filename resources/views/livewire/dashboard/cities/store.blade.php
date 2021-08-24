@@ -6,7 +6,7 @@
             data-bs-target="#kt_account_profile_details" aria-expanded="true"
             aria-controls="kt_account_profile_details">
             <div class="card-title m-0">
-                <h3 class="fw-bolder m-0">{{__("Update Package")}}</h3>
+                <h3 class="fw-bolder m-0">{{__("Create city")}}</h3>
             </div>
         </div>
         <div id="kt_account_profile_details" class="collapse show">
@@ -14,78 +14,41 @@
                 <div class="card-body border-top p-9">
                     <!--begin::Input group-->
                     <div class="row mb-6">
-                        <x-label class="required">{{__("Package Name")}}</x-label>
+                        <x-label class="required">{{__("city Name")}}</x-label>
                         <div class="col-lg-8">
                             <div class="row">
                                 <div class="col-lg-6 fv-row">
-                                    <x-input type="text" field="ar_name" wire:model="package.ar_name"
+                                    <x-input type="text" field="ar_name" wire:model="ar_name"
                                         placeholder="Arabic name" />
                                 </div>
                                 <div class="col-lg-6 fv-row">
-                                    <x-input type="text" field="en_name" wire:model="package.en_name"
+                                    <x-input type="text" field="en_name" wire:model="en_name"
                                         placeholder="English name" />
                                 </div>
                             </div>
                         </div>
                     </div>
                     <!--end::Input group-->
-
-                    <!--begin::Input group-->
-                    <div class="row mb-6">
-                        <x-label class="required">{{__("Package Description")}}</x-label>
-                        <div class="col-lg-8">
-                            <div class="row">
-                                <div class="col-lg-6 fv-row">
-                                    <x-input type="text" field="ar_description" wire:model="package.ar_description"
-                                        placeholder="Arabic description" />
-                                </div>
-                                <div class="col-lg-6 fv-row">
-                                    <x-input type="text" field="en_description" wire:model="package.en_description"
-                                        placeholder="English description" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--end::Input group-->
-
-                    <!--begin::Input group-->
-                    <div class="row mb-6">
-                        <x-label>
-                            <span class="required">{{__("Price")}}</span>
-                            <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip"
-                                title="Phone number must be active"></i>
-                        </x-label>
-                        <div class="col-lg-8 fv-row">
-                            <x-input type="number" field="price" wire:model="package.price" placeholder="price" />
-                        </div>
-                    </div>
-                    <!--end::Input group-->
-
-                    <!--begin::Input group-->
-                    <div class="row mb-6">
-                        <x-label>
-                            <span class="required">{{__("Days")}}</span>
-                            <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip"
-                                title="Phone number must be active"></i>
-                        </x-label>
-                        <div class="col-lg-8 fv-row">
-                            <x-input type="number" field="days" wire:model="package.days" placeholder="days" />
-                        </div>
-                    </div>
-                    <!--end::Input group-->
-
-                    <!--begin::Input group-->
-                    <div class="row mb-6">
-                        <x-label>
-                            <span class="required">{{__("Color")}}</span>
-                            <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip"
-                                title="Phone number must be active"></i>
-                        </x-label>
-                        <div class="col-lg-8 fv-row">
-                            <x-input type="color" field="color" wire:model="package.color" placeholder="color" />
-                        </div>
-                    </div>
-                    <!--end::Input group-->
+  <!--begin::Input group-->
+  <div class="row mb-6">
+    <x-label>
+        <span class="required">{{__("Country")}}</span>
+        <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip"
+            title="Phone number must be active"></i>
+    </x-label>
+    <div class="col-lg-8 fv-row" wire:ignore>
+        <select  wire:model="country_id" aria-label="Select a country" data-control="select2"
+        data-placeholder="Select a country..."  id="country_id" name="country_id"
+        class="form-select form-select-solid form-select-lg fw-bold @error('country_id') is-invalid @enderror">
+        <option value="">Select a Country...</option>
+        @foreach ($countries as $country)
+        <option value="{{$country->id}}">{{$country->en_name}}</option>
+        @endforeach
+    </select>   
+</div>
+<x-error field="country_id" />
+</div>
+<!--end::Input group-->
 
                     <!--begin::Input group-->
                     <div class="row mb-0">
@@ -95,8 +58,8 @@
                         <!--begin::Label-->
                         <div class="col-lg-8 d-flex align-items-center">
                             <div class="form-check form-check-solid form-switch fv-row">
-                                <input class="form-check-input w-45px h-30px" type="checkbox"
-                                    wire:model="package.status" id="allowmarketing" checked="checked" />
+                                <input class="form-check-input w-45px h-30px" type="checkbox" wire:model="status"
+                                    id="allowmarketing" checked="checked" />
                                 <label class="form-check-label" for="allowmarketing"></label>
                             </div>
                         </div>
@@ -149,10 +112,6 @@
                                 <div class="symbol symbol-750 mt-5">
                                     <img alt="" src="{{ $icon->temporaryUrl() }}" />
                                 </div>
-                                @elseif($package->icon)
-                                <div class="symbol symbol-150 mt-5">
-                                    <img alt="" src="{{ asset($package->icon) }}" />
-                                </div>
                                 @endif
                             </div>
                         </div>
@@ -161,18 +120,20 @@
                     <!--end::Input group-->
                 </div>
                 <!--end::Card body-->
-
-
                 <div class="card-footer d-flex justify-content-end py-6 px-9">
-                    <a href="{{route('admin.packages.index')}}"
+                    <a href="{{route('admin.cities.index')}}"
                         class="btn btn-light btn-active-light-primary me-2">{{__("Back")}}</a>
                     <button type="button" class="btn btn-primary" wire:click.prevent="submit()"
                         wire:loading.attr="disabled"
                         wire:loading.class="spinner spinner-white spinner-left">{{__("Save")}}</button>
-
-
                 </div>
             </form>
         </div>
     </div>
 </div>
+
+@section('scripts')
+<script>
+
+</script>
+@endsection

@@ -4,6 +4,7 @@ namespace App\Http\Resources\RealEstates;
 
 use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
+use App\Http\Resources\Constants\ImageResource;
 
 class RealEstateLargeResource extends JsonResource
 {
@@ -15,7 +16,7 @@ class RealEstateLargeResource extends JsonResource
      */
     public function toArray($request)
     {
-       
+
         return [
             'id' => $this->id,
             'city' => $this->city->name,
@@ -26,7 +27,7 @@ class RealEstateLargeResource extends JsonResource
             'street_number' => $this->street_number,
             'view' => $this->view->name,
             'number_of_views' => $this->number_of_views,
-            'image' => asset($this->medias->first()->image),
+            'images' => ImageResource::collection($this->medias),
         ];
     }
 }

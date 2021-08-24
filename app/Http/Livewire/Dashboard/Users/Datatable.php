@@ -13,6 +13,8 @@ class Datatable extends Component
 
     protected $paginationTheme = 'bootstrap';
     public $search;
+    public $type = 'all';
+    public $city_id  = 'all';
     public $count = 20;
     public $sortBy = 'created_at';
     public $sortDirection = 'DESC';
@@ -49,9 +51,21 @@ class Datatable extends Component
     {
         return view('livewire.dashboard.users.datatable', [
             'users' => User::with('city')
+                ->when('city_id', function ($q) {
+                    if ($this->city_id != 'all') {
+                        $q->orWhere('city_id', $this->city_id);
+                    }
+                })
+                ->when('type', function ($q) {
+                    if ($this->type != 'all') {
+                        $q->orWhere('type', $this->type);
+                    }
+                })
+                ->where('type', '!=', 'admin')
                 ->search('name', $this->search)
                 ->orSearch('mobile', $this->search)
                 ->orSearch('email', $this->search)
+                ->select(['id','name','avatar','email','mobile','type','city_id','created_at'])
                 ->orderBy($this->sortBy, $this->sortDirection)
                 ->paginate(2),
         ]);

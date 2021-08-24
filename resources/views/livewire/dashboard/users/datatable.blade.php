@@ -1,16 +1,22 @@
 <div>
     <div class="card card-flush mt-6 mt-xl-9">
-
         <div class="card-header mt-5">
-
             <div class="card-title flex-column">
                 <h3 class="fw-bolder mb-1">{{__("User")}}</h3>
                 <div class="fs-6 text-gray-400">{{__("Show All")}}</div>
             </div>
-
             <div class="card-toolbar my-1">
+
                 <div class="d-flex align-items-center position-relative my-1">
-                    <x-search-input></x-search-input>
+                    <div class="me-6 my-1">
+                        <x-city></x-city>
+                    </div>
+                    <div class="me-6 my-1">
+                        <x-user-type></x-user-type>
+                    </div>
+                    <div class="d-flex align-items-center position-relative my-1">
+                        <x-search-input></x-search-input>
+                    </div>
                 </div>
             </div>
         </div>
@@ -61,9 +67,6 @@
                                             <div class="symbol symbol-35px symbol-circle">
                                                 <img alt="Pic" src="{{asset($user->avatar)}}">
                                             </div>
-                                            <div
-                                                class="bg-success position-absolute h-8px w-8px rounded-circle translate-middle start-100 top-100 ms-n1 mt-n1">
-                                            </div>
                                         </div>
                                         <div class="d-flex flex-column justify-content-center">
                                             <a href="" class="fs-6 text-gray-800 text-hover-primary">{{$user->name}}</a>
@@ -77,7 +80,7 @@
                                 <td>{{$user->created_at->format('m-d-Y')}}</td>
                                 <td>
                                     <div class="d-flex justify-content-end flex-shrink-0">
-                                        <x-edit-button href="{{route('users.edit',$user)}}"></x-edit-button>
+                                        <x-edit-button href="{{route('admin.users.edit',$user)}}"></x-edit-button>
                                         <x-delete-record-button wire:click="confirm({{ $user->id }})">
                                         </x-delete-record-button>
                                     </div>

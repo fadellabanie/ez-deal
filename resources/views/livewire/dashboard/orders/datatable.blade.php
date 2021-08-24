@@ -20,10 +20,8 @@
                     <x-realestate-type></x-realestate-type>
                 </div>
                 <div class="d-flex align-items-center position-relative my-1">
-
                     <x-search-input></x-search-input>
                 </div>
-
             </div>
         </div>
 
@@ -79,7 +77,7 @@
                                 <td>
                                     <div class="d-flex align-items-center">
                                         <div class="d-flex justify-content-start flex-column">
-                                            <a href="{{route('orders.show',$order)}}"
+                                            <a href="{{route('admin.orders.show',$order)}}"
                                                 class="text-dark fw-bolder text-hover-primary fs-6">{{$order->name}}</a>
                                             <span
                                                 class="text-muted fw-bold text-muted d-block fs-7">{{$order->city->en_name}}</span>
@@ -91,7 +89,7 @@
                                 <td>
                                     <div class="d-flex align-items-center">
                                         <div class="d-flex justify-content-start flex-column">
-                                            <a href="{{route('users.show',$order->user)}}"
+                                            <a href="{{route('admin.users.show',$order->user)}}"
                                                 class="text-dark fw-bolder text-hover-primary fs-6">{{$order->user->name}}</a>
                                             <span
                                                 class="text-muted fw-bold text-muted d-block fs-7">{{$order->user->mobile}}</span>
@@ -104,7 +102,7 @@
                                 <td>{{$order->created_at->format('m-d-Y')}}</td>
                                 <td>
                                     <div class="d-flex justify-content-end flex-shrink-0">
-                                        <x-edit-button href="{{route('orders.edit',$order)}}"></x-edit-button>
+                                        <x-edit-button href="{{route('admin.orders.edit',$order)}}"></x-edit-button>
                                         <x-delete-record-button wire:click="confirm({{ $order->id }})">
                                         </x-delete-record-button>
                                     </div>

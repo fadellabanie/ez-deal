@@ -28,12 +28,16 @@ class CreateCitiesTable extends Migration
             'ar_name' => 'جده',
             'en_name' => 'Jeddah',
             'icon' => 'image.png',
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
         DB::table('cities')->insert([
             'country_id' => 1,
             'ar_name' => 'مكة المكرمة',
             'en_name' => 'makkah',
             'icon' => 'image.png',
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
     }
 

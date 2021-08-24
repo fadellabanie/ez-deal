@@ -9,9 +9,15 @@ Route::group(['prefix' => 'admin','as' => 'admin.','middleware'=>'auth'], functi
     Route::resource('orders', App\Http\Controllers\Dashboard\OrderController::class);
     Route::resource('packages', App\Http\Controllers\Dashboard\PackageController::class);
     Route::resource('attributes', App\Http\Controllers\Dashboard\AttributeController::class);
+
+    Route::resource('cities', App\Http\Controllers\Dashboard\CityController::class);
+    Route::resource('countries', App\Http\Controllers\Dashboard\CountryController::class);
+
   
     Route::get('admin',function(){
         return 'admin';
     });
+
+
 
 });

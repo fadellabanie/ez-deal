@@ -82,7 +82,7 @@
                                 <td>{{$package->created_at->format('m-d-Y')}}</td>
                                 <td>
                                     <div class="d-flex justify-content-end flex-shrink-0">
-                                        <x-edit-button href="{{route('packages.edit',$package)}}"></x-edit-button>
+                                        <x-edit-button href="{{route('admin.packages.edit',$package)}}"></x-edit-button>
                                         <x-delete-record-button wire:click="confirm({{ $package->id }})">
                                         </x-delete-record-button>
                                     </div>

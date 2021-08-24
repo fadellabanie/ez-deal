@@ -3,17 +3,9 @@
     <div class="card card-flush mt-6 mt-xl-9">
 
         <div class="card-header mt-5">
-
             <div class="card-title flex-column">
-                <h3 class="fw-bolder mb-1">{{__("Attributes")}}</h3>
+                <h3 class="fw-bolder mb-1">{{__("Cities")}}</h3>
                 <div class="fs-6 text-gray-400">{{__("Show All")}}</div>
-            </div>
-
-            <div class="card-toolbar my-1">
-                <div class="d-flex align-items-center position-relative my-1">
-                    <x-search-input></x-search-input>
-                </div>
-
             </div>
         </div>
 
@@ -25,29 +17,16 @@
                         role="grid">
                         <thead class="fs-7 text-gray-400 text-uppercase">
                             <tr role="row">
-                               
+                                <th class="min-w-90px">  {{__("icon")}}</th> 
+
                                 <th wire:click="sortBy('en_name')" data-sort="{{$sortDirection}}" class="min-w-50px">
                                     {{__("Name")}}
                                     <x-sort field="name" sortBy="{{$sortBy}}" sortDirection="{{$sortDirection}}">
                                     </x-sort>
                                 </th>
-                                <th wire:click="sortBy('en_description')" data-sort="{{$sortDirection}}" class="min-w-50px">
-                                    {{__("Description")}}
-                                    <x-sort field="en_description" sortBy="{{$sortBy}}" sortDirection="{{$sortDirection}}">
-                                    </x-sort>
-                                </th>
-                                <th wire:click="sortBy('price')" data-sort="{{$sortDirection}}"
-                                    class="min-w-90px">
-                                    {{__("Price")}}
-                                    <x-sort field="price" sortBy="{{$sortBy}}"
-                                        sortDirection="{{$sortDirection}}">
-                                    </x-sort>
-                                </th>   
-                                <th wire:click="sortBy('days')" data-sort="{{$sortDirection}}"
-                                    class="min-w-90px">
-                                    {{__("Days")}}
-                                    <x-sort field="days" sortBy="{{$sortBy}}"
-                                        sortDirection="{{$sortDirection}}">
+                                <th wire:click="sortBy('country_id')" data-sort="{{$sortDirection}}" class="min-w-50px">
+                                    {{__("Country")}}
+                                    <x-sort field="country_id" sortBy="{{$sortBy}}" sortDirection="{{$sortDirection}}">
                                     </x-sort>
                                 </th>
                                 <th wire:click="sortBy('status')" data-sort="{{$sortDirection}}"
@@ -57,7 +36,6 @@
                                         sortDirection="{{$sortDirection}}">
                                     </x-sort>
                                 </th>
-                                
                                 <th wire:click="sortBy('created_at')" data-sort="{{$sortDirection}}" class="min-w-90px">
                                     {{__("Regester")}}
                                     <x-sort field="created_at" sortBy="{{$sortBy}}" sortDirection="{{$sortDirection}}">
@@ -68,20 +46,22 @@
                             </tr>
                         </thead>
                         <tbody class="fs-6">
-                            @forelse($attributes as $key => $attribute)
+                            @forelse($cities as $key => $city)
                             <tr wire:loading.class="opacity-50">
+                                <td>
+                                    <div class="cursor-pointer symbol symbol-30px symbol-md-40px">
+                                        <img src="{{asset($city->icon)}}">
+                                    </div>
+                                </td>
+                                <td>{{$city->en_name}}</td>
+                                <td>{{$city->country->en_name}}</td>
+                                <td>{!!isActive($city->status)!!}</td>
                               
-                                <td>{{$attribute->en_name}}</td>
-                                <td>{{$attribute->en_description}}</td>
-                                <td>{{$attribute->price}}</td>
-                                <td>{{$attribute->days}}</td>
-                                <td>{!!isActive($attribute->status)!!}</td>
-                              
-                                <td>{{$attribute->created_at->format('m-d-Y')}}</td>
+                                <td>{{$city->created_at->format('m-d-Y')}}</td>
                                 <td>
                                     <div class="d-flex justify-content-end flex-shrink-0">
-                                        <x-edit-button href="{{route('admin.attributes.edit',$attribute)}}"></x-edit-button>
-                                        <x-delete-record-button wire:click="confirm({{ $attribute->id }})">
+                                        <x-edit-button href="{{route('admin.cities.edit',$city)}}"></x-edit-button>
+                                        <x-delete-record-button wire:click="confirm({{ $city->id }})">
                                         </x-delete-record-button>
                                     </div>
                                 </td>
@@ -102,7 +82,7 @@
                     </div>
                     <div
                         class="col-sm-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-end">
-                        {{$attributes->links()}}
+                        {{$cities->links()}}
                     </div>
                 </div>
             </div>

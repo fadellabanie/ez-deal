@@ -13,6 +13,8 @@ Route::group(['prefix' => 'admin','as' => 'admin.','middleware'=>'auth'], functi
 
     Route::resource('cities', App\Http\Controllers\Dashboard\CityController::class);
     Route::resource('countries', App\Http\Controllers\Dashboard\CountryController::class);
+   
+    Route::resource('roles', App\Http\Controllers\Dashboard\RoleController::class);
 
   
     Route::get('admin',function(){

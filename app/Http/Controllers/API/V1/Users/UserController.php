@@ -6,12 +6,14 @@ use Carbon\Carbon;
 use App\Models\User;
 use App\Models\ReportUser;
 use Illuminate\Http\Request;
+use App\Models\NotificationUser;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\UserResource;
 use Illuminate\Support\Facades\Auth;
 use App\Services\SubscriptionService;
 use App\Http\Requests\Api\Users\UpdateRequest;
+use App\Http\Resources\Constants\NotificationResource;
 
 class UserController extends Controller
 {
@@ -26,7 +28,6 @@ class UserController extends Controller
         $user = User::find(AUth::id());
 
         if(!$user) $this->errorNotFound();
-       // dd($request->image);
        if($request->has('avatar')){
         $user->update([
             'email' => $request->email,
@@ -69,5 +70,12 @@ class UserController extends Controller
         $this->send(Auth::user()->device_token, $title, $body);
         
         return $this->successStatus(__("Subscription successfully"));
+    }
+    
+    public function myNotification()
+    {     
+        $notifications = NotificationUser::where('user_id',Auth::id())->get();
+        
+        return $this->respondWithItem(NotificationResource::collection($notifications));
     }
 }

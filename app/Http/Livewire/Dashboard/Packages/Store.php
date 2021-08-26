@@ -42,7 +42,6 @@ class Store extends Component
         $validatedData['slug'] = Str::slug($validatedData['en_name']);
         $validatedData['icon'] = ($this->icon) ? uploadToPublic('packages', $validatedData['icon']) : "";
 
-         //dd( $validatedData);
         $package = Package::create($validatedData);
         $package->attributes()->sync($validatedData['attribute_ids']);
 

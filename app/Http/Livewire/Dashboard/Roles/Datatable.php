@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Roles;
+namespace App\Http\Livewire\Dashboard\Roles;
 
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -16,17 +16,17 @@ class Datatable extends Component
 
     public $selectedId;
     public $data_id;
-    public $permissionsIds;
+    public $permission_ids;
     public $oldPermissionsIds;
     public $editMode,$name;
 
-    public $count = ConstantController::LARGE_NUMBER_OF_PAGINATE;
+    public $count = 10;
     public $sortBy = 'id';
-    public $sortDirection = ConstantController::SORT_ASC;
+    public $sortDirection = 'DESC';
 
     protected $rules = [
         'name' => 'required|min:2|max:100',
-        'permissionsIds.*' => 'required|exists:permissions,id',
+        'permission_ids' => 'required|exists:permissions,id',
 
     ];
     public function updated($propertyName)
@@ -40,14 +40,15 @@ class Datatable extends Component
         $this->resetValidation();
     }
 
-    public function store()
+        public function store()
     {
-        $this->authorize('create roles');
+      
         $this->editMode = false;
         
         $validatedData = $this->validate();
+        dd( $validatedData);
         $role = Role::create($validatedData);
-        $role->syncPermissions($validatedData['permissionsIds']);
+        $role->syncPermissions($validatedData['permission_ids']);
         session()->flash('alert', __('Saved Successfully.'));
 
         $this->emit('Modal'); // Close model to using to jquery
@@ -57,7 +58,7 @@ class Datatable extends Component
     }
     public function edit($id)
     {
-        $this->authorize('edit roles');
+      //  $this->authorize('edit roles');
         $this->editMode = true;
 
         $data = Role::findOrFail($id);
@@ -82,7 +83,7 @@ class Datatable extends Component
     }
     public function confirm($id)
     {
-        $this->authorize('delete roles');
+      //  $this->authorize('delete roles');
         $this->emit('openDeleteModal');
         $this->selectedId = $id;
     }
@@ -104,7 +105,7 @@ class Datatable extends Component
 
     public function render()
     {
-        return view('livewire.roles.datatable', [
+        return view('livewire.dashboard.roles.datatable', [
             'roles' => Role::with('permissions')->orderBy($this->sortBy, $this->sortDirection)
                             ->paginate($this->count),
             'permissions' => Permission::get()

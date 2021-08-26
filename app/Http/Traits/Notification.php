@@ -2,10 +2,19 @@
 
 namespace App\Http\Traits;
 
+use App\Models\User;
+use App\Models\NotificationUser;
+
 trait Notification
 {
     public function send($to, $title, $message)
     {
+        NotificationUser::create([
+            'user_id' => User::where('device_token', $to)->pluck('id')->first(),
+            'title' => $title,
+            'body' => $message,
+        ]);
+        
         $fields = array(
             'to' => $to,
             'notification' => array(

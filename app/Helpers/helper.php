@@ -49,7 +49,17 @@ if (!function_exists('userType')) {
 		} elseif ($type == 'company') {
 			return '<div class="badge badge-light-info fw-bolder">' . __("Company") . '</div>';
 		} elseif ($type == 'admin') {
-			return '<div class="badge badge-light-waring fw-bolder">' . __("admin") . '</div>';
+			return '<div class="badge badge-light-warning fw-bolder">' . __("admin") . '</div>';
+		}
+	}
+}
+if (!function_exists('realEstatesType')) {
+	function realEstatesType($type)
+	{
+		if ($type == 'normal') {
+			return '<div class="badge badge-light-info fw-bolder">' . __("Normal") . '</div>';
+		} elseif ($type == 'special') {
+			return '<div class="badge badge-light-warning fw-bolder">' . __("Special") . '</div>';
 		}
 	}
 }

@@ -39,16 +39,13 @@ class CreateUsersTable extends Migration
             $table->timestamps();
         });
 
-        // DB::table('users')->insert([
-        //     'username' => 'fadellabanie',
-         
-        //     'status' => 'done',
-        //     'mobile' => '011315200',
-        //     'address' => 'egypt',
-        //     'email' => 'admin@gmail.com',
-        //     'password' => Hash::make('12345678'),
-        //     'type' => 'user',
-        // ]);
+         DB::table('users')->insert([
+             'name' => 'fadellabanie',
+             'mobile' => '011315200',
+             'email' => 'admin@admin.com',
+             'password' => Hash::make('12345678'),
+             'type' => 'admin',
+         ]);
     }
 
     /**

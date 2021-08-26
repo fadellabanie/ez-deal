@@ -47,6 +47,7 @@ class StoreRequest extends APIRequest
             'lng' => ['required', 'regex:/^[-]?((((1[0-7][0-9])|([0-9]?[0-9]))\.(\d+))|180(\.0+)?)$/'],
             'address' => 'required',
             'name' => 'required',
+            'type' => 'required|in:special,normal',
             'images.*' => 'required',
         ];
     }

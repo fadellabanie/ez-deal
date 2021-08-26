@@ -1,55 +1,64 @@
-<!--(Begin) Modal Update Or Store (Begin)-->
-<div wire:ignore.self class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modal"
-    aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+<div wire:ignore.self class="modal fade" tabindex="-1" id="kt_modal_1">
+    <div class="modal-dialog">
         <div class="modal-content">
-            <form>
-                <div class="modal-header">
-                    <h5 class="modal-title" id="modalLabel">{{__("Create Role")}}</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <i aria-hidden="true" class="ki ki-close"></i>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="card-body">
-                        <div class="form-group row validated">
-                            <div class="col-lg-6">
-                                <x-label>{{__("Name")}}</x-label>
-                                <div class="col-12">
-                                    <x-input wire:model.lazy="name" field='name' />
-                                    <span class="form-text text-muted">{{__("Please enter name of Role")}}</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group row validated ">
+            <div class="modal-header">
+                <h5 class="modal-title">Modal title</h5>
 
-                            <div class="col-lg-12" wire:ignore>
-                                <x-label>{{__("Permissions")}}</x-label>
-                                <div class="col-lg-12">
-                                    <select class="form-control select2 @error('permissionsId') is-invalid @enderror"
-                                        id="permissionsIds" name="permissionsId" multiple="multiple" style="width: 800px;">
-                                        @foreach($permissions as $permission)
-                                        <option value="{{ $permission->id }}" @if(is_array($oldPermissionsIds) &&
-                                            in_array($permission->id,$oldPermissionsIds)) selected
-                                            @endif>{{$permission->name  }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                <x-error field="permissionsId" />
+                <!--begin::Close-->
+                <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal"
+                    aria-label="Close">
+                    <span class="svg-icon svg-icon-2x"></span>
+                </div>
+                <!--end::Close-->
+            </div>
+
+            <div class="modal-body">
+                <!--begin::Input group-->
+                <div class="row mb-6">
+                    <x-label class="required">{{__("Name")}}</x-label>
+                    <div class="col-lg-8">
+                        <div class="row">
+                            <div class="col-lg-12 fv-row">
+                                <x-input type="text" field="name" wire:model="name" placeholder="name" />
                             </div>
 
                         </div>
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="reset" class="btn btn-light-primary font-weight-bold"
-                        data-dismiss="modal">{{__("Close")}}</button>
+                <!--end::Input group-->
 
-                    <button type="button" wire:click.prevent="{{ $editMode ? 'update' : 'store'}}"
-                        class="btn btn-primary font-weight-bold" data-dismiss="modal">{{__("Save")}}</button>
+                <!--begin::Input group-->
+                <div class="row mb-6">
+                    <x-label>
+                        <span class="required">{{__("permission_ids")}}</span>
+                        <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip"
+                            title="Phone number must be active"></i>
+                    </x-label>
+                    <div class="col-lg-8 fv-row" wire:ignore>
+                        <select  aria-label="Select a permission_ids" data-control="select2"
+                            data-placeholder="Select a permission_ids..." id="permission_ids"
+                            class="form-select form-select-solid form-select-lg fw-bold @error('permission_ids') is-invalid @enderror"
+                            multiple="multiple">
+                            @foreach($permissions as $permission)
+                            <option value="{{ $permission->id }}" @if(is_array($oldPermissionsIds) &&
+                                in_array($permission->id,$oldPermissionsIds)) selected
+                                @endif>{{$permission->name  }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <x-error field="permission_ids" />
                 </div>
-            </form>
+                <!--end::Input group-->
+
+
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" data-bs-dismiss="modal">{{__("Close")}}</button>
+                <button type="button" class="btn btn-primary" wire:loading.attr="disabled"
+                    wire:loading.class="spinner spinner-white spinner-left"
+                    wire:click.prevent="{{ $editMode ? 'update' : 'store'}}">{{__("Save")}}</button>
+            </div>
         </div>
     </div>
 </div>
-<!--(End) Modal Update Or Store (End)-->

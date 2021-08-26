@@ -1,108 +1,125 @@
 <div>
-    @include('livewire.roles.form')
+    @include('livewire.dashboard.roles.form')
+    <div>
+        <x-alert id='alert' class="alert-success"></x-alert>
+        <div class="card card-flush mt-6 mt-xl-9">
 
-    <x-alert id='alert' class="alert-success"></x-alert>
+            <div class="card-header mt-5">
 
-    <div class="card card-custom">
-        <div class="card-header flex-wrap border-0 pt-6 pb-0">
-            <div class="card-title">
-                <h3 class="card-label">{{__("Roles and Permissions")}}
-                    <span class="d-block text-muted pt-2 font-size-sm">{{__("Show All")}}</span></h3>
+                <div class="card-title flex-column">
+                    <h3 class="fw-bolder mb-1">{{__("Roles")}}</h3>
+                    <div class="fs-6 text-gray-400">{{__("Show All")}}</div>
+                </div>
+
+
+                <div class="card-toolbar">
+                    <button type="button" wire:click="resetForm()" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_1">
+                        <i class="la la-plus"></i>{{__("New Record")}}
+                       
+                    </button>
+                    
+
+             
+
+
+                </div>
             </div>
-            <div class="card-toolbar">
-                @can('create roles')
-                <a href="javascript:;" class="btn btn-primary font-weight-bolder" data-toggle="modal"
-                    data-target="#modal" wire:click="resetForm()">
-                    <i class="la la-plus"></i>{{__("New Record")}}</a>
-                @endcan
-                <!--end::Button-->
+
+            <div class="card-body pt-0">
+                <div class="dataTables_wrapper dt-bootstrap4 no-footer">
+                    <div class="table-responsive">
+                        <table
+                            class="table table-row-bordered table-row-dashed gy-4 align-middle fw-bolder dataTable no-footer"
+                            role="grid">
+                            <thead class="fs-7 text-gray-400 text-uppercase">
+                                <tr role="row">
+                                    <th wire:click="sortBy('name')" data-sort="{{$sortDirection}}" class="min-w-50px">
+                                        {{__("Role")}}
+                                        <x-sort field="name" sortBy="{{$sortBy}}" sortDirection="{{$sortDirection}}">
+                                        </x-sort>
+                                    </th>
+                                    <th> {{__("Permission")}} </th>
+
+                                    <th class="min-w-50px text-end" style="width: 87.075px;">{{__("Action")}}
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody class="fs-6">
+                                @forelse($roles as $role)
+                                <tr wire:loading.class="opacity-50">
+
+
+
+                                    <td>{{$role->name}}</td>
+                                    <td> {{implode(',',$role->permissions->pluck('name')->toArray()) }}</td>
+                                    <td>
+                                        <div class="d-flex justify-content-end flex-shrink-0">
+                                            @can('edit roles')
+                                            <x-edit-button data-toggle="modal" data-target="#modal"
+                                                wire:click="edit({{ $role->id }})">
+                                            </x-edit-button>
+                                            @endcan
+                                            @can('delete roles')
+                                            <x-delete-record-button wire:click="confirm({{ $role->id }})">
+                                            </x-delete-record-button>
+                                            <x-delete-modal></x-delete-modal>
+                                            @endcan
+                                        </div>
+                                    </td>
+                                </tr>
+                                @empty
+                                <tr>
+                                    <td colspan="7" class="text-center text-danger font-size-lg">
+                                        {{ __('No records found') }}
+                                    </td>
+                                </tr>
+                                @endforelse
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="row">
+                        <div
+                            class="col-sm-12 col-md-5 d-flex align-items-center justify-content-center justify-content-md-start">
+                        </div>
+                        <div
+                            class="col-sm-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-end">
+                            {{$roles->links()}}
+                        </div>
+                    </div>
+                </div>
+                <!--end::Table-->
+
+                <!--end::Table container-->
             </div>
+            <!--end::Card body-->
         </div>
-        <div class="card-body py-0">
-            <!--begin::Table-->
-            <div class="table-responsive">
-                <table class="table table-head-custom table-vertical-center" id="kt_advance_table_widget_4">
-                    <thead>
-                        <tr class="text-left">
-                            <th class="pl-0" style="width: 30px">#</th>
-                            <th wire:click="sortBy('name')" data-sort="{{$sortDirection}}">{{__("Name")}}
-                                <x-sort field="name" sortBy="{{$sortBy}}" sortDirection="{{$sortDirection}}"></x-sort>
-                            </th>
-                            <th class="pl-0" style="min-width: 120px">{{ __('Permission') }}</th>
-                            <th class="pr-0 text-left" style="min-width: 160px">{{ __('Control') }}</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @forelse($roles as $role)
-                        <tr>
-                            <td class="pl-0 py-6">{{ $role->id }}</td>
-                            <td class="pl-0">
-                                <span class="d-inline-block font-weight-bolder" data-toggle="tooltip">
-                                    {{$role->name }}
-                                </span>
-                            </td>
-                            <td class="pl-0">
-                                <span class="d-inline-block font-weight-bolder" data-toggle="tooltip">
-                                    {{implode(',',$role->permissions->pluck('name')->toArray()) }}
-                                </span>
-                            </td>
-                            <td class="pr-0 text-left">
-                                @can('edit roles')
-                                <x-edit-button data-toggle="modal" data-target="#modal"
-                                    wire:click="edit({{ $role->id }})">
-                                </x-edit-button>
-                                @endcan
-                                @can('delete roles')
-                                <x-delete-record-button wire:click="confirm({{ $role->id }})"></x-delete-record-button>
-                                <x-delete-modal></x-delete-modal>
-                                @endcan
-                            </td>
-                        </tr>
-                        @empty
-                        <tr>
-                            <td colspan="3" class="text-center text-danger font-size-lg">{{ __('No records found') }}
-                            </td>
-                        </tr>
-                        @endforelse
-                    </tbody>
-                </table>
-            </div>
-            <!--end::Table-->
-
-            {{ $roles->links() }}
-        </div>
-        <!--end::Body-->
+        <x-delete-modal></x-delete-modal>
     </div>
-    <!--end::Advance Table Widget 10-->
-</div>
 
-@section('scripts')
-<script src="{{ asset('dashboard/assets/js/pages/crud/forms/widgets/select2.js') }}"></script>
+    @section('scripts')
+ 
 
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('#permissionsIds').select2({
-            placeholder: '',
+    <script type="text/javascript">
+        window.livewire.on('modal', () => {
+            $('#modal').modal('show');
+        }); 
+        window.livewire.on('openDeleteModal', () => {
+            $('#deleteModal').modal('show');
+        }); 
+        window.livewire.on('closeDeleteModal', () => {
+            $('#deleteModal').modal('hide');
         });
+    </script>
 
-        $('.select2').on('change', function (e) {
-                let elementName = $(this).attr('id');
-                var data = $(this).select2("val");
-                @this.set(elementName, data);
+    <script>
+        $(document).ready(function () {
+            $('#permission_ids').select2();
+            $('#permission_ids').on('change', function (e) {
+                var data = $('#permission_ids').select2("val");
+                @this.set('permission_ids', data);
             });
-      });
-
-    window.livewire.on('Modal', () => {
-        $('#modal').modal('hide');
-    });   
-   
-    window.livewire.on('deleteModalOpen', () => {
-        $('#deleteModal').modal('show');
-    }); 
-    window.livewire.on('deleteModalClose', () => {
-        $('#deleteModal').modal('hide');
-    });
-   
-</script>
-
-@endsection
+        });
+    
+    </script>
+    
+    @endsection

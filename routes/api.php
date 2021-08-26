@@ -49,6 +49,7 @@ Route::group(['prefix' => 'v1'], function () {
         Route::post('report', [UserController::class, 'report']);
         Route::post('subscription', [UserController::class, 'subscription']);
         Route::post('update', [UserController::class, 'update']);
+        Route::get('my-notifications', [UserController::class, 'myNotification']);
        
 
         Route::get('real-estate-types', [ConstantController::class, 'getRealEstateType']);

@@ -43,10 +43,10 @@
                                         sortDirection="{{$sortDirection}}">
                                     </x-sort>
                                 </th>   
-                                <th wire:click="sortBy('days')" data-sort="{{$sortDirection}}"
+                                <th wire:click="sortBy('count')" data-sort="{{$sortDirection}}"
                                     class="min-w-90px">
-                                    {{__("Days")}}
-                                    <x-sort field="days" sortBy="{{$sortBy}}"
+                                    {{__("Count")}}
+                                    <x-sort field="count" sortBy="{{$sortBy}}"
                                         sortDirection="{{$sortDirection}}">
                                     </x-sort>
                                 </th>
@@ -74,7 +74,7 @@
                                 <td>{{$attribute->en_name}}</td>
                                 <td>{{$attribute->en_description}}</td>
                                 <td>{{$attribute->price}}</td>
-                                <td>{{$attribute->days}}</td>
+                                <td>{{$attribute->count}}</td>
                                 <td>{!!isActive($attribute->status)!!}</td>
                               
                                 <td>{{$attribute->created_at->format('m-d-Y')}}</td>

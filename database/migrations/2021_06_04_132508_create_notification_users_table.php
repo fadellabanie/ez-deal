@@ -18,6 +18,7 @@ class CreateNotificationUsersTable extends Migration
             $table->unsignedBigInteger('user_id')->nullable();
             $table->string('title')->nullable();
             $table->string('body')->nullable();
+            $table->dateTime('read_at')->nullable();
             $table->string('status')->default('pending');
             $table->timestamps();
         });

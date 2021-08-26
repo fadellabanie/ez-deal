@@ -23,12 +23,14 @@ class HomeController extends Controller
      */
     public function home()
     {
+    
         if (auth('api')->check()) {
-          $city_id =  Auth::user()->city_id ;
+          $city_id =  auth('api')->user()->city_id ;
         }else{
             $city_id = 1;
         }
-       
+      
+
         $cityStories = Story::MyCityStory($city_id)->WhereDate('end_date', '>=', now())->active()->get();
         $data['city_stories'] = StoryTinyResource::collection($cityStories);
 

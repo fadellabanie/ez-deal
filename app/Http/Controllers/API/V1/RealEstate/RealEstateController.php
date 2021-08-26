@@ -15,6 +15,7 @@ use App\Http\Requests\Api\RealEstates\UpdateRequest;
 use App\Http\Resources\RealEstates\RealEstateCollection;
 use App\Http\Resources\RealEstates\RealEstateLargeResource;
 use App\Http\Resources\RealEstatesMap\RealEstateMapCollection;
+use App\Http\Interfaces\Senders\SenderFactory;
 
 class RealEstateController extends Controller
 {
@@ -31,10 +32,10 @@ class RealEstateController extends Controller
     {
 
         $realEstates = RealEstate::when($request->filled('city_id'), function ($q) use ($request) {
-                $q->where('city_id', $request->city_id);
-            })->when($request->filled('realestate_type_id'), function ($q) use ($request) {
-                $q->where('realestate_type_id', $request->realestate_type_id);
-            })
+            $q->where('city_id', $request->city_id);
+        })->when($request->filled('realestate_type_id'), function ($q) use ($request) {
+            $q->where('realestate_type_id', $request->realestate_type_id);
+        })
             ->when($request->filled('contract_type_id'), function ($q) use ($request) {
                 $q->where('contract_type_id', $request->contract_type_id);
             })
@@ -42,11 +43,11 @@ class RealEstateController extends Controller
                 $q->where('name', 'like', '%' . $request->search . '%');
             })
             ->active()->orderBy('type', 'DESC')->paginate();
-           
+
         return new RealestateCollection($realEstates);
     }
 
-     /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -66,7 +67,7 @@ class RealEstateController extends Controller
     public function listOnMap()
     {
         $realEstates = RealEstate::where('city_id', Auth::user()->city_id)->active()->get();
-     
+
         return new RealEstateMapCollection($realEstates);
     }
     /**
@@ -111,7 +112,11 @@ class RealEstateController extends Controller
         }
         $title = __("Create");
         $body = __("Create Real Estate Success wait for Active by Support");
-        $this->send(Auth::user()->device_token, $title, $body);
+
+        $senderFactory = new SenderFactory();
+
+        $senderFactory->initialize('firebase-notification', Auth::user()->device_token, $body, $title);
+
 
         return $this->successStatus(__("Add Real Estate Success"));
     }

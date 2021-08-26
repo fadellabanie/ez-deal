@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Services\SubscriptionService;
 use App\Http\Requests\Api\Auth\LoginRequest;
 use App\Http\Requests\Api\Auth\VerifyRequest;
+use App\Http\Interfaces\Senders\SenderFactory;
 use App\Http\Requests\Api\Auth\RegisterRequest;
 use App\Http\Controllers\API\V1\ConstantController;
 use App\Http\Requests\Api\Auth\ChangePasswordRequest;
@@ -37,7 +38,7 @@ class AuthController extends Controller
             'trading_certification' => $request->trading_certification,
             'password' => bcrypt($request->password),
             'device_token' => $request->device_token,
-          
+
         ]);
         $request['package_id'] = $user->package_id;
         $request['user_id'] = $user->id;
@@ -54,7 +55,8 @@ class AuthController extends Controller
             'device_id' => $request->device_id,
             'device_type' => $request->device_type,
         ]);
-       
+
+
 
         $this->sendCode($request->mobile, $user->id, 'register');
 
@@ -111,10 +113,12 @@ class AuthController extends Controller
             'verification_expiry_minutes' => Carbon::now()->addMinute(5),
         ]);
         $mobile = (int)$mobile;
-        $message = "كود التفعيل الخاص بك هو {$verificationCode}";
+        $message = "Your verification code is: {$verificationCode}";
+
 
         // SMS 
-        // Unifonic::send($mobile, $message);
+        $senderFactory = new SenderFactory();
+        $senderFactory->initialize('sms', $mobile, $message);
 
         return $this->successStatus(__('Send SMS Successfully Please Check Your Phone ' . $verificationCode));
     }
@@ -126,8 +130,8 @@ class AuthController extends Controller
      */
     public function verifyChangePassword(ChangePasswordRequest $request)
     {
-        $user = User::where('mobile',$request->mobile)->first();
-        $this->sendCode($request->mobile,$user->id, 'change-password');
+        $user = User::where('mobile', $request->mobile)->first();
+        $this->sendCode($request->mobile, $user->id, 'change-password');
 
         return $this->successStatus(__('Send SMS Successfully Please Check Your Phone'));
     }
@@ -138,12 +142,10 @@ class AuthController extends Controller
      */
     public function changePassword(Request $request)
     {
-        $user = User::where('mobile',$request->mobile)->first();
+        $user = User::where('mobile', $request->mobile)->first();
         $user->update(['password' => bcrypt($request->new_password)]);
 
         return $this->respondWithItem(new UserResource($user));
-
-        
     }
     /**
      * Check Captains 

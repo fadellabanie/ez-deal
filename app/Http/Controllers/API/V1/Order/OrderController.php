@@ -3,8 +3,6 @@
 namespace App\Http\Controllers\API\V1\Order;
 
 use App\Models\Order;
-use App\Models\RealEstate;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Api\Orders\StoreRequest;
@@ -12,6 +10,7 @@ use App\Http\Resources\Orders\MyOrderCollection;
 use App\Http\Resources\Orders\OrderCollection;
 use App\Http\Requests\Api\Orders\UpdateRequest;
 use App\Http\Resources\Orders\OrderLargeResource;
+use App\Http\Interfaces\Senders\SenderFactory;
 
 class OrderController extends Controller
 {
@@ -55,12 +54,14 @@ class OrderController extends Controller
     {
         $request['user_id'] = Auth::id();
         $request['is_active'] = true;
-       
+
         Order::create($request->all());
 
         $title = __("Create");
         $body = __("Create Order Success");
-        $this->send(Auth::user()->device_token, $title, $body);
+
+        $senderFactory = new SenderFactory();
+        $senderFactory->initialize('firebase-notification', Auth::user()->device_token, $body, $title);
 
         return $this->successStatus(__("Add Order Success"));
     }

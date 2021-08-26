@@ -2,10 +2,8 @@
 
 namespace App\Http\Resources\RealEstates;
 
-use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
 use App\Http\Resources\Constants\ImageResource;
-use phpDocumentor\Reflection\Types\Boolean;
 
 class RealEstateLargeResource extends JsonResource
 {

@@ -2,10 +2,10 @@
 
 namespace App\Http\Resources\RealEstates;
 
-use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Resources\Json\JsonResource;
+use App\Http\Resources\Constants\ImageResource;
 
 class RealEstateTinyResource extends JsonResource
 {
@@ -34,7 +34,7 @@ class RealEstateTinyResource extends JsonResource
             'number_of_views' => $this->number_of_views,
             'is_favorites' => $is_favorites == null ? false : true,
             'type_of_owner' => $this->type_of_owner,
-            'image' => asset($this->medias->first()->image ?? ""),
+            'images' => ImageResource::collection($this->medias),
         ];
     }
 }

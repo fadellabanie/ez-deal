@@ -4,7 +4,7 @@
 
         <div class="card-header mt-5">
             <div class="card-title flex-column">
-                <h3 class="fw-bolder mb-1">{{__("Notifications")}}</h3>
+                <h3 class="fw-bolder mb-1">{{__("Countries")}}</h3>
                 <div class="fs-6 text-gray-400">{{__("Show All")}}</div>
             </div>
         </div>
@@ -17,15 +17,18 @@
                         role="grid">
                         <thead class="fs-7 text-gray-400 text-uppercase">
                             <tr role="row">
+                                <th class="min-w-90px">  {{__("icon")}}</th> 
 
-                                <th wire:click="sortBy('title')" data-sort="{{$sortDirection}}" class="min-w-50px">
-                                    {{__("Tilte")}}
-                                    <x-sort field="title" sortBy="{{$sortBy}}" sortDirection="{{$sortDirection}}">
+                                <th wire:click="sortBy('en_name')" data-sort="{{$sortDirection}}" class="min-w-50px">
+                                    {{__("Name")}}
+                                    <x-sort field="name" sortBy="{{$sortBy}}" sortDirection="{{$sortDirection}}">
                                     </x-sort>
                                 </th>
-                            <th wire:click="sortBy('content')" data-sort="{{$sortDirection}}" class="min-w-50px">
-                                    {{__("Content")}}
-                                    <x-sort field="content" sortBy="{{$sortBy}}" sortDirection="{{$sortDirection}}">
+                                <th wire:click="sortBy('status')" data-sort="{{$sortDirection}}"
+                                    class="min-w-90px">
+                                    {{__("status")}}
+                                    <x-sort field="status" sortBy="{{$sortBy}}"
+                                        sortDirection="{{$sortDirection}}">
                                     </x-sort>
                                 </th>
                                 <th wire:click="sortBy('created_at')" data-sort="{{$sortDirection}}" class="min-w-90px">
@@ -38,11 +41,24 @@
                             </tr>
                         </thead>
                         <tbody class="fs-6">
-                            @forelse($notifications as $key => $notification)
+                            @forelse($countries as $key => $country)
                             <tr wire:loading.class="opacity-50">
-                                <td>{{$notification->title}}</td>
-                                <td>{{$notification->content}}</td>
-                                <td>{{$notification->created_at->format('m-d-Y')}}</td>
+                                <td>
+                                    <div class="cursor-pointer symbol symbol-30px symbol-md-40px">
+                                        <img src="{{asset($country->icon)}}">
+                                    </div>
+                                </td>
+                                <td>{{$country->en_name}}</td>
+                                <td>{!!isActive($country->status)!!}</td>
+                              
+                                <td>{{$country->created_at->format('m-d-Y')}}</td>
+                                <td>
+                                    <div class="d-flex justify-content-end flex-shrink-0">
+                                        <x-edit-button href="{{route('admin.countries.edit',$country)}}"></x-edit-button>
+                                        <x-delete-record-button wire:click="confirm({{ $country->id }})">
+                                        </x-delete-record-button>
+                                    </div>
+                                </td>
                             </tr>
                             @empty
                             <tr>
@@ -60,11 +76,12 @@
                     </div>
                     <div
                         class="col-sm-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-end">
-                        {{$notifications->links()}}
+                        {{$countries->links()}}
                     </div>
                 </div>
             </div>
             <!--end::Table-->
+
             <!--end::Table container-->
         </div>
         <!--end::Card body-->

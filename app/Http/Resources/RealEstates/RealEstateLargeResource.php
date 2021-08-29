@@ -4,6 +4,7 @@ namespace App\Http\Resources\RealEstates;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 use App\Http\Resources\Constants\ImageResource;
+use App\Models\RealEstate;
 
 class RealEstateLargeResource extends JsonResource
 {
@@ -15,9 +16,15 @@ class RealEstateLargeResource extends JsonResource
      */
     public function toArray($request)
     {
-
+        $real_estate_count = RealEstate::where('user_id',$this->user->id)->count();
         return [
             'id' => $this->id,
+            'user' => [
+               'username' => $this->user->name,
+               'mobile' => $this->user->mobile,
+               'avatar' => asset($this->avatar),
+               'real_estate_count' => $real_estate_count,
+            ],
             'name' => $this->name,
             'city' => $this->city->name,
             'country' => $this->country->name,
@@ -29,7 +36,7 @@ class RealEstateLargeResource extends JsonResource
             'street_width' => $this->street_width,
             'street_number' => $this->street_number,
             'view' => $this->view->name,
-            'neighborhood' => $this->neighborhood,
+            'neighborhood' => $this->neighborhood ?? "",
             'age_building' => $this->age_building,
             'video_url' => $this->video_url,
             'elevator' => (Boolean)$this->elevator,
@@ -44,6 +51,7 @@ class RealEstateLargeResource extends JsonResource
             'lng' => $this->lng,
             'address' => $this->address,
             'number_of_views' => $this->number_of_views,
+            'created_at' => $this->created_at->format('Y-m-d'),
             'images' => ImageResource::collection($this->medias),
 
         ];

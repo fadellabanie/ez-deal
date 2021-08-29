@@ -15,7 +15,7 @@ class FavoriteController extends Controller
     public function myFavorite()
     {
         $favorites =  Favorite::with('realEstate')->Owner()->get();
-     
+       
         return new FavoriteCollection($favorites);
     } 
 

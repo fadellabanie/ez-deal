@@ -128,7 +128,7 @@
                             <select wire:model="city_id" aria-label="Select a attributes" data-control="select2"
                                 data-placeholder="Select a attributes..." id="city_id" name="city_id"
                                 class="form-select form-select-solid form-select-lg fw-bold @error('city_id') is-invalid @enderror">
-                                <option value="">Select a city...</option>
+                                <option>{{__("Select...")}}</option>
                                 @foreach (cities() as $city)
                                 <option value="{{$city->id}}">{{$city->en_name}}</option>
                                 @endforeach

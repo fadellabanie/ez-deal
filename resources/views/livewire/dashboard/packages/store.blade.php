@@ -60,7 +60,7 @@
                                 data-placeholder="Select a attributes..." id="attribute_ids" name="attribute_ids"
                                 class="form-select form-select-solid form-select-lg fw-bold @error('attribute_ids') is-invalid @enderror"
                                 multiple="multiple">
-                                <option value="">Select a Attribute...</option>
+                                <option>{{__("Select...")}}</option>
                                 @foreach ($attributes as $attribute)
                                 <option value="{{$attribute->id}}">{{$attribute->en_name}}</option>
                                 @endforeach

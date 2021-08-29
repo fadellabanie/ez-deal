@@ -2,21 +2,19 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\city;
+use Illuminate\Http\Request;
 
-class CityController extends Controller
+class NotificationController extends Controller
 {
-     /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        return view('dashboard.cities.index');
-
+        return view('dashboard.notifications.index');
     }
 
     /**
@@ -26,7 +24,7 @@ class CityController extends Controller
      */
     public function create()
     {
-        return view('dashboard.cities.create');
+        return view('dashboard.notifications.create');
 
     }
 
@@ -49,7 +47,7 @@ class CityController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
@@ -58,10 +56,9 @@ class CityController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(City $city)
+    public function edit($id)
     {
-        return view('dashboard.cities.edit',compact('city'));
-
+        //
     }
 
     /**

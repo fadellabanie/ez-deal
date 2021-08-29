@@ -43,12 +43,13 @@
                         <div class="col-lg-8">
                             <div class="row">
                                 <div class="col-lg-2 fv-row">
-                                    <select wire:model="country_code" aria-label="Select a country_code" data-control="select2"
-                                    data-placeholder="Select a country_code..." id="country_code" name="country_code"
-                                    class="form-select form-select-solid form-select-lg fw-bold @error('country_code') is-invalid @enderror">
-                                    <option value="">Select a country_code...</option>
-                                    <option value="SA">Saudi Arabia</option>
-                                    <option value="SA">Saudi Arabia</option>
+                                    <select wire:model="country_code" aria-label="Select a country_code"
+                                        data-control="select2" data-placeholder="Select a country_code..."
+                                        id="country_code" name="country_code"
+                                        class="form-select form-select-solid form-select-lg fw-bold @error('country_code') is-invalid @enderror">
+                                        <option>{{__("Select...")}}</option>
+                                        <option value="SA">Saudi Arabia</option>
+                                        <option value="SA">Saudi Arabia</option>
                                 </div>
                                 <div class="col-lg-5 fv-row">
                                     <x-input type="tel" field="mobile" wire:model="mobile" placeholder="Mobile" />
@@ -100,7 +101,7 @@
                             <select wire:model="city_id" aria-label="Select a attributes" data-control="select2"
                                 data-placeholder="Select a attributes..." id="city_id" name="city_id"
                                 class="form-select form-select-solid form-select-lg fw-bold @error('city_id') is-invalid @enderror">
-                                <option value="">Select a city...</option>
+                                <option>{{__("Select...")}}</option>
                                 @foreach (cities() as $city)
                                 <option value="{{$city->id}}">{{$city->en_name}}</option>
                                 @endforeach
@@ -121,7 +122,7 @@
                             <select wire:model="type" aria-label="Select a attributes" data-control="select2"
                                 data-placeholder="Select a attributes..." id="type" name="type"
                                 class="form-select form-select-solid form-select-lg fw-bold @error('type') is-invalid @enderror">
-                                <option value="">Select a Type...</option>
+                                <option>{{__("Select...")}}</option>
                                 @foreach (users() as $user)
                                 <option value="{{$user->name}}">{{$user->name}}</option>
                                 @endforeach

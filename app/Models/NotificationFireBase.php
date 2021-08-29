@@ -10,8 +10,6 @@ class NotificationFireBase extends Model
     use HasFactory;
     public $table = 'notifications';
     protected $fillable = [
-        'type', 'title', 'content', 'status', 
+        'type', 'title', 'content', 'status',
     ];
-
-     
 }

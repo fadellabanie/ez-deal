@@ -52,7 +52,7 @@
                             <select name="country" aria-label="Select a Country" data-control="select2"
                                 data-placeholder="Select a country..."
                                 class="form-select form-select-solid form-select-lg fw-bold">
-                                <option value="">Select a Country...</option>
+                                <option>{{__("Select...")}}</option>
                                 <option data-kt-flag="flags/zimbabwe.svg" value="ZW">Zimbabwe</option>
                             </select>
                         </div>

@@ -115,7 +115,6 @@ class AuthController extends Controller
         $mobile = (int)$mobile;
         $message = "Your verification code is: {$verificationCode}";
 
-
         // SMS 
         $senderFactory = new SenderFactory();
         $senderFactory->initialize('sms', $mobile, $message);

@@ -1,92 +1,79 @@
-<div class="row">
-    <div class="col-lg-12">
-        <!--begin::Card-->
-        <div class="card card-custom gutter-b example example-compact">
-            <div class="card-header">
-                <h3 class="card-title">{{__("Send notification Passenger")}}</h3>
-            </div>
-            <!--begin::Form-->
-            <form class="form">
-                <div class="card-body">
-                    <div class="form-group row">
-                        <div class="col-lg-4">
-                            <x-label>{{__("Title")}}</x-label>
-                            <x-input wire:model.lazy="title" type="text" field="title"
-                                placeholder="{{__('Enter Title')}}">
-                            </x-input>
-                        </div>
-                        <div class="col-lg-8">
-                            <x-label>{{__("Content")}}</x-label>
-                            <x-input wire:model.lazy="content" type="text" field="content"
-                                placeholder="{{__('Enter Content')}}"></x-input>
-                        </div>
-                    </div>
-              
-                    <div class="form-group row" wire:ignore>
-                        
-                        <div class="col-lg-6">
-                            <label class="col-form-label col-lg-3 col-sm-12">{{ __('Passengers') }}</label>
+<div>
+    <x-alert id='alert' class="alert-success"></x-alert>
 
-                            <select class="form-control select2 @error('user_ids') is-invalid @enderror"
-                                id="kt_select2_4" name="user_ids" multiple="multiple">
-                                @foreach ($passengers as $passenger)
-                                <option value="{{$passenger->device_token}}">{{$passenger->full_name}}--{{$passenger->mobile}}
-                                </option>
-                                @endforeach
+    <div class="card mb-5 mb-xl-10">
+        <div class="card-header border-0 cursor-pointer" role="button" data-bs-toggle="collapse"
+            data-bs-target="#kt_account_profile_details" aria-expanded="true"
+            aria-controls="kt_account_profile_details">
+            <div class="card-title m-0">
+                <h3 class="fw-bolder m-0">{{__("Send notification")}}</h3>
+            </div>
+        </div>
+        <div id="kt_account_profile_details" class="collapse show">
+            <form class="form">
+                <div class="card-body border-top p-9">
+                    <!--begin::Input group-->
+                    <div class="row mb-6">
+                        <x-label class="required">{{__("Title")}}</x-label>
+                        <div class="col-lg-8">
+                            <div class="row">
+                                <div class="col-lg-6 fv-row">
+                                    <x-input wire:model.lazy="title" type="text" field="title"
+                                        placeholder="{{__('Enter Title')}}">
+                                    </x-input>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end::Input group-->
+                    <!--begin::Input group-->
+                    <div class="row mb-6">
+                        <x-label class="required">{{__("Content")}}</x-label>
+                        <div class="col-lg-8">
+                            <div class="row">
+                                <div class="col-lg-6 fv-row">
+                                    <x-input wire:model.lazy="content" type="text" field="content"
+                                        placeholder="{{__('Enter Content')}}"></x-input>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end::Input group-->
+                    <!--begin::Input group-->
+                    <div class="row mb-6">
+                        <x-label>
+                            <span class="required">{{__("Type")}}</span>
+                            <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip"
+                                title="Phone number must be active"></i>
+                        </x-label>
+                        <div class="col-lg-8 fv-row" wire:ignore>
+                            <select wire:model="type" aria-label="Select a country" data-control="select2"
+                                data-placeholder="Select a country..." id="type" name="type"
+                                class="form-select form-select-solid form-select-lg fw-bold @error('type') is-invalid @enderror">
+                                <option>{{__("Select...")}}</option>
+                                <option value="sms">{{__("SMS")}}</option>
+                                <option value="firebase-notification">{{__("Notification")}}</option>
                             </select>
-                            <x-error field="user_ids" />
                         </div>
-                     
+                        <x-error field="type" />
                     </div>
+                    <!--end::Input group-->
                 </div>
-                <div class="card-footer">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <button type="button" class="btn btn-primary mr-2"
-                                wire:click.prevent="sendNotification">{{__("Save")}}</button>
-                        </div>
-                        <div class="col-lg-6 text-lg-right">
-                            <button type="reset" class="btn btn-danger">{{__("Delete")}}</button>
-                        </div>
-                    </div>
+                <!--end::Card body-->
+                <div class="card-footer d-flex justify-content-end py-6 px-9">
+                    <a href="{{route('admin.notifications.index')}}"
+                        class="btn btn-light btn-active-light-primary me-2">{{__("Back")}}</a>
+                    <button type="button" class="btn btn-primary" wire:click.prevent="submit()"
+                        wire:loading.attr="disabled"
+                        wire:loading.class="spinner spinner-white spinner-left">{{__("Save")}}</button>
                 </div>
             </form>
-            <!--end::Form-->
         </div>
     </div>
 </div>
-<!--end::Card-->
 
 @section('scripts')
-<script src="{{asset('dashboard/assets/js/pages/crud/forms/widgets/select2.js')}}"></script>
-<script type="text/javascript">
-    $(document).ready(function() {
-                $('#kt_select2_4').select2({
-                    placeholder: '',
-                }).on('change', function () {
-                    @this.user_ids = $(this).val();
-                });
+<script>
 
-                $('#kt_select2_1').select2({
-                    placeholder: '',
-                }).on('change', function () {
-                    @this.user_ids = $(this).val();
-                });
-            });
-
-    window.livewire.on('reloadData', () => {
-            $('.select2').selectpicker(["refresh"]);
-        });
-
-    //   $('#captainsSelect').hide();
-//     $('#passengersSelect').hide();
-    $(".select2").select2({
-        tags: true,
-        tokenSeparators: [',', ' ']
-    })
-   
-
-    
 </script>
-
 @endsection

@@ -45,6 +45,8 @@ class FavoriteTinyResource extends JsonResource
             'lng' => $this->realEstate->lng,
             'address' => $this->realEstate->address,
             'number_of_views' => $this->realEstate->number_of_views,
+            'created_at' => $this->realEstate->created_at->format('Y-m-d'),
+
             'images' => ImageResource::collection($this->realEstate->medias),
         ];
     }

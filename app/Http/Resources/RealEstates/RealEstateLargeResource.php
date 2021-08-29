@@ -36,7 +36,7 @@ class RealEstateLargeResource extends JsonResource
             'street_width' => $this->street_width,
             'street_number' => $this->street_number,
             'view' => $this->view->name,
-            'neighborhood' => $this->neighborhood,
+            'neighborhood' => $this->neighborhood ?? "",
             'age_building' => $this->age_building,
             'video_url' => $this->video_url,
             'elevator' => (Boolean)$this->elevator,

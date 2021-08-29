@@ -30,7 +30,7 @@ class FavoriteTinyResource extends JsonResource
             'street_width' => $this->realEstate->street_width,
             'street_number' => $this->realEstate->street_number,
             'view' => $this->realEstate->view->name,
-            'neighborhood' => $this->realEstate->neighborhood,
+            'neighborhood' => $this->neighborhood ?? "",
             'age_building' => $this->realEstate->age_building,
             'video_url' => $this->realEstate->video_url,
             'elevator' => (Boolean)$this->realEstate->elevator,

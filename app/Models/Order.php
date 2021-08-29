@@ -48,6 +48,10 @@ class Order extends Model
     {
         return $this->belongsTo(City::class);
     }
+     public function country()
+    {
+        return $this->belongsTo(Country::class);
+    }
     public function user()
     {
         return $this->belongsTo(User::class);

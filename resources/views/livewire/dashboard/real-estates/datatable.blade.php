@@ -92,14 +92,21 @@
 
 
                                 <td>
+                                    @if($realEstate->user_id == 0)
+                                        <span
+                                        class="text-muted fw-bold text-muted d-block fs-7">{{__("Add By Admin")}}</span>
+                                    @else
+
+                                   
                                     <div class="d-flex align-items-center">
                                         <div class="d-flex justify-content-start flex-column">
-                                            <a href="{{route('admin.users.show',$realEstate->user)}}"
-                                                class="text-dark fw-bolder text-hover-primary fs-6">{{$realEstate->user->name}}</a>
+                                            <a href="{{route('admin.users.show',$realEstate->user_id)}}"
+                                                class="text-dark fw-bolder text-hover-primary fs-6">{{$realEstate->user->name ?? ""}}</a>
                                             <span
-                                                class="text-muted fw-bold text-muted d-block fs-7">{{$realEstate->user->mobile}}</span>
+                                                class="text-muted fw-bold text-muted d-block fs-7">{{$realEstate->user->mobile ?? ""}}</span>
                                         </div>
                                     </div>
+                                @endif
                                 </td>
                                 <td>{{$realEstate->contractType->name}}</td>
                                 <td>{{$realEstate->realestateType->name}}</td>

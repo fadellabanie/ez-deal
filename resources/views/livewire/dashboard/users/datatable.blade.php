@@ -112,6 +112,7 @@
         </div>
         <!--end::Card body-->
     </div>
+    <x-delete-modal></x-delete-modal>
 
 </div>
 

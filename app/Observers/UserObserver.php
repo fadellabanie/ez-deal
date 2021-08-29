@@ -17,7 +17,6 @@ class UserObserver
     public function created(User $user)
     {
 
-
         $package =  Package::whereId(4)->first(); ## bromo
 
         $attributes = $package->attributes()->pluck('count', 'id')->toArray();

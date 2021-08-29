@@ -47,6 +47,8 @@ class Datatable extends Component
         $row->delete();
 
         $this->emit('closeDeleteModal'); // Close model to using to jquery
+        session()->flash('alert', __('Saved Deleted.'));
+
     }
     public function render()
     {

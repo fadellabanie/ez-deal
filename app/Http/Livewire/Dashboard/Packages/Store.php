@@ -14,8 +14,6 @@ class Store extends Component
 
     public $ar_name, $en_name, $ar_description, $en_description;
     public $color, $price, $days,$attribute_ids, $icon, $status;
-  
-
 
     protected $rules = [
 

@@ -6,6 +6,8 @@
 
 use Carbon\Carbon;
 use App\Models\City;
+use App\Models\View;
+use App\Models\Country;
 use App\Models\ContractType;
 use App\Models\RealestateType;
 use Illuminate\Support\Facades\Storage;
@@ -25,7 +27,21 @@ if (!function_exists('cities')) {
 		return $cities;
 	}
 }
+if (!function_exists('countries')) {
+	function countries()
+	{
+		$countries = Country::get();
+		return $countries;
+	}
+}
 
+if (!function_exists('views')) {
+	function views()
+	{
+		$views = View::get();
+		return $views;
+	}
+}
 if (!function_exists('contractTypes')) {
 	function contractTypes()
 	{
@@ -66,11 +82,17 @@ if (!function_exists('realEstatesType')) {
 if (!function_exists('users')) {
 	function users()
 	{
-		return [
-			'name' => 'admin',
-			'name' => 'personal',
-			'name' => 'company',
-		];
+		dd( [
+			[
+				'name' => 'admin',
+			],
+			[
+				'name' => 'personal',
+			],
+			[
+				'name' => 'company',
+			],
+		]);
 	}
 }
 if (!function_exists('uploadToPublic')) {

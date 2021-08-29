@@ -14,11 +14,12 @@
                 <div class="card-body border-top p-9">
                     <!--begin::Input group-->
                     <div class="row mb-6">
-                        <x-label class="required">{{__("Package Name")}}</x-label>
+                        <x-label class="required">{{__("UserName")}}</x-label>
                         <div class="col-lg-8">
                             <div class="row">
-                                <div class="col-lg-6 fv-row">
-                                    <x-input type="text" field="name" wire:model="name" placeholder="Name" />
+                                <div class="col-lg-12 fv-row">
+                                    <x-input type="text" field="name" wire:model="name"
+                                        placeholder="name" />
                                 </div>
                             </div>
                         </div>
@@ -30,30 +31,70 @@
                         <x-label class="required">{{__("Email")}}</x-label>
                         <div class="col-lg-8">
                             <div class="row">
-                                <div class="col-lg-6 fv-row">
+                                <div class="col-lg-12 fv-row">
                                     <x-input type="email" field="email" wire:model="email" placeholder="Email" />
                                 </div>
                             </div>
                         </div>
                     </div>
                     <!--end::Input group-->
+
+                    <!--begin::Input group-->
+                    <div class="row mb-6">
+                        <x-label>
+                            <span class="required">{{__("Type")}}</span>
+                            <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip"
+                                title="Phone number must be active"></i>
+                        </x-label>
+                        <div class="col-lg-8 fv-row">
+                            <select wire:model="type" aria-label="Select a attributes" data-control="select2"
+                                data-placeholder="Select a attributes..." id="type" name="type"
+                                class="form-select form-select-solid form-select-lg fw-bold @error('type') is-invalid @enderror">
+                                <option value="">Select a Type...</option>
+                                <option value="admin">{{__("Admin")}}</option>
+                                <option value="personal">{{__("personal")}}</option>
+                                <option value="company">{{__("company")}}</option>
+                            </select>
+                            <x-error field="type" />
+                        </div>
+
+                    </div>
+                    <!--end::Input group-->
+                    @if ($type == 'company')
+                    <!--begin::Input group-->
+                    <div class="row mb-6">
+                        <x-label class="required">{{__("Trading Certification")}}</x-label>
+                        <div class="col-lg-8">
+                            <div class="row">
+                                <div class="col-lg-12 fv-row">
+                                    <x-input type="text" field="trading_certification"
+                                        wire:model="trading_certification" placeholder="Trading Certification" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end::Input group-->
+                    @endif
+
                     <!--begin::Input group-->
                     <div class="row mb-6">
                         <x-label class="required">{{__("mobile")}}</x-label>
                         <div class="col-lg-8">
                             <div class="row">
-                                <div class="col-lg-2 fv-row">
-                                    <select wire:model="country_code" aria-label="Select a country_code" data-control="select2"
-                                    data-placeholder="Select a country_code..." id="country_code" name="country_code"
-                                    class="form-select form-select-solid form-select-lg fw-bold @error('country_code') is-invalid @enderror">
-                                    <option value="">Select a country_code...</option>
-                                    <option value="SA">Saudi Arabia</option>
-                                    <option value="SA">Saudi Arabia</option>
+                                <div class="col-lg-4 fv-row">
+                                    <select wire:model="country_code" aria-label="Select a country_code"
+                                        data-control="select2" data-placeholder="Select a country_code..."
+                                        id="country_code" name="country_code"
+                                        class="form-select form-select-solid form-select-lg fw-bold @error('country_code') is-invalid @enderror">
+                                        <option value="">Select a country_code...</option>
+                                        <option value="SA">Saudi Arabia</option>
+                                        <option value="SA">Saudi Arabia</option>
+                                    </select>
                                 </div>
-                                <div class="col-lg-5 fv-row">
+                                <div class="col-lg-4 fv-row">
                                     <x-input type="tel" field="mobile" wire:model="mobile" placeholder="Mobile" />
                                 </div>
-                                <div class="col-lg-5 fv-row">
+                                <div class="col-lg-4 fv-row">
                                     <x-input type="tel" field="whatsapp_mobile" wire:model="whatsapp_mobile"
                                         placeholder="Whatsapp Mobile" />
                                 </div>
@@ -66,7 +107,7 @@
                         <x-label class="required">{{__("Password")}}</x-label>
                         <div class="col-lg-8">
                             <div class="row">
-                                <div class="col-lg-6 fv-row">
+                                <div class="col-lg-12 fv-row">
                                     <x-input type="password" field="password" wire:model="password"
                                         placeholder="Password" />
                                 </div>
@@ -75,19 +116,6 @@
                     </div>
                     <!--end::Input group-->
 
-                    <!--begin::Input group-->
-                    <div class="row mb-6">
-                        <x-label class="required">{{__("Trading Certification")}}</x-label>
-                        <div class="col-lg-8">
-                            <div class="row">
-                                <div class="col-lg-6 fv-row">
-                                    <x-input type="text" field="trading_certification"
-                                        wire:model="trading_certification" placeholder="Trading Certification" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--end::Input group-->
 
                     <!--begin::Input group-->
                     <div class="row mb-6">
@@ -96,7 +124,7 @@
                             <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip"
                                 title="Phone number must be active"></i>
                         </x-label>
-                        <div class="col-lg-8 fv-row" wire:ignore>
+                        <div class="col-lg-8 fv-row">
                             <select wire:model="city_id" aria-label="Select a attributes" data-control="select2"
                                 data-placeholder="Select a attributes..." id="city_id" name="city_id"
                                 class="form-select form-select-solid form-select-lg fw-bold @error('city_id') is-invalid @enderror">
@@ -105,31 +133,11 @@
                                 <option value="{{$city->id}}">{{$city->en_name}}</option>
                                 @endforeach
                             </select>
+                            <x-error field="city_id" />
                         </div>
-                        <x-error field="city_id" />
                     </div>
                     <!--end::Input group-->
 
-                    <!--begin::Input group-->
-                    <div class="row mb-6">
-                        <x-label>
-                            <span class="required">{{__("Type")}}</span>
-                            <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip"
-                                title="Phone number must be active"></i>
-                        </x-label>
-                        <div class="col-lg-8 fv-row" wire:ignore>
-                            <select wire:model="type" aria-label="Select a attributes" data-control="select2"
-                                data-placeholder="Select a attributes..." id="type" name="type"
-                                class="form-select form-select-solid form-select-lg fw-bold @error('type') is-invalid @enderror">
-                                <option value="">Select a Type...</option>
-                                @foreach (users() as $user)
-                                <option value="{{$user->name}}">{{$user->name}}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <x-error field="city_id" />
-                    </div>
-                    <!--end::Input group-->
 
                     <!--begin::Input group-->
                     <div class="row mb-0">
@@ -164,7 +172,7 @@
                                         </svg>
                                         <!--end::Svg Icon-->
                                     </span>
-                                    <x-input type="file" id="avatar" wire:model.lazy="avatar" field="avatar"
+                                    <x-input type="file" id="icon" wire:model.lazy="avatar" field="avatar"
                                         style="display:none" />
                                 </label>
 

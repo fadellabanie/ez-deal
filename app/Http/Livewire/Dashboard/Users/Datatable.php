@@ -13,6 +13,7 @@ class Datatable extends Component
 
     protected $paginationTheme = 'bootstrap';
     public $search;
+    public $data_id;
     public $type = 'all';
     public $city_id  = 'all';
     public $count = 20;
@@ -36,6 +37,7 @@ class Datatable extends Component
     public function confirm($id)
     {
         $this->emit('openDeleteModal'); // Open model to using to jquery
+      
         $this->data_id = $id;
     }
 
@@ -46,7 +48,6 @@ class Datatable extends Component
 
         $this->emit('closeDeleteModal'); // Close model to using to jquery
     }
-
     public function render()
     {
         return view('livewire.dashboard.users.datatable', [
@@ -67,7 +68,7 @@ class Datatable extends Component
                 ->orSearch('email', $this->search)
                 ->select(['id','name','avatar','email','mobile','type','city_id','created_at'])
                 ->orderBy($this->sortBy, $this->sortDirection)
-                ->paginate(2),
+                ->paginate($this->count),
         ]);
     }
 }

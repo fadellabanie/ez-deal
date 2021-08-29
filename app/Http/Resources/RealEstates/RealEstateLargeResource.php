@@ -51,6 +51,7 @@ class RealEstateLargeResource extends JsonResource
             'lng' => $this->lng,
             'address' => $this->address,
             'number_of_views' => $this->number_of_views,
+            'created_at' => $this->created_at->format('Y-m-d'),
             'images' => ImageResource::collection($this->medias),
 
         ];

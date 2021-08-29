@@ -148,7 +148,7 @@ class RealEstateController extends Controller
      */
     public function show($id)
     {
-        $realEstate = RealEstate::whereId($id)->active()->first();
+        $realEstate = RealEstate::with('user')->whereId($id)->active()->first();
         if (!$realEstate)  return $this->respondNoContent();
 
         $realEstate->increment('number_of_views', 1);

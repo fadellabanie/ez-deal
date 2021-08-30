@@ -23,7 +23,7 @@ class CreateRealestatesTable extends Migration
             $table->unsignedBigInteger('country_id')->index();
             $table->string('name');
             $table->string('neighborhood');
-            $table->float('price');
+            $table->decimal('price',10);
             $table->float('space');
             $table->float('number_building');
             $table->float('age_building');

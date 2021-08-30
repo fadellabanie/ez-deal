@@ -22,7 +22,7 @@ class CreateOrdersTable extends Migration
             $table->unsignedBigInteger('city_id')->index();
             $table->unsignedBigInteger('country_id')->index();
             $table->string('name');
-            $table->float('price');
+            $table->decimal('price',10);
             $table->float('space');
             $table->float('number_building');
             $table->float('age_building');

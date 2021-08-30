@@ -3,7 +3,6 @@
 namespace App\Http\Requests\Api\Auth;
 
 use App\Http\Requests\Api\APIRequest;
-use App\Rules\Phone;
 
 class LoginRequest extends APIRequest
 {
@@ -25,8 +24,8 @@ class LoginRequest extends APIRequest
     public function rules()
     {
         return [
-            'mobile' =>  ['required','unique:users,mobile',new Phone],
-            'password' => 'required|min:8|max:15',
+            'mobile' =>'required|exists:users,mobile',
+            'password' => 'required',
         ];
     }
 }

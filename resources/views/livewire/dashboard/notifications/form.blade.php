@@ -17,7 +17,7 @@
                         <x-label class="required">{{__("Title")}}</x-label>
                         <div class="col-lg-8">
                             <div class="row">
-                                <div class="col-lg-6 fv-row">
+                                <div class="col-lg-12 fv-row">
                                     <x-input wire:model.lazy="title" type="text" field="title"
                                         placeholder="{{__('Enter Title')}}">
                                     </x-input>
@@ -31,7 +31,7 @@
                         <x-label class="required">{{__("Content")}}</x-label>
                         <div class="col-lg-8">
                             <div class="row">
-                                <div class="col-lg-6 fv-row">
+                                <div class="col-lg-12 fv-row">
                                     <x-input wire:model.lazy="content" type="text" field="content"
                                         placeholder="{{__('Enter Content')}}"></x-input>
                                 </div>
@@ -48,14 +48,43 @@
                         </x-label>
                         <div class="col-lg-8 fv-row" wire:ignore>
                             <select wire:model="type" aria-label="Select a country" data-control="select2"
-                                data-placeholder="Select a country..." id="type" name="type"
+                                data-placeholder="Select a type..." id="type" name="type"
                                 class="form-select form-select-solid form-select-lg fw-bold @error('type') is-invalid @enderror">
-                                <option>{{__("Select...")}}</option>
                                 <option value="sms">{{__("SMS")}}</option>
                                 <option value="firebase-notification">{{__("Notification")}}</option>
                             </select>
                         </div>
                         <x-error field="type" />
+                    </div>
+                    <!--end::Input group-->
+                 
+                    <!--begin::Input group-->
+                    <div class="row mb-6">
+                        <x-label>
+                            <span class="required">{{__("users")}}</span>
+                            <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip"
+                                title="Phone number must be active"></i>
+                        </x-label>
+                        <div class="col-lg-8 fv-row" wire:ignore>
+                            <select wire:model="users" aria-label="Select a country" data-control="select2"
+                                data-placeholder="Select a country..." id="users" name="users"
+                                class="form-select form-select-solid form-select-lg fw-bold @error('users') is-invalid @enderror">
+                                <option>{{__("Select...")}}</option>
+                                @if ($type == 'sms')
+                                @foreach ($members as $member)
+                                <option value="{{$member->mobile}}">{{$member->name . $member->mobile }}</option>
+                                @endforeach
+                                @else
+                                @foreach ($members as $member)
+
+                                <option value="{{$member->device_token}}">{{$member->name . $member->mobile }}</option>
+                                @endforeach
+
+                                @endif
+
+                            </select>
+                        </div>
+                        <x-error field="users" />
                     </div>
                     <!--end::Input group-->
                 </div>

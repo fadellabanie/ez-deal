@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Api\Auth;
 
+use App\Rules\Phone;
 use App\Http\Requests\Api\APIRequest;
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -28,7 +29,7 @@ class RegisterRequest extends APIRequest
             'username' => 'required|min:4|max:100',
             'type' =>  'required|in:personal,company',
             'email' =>  'required|unique:users,email',
-            'mobile' =>  'required|unique:users,mobile',
+            'mobile' =>  ['required','unique:users,mobile',new Phone],
             'password' => 'required|min:8|max:15',
             'device_token' => 'required',
             'country_code' => 'required',

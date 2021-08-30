@@ -1,13 +1,11 @@
 @extends('layouts.admin')
 
-@section('title',__('Real Estate'))
+@section('title',__('Notifications'))
 @section('content')
 
 <div class="post d-flex flex-column-fluid" id="kt_post">
     <div id="kt_content_container" class="container">
-     
-
-        @livewire('dashboard.real-estates.store')
+        @livewire('dashboard.notifications.form')
     </div>
 </div>
 

@@ -18,23 +18,9 @@
                         <thead class="fs-7 text-gray-400 text-uppercase">
                             <tr role="row">
 
-                                <th wire:click="sortBy('title')" data-sort="{{$sortDirection}}" class="min-w-50px">
-                                    {{__("Tilte")}}
-                                    <x-sort field="title" sortBy="{{$sortBy}}" sortDirection="{{$sortDirection}}">
-                                    </x-sort>
-                                </th>
-                            <th wire:click="sortBy('content')" data-sort="{{$sortDirection}}" class="min-w-50px">
-                                    {{__("Content")}}
-                                    <x-sort field="content" sortBy="{{$sortBy}}" sortDirection="{{$sortDirection}}">
-                                    </x-sort>
-                                </th>
-                                <th wire:click="sortBy('created_at')" data-sort="{{$sortDirection}}" class="min-w-90px">
-                                    {{__("Regester")}}
-                                    <x-sort field="created_at" sortBy="{{$sortBy}}" sortDirection="{{$sortDirection}}">
-                                    </x-sort>
-                                </th>
-                                <th class="min-w-50px text-end" style="width: 87.075px;">{{__("Action")}}
-                                </th>
+                                <th>{{__("Tilte")}}</th>
+                                <th>{{__("Content")}}</th>
+                                <th>{{__("Regester")}}</th>
                             </tr>
                         </thead>
                         <tbody class="fs-6">

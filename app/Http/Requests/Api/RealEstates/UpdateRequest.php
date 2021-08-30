@@ -46,8 +46,8 @@ class UpdateRequest extends APIRequest
             'number_card' => 'required',
             'lat' =>  ['required', 'regex:/^[-]?(([0-8]?[0-9])\.(\d+))|(90(\.0+)?)$/'],
             'lng' => ['required', 'regex:/^[-]?((((1[0-7][0-9])|([0-9]?[0-9]))\.(\d+))|180(\.0+)?)$/'],
-            'address' => 'required',
-            'name' => 'required',
+            'address' => 'required|min:5',
+            'name' => 'required|min:5',
             'images.*' => 'required',
         ];
     }

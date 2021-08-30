@@ -47,7 +47,7 @@
                                 </div>
                             </div>
                             <div class="col-lg-4">
-                                <x-label class="required">{{__("Real Estate Type")}}</x-label>
+                                <x-label class="required col-lg-12">{{__("Real Estate Type")}}</x-label>
                                 <div class="col-lg-12">
                                     <x-realestate-type></x-realestate-type>
                                 </div>
@@ -234,21 +234,24 @@
                     <div class="row mb-4">
                         <div class="row fv-row fv-plugins-icon-container">
                             <div class="col-lg-3">
-                                <x-label class="required">{{__("Lat")}}</x-label>
+                                <x-label class="required" wire:ignore>{{__("Lat")}}</x-label>
                                 <div class="col-lg-12">
-                                    <x-input type="text" field="lat" wire:model="lat" placeholder="lat"  dsiable/>
+                                    <x-input type="text" disabled id="lat" field="lat" wire:model="lat"
+                                        placeholder="lat" dsiable />
                                 </div>
                             </div>
-                            <div class="col-lg-3">
+                            <div class="col-lg-3" wire:ignore>
                                 <x-label class="required">{{__("lng")}}</x-label>
                                 <div class="col-lg-12">
-                                    <x-input type="text" field="lng" wire:model="lng" placeholder="lng" dsiable/>
+                                    <x-input type="text" disabled id="lng" field="lng" wire:model="lng"
+                                        placeholder="lng" dsiable />
                                 </div>
                             </div>
-                            <div class="col-lg-3">
+                            <div class="col-lg-3" wire:ignore>
                                 <x-label class="required col-lg-8">{{__("Address")}}</x-label>
                                 <div class="col-lg-12">
-                                    <x-input type="text" field="address" wire:model="address" placeholder="address" />
+                                    <x-input type="text" disabled id="address" field="address" wire:model="address"
+                                        placeholder="address" />
                                 </div>
                             </div>
                             <div class="col-lg-3">
@@ -261,9 +264,15 @@
 
                         </div>
                     </div>
+                    <!--begin::Input group-->
+                    <div class="row mb-4">
+                        <div class="row fv-row fv-plugins-icon-container">
+                            <div class="col-lg-12" wire:ignore>
+                                <div id="map"></div>
+                            </div>
+                        </div>
+                    </div>
                     <!--end::Input group-->
-
-
                     <!--begin::Input group-->
                     <div class="row mb-0">
                         <!--begin::Label-->
@@ -332,3 +341,66 @@
         </div>
     </div>
 </div>
+
+
+@section('scripts')
+
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDzChNlxB0pNmYUc7KKMGgMOdWezLNw7u0&callback=initMap&libraries=places&v=weekly">
+</script>
+
+<script>
+    var lat, lng;
+    var markers = [];
+  
+    function initMap(data) {
+       
+        var options = {
+            center: {
+                lat: {{ !empty($lat) ? $lat : 21.68381073128686 }},
+                lng: {{ !empty($lng) ? $lng : 39.20255972375944 }},
+            },
+            zoom: 12,
+        }
+        var map = new google.maps.Map(document.getElementById('map'), options);
+        map.addListener('click', function(e) {
+
+            var geocoder = geocoder = new google.maps.Geocoder();
+                geocoder.geocode({ 'latLng': e.latLng }, function (results, status) {
+                    if (status == google.maps.GeocoderStatus.OK) {
+                        if (results[1]) {
+                            document.getElementById("address").value = results[1].formatted_address;
+                            @this.address = results[1].formatted_address;
+
+                           // alert("Location: " + results[1].formatted_address + "\r\nLatitude: " + e.latLng.lat() + "\r\nLongitude: " + e.latLng.lng());
+                        }
+                    }
+                });
+
+            placeMarkerAndPanTo(e.latLng, map);
+        });
+
+        markers.push({
+            lat: {{ !empty($lat) ? $lat : 21.68381073128686 }},
+            lng: {{ !empty($lng) ? $lng : 39.20255972375944 }},
+        });
+        var marker = new google.maps.Marker({
+            position: markers[0],
+            map: map
+        });
+
+
+        function placeMarkerAndPanTo(latLng, map) {
+            document.getElementById("lat").value = latLng.lat();
+            document.getElementById("lng").value = latLng.lng();
+            marker.setPosition(latLng);
+            map.panTo(latLng);
+            @this.lat = latLng.lat();
+            @this.lng = latLng.lng();
+
+        }
+    }
+
+</script>
+
+@endsection

@@ -13,6 +13,7 @@ class Datatable extends Component
 
     protected $paginationTheme = 'bootstrap';
     public $search;
+    public $block_date;
     public $data_id;
     public $type = 'all';
     public $city_id  = 'all';
@@ -37,7 +38,7 @@ class Datatable extends Component
     public function confirm($id)
     {
         $this->emit('openDeleteModal'); // Open model to using to jquery
-      
+
         $this->data_id = $id;
     }
 
@@ -48,25 +49,48 @@ class Datatable extends Component
 
         $this->emit('closeDeleteModal'); // Close model to using to jquery
     }
+
+    public function block()
+    {
+
+        $user = User::findOrFail($this->data_id);
+
+        $user->block()->create([
+            'block_date' => $this->block_date,
+        ]);
+
+        $user->update(['suspend' => 1]);
+    }
+
+    public function unBlock()
+    {
+
+        $user = User::findOrFail($this->data_id);
+
+        $user->update(['suspend' => 0]);
+    }
+
     public function render()
     {
         return view('livewire.dashboard.users.datatable', [
             'users' => User::with('city')
                 ->when('city_id', function ($q) {
                     if ($this->city_id != 'all') {
-                        $q->orWhere('city_id', $this->city_id);
+                        $q->where('city_id', $this->city_id);
                     }
                 })
                 ->when('type', function ($q) {
                     if ($this->type != 'all') {
-                        $q->orWhere('type', $this->type);
+                        $q->where('type', $this->type);
                     }
                 })
                 ->where('type', '!=', 'admin')
-                ->search('name', $this->search)
-                ->orSearch('mobile', $this->search)
-                ->orSearch('email', $this->search)
-                ->select(['id','name','avatar','email','mobile','type','city_id','created_at'])
+                ->where(function ($q) {
+                    $q->search('name', $this->search);
+                    $q->orSearch('mobile', $this->search);
+                    $q->orSearch('email', $this->search);
+                })
+                ->select(['id', 'name', 'avatar', 'email', 'mobile', 'type', 'city_id', 'created_at'])
                 ->orderBy($this->sortBy, $this->sortDirection)
                 ->paginate($this->count),
         ]);

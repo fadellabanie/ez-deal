@@ -23,6 +23,6 @@ class FirebaseNotificationSend implements SendableInterface
 
     public function notifiable()
     {
-        $this->send($this->to, $this->title, $this->message);
+       return $this->send($this->to, $this->title, $this->message);
     }
 }

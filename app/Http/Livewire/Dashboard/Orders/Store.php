@@ -36,6 +36,7 @@ class Store extends Component
         'type_of_owner' => 'required',
         'number_card' => 'required',
         'neighborhood' => 'nullable',
+        'note' => 'nullable',
         'elevator' => 'required',
         'parking' => 'required',
         'ac' => 'required',

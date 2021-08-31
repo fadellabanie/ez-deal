@@ -2,8 +2,10 @@
 
 namespace App\Http\Interfaces\Senders;
 
-use App\Http\Interfaces\Senders\SendableInterface;
+use App\Models\User;
 use App\Http\Traits\Sms;
+use Illuminate\Support\Facades\Log;
+use App\Http\Interfaces\Senders\SendableInterface;
 
 class SmsSend implements SendableInterface
 {
@@ -17,8 +19,9 @@ class SmsSend implements SendableInterface
         $this->to = $to;
         $this->message = $message;
     }
+
     public function notifiable()
     {
-        $this->sendSMS($this->to, $this->message);
+       $this->sendSMS($this->to, $this->message);
     }
 }

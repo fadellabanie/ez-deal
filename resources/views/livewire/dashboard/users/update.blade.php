@@ -18,8 +18,7 @@
                         <div class="col-lg-8">
                             <div class="row">
                                 <div class="col-lg-12 fv-row">
-                                    <x-input type="text" field="name" wire:model="user.name"
-                                        placeholder="name" />
+                                    <x-input type="text" field="user.name" wire:model="user.name" placeholder="name" />
                                 </div>
                             </div>
                         </div>
@@ -32,7 +31,7 @@
                         <div class="col-lg-8">
                             <div class="row">
                                 <div class="col-lg-12 fv-row">
-                                    <x-input type="email" field="email" wire:model="user.email" placeholder="Email" />
+                                    <x-input type="email" field="user.email" wire:model="user.email" placeholder="Email" />
                                 </div>
                             </div>
                         </div>
@@ -46,17 +45,16 @@
                             <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip"
                                 title="Phone number must be active"></i>
                         </x-label>
-                        <div class="col-lg-8 fv-row">
-                            <select wire:model="user.type"  aria-label="Select a type"
-                            data-control="select2" data-placeholder="Select a type..."
-                            id="type" name="type"
+                        <div class="col-lg-8 fv-row" wire:ignore>
+                            <select wire:model="user.type" aria-label="Select a type" data-control="select2"
+                                data-placeholder="Select a type..." id="type" name="type"
                                 class="form-select form-select-solid form-select-lg fw-bold @error('type') is-invalid @enderror">
                                 <option value="">Select a Type...</option>
                                 <option value="admin">{{__("Admin")}}</option>
                                 <option value="personal">{{__("personal")}}</option>
                                 <option value="company">{{__("company")}}</option>
                             </select>
-                            <x-error field="type" />
+                            <x-error field="user.type" />
                         </div>
 
                     </div>
@@ -68,7 +66,7 @@
                         <div class="col-lg-8">
                             <div class="row">
                                 <div class="col-lg-12 fv-row">
-                                    <x-input type="text" field="trading_certification"
+                                    <x-input type="text" field="user.trading_certification"
                                         wire:model="user.trading_certification" placeholder="Trading Certification" />
                                 </div>
                             </div>
@@ -82,7 +80,7 @@
                         <x-label class="required">{{__("mobile")}}</x-label>
                         <div class="col-lg-8">
                             <div class="row">
-                                <div class="col-lg-4 fv-row">
+                                <div class="col-lg-4 fv-row" wire:ignore>
                                     <select wire:model="user.country_code" aria-label="Select a country_code"
                                         data-control="select2" data-placeholder="Select a country_code..."
                                         id="country_code" name="country_code"
@@ -93,10 +91,10 @@
                                     </select>
                                 </div>
                                 <div class="col-lg-4 fv-row">
-                                    <x-input type="tel" field="mobile" wire:model="user.mobile" placeholder="Mobile" />
+                                    <x-input type="tel" field="user.mobile" wire:model="user.mobile" placeholder="Mobile" />
                                 </div>
                                 <div class="col-lg-4 fv-row">
-                                    <x-input type="tel" field="whatsapp_mobile" wire:model="user.whatsapp_mobile"
+                                    <x-input type="tel" field="user.whatsapp_mobile" wire:model="user.whatsapp_mobile"
                                         placeholder="Whatsapp Mobile" />
                                 </div>
                             </div>
@@ -109,7 +107,7 @@
                         <div class="col-lg-8">
                             <div class="row">
                                 <div class="col-lg-12 fv-row">
-                                    <x-input type="password" field="password" wire:model="user.password"
+                                    <x-input type="password" field="password" wire:model="password"
                                         placeholder="Password" />
                                 </div>
                             </div>
@@ -125,7 +123,7 @@
                             <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip"
                                 title="Phone number must be active"></i>
                         </x-label>
-                        <div class="col-lg-8 fv-row">
+                        <div class="col-lg-8 fv-row" wire:ignore>
                             <select wire:model="user.city_id" aria-label="Select a attributes" data-control="select2"
                                 data-placeholder="Select a attributes..." id="city_id" name="city_id"
                                 class="form-select form-select-solid form-select-lg fw-bold @error('city_id') is-invalid @enderror">
@@ -134,7 +132,7 @@
                                 <option value="{{$city->id}}">{{$city->en_name}}</option>
                                 @endforeach
                             </select>
-                            <x-error field="city_id" />
+                            <x-error field="user.city_id" />
                         </div>
                     </div>
                     <!--end::Input group-->
@@ -210,12 +208,23 @@
 </div>
 
 @section('scripts')
-    <script>
-        $(document).ready(function() {
+<script>
+    $(document).ready(function() {
             $('#type').select2({
                 placeholder: '',
             }).on('change', function () {
                 @this.type = $(this).val();
+            }); 
+               $('#country_code').select2({
+                placeholder: '',
+            }).on('change', function () {
+                @this.country_code = $(this).val();
+            }); 
+            $('#city_id').select2({
+                placeholder: '',
+            }).on('change', function () {
+                @this.country_code = $(this).val();
             });
+        });
 </script>
 @endsection

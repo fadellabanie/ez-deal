@@ -18,8 +18,7 @@
                         <div class="col-lg-8">
                             <div class="row">
                                 <div class="col-lg-12 fv-row">
-                                    <x-input type="text" field="name" wire:model="name"
-                                        placeholder="name" />
+                                    <x-input type="text" field="name" wire:model="name" placeholder="name" />
                                 </div>
                             </div>
                         </div>
@@ -38,7 +37,6 @@
                         </div>
                     </div>
                     <!--end::Input group-->
-
                     <!--begin::Input group-->
                     <div class="row mb-6">
                         <x-label>
@@ -47,10 +45,9 @@
                                 title="Phone number must be active"></i>
                         </x-label>
                         <div class="col-lg-8 fv-row">
-                            <select wire:model="type" aria-label="Select a attributes" data-control="select2"
-                                data-placeholder="Select a attributes..." id="type" name="type"
+                            <select wire:model="type" id="type" name="type"
                                 class="form-select form-select-solid form-select-lg fw-bold @error('type') is-invalid @enderror">
-                                <option value="">Select a Type...</option>
+                                <option disable>{{__("Select...")}}</option>
                                 <option value="admin">{{__("Admin")}}</option>
                                 <option value="personal">{{__("personal")}}</option>
                                 <option value="company">{{__("company")}}</option>
@@ -82,12 +79,9 @@
                         <div class="col-lg-8">
                             <div class="row">
                                 <div class="col-lg-4 fv-row">
-                                    <select wire:model="country_code" aria-label="Select a country_code"
-                                        data-control="select2" data-placeholder="Select a country_code..."
-                                        id="country_code" name="country_code"
+                                    <select wire:model="country_code" id="country_code" name="country_code"
                                         class="form-select form-select-solid form-select-lg fw-bold @error('country_code') is-invalid @enderror">
-                                        <option value="">Select a country_code...</option>
-                                        <option value="SA">Saudi Arabia</option>
+                                        <option disable>{{__("Select...")}}</option>
                                         <option value="SA">Saudi Arabia</option>
                                     </select>
                                 </div>
@@ -125,10 +119,9 @@
                                 title="Phone number must be active"></i>
                         </x-label>
                         <div class="col-lg-8 fv-row">
-                            <select wire:model="city_id" aria-label="Select a attributes" data-control="select2"
-                                data-placeholder="Select a attributes..." id="city_id" name="city_id"
+                            <select wire:model="city_id" id="city_id" name="city_id"
                                 class="form-select form-select-solid form-select-lg fw-bold @error('city_id') is-invalid @enderror">
-                                <option>{{__("Select...")}}</option>
+                                <option disable>{{__("Select...")}}</option>
                                 @foreach (cities() as $city)
                                 <option value="{{$city->id}}">{{$city->en_name}}</option>
                                 @endforeach
@@ -204,8 +197,10 @@
     </div>
 </div>
 
-@section('scripts')
+@push('scripts')
+
+
 <script>
 
 </script>
-@endsection
+@endpush

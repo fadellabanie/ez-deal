@@ -82,7 +82,9 @@
                                     <div class="d-flex justify-content-end flex-shrink-0">
                                         <x-edit-button href="{{route('admin.users.edit',$user)}}"></x-edit-button>
                                         <x-delete-record-button wire:click="confirm({{ $user->id }})">
-                                        </x-delete-record-button>
+                                        </x-delete-record-button>  
+                                        <x-block>
+                                        </x-block>
                                     </div>
                                 </td>
                             </tr>

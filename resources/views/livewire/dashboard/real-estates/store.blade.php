@@ -41,7 +41,7 @@
                     <div class="row mb-6">
                         <div class="row fv-row fv-plugins-icon-container">
                             <div class="col-lg-4">
-                                <x-label class="required">{{__("Contract Type")}}</x-label>
+                                <x-label class="required col-lg-12">{{__("Contract Type")}}</x-label>
                                 <div class="col-lg-12">
                                     <x-contract-type></x-contract-type>
                                 </div>
@@ -75,7 +75,7 @@
                             <div class="col-lg-3">
                                 <x-label class="required">{{__("Space")}}</x-label>
                                 <div class="col-lg-12">
-                                    <x-input type="text" field="space" wire:model="space" placeholder="space" />
+                                    <x-input type="number" field="space" wire:model="space" placeholder="space" />
                                 </div>
                             </div>
                             <div class="col-lg-3">
@@ -346,7 +346,7 @@
 @section('scripts')
 
 <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDzChNlxB0pNmYUc7KKMGgMOdWezLNw7u0&callback=initMap&libraries=places&v=weekly">
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBSV3uGzoiW9CdrhOvSukkk6pLzhnBaotI&callback=initMap&libraries=places&v=weekly">
 </script>
 
 <script>

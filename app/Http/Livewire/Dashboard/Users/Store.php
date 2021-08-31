@@ -6,15 +6,15 @@ use App\Models\User;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use App\Services\SubscriptionService;
+use Illuminate\Support\Facades\Hash;
 
 class Store extends Component
 {
-
     use WithFileUploads;
 
-    public $name, $type, $email, $mobile,$whatsapp_mobile,$trading_certification;
+    public $name, $email, $mobile,$whatsapp_mobile,$trading_certification;
     public $password, $country_code, $city_id,$avatar;
-
+    public $type;
     protected $rules = [
         'name' => 'required|min:4|max:100',
         'type' =>  'required|in:admin,personal,company',
@@ -35,10 +35,10 @@ class Store extends Component
     public function submit()
     {
         $validatedData = $this->validate();
-
+       
         $validatedData['avatar'] = ($this->avatar) ? uploadToPublic('users', $validatedData['avatar']) : "";
+        $validatedData['password'] = Hash::make($validatedData['password']);
         
-      
        $user = User::create($validatedData);
 
         $request['package_id'] = $user->package_id;

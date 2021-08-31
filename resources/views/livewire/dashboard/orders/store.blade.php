@@ -6,7 +6,7 @@
             data-bs-target="#kt_account_profile_details" aria-expanded="true"
             aria-controls="kt_account_profile_details">
             <div class="card-title m-0">
-                <h3 class="fw-bolder m-0">{{__("Create Real Estate")}}</h3>
+                <h3 class="fw-bolder m-0">{{__("Create Order")}}</h3>
             </div>
         </div>
         <div id="kt_account_profile_details" class="collapse show">
@@ -41,13 +41,13 @@
                     <div class="row mb-6">
                         <div class="row fv-row fv-plugins-icon-container">
                             <div class="col-lg-4">
-                                <x-label class="required">{{__("Contract Type")}}</x-label>
+                                <x-label class="required col-lg-12">{{__("Contract Type")}}</x-label>
                                 <div class="col-lg-12">
                                     <x-contract-type></x-contract-type>
                                 </div>
                             </div>
                             <div class="col-lg-4">
-                                <x-label class="required">{{__("Real Estate Type")}}</x-label>
+                                <x-label class="required col-lg-12">{{__("Real Estate Type")}}</x-label>
                                 <div class="col-lg-12">
                                     <x-realestate-type></x-realestate-type>
                                 </div>
@@ -288,11 +288,10 @@
 </div>
 
 
-
 @section('scripts')
 
 <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDzChNlxB0pNmYUc7KKMGgMOdWezLNw7u0&callback=initMap&libraries=places&v=weekly">
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBSV3uGzoiW9CdrhOvSukkk6pLzhnBaotI&callback=initMap&libraries=places&v=weekly">
 </script>
 
 <script>

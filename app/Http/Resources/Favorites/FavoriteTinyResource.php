@@ -19,6 +19,11 @@ class FavoriteTinyResource extends JsonResource
   
         return [
             'id' => $this->realEstate->id,
+            'user' => [
+                'username' => $this->user->name,
+                'mobile' => $this->user->mobile,
+                'avatar' => asset($this->avatar),
+             ],
             'name' => $this->realEstate->name,
             'city' => $this->realEstate->city->name,
             'country' => $this->realEstate->country->name,

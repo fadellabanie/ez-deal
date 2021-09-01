@@ -22,7 +22,7 @@ class FavoriteTinyResource extends JsonResource
             'user' => [
                 'username' => $this->user->name,
                 'mobile' => $this->user->mobile,
-                'avatar' => asset($this->avatar),
+                'avatar' => asset($this->user->avatar),
              ],
             'name' => $this->realEstate->name,
             'city' => $this->realEstate->city->name,

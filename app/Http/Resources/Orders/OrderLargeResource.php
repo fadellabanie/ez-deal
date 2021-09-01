@@ -23,7 +23,7 @@ class OrderLargeResource extends JsonResource
             'user' => [
                'username' => $this->user->name,
                'mobile' => $this->user->mobile,
-               'avatar' => asset($this->avatar),
+               'avatar' => asset($this->user->avatar),
                'order_count' => $order_count,
             ],
             'name' => $this->name,

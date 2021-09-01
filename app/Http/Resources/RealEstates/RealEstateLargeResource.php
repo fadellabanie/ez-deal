@@ -22,7 +22,7 @@ class RealEstateLargeResource extends JsonResource
             'user' => [
                'username' => $this->user->name,
                'mobile' => $this->user->mobile,
-               'avatar' => asset($this->avatar),
+               'avatar' => asset($this->user->avatar),
                'real_estate_count' => $real_estate_count,
             ],
             'name' => $this->name,

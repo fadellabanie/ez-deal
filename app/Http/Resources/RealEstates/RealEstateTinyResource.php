@@ -24,6 +24,11 @@ class RealEstateTinyResource extends JsonResource
        
         return [
             'id' => $this->id,
+            'user' => [
+                'username' => $this->user->name,
+                'mobile' => $this->user->mobile,
+                'avatar' => asset($this->avatar),
+             ],
             'city' => $this->city->name,
             'price' => $this->price,
             'space' => $this->space,

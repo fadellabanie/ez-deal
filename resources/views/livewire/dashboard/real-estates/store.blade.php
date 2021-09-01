@@ -55,13 +55,15 @@
                             <div class="col-lg-4">
                                 <x-label class="required">{{__("View")}}</x-label>
                                 <div class="col-lg-12">
-                                    <x-view></x-view>
+                                    <x-views-type></x-views-type>
+
                                 </div>
                             </div>
 
                         </div>
                     </div>
                     <!--end::Input group-->
+                    
 
                     <!--begin::Input group-->
                     <div class="row mb-6">
@@ -317,7 +319,6 @@
                                 @if($images)
                                 @foreach ($images as $image)
 
-
                                 <div class="symbol symbol-750 mt-5">
                                     <img alt="" src="{{ $image->temporaryUrl() }}" />
                                 </div>
@@ -328,6 +329,7 @@
                         <!--begin::Label-->
                     </div>
                     <!--end::Input group-->
+                    
                 </div>
                 <!--end::Card body-->
                 <div class="card-footer d-flex justify-content-end py-6 px-9">

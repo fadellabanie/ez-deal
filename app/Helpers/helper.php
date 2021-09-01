@@ -35,8 +35,8 @@ if (!function_exists('countries')) {
 	}
 }
 
-if (!function_exists('views')) {
-	function views()
+if (!function_exists('viewTypes')) {
+	function viewTypes()
 	{
 		$views = View::get();
 		return $views;

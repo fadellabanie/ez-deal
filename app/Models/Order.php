@@ -5,10 +5,19 @@ namespace App\Models;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\Activitylog\LogOptions;
 
 class Order extends Model
 {
-    use HasFactory;
+    use HasFactory, LogsActivity;
+
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+            ->logOnly(['*']);
+    }
     protected $fillable = [
         'user_id',
         'realestate_type_id',
@@ -39,8 +48,8 @@ class Order extends Model
     public function scopeActive($query)
     {
         return $query->where('is_active', true);
-    } 
-     public function scopeOwner($query)
+    }
+    public function scopeOwner($query)
     {
         return $query->where('user_id', Auth::id());
     }
@@ -48,7 +57,7 @@ class Order extends Model
     {
         return $this->belongsTo(City::class);
     }
-     public function country()
+    public function country()
     {
         return $this->belongsTo(Country::class);
     }
@@ -63,7 +72,7 @@ class Order extends Model
     public function realestateType()
     {
         return $this->belongsTo(RealestateType::class);
-    } 
+    }
     public function view()
     {
         return $this->belongsTo(View::class);

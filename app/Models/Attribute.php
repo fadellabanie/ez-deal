@@ -5,15 +5,23 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Services\Translatable;
-
+use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\Activitylog\LogOptions;
 class Attribute extends Model
 {
-    use HasFactory,Translatable;
+    use HasFactory,Translatable,LogsActivity;
 
     protected $translatedAttributes = [
         'name',
         'description',
     ];
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+        ->logOnly(['*']);
+    }
+
+
     protected $fillable = [
         'slug',
         'ar_name',

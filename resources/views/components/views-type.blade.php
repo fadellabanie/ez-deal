@@ -1,6 +1,6 @@
-<select class="form-select form-select-solid form-select-l" wire:model="view_id">
+<select class="form-select form-select-solid form-select-sm" wire:model="view_id">
     <option value="all">{{__("Select View")}}</option>
-    @foreach (views() as $view)
+    @foreach (viewTypes() as $view)
     <option value="{{$view->id}}">{{$view->en_name}}</option>
     @endforeach
 </select>

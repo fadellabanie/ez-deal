@@ -49,11 +49,16 @@ class Datatable extends Component
 
         $this->emit('closeDeleteModal'); // Close model to using to jquery
     }
-    public function active($id)
-    {
-        Order::whereId($id)->update(['is_active' => true]);
 
-        session()->flash('alert', __('Active Successfully.'),'fhggfhfgh');
+    public function changeActive($id)
+    {
+        $row = Order::whereId($id)->first();
+
+        $row->is_active == true
+            ? $row->update(['is_active' => false])
+            : $row->update(['is_active' => true]);
+
+        session()->flash('alert', __('Change Active Successfully.'));
     }
 
 

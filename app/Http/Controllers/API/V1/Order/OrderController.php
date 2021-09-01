@@ -31,6 +31,18 @@ class OrderController extends Controller
         $orders = Order::active()->paginate();
 
         return new OrderCollection($orders);
+    }  
+    
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function indexGuest()
+    {
+        $orders = Order::active()->paginate();
+
+        return new OrderCollection($orders);
     }
     /**
      * Display a listing of the resource.

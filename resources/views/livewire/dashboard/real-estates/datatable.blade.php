@@ -11,6 +11,9 @@
 
             <div class="card-toolbar my-1">
                 <div class="me-6 my-1">
+                    <x-status></x-status>
+                </div> 
+                <div class="me-6 my-1">
                     <x-city></x-city>
                 </div> 
                 <div class="me-6 my-1">
@@ -111,10 +114,11 @@
                                 <td>{{$realEstate->contractType->name}}</td>
                                 <td>{{$realEstate->realestateType->name}}</td>
                                 <td>{!!realEstatesType($realEstate->type)!!}</td>
-                                <td wire:click="active({{$realEstate->id}})">{!!isActive($realEstate->is_active)!!}</td>
+                                <td wire:click="changeActive({{$realEstate->id}})">{!!isActive($realEstate->is_active)!!}</td>
                                 <td>{{$realEstate->created_at->format('m-d-Y')}}</td>
                                 <td>
                                     <div class="d-flex justify-content-end flex-shrink-0">
+                                        <x-show-button href="{{route('admin.real-estates.show',$realEstate)}}"></x-show-button>
                                         <x-edit-button href="{{route('admin.real-estates.edit',$realEstate)}}"></x-edit-button>
                                         <x-delete-record-button wire:click="confirm({{ $realEstate->id }})">
                                         </x-delete-record-button>

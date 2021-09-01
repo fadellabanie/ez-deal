@@ -5,11 +5,16 @@ namespace App\Models;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\Activitylog\LogOptions;
 
 class RealEstate extends Model
 {
-    public $table ='realestates';
+    public $table = 'realestates';
+
     use HasFactory;
+
+
     protected $fillable = [
         'user_id',
         'realestate_type_id',
@@ -45,15 +50,15 @@ class RealEstate extends Model
     public function scopeActive($query)
     {
         return $query->where('is_active', true);
-    } 
-     public function scopeOwner($query)
+    }
+    public function scopeOwner($query)
     {
         return $query->where('user_id', Auth::id());
     }
     public function city()
     {
         return $this->belongsTo(City::class);
-    }  
+    }
     public function country()
     {
         return $this->belongsTo(Country::class);
@@ -64,19 +69,18 @@ class RealEstate extends Model
     }
     public function contractType()
     {
-        return $this->belongsTo(ContractType::class,'contract_type_id');
+        return $this->belongsTo(ContractType::class, 'contract_type_id');
     }
     public function realestateType()
     {
-        return $this->belongsTo(RealestateType::class,'realestate_type_id');
+        return $this->belongsTo(RealestateType::class, 'realestate_type_id');
     }
     public function medias()
     {
-        return $this->hasMany(RealestateMedia::class,'realestate_id');
+        return $this->hasMany(RealestateMedia::class, 'realestate_id');
     }
     public function view()
     {
         return $this->belongsTo(View::class);
     }
 }
-

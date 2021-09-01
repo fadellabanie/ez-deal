@@ -12,6 +12,7 @@ class Datatable extends Component
 
     protected $paginationTheme = 'bootstrap';
     public $search;
+    public $is_active = 'all';
     public $city_id = 'all';
     public $contract_type_id = 'all';
     public $realestate_type_id = 'all';
@@ -48,8 +49,19 @@ class Datatable extends Component
 
         $this->emit('closeDeleteModal'); // Close model to using to jquery
         session()->flash('alert', __('Saved Deleted.'));
-
     }
+
+    public function changeActive($id)
+    {
+        $row = RealEstate::whereId($id)->first();
+
+        $row->is_active == true
+            ? $row->update(['is_active' => false])
+            : $row->update(['is_active' => true]);
+
+        session()->flash('alert', __('Change Active Successfully.'));
+    }
+
     public function render()
     {
         return view('livewire.dashboard.real-estates.datatable', [
@@ -61,6 +73,9 @@ class Datatable extends Component
                 })
                 ->when($this->realestate_type_id != 'all', function ($q) {
                     $q->where('realestate_type_id', $this->realestate_type_id);
+                }) 
+                ->when($this->is_active != 'all', function ($q) {
+                    $q->where('is_active', $this->is_active);
                 })
                 ->search('name', $this->search)
                 ->orSearch('address', $this->search)

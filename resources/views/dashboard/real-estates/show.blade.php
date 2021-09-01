@@ -1,3 +1,4 @@
+use App\Models\RealEstate;
 @extends('layouts.admin')
 
 @section('title',__('Real Estate'))
@@ -14,14 +15,14 @@
         </div>
         <div class="d-flex align-items-center py-1">
           
-            <a href="{{route('admin.real-estates.create')}}" class="btn btn-sm btn-primary">{{__("Create")}}</a>
+           
         </div>
     </div>
 </div>
 
 <div class="post d-flex flex-column-fluid" id="kt_post">
     <div id="kt_content_container" class="container">
-        @livewire('dashboard.real-estates.show')
+        <livewire:dashboard.real-estates.show :realEstate='$realEstate' />
     </div>
 </div>
 

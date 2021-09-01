@@ -7,16 +7,18 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Http\Controllers\Dashboard\ConstantController;
+use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\Activitylog\LogOptions;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable,HasApiTokens;
-
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
+    use HasFactory, Notifiable,HasApiTokens,LogsActivity;
+   
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+        ->logOnly(['*']);
+    }
 
     protected $fillable = [
         'name',

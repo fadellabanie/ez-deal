@@ -5,15 +5,21 @@ namespace App\Models;
 use App\Services\Translatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-
+use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\Activitylog\LogOptions;
 class City extends Model
 {  
     
-    use HasFactory,Translatable;
+    use HasFactory,Translatable,LogsActivity;
 
     protected $translatedAttributes = [
         'name'
     ];
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+        ->logOnly(['*']);
+    }
     protected $fillable = [
         'country_id',
         'ar_name',

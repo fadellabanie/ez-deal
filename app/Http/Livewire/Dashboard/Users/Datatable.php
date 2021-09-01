@@ -8,7 +8,6 @@ use Livewire\WithPagination;
 
 class Datatable extends Component
 {
-
     use WithPagination;
 
     protected $paginationTheme = 'bootstrap';
@@ -52,7 +51,6 @@ class Datatable extends Component
 
     public function block()
     {
-
         $user = User::findOrFail($this->data_id);
 
         $user->block()->create([
@@ -64,7 +62,6 @@ class Datatable extends Component
 
     public function unBlock()
     {
-
         $user = User::findOrFail($this->data_id);
 
         $user->update(['suspend' => 0]);

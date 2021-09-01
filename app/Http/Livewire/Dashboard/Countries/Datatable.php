@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Dashboard\Countries;
 
 use App\Models\City;
+use App\Models\Country;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -40,7 +41,7 @@ class Datatable extends Component
 
     public function destroy()
     {
-        $row = City::findOrFail($this->data_id);
+        $row = Country::findOrFail($this->data_id);
         $row->delete();
 
         $this->emit('closeDeleteModal'); // Close model to using to jquery
@@ -49,7 +50,7 @@ class Datatable extends Component
     public function render()
     {
         return view('livewire.dashboard.countries.datatable',[
-            'cities' => City::orderBy($this->sortBy, $this->sortDirection)
+            'countries' => Country::orderBy($this->sortBy, $this->sortDirection)
             ->paginate($this->count),
         ]);
     }

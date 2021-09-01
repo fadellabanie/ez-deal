@@ -11,6 +11,9 @@
 
             <div class="card-toolbar my-1">
                 <div class="me-6 my-1">
+                    <x-status></x-status>
+                </div> 
+                <div class="me-6 my-1">
                     <x-city></x-city>
                 </div> 
                 <div class="me-6 my-1">
@@ -98,11 +101,13 @@
                                 </td>
                                 <td>{{$order->contractType->name}}</td>
                                 <td>{{$order->realestateType->name}}</td>
-                                <td wire:click="active({{$order->id}})">{!!isActive($order->is_active)!!}</td>
+                                <td wire:click="changeActive({{$order->id}})">{!!isActive($order->is_active)!!}</td>
                                 <td>{{$order->created_at->format('m-d-Y')}}</td>
                                 <td>
                                     <div class="d-flex justify-content-end flex-shrink-0">
+                                        
                                         <x-edit-button href="{{route('admin.orders.edit',$order)}}"></x-edit-button>
+
                                         <x-delete-record-button wire:click="confirm({{ $order->id }})">
                                         </x-delete-record-button>
                                     </div>

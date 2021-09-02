@@ -15,7 +15,8 @@ use App\Models\RealEstate;
         </div>
         <div class="d-flex align-items-center py-1">
           
-           
+            <a href="{{route('admin.real-estates.index')}}" class="btn btn-sm btn-primary">{{__("Back")}}</a>
+
         </div>
     </div>
 </div>

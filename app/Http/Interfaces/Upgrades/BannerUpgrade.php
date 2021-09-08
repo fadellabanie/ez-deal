@@ -9,9 +9,12 @@ use App\Http\Interfaces\Upgrades\UpgradeableInterface;
 class BannerUpgrade implements UpgradeableInterface
 {
     public $real_estate_id;
-    public function __construct($real_estate_id)
+    public $end_date;
+
+    public function __construct($real_estate_id,$end_date)
     {
         $this->real_estate_id = $real_estate_id;
+        $this->end_date = $end_date;
     }
     public function upgrade()
     {
@@ -21,7 +24,7 @@ class BannerUpgrade implements UpgradeableInterface
             'real_estate_id' =>$realEstate->id,
             'image' => $realEstate->medias->first()->image,
             'start_date'=> now(),
-            'end_date'=> now()->addDays(4),
+            'end_date'=>$this->end_date,
             'status'=> true,
         ]);
     }

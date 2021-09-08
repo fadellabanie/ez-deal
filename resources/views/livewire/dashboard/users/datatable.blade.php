@@ -1,4 +1,6 @@
 <div>
+    <x-alert id='alert' class="alert-success"></x-alert>
+
     <div class="card card-flush mt-6 mt-xl-9">
         <div class="card-header mt-5">
             <div class="card-title flex-column">
@@ -13,6 +15,9 @@
                     </div>
                     <div class="me-6 my-1">
                         <x-user-type></x-user-type>
+                    </div> 
+                    <div class="me-6 my-1">
+                        <x-user-status></x-user-status>
                     </div>
                     <div class="d-flex align-items-center position-relative my-1">
                         <x-search-input></x-search-input>
@@ -49,6 +54,11 @@
                                     <x-sort field="type" sortBy="{{$sortBy}}" sortDirection="{{$sortDirection}}">
                                     </x-sort>
                                 </th>
+                                 <th wire:click="sortBy('status')" data-sort="{{$sortDirection}}" class="min-w-90px">
+                                    {{__("Status")}}
+                                    <x-sort field="status" sortBy="{{$sortBy}}" sortDirection="{{$sortDirection}}">
+                                    </x-sort>
+                                </th>
                                 <th wire:click="sortBy('created_at')" data-sort="{{$sortDirection}}" class="min-w-90px">
                                     {{__("Regester")}}
                                     <x-sort field="created_at" sortBy="{{$sortBy}}" sortDirection="{{$sortDirection}}">
@@ -69,7 +79,7 @@
                                             </div>
                                         </div>
                                         <div class="d-flex flex-column justify-content-center">
-                                            <a href="" class="fs-6 text-gray-800 text-hover-primary">{{$user->name}}</a>
+                                            <a href="{{route('admin.users.show',$user)}}" class="fs-6 text-gray-800 text-hover-primary">{{$user->name}}</a>
                                             <div class="fw-bold text-gray-400">{{$user->email}}</div>
                                         </div>
                                     </div>
@@ -77,14 +87,21 @@
                                 <td>{{$user->city->en_name ?? ""}}</td>
                                 <td>{{$user->mobile}}</td>
                                 <td>{!!userType($user->type)!!}</td>
+                                <td>{!!userStatus($user->status)!!}</td>
                                 <td>{{$user->created_at->format('m-d-Y')}}</td>
                                 <td>
                                     <div class="d-flex justify-content-end flex-shrink-0">
                                         <x-edit-button href="{{route('admin.users.edit',$user)}}"></x-edit-button>
                                         <x-delete-record-button wire:click="confirm({{ $user->id }})">
-                                        </x-delete-record-button>  
-                                        <x-block>
-                                        </x-block>
+                                        </x-delete-record-button> 
+                                            @if ($user->status == true)
+                                            <x-freeze-button wire:click="freeze({{ $user->id }})">
+                                            </x-freeze-button>
+                                            @else
+                                            <x-unfreeze-button wire:click="unFreeze({{ $user->id }})">
+                                            </x-freeze-button>
+                                            @endif
+                                       
                                     </div>
                                 </td>
                             </tr>
@@ -126,6 +143,12 @@
     }); 
     window.livewire.on('closeDeleteModal', () => {
         $('#deleteModal').modal('hide');
+    }); 
+    window.livewire.on('openBlockModal', () => {
+        $('#blockModal').modal('show');
+    }); 
+    window.livewire.on('closeBlockModal', () => {
+        $('#blockModal').modal('hide');
     });
 </script>
 @endsection

@@ -42,11 +42,12 @@ class Store extends Component
 
          //dd( $validatedData);
         Attribute::create($validatedData);
-      
 
         $this->reset();
 
         session()->flash('alert', __('Saved Successfully.'));
+
+        return redirect()->route('admin.attributes.index');
     }
 
     public function resetForm()

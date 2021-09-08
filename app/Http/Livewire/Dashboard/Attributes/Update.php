@@ -46,7 +46,7 @@ class Update extends Component
 
         session()->flash('alert', __('Saved Successfully.'));
 
-        return redirect()->route('attributes.index');
+        return redirect()->route('admin.attributes.index');
     }
 
     public function mount(Attribute $attribute)

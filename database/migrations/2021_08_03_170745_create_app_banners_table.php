@@ -18,6 +18,7 @@ class CreateAppBannersTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id')->index();
             $table->unsignedBigInteger('city_id')->index();
+            $table->string('make_by')->nullable();
             $table->string('ar_name');
             $table->string('en_name');
             $table->string('ar_description');
@@ -41,7 +42,8 @@ class CreateAppBannersTable extends Migration
             'end_date' => now()->addDays(15),
             'created_at' => now(),
             'updated_at' => now(),
-        ]); DB::table('app_banners')->insert([
+        ]);
+        DB::table('app_banners')->insert([
             'user_id' =>  1,
             'city_id' =>  1,
             'ar_name' => 'silver',

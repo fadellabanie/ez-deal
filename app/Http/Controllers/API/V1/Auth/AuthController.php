@@ -29,7 +29,7 @@ class AuthController extends Controller
     public function register(RegisterRequest $request)
     {
         $user = User::create([
-            'name' => $request->username,
+            'name' => $request->name,
             'type' => $request->type,
             'email' => $request->email,
             'mobile' => $request->mobile,
@@ -38,6 +38,7 @@ class AuthController extends Controller
             'trading_certification' => $request->trading_certification,
             'password' => bcrypt($request->password),
             'device_token' => $request->device_token,
+            'status' => true,
 
         ]);
         $request['package_id'] = $user->package_id;

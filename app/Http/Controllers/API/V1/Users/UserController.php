@@ -27,24 +27,24 @@ class UserController extends Controller
     {
         $user = User::find(AUth::id());
 
-        if(!$user) $this->errorNotFound();
-       if($request->has('avatar')){
-        $user->update([
-            'email' => $request->email,
-            'name' => $request->username,
-            'avatar' => upload($request->avatar,'users'),
-        ]); 
-       }else{
+        if (!$user) $this->errorNotFound();
+        if ($request->has('avatar')) {
+            $user->update([
+                'email' => $request->email,
+                'name' => $request->username,
+                'avatar' => upload($request->avatar, 'users'),
+            ]);
+        } else {
 
-           $user->update([
-               'email' => $request->email,
-               'name' => $request->username,
+            $user->update([
+                'email' => $request->email,
+                'name' => $request->username,
             ]);
         }
 
         return $this->successStatus(__("Update profile successfully"));
     }
-   
+
     public function report(Request $request)
     {
         ReportUser::create([
@@ -54,28 +54,29 @@ class UserController extends Controller
         ]);
 
         return $this->successStatus(__("Report user successfully"));
-
     }
     public function subscription(Request $request)
-    {     
+    {
         $request['user_id'] = Auth::id();
         $response = SubscriptionService::subscription($request);
-    
-        if (! $response['success']) {     
+
+        if (!$response['success']) {
             return $this->errorStatus($response['message']);
         }
 
         $title = __("Subscription");
         $body = __("Subscription package Success");
         $this->send(Auth::user()->device_token, $title, $body);
-        
+
         return $this->successStatus(__("Subscription successfully"));
     }
-    
+
     public function myNotification()
-    {     
-        $notifications = NotificationUser::where('user_id',Auth::id())->get();
-        
+    {
+        $notifications = NotificationUser::where('user_id', Auth::id())
+            ->whereType('firebase-notification')
+            ->get();
+
         return $this->respondWithItem(NotificationResource::collection($notifications));
     }
 }

@@ -13,6 +13,7 @@ use App\Http\Resources\Constants\ViewResource;
 use App\Http\Resources\Constants\CountryResource;
 use App\Http\Resources\Constants\ContractTypeResource;
 use App\Http\Resources\Constants\RealEstateTypeResource;
+use App\Http\Resources\Constants\ConstResource;
 
 class ConstantController extends Controller
 {
@@ -44,7 +45,7 @@ class ConstantController extends Controller
     public function getContractType()
     {
         $data = ContractType::get();
-     
+       
         return $this->respondWithCollection(ContractTypeResource::collection($data));
     }/**
      * Display a listing of the resource.
@@ -78,6 +79,20 @@ class ConstantController extends Controller
         $data = View::get();
      
         return $this->respondWithCollection(ViewResource::collection($data));
+    }
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getCreationConst()
+    {
+        $data['views'] = View::get();
+        $data['contract_type'] = ContractType::get();
+        $data['realestate_type'] = RealestateType::get();
+
+     
+        return $this->respondWithCollection(new ConstResource($data));
     }
 
 }

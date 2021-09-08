@@ -23,6 +23,7 @@ class AppBanner extends Model
 
     protected $fillable = [
         'user_id',
+        'make_by',
         'title',
         'description',
         'image',

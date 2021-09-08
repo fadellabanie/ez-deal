@@ -69,6 +69,16 @@ if (!function_exists('userType')) {
 		}
 	}
 }
+if (!function_exists('userStatus')) {
+	function userStatus($type)
+	{
+		if ($type == true) {
+			return '<div class="badge badge-light-success fw-bolder">' . __("Active") . '</div>';
+		} elseif ($type == false) {
+			return '<div class="badge badge-light-danger fw-bolder">' . __("Freeze") . '</div>';
+		}
+	}
+}
 if (!function_exists('realEstatesType')) {
 	function realEstatesType($type)
 	{
@@ -101,6 +111,7 @@ if (!function_exists('uploadToPublic')) {
 		return 'uploads/' . Storage::disk('public_new')->put($folder, $image);
 	}
 }
+
 if (!function_exists('isActive')) {
 	function isActive($type)
 	{
@@ -109,6 +120,18 @@ if (!function_exists('isActive')) {
 			return '<div class="badge badge-light-success fw-bolder">' . __("Active") . '</div>';
 		} elseif ($type == 0) {
 			return '<div class="badge badge-light-danger fw-bolder">' . __("Not Active") . '</div>';
+		}
+	}
+}
+
+if (!function_exists('review')) {
+	function review($type)
+	{
+
+		if ($type == 1) {
+			return '<div class="badge badge-light-success fw-bolder">' . __("Reviewed") . '</div>';
+		} elseif ($type == 0) {
+			return '<a href="#" class="badge badge-light-danger fw-bolder">' . __("Not Review") . '</a>';
 		}
 	}
 }

@@ -38,6 +38,8 @@ class Store extends Component
         $this->reset();
 
         session()->flash('alert', __('Saved Successfully.'));
+        return redirect()->route('admin.cities.index');
+
     }
 
     public function resetForm()

@@ -46,6 +46,8 @@ class RealEstate extends Model
         'lng',
         'address',
         'end_date',
+        'review_by',
+        'review_at',
     ];
     public function scopeActive($query)
     {
@@ -54,6 +56,10 @@ class RealEstate extends Model
     public function scopeOwner($query)
     {
         return $query->where('user_id', Auth::id());
+    }
+    public function scopeNotReview($query)
+    {
+        return $query->where('status',false)->where('review_at',Null);
     }
     public function city()
     {
@@ -67,10 +73,13 @@ class RealEstate extends Model
     {
         return $this->belongsTo(User::class);
     }
+
     public function contractType()
     {
-        return $this->belongsTo(ContractType::class, 'contract_type_id');
+        return $this->hasOne(ContractType::class,'id' ,'contract_type_id');
     }
+   
+
     public function realestateType()
     {
         return $this->belongsTo(RealestateType::class, 'realestate_type_id');

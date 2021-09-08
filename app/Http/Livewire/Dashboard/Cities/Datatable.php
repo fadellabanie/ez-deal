@@ -49,7 +49,7 @@ class Datatable extends Component
     public function render()
     {
         return view('livewire.dashboard.cities.datatable',[
-            'cities' => City::orderBy($this->sortBy, $this->sortDirection)
+            'cities' => City::with('country')->orderBy($this->sortBy, $this->sortDirection)
             ->paginate($this->count),
         ]);
     }

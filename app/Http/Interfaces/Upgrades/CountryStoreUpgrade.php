@@ -9,9 +9,12 @@ use App\Http\Interfaces\Upgrades\UpgradeableInterface;
 class CountryStoreUpgrade implements UpgradeableInterface
 {
     public $real_estate_id;
-    public function __construct($real_estate_id)
+    public $end_date;
+
+    public function __construct($real_estate_id,$end_date)
     {
         $this->real_estate_id = $real_estate_id;
+        $this->end_date = $end_date;
     }
     public function upgrade()
     {
@@ -23,7 +26,7 @@ class CountryStoreUpgrade implements UpgradeableInterface
             'country_id'=> $realEstate->country_id,
             'city_id'=> $realEstate->city_id,
             'start_date'=> now(),
-            'end_date'=> now()->addDays(4),
+            'end_date'=> $this->end_date,
             'status'=> true,
         ]);
     }

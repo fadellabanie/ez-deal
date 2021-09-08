@@ -56,7 +56,7 @@
                             <div class="col-lg-4">
                                 <x-label class="required">{{__("View")}}</x-label>
                                 <div class="col-lg-12">
-                                    <x-view></x-view>
+                                    <x-views-type></x-views-type>
                                 </div>
                             </div>
 

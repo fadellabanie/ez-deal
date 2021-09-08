@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Dashboard\Orders;
 use App\Models\Order;
 use Livewire\Component;
 use Livewire\WithPagination;
+use Illuminate\Support\Facades\Auth;
 
 class Datatable extends Component
 {
@@ -59,6 +60,20 @@ class Datatable extends Component
             : $row->update(['is_active' => true]);
 
         session()->flash('alert', __('Change Active Successfully.'));
+    }
+
+    public function review($id)
+    {
+        $row = Order::whereId($id)->first();
+
+        if ($row->status == false) {
+            $row->update([
+                'status' => true,
+                'review_at' => now(),
+                'review_by' => Auth::user()->id . "-" . Auth::user()->name,
+            ]);
+        }
+        session()->flash('alert', __('Reviewed Successfully.'));
     }
 
 

@@ -22,7 +22,7 @@ class CreateOrdersTable extends Migration
             $table->unsignedBigInteger('city_id')->index();
             $table->unsignedBigInteger('country_id')->index();
             $table->string('name');
-            $table->decimal('price',10);
+            $table->decimal('price',15);
             $table->float('space');
             $table->float('number_building');
             $table->float('age_building');
@@ -33,12 +33,14 @@ class CreateOrdersTable extends Migration
             $table->boolean('ac')->default(false);
             $table->boolean('furniture')->default(false);
             $table->text('note')->nullable();
-            $table->boolean('is_active')->default(false);
             $table->integer('number_of_views')->default(0);
-            $table->string('status')->nullable();
             $table->decimal('lat', 10, 8)->nullable();
             $table->decimal('lng', 11, 8)->nullable();
             $table->string('address')->nullable();
+            $table->boolean('is_active')->default(false);
+            $table->string('status')->default(0);
+            $table->string('review_by')->nullable();
+            $table->date('review_at')->nullable();
             $table->timestamps();
         });
     }

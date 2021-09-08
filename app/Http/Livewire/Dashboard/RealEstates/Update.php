@@ -72,7 +72,7 @@ class Update extends Component
 
         session()->flash('alert', __('Saved Successfully.'));
 
-        return redirect()->route('packages.index');
+        return redirect()->route('admin.real-estates.index');
     }
 
     public function mount(RealEstate $realEstate)

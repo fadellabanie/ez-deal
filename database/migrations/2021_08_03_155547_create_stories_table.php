@@ -19,6 +19,7 @@ class CreateStoriesTable extends Migration
             $table->unsignedBigInteger('user_id')->index();
             $table->unsignedBigInteger('city_id')->index();
             $table->unsignedBigInteger('country_id')->index();
+            $table->string('make_by')->nullable();
             $table->string('title');
             $table->string('image');
             $table->date('start_date');

@@ -47,7 +47,8 @@
                                 title="Phone number must be active"></i>
                         </x-label>
                         <div class="col-lg-8 fv-row" wire:ignore>
-                            <select wire:model="type" aria-label="Select a country" data-control="select2"
+                            <select wire:model="type"  
+                            aria-label="Select a type" data-control="select2"
                                 data-placeholder="Select a type..." id="type" name="type"
                                 class="form-select form-select-solid form-select-lg fw-bold @error('type') is-invalid @enderror">
                                 <option value="sms">{{__("SMS")}}</option>
@@ -57,34 +58,29 @@
                         <x-error field="type" />
                     </div>
                     <!--end::Input group-->
-                 
+
                     <!--begin::Input group-->
                     <div class="row mb-6">
                         <x-label>
-                            <span class="required">{{__("users")}}</span>
+                            <span class="required">{{__("Users")}}</span>
                             <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip"
                                 title="Phone number must be active"></i>
                         </x-label>
                         <div class="col-lg-8 fv-row" wire:ignore>
-                            <select wire:model="users" aria-label="Select a country" data-control="select2"
-                                data-placeholder="Select a country..." id="users" name="users"
-                                class="form-select form-select-solid form-select-lg fw-bold @error('users') is-invalid @enderror">
+                            <select wire:model="user"
+                            aria-label="Select a user" data-control="select2"
+                                data-placeholder="Select a user..."  id="user" name="user"
+                                class="form-select form-select-solid form-select-lg fw-bold @error('user') is-invalid @enderror">
                                 <option>{{__("Select...")}}</option>
-                                @if ($type == 'sms')
-                                @foreach ($members as $member)
-                                <option value="{{$member->mobile}}">{{$member->name . $member->mobile }}</option>
-                                @endforeach
-                                @else
-                                @foreach ($members as $member)
 
-                                <option value="{{$member->device_token}}">{{$member->name . $member->mobile }}</option>
+                                @foreach ($members as $member)
+                                <option value="{{$member->id}}">{{$member->name .' -- ' .$member->mobile }}</option>
                                 @endforeach
 
-                                @endif
 
                             </select>
                         </div>
-                        <x-error field="users" />
+                        <x-error field="user" />
                     </div>
                     <!--end::Input group-->
                 </div>
@@ -102,7 +98,21 @@
 </div>
 
 @section('scripts')
-<script>
 
-</script>
+    <script>
+        $(document).ready(function() {
+
+            $('#user').select2({
+                placeholder: '',
+            }).on('change', function () {
+                @this.user = $(this).val();
+            });  
+             $('#type').select2({
+                placeholder: '',
+            }).on('change', function () {
+                @this.type = $(this).val();
+            });
+        });
+
+    </script>
 @endsection

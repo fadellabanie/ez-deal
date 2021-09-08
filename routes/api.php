@@ -76,6 +76,7 @@ Route::group(['prefix' => 'v1'], function () {
         Route::get('cities', [ConstantController::class, 'getCity']);
         Route::get('counties', [ConstantController::class, 'getCountry']);
         Route::get('views', [ConstantController::class, 'getView']);
+        Route::get('creation-constant', [ConstantController::class, 'getCreationConst']);
 
         Route::post('upload', [GeneralController::class, 'upload']);
 

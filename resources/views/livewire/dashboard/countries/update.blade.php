@@ -92,6 +92,10 @@
                                 <div class="symbol symbol-750 mt-5">
                                     <img alt="" src="{{ $icon->temporaryUrl() }}" />
                                 </div>
+                                @elseif($country->icon)
+                                <div class="symbol symbol-150 mt-5">
+                                    <img alt="" src="{{ asset($country->icon) }}" />
+                                </div>
                                 @endif
                             </div>
                         </div>

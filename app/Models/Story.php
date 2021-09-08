@@ -19,6 +19,7 @@ class Story extends Model
 
     protected $fillable = [
         'user_id',
+        'make_by',
         'title',
         'image',
         'city_id',
@@ -47,5 +48,9 @@ class Story extends Model
     public function city()
     {
         return $this->belongsTo(City::class);
+    }
+    public function country()
+    {
+        return $this->belongsTo(Country::class);
     }
 }

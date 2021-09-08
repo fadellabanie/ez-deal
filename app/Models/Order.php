@@ -44,6 +44,8 @@ class Order extends Model
         'lat',
         'lng',
         'address',
+        'review_by',
+        'review_at',
     ];
     public function scopeActive($query)
     {
@@ -52,6 +54,10 @@ class Order extends Model
     public function scopeOwner($query)
     {
         return $query->where('user_id', Auth::id());
+    }
+    public function scopeNotReview($query)
+    {
+        return $query->where('status',false)->where('review_at',Null);
     }
     public function city()
     {

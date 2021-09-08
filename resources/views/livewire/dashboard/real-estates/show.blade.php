@@ -1,4 +1,6 @@
 <div>
+    <x-alert id='alert' class="alert-success"></x-alert>
+
     <!--begin::Content-->
     <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
         <!--begin::Post-->
@@ -36,7 +38,11 @@
                                             {{$realEstate->address}}</div>
                                         <!--end::Description-->
                                     </div>
-
+                                    <div class="d-flex my-4">
+                                       
+                                        <x-publish wire:click="conformPublish()"></x-publish>
+                                      
+                                    </div>
                                 </div>
                             </div>
                             <!--end::Wrapper-->
@@ -49,7 +55,7 @@
                                 <div class="card-title">
                                     <h2 class="fw-bolder mb-0">{{__("RealEstate Info")}}</h2>
                                 </div>
-                              
+
                                 <div class="card-toolbar">
                                 </div>
                             </div>
@@ -84,8 +90,8 @@
                                                 <div class="d-flex align-items-center">
                                                     <div class="text-gray-800 fw-bolder">
                                                         <a href="{{route('admin.users.show',$realEstate->user->id)}}"
-                                                        class="text-gray-800 text-hover-primary fs-3 fw-bolder me-1">
-                                                        {{$realEstate->user->name}}
+                                                            class="text-gray-800 text-hover-primary fs-3 fw-bolder me-1">
+                                                            {{$realEstate->user->name}}
                                                         </a>
                                                     </div>
                                                     <div class="badge badge-light-primary ms-5">
@@ -348,3 +354,15 @@
     <!--end::Content-->
 
 </div>
+
+@section('scripts')
+
+<script type="text/javascript">
+    window.livewire.on('openPublishModal', () => {
+        $('#publishModal').modal('show');
+    }); 
+    window.livewire.on('closePublishModal', () => {
+        $('#publishModal').modal('hide');
+    });
+</script>
+@endsection

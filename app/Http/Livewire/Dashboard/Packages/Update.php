@@ -51,7 +51,8 @@ class Update extends Component
 
         session()->flash('alert', __('Saved Successfully.'));
 
-        return redirect()->route('packages.index');
+        return redirect()->route('admin.packages.index');
+
     }
 
     public function mount(Package $package)

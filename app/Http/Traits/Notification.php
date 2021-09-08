@@ -13,6 +13,7 @@ trait Notification
             'user_id' => User::where('device_token', $to)->pluck('id')->first(),
             'title' => $title,
             'body' => $message,
+            'type' => 'firebase-notification',
         ]);
         
         $fields = array(

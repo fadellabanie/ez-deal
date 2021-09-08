@@ -17,7 +17,6 @@ class Store extends Component
     protected $rules = [
         'ar_name' => 'required|min:4|max:100',
         'en_name' => 'required|min:4|max:100',
-        'country_id' => 'required',
         'icon' => 'required',
         'status' => 'required',
     ];
@@ -30,13 +29,16 @@ class Store extends Component
     {
         $validatedData = $this->validate();
 
-        $validatedData['icon'] = ($this->icon) ? uploadToPublic('cities', $validatedData['icon']) : "";
+        $validatedData['icon'] = ($this->icon) ? uploadToPublic('countries', $validatedData['icon']) : "";
          
-        City::create($validatedData);
+        Country::create($validatedData);
 
         $this->reset();
 
         session()->flash('alert', __('Saved Successfully.'));
+
+        return redirect()->route('admin.countries.index');
+
     }
 
     public function resetForm()
@@ -48,8 +50,6 @@ class Store extends Component
    
     public function render()
     {
-        return view('livewire.dashboard.countries.store',[
-            'countries' => Country::get(),
-        ]);
+        return view('livewire.dashboard.countries.store');
     }
 }

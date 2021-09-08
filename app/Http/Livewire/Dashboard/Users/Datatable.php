@@ -14,12 +14,17 @@ class Datatable extends Component
     public $search;
     public $block_date;
     public $data_id;
+    public $user_id;
+    public $status = 'all';
     public $type = 'all';
     public $city_id  = 'all';
     public $count = 20;
     public $sortBy = 'created_at';
     public $sortDirection = 'DESC';
 
+    protected $rules = [
+        'block_date' => 'required|after:today',
+    ];
     public function sortBy($field)
     {
         if ($this->sortDirection == 'asc') {
@@ -39,33 +44,35 @@ class Datatable extends Component
         $this->emit('openDeleteModal'); // Open model to using to jquery
 
         $this->data_id = $id;
-    }
-
+    }  
+    
     public function destroy()
     {
         $row = User::findOrFail($this->data_id);
         $row->delete();
-
+        
         $this->emit('closeDeleteModal'); // Close model to using to jquery
     }
-
-    public function block()
+    
+   public function freeze($user_id)
     {
-        $user = User::findOrFail($this->data_id);
-
-        $user->block()->create([
-            'block_date' => $this->block_date,
+        User::whereId($user_id)->update([
+            'status' => false,
         ]);
-
-        $user->update(['suspend' => 1]);
+      
+        session()->flash('alert', __('Account Freeze Successfully.'));
     }
-
-    public function unBlock()
+    
+   public function unFreeze($user_id)
     {
-        $user = User::findOrFail($this->data_id);
-
-        $user->update(['suspend' => 0]);
+        User::whereId($user_id)->update([
+            'status' => true,
+        ]);
+      
+        session()->flash('alert', __('Account UnFreeze Successfully.'));
     }
+    
+  
 
     public function render()
     {
@@ -74,6 +81,11 @@ class Datatable extends Component
                 ->when('city_id', function ($q) {
                     if ($this->city_id != 'all') {
                         $q->where('city_id', $this->city_id);
+                    }
+                })
+                ->when('status', function ($q) {
+                    if ($this->status != 'all') {
+                        $q->where('status', $this->status);
                     }
                 })
                 ->when('type', function ($q) {
@@ -87,7 +99,7 @@ class Datatable extends Component
                     $q->orSearch('mobile', $this->search);
                     $q->orSearch('email', $this->search);
                 })
-                ->select(['id', 'name', 'avatar', 'email', 'mobile', 'type', 'city_id', 'created_at'])
+                ->select(['id', 'name', 'avatar', 'email', 'mobile', 'type', 'city_id','status','suspend', 'created_at'])
                 ->orderBy($this->sortBy, $this->sortDirection)
                 ->paginate($this->count),
         ]);

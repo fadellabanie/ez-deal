@@ -52,6 +52,7 @@ class Update extends Component
         session()->flash('alert', __('Saved Successfully.'));
 
         return redirect()->route('admin.orders.index');
+        
     }
 
     public function mount(Order $order)

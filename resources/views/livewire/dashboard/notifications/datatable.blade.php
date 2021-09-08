@@ -18,6 +18,7 @@
                         <thead class="fs-7 text-gray-400 text-uppercase">
                             <tr role="row">
 
+                                <th>{{__("Type")}}</th>
                                 <th>{{__("Tilte")}}</th>
                                 <th>{{__("Content")}}</th>
                                 <th>{{__("Regester")}}</th>
@@ -26,8 +27,9 @@
                         <tbody class="fs-6">
                             @forelse($notifications as $key => $notification)
                             <tr wire:loading.class="opacity-50">
+                                <td>{{$notification->type}}</td>
                                 <td>{{$notification->title}}</td>
-                                <td>{{$notification->content}}</td>
+                                <td>{{$notification->body}}</td>
                                 <td>{{$notification->created_at->format('m-d-Y')}}</td>
                             </tr>
                             @empty

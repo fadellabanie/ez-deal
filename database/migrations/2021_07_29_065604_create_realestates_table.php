@@ -22,9 +22,12 @@ class CreateRealestatesTable extends Migration
             $table->unsignedBigInteger('city_id')->index();
             $table->unsignedBigInteger('country_id')->index();
             $table->string('name');
-            $table->string('neighborhood');
-            $table->decimal('price',10);
+            $table->decimal('price',15);
             $table->float('space');
+            $table->decimal('lat', 10, 8)->nullable();
+            $table->decimal('lng', 11, 8)->nullable();
+            $table->string('address')->nullable();
+            $table->string('neighborhood');
             $table->float('number_building');
             $table->float('age_building');
             $table->float('street_width');
@@ -35,16 +38,15 @@ class CreateRealestatesTable extends Migration
             $table->boolean('ac')->default(false);
             $table->boolean('furniture')->default(false);
             $table->text('note')->nullable();
-            $table->boolean('is_active')->default(false);
             $table->integer('number_of_views')->default(0);
             $table->string('type')->nullable();
             $table->string('type_of_owner')->nullable();
             $table->string('number_card')->nullable();
-            $table->string('status')->nullable();
-            $table->decimal('lat', 10, 8)->nullable();
-            $table->decimal('lng', 11, 8)->nullable();
-            $table->string('address')->nullable();
             $table->date('end_date');
+            $table->boolean('is_active')->default(false);
+            $table->string('status')->default(0);
+            $table->date('review_at')->nullable();
+            $table->string('review_by')->nullable();
             $table->timestamps();
         });
     }

@@ -16,7 +16,12 @@ class ContractType extends Model
         return LogOptions::defaults()
         ->logOnly(['*']);
     }
-    protected static $logAttributes = [
+  
+    protected $translatedAttributes = [
         'name'
     ];
+    public function realEstate()
+    {
+        return $this->hasOne(RealEstate::class);
+    }
 }

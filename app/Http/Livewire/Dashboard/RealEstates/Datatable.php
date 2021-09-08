@@ -2,9 +2,11 @@
 
 namespace App\Http\Livewire\Dashboard\RealEstates;
 
-use App\Models\RealEstate;
 use Livewire\Component;
+use App\Models\RealEstate;
 use Livewire\WithPagination;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class Datatable extends Component
 {
@@ -51,21 +53,37 @@ class Datatable extends Component
         session()->flash('alert', __('Saved Deleted.'));
     }
 
-    public function changeActive($id)
+    public function review($id)
     {
         $row = RealEstate::whereId($id)->first();
 
-        $row->is_active == true
-            ? $row->update(['is_active' => false])
-            : $row->update(['is_active' => true]);
-
-        session()->flash('alert', __('Change Active Successfully.'));
-    }
+        if ($row->status == false) {
+            $row->update([
+                'status' => true,
+                'review_at' => now(),
+                'review_by' => Auth::user()->id . "-" . Auth::user()->name,
+            ]);
+        }
+        session()->flash('alert', __('Reviewed Successfully.'));
+     }
 
     public function render()
     {
+
         return view('livewire.dashboard.real-estates.datatable', [
-            'realEstates' => RealEstate::when($this->city_id != 'all', function ($q) {
+
+           
+
+            'realEstates' => RealEstate::with([
+                'realestateType' => function ($q) {
+                    return $q->select('id', 'en_name');
+                }, 'contractType'
+                => function ($q) {
+                    return $q->select('id', 'en_name');
+                }, 'city', 'user'
+            ])
+
+                ->when($this->city_id != 'all', function ($q) {
                     $q->where('city_id', $this->city_id);
                 })
                 ->when($this->contract_type_id != 'all', function ($q) {
@@ -73,14 +91,15 @@ class Datatable extends Component
                 })
                 ->when($this->realestate_type_id != 'all', function ($q) {
                     $q->where('realestate_type_id', $this->realestate_type_id);
-                }) 
+                })
                 ->when($this->is_active != 'all', function ($q) {
                     $q->where('is_active', $this->is_active);
                 })
                 ->search('name', $this->search)
                 ->orSearch('address', $this->search)
                 ->orSearch('price', $this->search)
-                ->orSearch('space', $this->search)
+                ->orSearch('space', $this->search) 
+
                 ->orderBy($this->sortBy, $this->sortDirection)
                 ->paginate($this->count),
         ]);

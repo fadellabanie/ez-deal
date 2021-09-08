@@ -38,6 +38,8 @@ class User extends Authenticatable
         'package_id',
         'subscribe_to',
         'is_dark',
+        'suspend',
+        'block_date',
     ];
 
     /**
@@ -101,6 +103,13 @@ class User extends Authenticatable
     } 
     
     /**
+     * Get all favorite of properties.
+     */
+    public function package()
+    {
+        return $this->belongsTo(Package::class);
+    }
+     /**
      * Get all favorite of properties.
      */
     public function attribute()

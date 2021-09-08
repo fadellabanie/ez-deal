@@ -2,10 +2,19 @@
 
 namespace App\Http\Traits;
 
+use App\Models\User;
+use App\Models\NotificationUser;
+
 trait Sms
 {
     public function sendSMS($to, $message)
     {
+        NotificationUser::create([
+            'user_id' => User::where('mobile', $to)->pluck('id')->first(),
+            'title' => '--',
+            'body' => $message,
+            'type' => 'sms',
+        ]);
         
         $fields = 'message='.$message.'&numbers='.$to;
       

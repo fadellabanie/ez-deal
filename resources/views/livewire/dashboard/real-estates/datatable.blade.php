@@ -69,6 +69,11 @@
                                     {{__("Status")}}
                                     <x-sort field="is_active" sortBy="{{$sortBy}}" sortDirection="{{$sortDirection}}">
                                     </x-sort>
+                                </th> 
+                                <th wire:click="sortBy('status')" data-sort="{{$sortDirection}}" class="min-w-90px">
+                                    {{__("Review")}}
+                                    <x-sort field="status" sortBy="{{$sortBy}}" sortDirection="{{$sortDirection}}">
+                                    </x-sort>
                                 </th>
                                 <th wire:click="sortBy('created_at')" data-sort="{{$sortDirection}}" class="min-w-90px">
                                     {{__("Regester")}}
@@ -99,8 +104,6 @@
                                         <span
                                         class="text-muted fw-bold text-muted d-block fs-7">{{__("Add By Admin")}}</span>
                                     @else
-
-                                   
                                     <div class="d-flex align-items-center">
                                         <div class="d-flex justify-content-start flex-column">
                                             <a href="{{route('admin.users.show',$realEstate->user_id)}}"
@@ -111,10 +114,11 @@
                                     </div>
                                 @endif
                                 </td>
-                                <td>{{$realEstate->contractType->name}}</td>
-                                <td>{{$realEstate->realestateType->name}}</td>
+                                <td>{{$realEstate->contractType->en_name}}</td>
+                                <td>{{$realEstate->realestateType->en_name}}</td>
                                 <td>{!!realEstatesType($realEstate->type)!!}</td>
                                 <td wire:click="changeActive({{$realEstate->id}})">{!!isActive($realEstate->is_active)!!}</td>
+                                <td @if($realEstate->status == false) wire:click="review({{$realEstate->id}})" @endif>{!!review($realEstate->status)!!}</td>
                                 <td>{{$realEstate->created_at->format('m-d-Y')}}</td>
                                 <td>
                                     <div class="d-flex justify-content-end flex-shrink-0">

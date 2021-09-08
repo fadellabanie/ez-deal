@@ -12,14 +12,14 @@
             <div class="card-toolbar my-1">
                 <div class="me-6 my-1">
                     <x-status></x-status>
-                </div> 
+                </div>
                 <div class="me-6 my-1">
                     <x-city></x-city>
-                </div> 
+                </div>
                 <div class="me-6 my-1">
                     <x-contract-type></x-contract-type>
-                </div> 
-                 <div class="me-6 my-1">
+                </div>
+                <div class="me-6 my-1">
                     <x-realestate-type></x-realestate-type>
                 </div>
                 <div class="d-flex align-items-center position-relative my-1">
@@ -61,8 +61,13 @@
                                     </x-sort>
                                 </th>
                                 <th wire:click="sortBy('is_active')" data-sort="{{$sortDirection}}" class="min-w-90px">
-                                    {{__("Status")}}
+                                    {{__("Active")}}
                                     <x-sort field="is_active" sortBy="{{$sortBy}}" sortDirection="{{$sortDirection}}">
+                                    </x-sort>
+                                </th>
+                                <th wire:click="sortBy('status')" data-sort="{{$sortDirection}}" class="min-w-90px">
+                                    {{__("Review")}}
+                                    <x-sort field="status" sortBy="{{$sortBy}}" sortDirection="{{$sortDirection}}">
                                     </x-sort>
                                 </th>
                                 <th wire:click="sortBy('created_at')" data-sort="{{$sortDirection}}" class="min-w-90px">
@@ -90,24 +95,30 @@
 
 
                                 <td>
+                                    @if($order->user_id == 0)
+                                    <span
+                                        class="text-muted fw-bold text-muted d-block fs-7">{{__("Add By Admin")}}</span>
+                                    @else
                                     <div class="d-flex align-items-center">
                                         <div class="d-flex justify-content-start flex-column">
-                                            <a href="{{route('admin.users.show',$order->user)}}"
-                                                class="text-dark fw-bolder text-hover-primary fs-6">{{$order->user->name}}</a>
+                                            <a href="{{route('admin.users.show',$order->user_id)}}"
+                                                class="text-dark fw-bolder text-hover-primary fs-6">{{$order->user->name ?? ""}}</a>
                                             <span
-                                                class="text-muted fw-bold text-muted d-block fs-7">{{$order->user->mobile}}</span>
+                                                class="text-muted fw-bold text-muted d-block fs-7">{{$order->user->mobile ?? ""}}</span>
                                         </div>
                                     </div>
+                                    @endif
                                 </td>
-                                <td>{{$order->contractType->name}}</td>
-                                <td>{{$order->realestateType->name}}</td>
+                                <td>{{$order->contractType->en_name}}</td>
+                                <td>{{$order->realestateType->en_name}}</td>
                                 <td wire:click="changeActive({{$order->id}})">{!!isActive($order->is_active)!!}</td>
+                                <td @if($order->status == false) wire:click="review({{$order->id}})" @endif>{!!review($order->status)!!}</td>
                                 <td>{{$order->created_at->format('m-d-Y')}}</td>
                                 <td>
                                     <div class="d-flex justify-content-end flex-shrink-0">
-                                        
-                                        <x-edit-button href="{{route('admin.orders.edit',$order)}}"></x-edit-button>
+                                        <x-show-button href="{{route('admin.orders.show',$order)}}"></x-show-button>
 
+                                        <x-edit-button href="{{route('admin.orders.edit',$order)}}"></x-edit-button>
                                         <x-delete-record-button wire:click="confirm({{ $order->id }})">
                                         </x-delete-record-button>
                                     </div>

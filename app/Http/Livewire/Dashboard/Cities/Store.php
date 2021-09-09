@@ -15,12 +15,11 @@ class Store extends Component
     public $country_id, $icon, $status;
   
     protected $rules = [
-
-        'ar_name' => 'required|min:4|max:100',
-        'en_name' => 'required|min:4|max:100',
+        'ar_name' => 'required|min:2|max:100',
+        'en_name' => 'required|min:2|max:100',
         'country_id' => 'required',
-        'icon' => 'required',
         'status' => 'required',
+        'icon' => 'required|image|mimes:jpeg,png,jpg,svg|max:2048',
     ];
     public function updated($propertyName)
     {

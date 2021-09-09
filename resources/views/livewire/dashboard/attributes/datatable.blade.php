@@ -25,7 +25,9 @@
                         role="grid">
                         <thead class="fs-7 text-gray-400 text-uppercase">
                             <tr role="row">
-                               
+                                <th wire:click="sortBy('id')" data-sort="{{$sortDirection}}">{{__("#")}}
+                                    <x-sort field="id" sortBy="{{$sortBy}}" sortDirection="{{$sortDirection}}"></x-sort>
+                                </th>
                                 <th wire:click="sortBy('en_name')" data-sort="{{$sortDirection}}" class="min-w-50px">
                                     {{__("Name")}}
                                     <x-sort field="name" sortBy="{{$sortBy}}" sortDirection="{{$sortDirection}}">
@@ -70,7 +72,8 @@
                         <tbody class="fs-6">
                             @forelse($attributes as $key => $attribute)
                             <tr wire:loading.class="opacity-50">
-                              
+                                <td>{{$loop->iteration}}</td>
+
                                 <td>{{$attribute->en_name}}</td>
                                 <td>{{$attribute->en_description}}</td>
                                 <td>{{$attribute->price}}</td>

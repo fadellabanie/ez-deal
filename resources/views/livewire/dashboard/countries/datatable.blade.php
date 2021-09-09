@@ -17,6 +17,9 @@
                         role="grid">
                         <thead class="fs-7 text-gray-400 text-uppercase">
                             <tr role="row">
+                                <th wire:click="sortBy('id')" data-sort="{{$sortDirection}}">{{__("#")}}
+                                    <x-sort field="id" sortBy="{{$sortBy}}" sortDirection="{{$sortDirection}}"></x-sort>
+                                </th>
                                 <th class="min-w-90px">  {{__("icon")}}</th> 
 
                                 <th wire:click="sortBy('en_name')" data-sort="{{$sortDirection}}" class="min-w-50px">
@@ -43,6 +46,8 @@
                         <tbody class="fs-6">
                             @forelse($countries as $key => $country)
                             <tr wire:loading.class="opacity-50">
+                                <td>{{$loop->iteration}}</td>
+
                                 <td>
                                     <div class="cursor-pointer symbol symbol-30px symbol-md-40px">
                                         <img src="{{asset($country->icon)}}">

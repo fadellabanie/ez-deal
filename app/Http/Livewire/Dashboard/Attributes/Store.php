@@ -25,7 +25,7 @@ class Store extends Component
         'en_description' => 'required|min:4|max:250',
         'price' => 'required|numeric',
         'days' => 'required|numeric',
-        'icon' => 'required',
+        'icon' => 'required|image|mimes:jpeg,png,jpg,svg|max:2048',
         'is_active' => 'required',
     ];
     public function updated($propertyName)

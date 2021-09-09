@@ -1,30 +1,34 @@
 <?php
 
-namespace App\Http\Livewire\Dashboard\Stories;
+namespace App\Http\Livewire\Dashboard\Banners;
 
+use App\Models\AppBanner;
 use App\Models\City;
-use App\Models\Story;
-use App\Models\Country;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Auth;
 
 class Store extends Component
 {
+
     use WithFileUploads;
 
-    public $title, $city_id;
+    public $ar_name, $en_name;
+    public $ar_description, $en_description;
+    public $city_id;
     public $end_date, $start_date;
-    public $country_id, $image, $status;
+    public $image, $status;
   
     protected $rules = [
-        'title' => 'required|min:4|max:100',
+        'ar_name' => 'required|min:4|max:100',
+        'en_name' => 'required|min:4|max:100',
+        'ar_description' => 'required|min:4|max:250',
+        'en_description' => 'required|min:4|max:250',
         'city_id' => 'required|exists:cities,id',
-        'country_id' => 'required|exists:countries,id',
         'start_date' => 'required|after:today',
         'end_date' => 'required|after:today',
-        'image' => 'required|image|mimes:jpeg,png,jpg,svg|max:2048',
         'status' => 'required',
+        'image' => 'required|image|mimes:jpeg,png,jpg,svg|max:2048',
     ];
     public function updated($propertyName)
     {
@@ -35,16 +39,16 @@ class Store extends Component
     {
         $validatedData = $this->validate();
 
-        $validatedData['image'] = ($this->image) ? uploadToPublic('stories', $validatedData['image']) : "";
+        $validatedData['image'] = ($this->image) ? uploadToPublic('banners', $validatedData['image']) : "";
         $validatedData['user_id'] = Auth::id();
         $validatedData['make_by'] = 'admin';
          
-        Story::create($validatedData);
+        AppBanner::create($validatedData);
 
         $this->reset();
 
         session()->flash('alert', __('Saved Successfully.'));
-        return redirect()->route('admin.stories.index');
+        return redirect()->route('admin.banners.index');
 
     }
 
@@ -57,9 +61,9 @@ class Store extends Component
 
     public function render()
     {
-        return view('livewire.dashboard.stories.store',[
+        return view('livewire.dashboard.banners.store',[
             'cities' => city::get(),
-            'countries' => Country::get(),
+          
         ]);
     }
 }

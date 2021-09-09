@@ -18,6 +18,7 @@
                         <thead class="fs-7 text-gray-400 text-uppercase">
                             <tr role="row">
 
+                                <th>{{__("#")}}</th>
                                 <th>{{__("Type")}}</th>
                                 <th>{{__("Tilte")}}</th>
                                 <th>{{__("Content")}}</th>
@@ -27,6 +28,8 @@
                         <tbody class="fs-6">
                             @forelse($notifications as $key => $notification)
                             <tr wire:loading.class="opacity-50">
+                                <td>{{$loop->iteration}}</td>
+
                                 <td>{{$notification->type}}</td>
                                 <td>{{$notification->title}}</td>
                                 <td>{{$notification->body}}</td>

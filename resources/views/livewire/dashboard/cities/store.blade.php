@@ -134,6 +134,13 @@
 
 @section('scripts')
 <script>
+    $(document).ready(function() {
 
+$('#country_id').select2({
+    placeholder: '',
+}).on('change', function () {
+    @this.country_id = $(this).val();
+});
+});
 </script>
 @endsection

@@ -24,8 +24,10 @@ class AppBanner extends Model
     protected $fillable = [
         'user_id',
         'make_by',
-        'title',
-        'description',
+        'en_name',
+        'ar_name',
+        'ar_description',
+        'en_description',
         'image',
         'city_id',
         'start_date',
@@ -49,4 +51,5 @@ class AppBanner extends Model
     {
         return $this->belongsTo(City::class);
     }
+ 
 }

@@ -17,7 +17,7 @@ class Store extends Component
     protected $rules = [
         'ar_name' => 'required|min:4|max:100',
         'en_name' => 'required|min:4|max:100',
-        'icon' => 'required',
+        'icon' => 'required|image|mimes:jpeg,png,jpg,svg|max:2048',
         'status' => 'required',
     ];
     public function updated($propertyName)

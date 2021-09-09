@@ -6,7 +6,7 @@
             data-bs-target="#kt_account_profile_details" aria-expanded="true"
             aria-controls="kt_account_profile_details">
             <div class="card-title m-0">
-                <h3 class="fw-bolder m-0">{{__("Update country")}}</h3>
+                <h3 class="fw-bolder m-0">{{__("Create story")}}</h3>
             </div>
         </div>
         <div id="kt_account_profile_details" class="collapse show">
@@ -14,22 +14,84 @@
                 <div class="card-body border-top p-9">
                     <!--begin::Input group-->
                     <div class="row mb-6">
-                        <x-label class="required">{{__("country Name")}}</x-label>
+                        <x-label class="required">{{__("Title")}}</x-label>
                         <div class="col-lg-8">
                             <div class="row">
                                 <div class="col-lg-6 fv-row">
-                                    <x-input type="text" field="country.ar_name" wire:model="country.ar_name"
+                                    <x-input type="text" field="ar_name" wire:model="ar_name"
                                         placeholder="Arabic name" />
                                 </div>
                                 <div class="col-lg-6 fv-row">
-                                    <x-input type="text" field="country.en_name" wire:model="country.en_name"
+                                    <x-input type="text" field="en_name" wire:model="en_name"
                                         placeholder="English name" />
                                 </div>
                             </div>
                         </div>
                     </div>
                     <!--end::Input group-->
-
+                    <!--begin::Input group-->
+                    <div class="row mb-6">
+                        <x-label class="required">{{__("Description")}}</x-label>
+                        <div class="col-lg-8">
+                            <div class="row">
+                                <div class="col-lg-6 fv-row">
+                                    <x-input type="text" field="ar_description" wire:model="ar_description"
+                                        placeholder="Arabic description" />
+                                </div>
+                                <div class="col-lg-6 fv-row">
+                                    <x-input type="text" field="en_description" wire:model="en_description"
+                                        placeholder="English description" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end::Input group-->
+                    <!--begin::Input group-->
+                    <div class="row mb-6">
+                        <x-label>
+                            <span class="required">{{__("City")}}</span>
+                            <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip"
+                                title="Phone number must be active"></i>
+                        </x-label>
+                        <div class="col-lg-8 fv-row" wire:ignore>
+                            <select wire:model="city_id" aria-label="Select a city" data-control="select2"
+                                data-placeholder="Select a city..." id="city_id" name="city_id"
+                                class="form-select form-select-solid form-select-lg fw-bold @error('city_id') is-invalid @enderror">
+                                <option>{{__("Select...")}}</option>
+                                @foreach ($cities as $city)
+                                <option value="{{$city->id}}">{{$city->en_name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <x-error field="city_id" />
+                    </div>
+                    <!--end::Input group-->
+                    <!--begin::Input group-->
+                    <div class="row mb-6">
+                        <x-label class="required">{{__("Start Date")}}</x-label>
+                        <div class="col-lg-8">
+                            <div class="row">
+                                <div class="col-lg-12 fv-row">
+                                    <x-input type="date" field="start_date" wire:model="start_date"
+                                        placeholder="start date" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end::Input group-->
+                    <!--begin::Input group-->
+                    <div class="row mb-6">
+                        <x-label class="required">{{__("End Date")}}</x-label>
+                        <div class="col-lg-8">
+                            <div class="row">
+                                <div class="col-lg-12 fv-row">
+                                    <x-input type="date" field="end_date" wire:model="end_date"
+                                        placeholder="end date" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end::Input group-->
                     <!--begin::Input group-->
                     <div class="row mb-0">
                         <!--begin::Label-->
@@ -38,7 +100,7 @@
                         <!--begin::Label-->
                         <div class="col-lg-8 d-flex align-items-center">
                             <div class="form-check form-check-solid form-switch fv-row">
-                                <input class="form-check-input w-45px h-30px" type="checkbox" field="country.status" wire:model="country.status"
+                                <input class="form-check-input w-45px h-30px" type="checkbox" wire:model="status"
                                     id="allowmarketing" checked="checked" />
                                 <label class="form-check-label" for="allowmarketing"></label>
                             </div>
@@ -50,7 +112,7 @@
                     <!--begin::Input group-->
                     <div class="row mb-0">
                         <!--begin::Label-->
-                        <label class="col-lg-4 col-form-label fw-bold fs-6 mt-4">{{__("Icon")}}</label>
+                        <label class="col-lg-4 col-form-label fw-bold fs-6 mt-4">{{__("Image")}}</label>
                         <!--begin::Label-->
                         <!--begin::Label-->
                         <div class="col-lg-8 d-flex align-items-center">
@@ -80,21 +142,17 @@
                                         </svg>
                                         <!--end::Svg Icon-->
                                     </span>
-                                    <x-input type="file" id="icon" wire:model.lazy="icon" field="icon"
+                                    <x-input type="file" id="icon" wire:model.lazy="image" field="image"
                                         style="display:none" />
                                 </label>
 
-                                <div wire:loading wire:target="icon">
+                                <div wire:loading wire:target="image">
                                     <progress max="100" x-bind:value="progress"></progress>
                                 </div>
 
-                                @if($icon)
+                                @if($image)
                                 <div class="symbol symbol-750 mt-5">
-                                    <img alt="" src="{{ $icon->temporaryUrl() }}" />
-                                </div>
-                                @elseif($country->icon)
-                                <div class="symbol symbol-150 mt-5">
-                                    <img alt="" src="{{ asset($country->icon) }}" />
+                                    <img alt="" src="{{ $image->temporaryUrl() }}" />
                                 </div>
                                 @endif
                             </div>
@@ -105,7 +163,7 @@
                 </div>
                 <!--end::Card body-->
                 <div class="card-footer d-flex justify-content-end py-6 px-9">
-                    <a href="{{route('admin.countries.index')}}"
+                    <a href="{{route('admin.stories.index')}}"
                         class="btn btn-light btn-active-light-primary me-2">{{__("Back")}}</a>
                     <button type="button" class="btn btn-primary" wire:click.prevent="submit()"
                         wire:loading.attr="disabled"
@@ -118,6 +176,15 @@
 
 @section('scripts')
 <script>
+    $(document).ready(function() {
+
+        $('#city_id').select2({
+            placeholder: '',
+        }).on('change', function () {
+            @this.city_id = $(this).val();
+        });  
+      
+    });
 
 </script>
 @endsection

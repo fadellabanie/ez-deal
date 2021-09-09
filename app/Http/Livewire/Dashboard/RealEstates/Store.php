@@ -47,7 +47,7 @@ class Store extends Component
         'lat' =>  ['required', 'regex:/^[-]?(([0-8]?[0-9])\.(\d+))|(90(\.0+)?)$/'],
         'lng' => ['required', 'regex:/^[-]?((((1[0-7][0-9])|([0-9]?[0-9]))\.(\d+))|180(\.0+)?)$/'],
         'address' => 'required',
-        'images.*' => 'required',
+        'images.*' => 'required|image|mimes:jpeg,png,jpg,svg|max:2048',
     ];
     
     public function updated($propertyName)

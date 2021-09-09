@@ -55,18 +55,19 @@
                             <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip"
                                 title="Phone number must be active"></i>
                         </x-label>
-                        <div class="col-lg-8 fv-row" wire:ignore>
-                            <select wire:model="attribute_ids" aria-label="Select a attributes" data-control="select2"
-                                data-placeholder="Select a attributes..." id="attribute_ids" name="attribute_ids"
-                                class="form-select form-select-solid form-select-lg fw-bold @error('attribute_ids') is-invalid @enderror"
-                                multiple="multiple">
-                                <option>{{__("Select...")}}</option>
-                                @foreach ($attributes as $attribute)
-                                <option value="{{$attribute->id}}">{{$attribute->en_name}}</option>
-                                @endforeach
-                            </select>
+                        <div class="col-lg-8 fv-row">
+                            <div wire:ignore>
+                                <select wire:model="attribute_ids" data-control="select2" id="attribute_ids"
+                                    name="attribute_ids" class="form-select form-select-solid form-select-lg fw-bold"
+                                    multiple="multiple">
+                                    <option>{{__("Select...")}}</option>
+                                    @foreach ($attributes as $attribute)
+                                    <option value="{{$attribute->id}}">{{$attribute->en_name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <x-error-select field="attribute_ids" />
                         </div>
-                        <x-error field="attribute_ids" />
                     </div>
                     <!--end::Input group-->
 
@@ -193,6 +194,14 @@
 
 @section('scripts')
 <script>
+    $(document).ready(function() {
+
+$('#attribute_ids').select2({
+    placeholder: 'select..',
+}).on('change', function () {
+    @this.attribute_ids = $(this).val();
+});  
+});
 
 </script>
 @endsection

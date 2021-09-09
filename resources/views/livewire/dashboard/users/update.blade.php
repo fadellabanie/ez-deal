@@ -31,7 +31,8 @@
                         <div class="col-lg-8">
                             <div class="row">
                                 <div class="col-lg-12 fv-row">
-                                    <x-input type="email" field="user.email" wire:model="user.email" placeholder="Email" />
+                                    <x-input type="email" field="user.email" wire:model="user.email"
+                                        placeholder="Email" />
                                 </div>
                             </div>
                         </div>
@@ -45,18 +46,18 @@
                             <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip"
                                 title="Phone number must be active"></i>
                         </x-label>
-                        <div class="col-lg-8 fv-row" wire:ignore>
-                            <select wire:model="user.type" aria-label="Select a type" data-control="select2"
-                                data-placeholder="Select a type..." id="type" name="type"
-                                class="form-select form-select-solid form-select-lg fw-bold @error('type') is-invalid @enderror">
-                                <option value="">Select a Type...</option>
-                                <option value="admin">{{__("Admin")}}</option>
-                                <option value="personal">{{__("personal")}}</option>
-                                <option value="company">{{__("company")}}</option>
-                            </select>
-                            <x-error field="user.type" />
+                        <div class="col-lg-8 fv-row">
+                            <div wire:ignore>
+                                <select wire:model="type" id="type" name="type" data-control="select2"
+                                    class="form-select form-select-solid form-select-lg fw-bold">
+                                    <option disable>{{__("Select...")}}</option>
+                                    <option value="admin">{{__("Admin")}}</option>
+                                    <option value="personal">{{__("personal")}}</option>
+                                    <option value="company">{{__("company")}}</option>
+                                </select>
+                            </div>
+                            <x-error-select field="type" />
                         </div>
-
                     </div>
                     <!--end::Input group-->
                     @if ($type == 'company')
@@ -80,18 +81,21 @@
                         <x-label class="required">{{__("mobile")}}</x-label>
                         <div class="col-lg-8">
                             <div class="row">
-                                <div class="col-lg-4 fv-row" wire:ignore>
-                                    <select wire:model="user.country_code" aria-label="Select a country_code"
-                                        data-control="select2" data-placeholder="Select a country_code..."
-                                        id="country_code" name="country_code"
-                                        class="form-select form-select-solid form-select-lg fw-bold @error('country_code') is-invalid @enderror">
-                                        <option value="">Select a country_code...</option>
-                                        <option value="SA">Saudi Arabia</option>
-                                        <option value="SA">Saudi Arabia</option>
-                                    </select>
+                                <div class="col-lg-4 fv-row">
+                                    <div wire:ignore>
+                                        <select wire:model="country_code" data-control="select2" id="country_code"
+                                            name="country_code"
+                                            class="form-select form-select-solid form-select-lg fw-bold">=
+                                            <option value="">Select a country_code...</option>
+                                            <option value="SA">Saudi Arabia</option>
+                                        </select>
+                                    </div>
+                                    <x-error-select field="country_code" />
+
                                 </div>
                                 <div class="col-lg-4 fv-row">
-                                    <x-input type="tel" field="user.mobile" wire:model="user.mobile" placeholder="Mobile" />
+                                    <x-input type="tel" field="user.mobile" wire:model="user.mobile"
+                                        placeholder="Mobile" />
                                 </div>
                                 <div class="col-lg-4 fv-row">
                                     <x-input type="tel" field="user.whatsapp_mobile" wire:model="user.whatsapp_mobile"
@@ -123,16 +127,17 @@
                             <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip"
                                 title="Phone number must be active"></i>
                         </x-label>
-                        <div class="col-lg-8 fv-row" wire:ignore>
-                            <select wire:model="user.city_id" aria-label="Select a attributes" data-control="select2"
-                                data-placeholder="Select a attributes..." id="city_id" name="city_id"
-                                class="form-select form-select-solid form-select-lg fw-bold @error('city_id') is-invalid @enderror">
-                                <option value="">Select a city...</option>
-                                @foreach (cities() as $city)
-                                <option value="{{$city->id}}">{{$city->en_name}}</option>
-                                @endforeach
-                            </select>
-                            <x-error field="user.city_id" />
+                        <div class="col-lg-8 fv-row">
+                            <div wire:ignore>
+                                <select wire:model="city_id" data-control="select2" id="city_id" name="city_id"
+                                    class="form-select form-select-solid form-select-lg fw-bold">
+                                    <option>{{__("Select...")}}</option>
+                                    @foreach (cities() as $city)
+                                    <option value="{{$city->id}}">{{$city->en_name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <x-error-select field="city_id" />
                         </div>
                     </div>
                     <!--end::Input group-->
@@ -206,25 +211,24 @@
         </div>
     </div>
 </div>
-
 @section('scripts')
 <script>
     $(document).ready(function() {
-            $('#type').select2({
-                placeholder: '',
-            }).on('change', function () {
-                @this.type = $(this).val();
-            }); 
-               $('#country_code').select2({
-                placeholder: '',
-            }).on('change', function () {
-                @this.country_code = $(this).val();
-            }); 
-            $('#city_id').select2({
-                placeholder: '',
-            }).on('change', function () {
-                @this.country_code = $(this).val();
-            });
-        });
+
+    $('#type').select2({
+        placeholder: 'select..',
+    }).on('change', function () {
+        @this.type = $(this).val();
+    });  $('#country_code').select2({
+        placeholder: 'select..',
+    }).on('change', function () {
+        @this.country_code = $(this).val();
+    });  $('#city_id').select2({
+        placeholder: 'select..',
+    }).on('change', function () {
+        @this.city_id = $(this).val();
+    });  
+});
+
 </script>
 @endsection

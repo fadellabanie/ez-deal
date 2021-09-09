@@ -15,13 +15,14 @@ class Update extends Component
 
     public $banner;
     public $image;
+    public $city_id;
 
     protected $rules = [
         'banner.ar_name' => 'required|min:4|max:100',
         'banner.en_name' => 'required|min:4|max:100',
         'banner.ar_description' => 'required|min:4|max:250',
         'banner.en_description' => 'required|min:4|max:250',
-        'banner.city_id' => 'required|exists:cities,id',
+        'city_id' => 'required|exists:cities,id',
         'banner.start_date' => 'required|after:today',
         'banner.end_date' => 'required|after:today',
         'banner.status' => 'required',
@@ -46,11 +47,11 @@ class Update extends Component
                 'image' => uploadToPublic('banners', $validatedData['image']),
             ]);
         }
-
         $this->banner->update([
             'user_id'  => Auth::id(),
+            'city_id'  => $validatedData['city_id'],
         ]);
-
+       
         session()->flash('alert', __('Saved Successfully.'));
 
         return redirect()->route('admin.banners.index');
@@ -59,6 +60,7 @@ class Update extends Component
     public function mount(AppBanner $banner)
     {
         $this->banner = $banner;
+        $this->city_id = $banner->city_id;
     }
 
     public function render()

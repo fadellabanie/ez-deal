@@ -88,7 +88,7 @@
                               
                                 <td>{{$story->start_date}}</td>
                                 <td>{{$story->end_date}}</td>
-                                <td>{!!isActive($banner->status)!!}</td>
+                                <td>{!!isActive($story->status)!!}</td>
                                 <td>
                                     <div class="d-flex justify-content-end flex-shrink-0">
                                         <x-edit-button href="{{route('admin.stories.edit',$story)}}"></x-edit-button>

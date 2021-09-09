@@ -29,18 +29,18 @@
                         </div>
                     </div>
                     <!--end::Input group-->
-                      <!--begin::Input group-->
-                      <div class="row mb-6">
+                    <!--begin::Input group-->
+                    <div class="row mb-6">
                         <x-label class="required">{{__("Description")}}</x-label>
                         <div class="col-lg-8">
                             <div class="row">
                                 <div class="col-lg-6 fv-row">
-                                    <x-input type="text" field="banner.ar_description" wire:model="banner.ar_description"
-                                        placeholder="Arabic description" />
+                                    <x-input type="text" field="banner.ar_description"
+                                        wire:model="banner.ar_description" placeholder="Arabic description" />
                                 </div>
                                 <div class="col-lg-6 fv-row">
-                                    <x-input type="text" field="banner.en_description" wire:model="banner.en_description"
-                                        placeholder="English description" />
+                                    <x-input type="text" field="banner.en_description"
+                                        wire:model="banner.en_description" placeholder="English description" />
                                 </div>
                             </div>
                         </div>
@@ -53,17 +53,18 @@
                             <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip"
                                 title="Phone number must be active"></i>
                         </x-label>
-                        <div class="col-lg-8 fv-row" wire:ignore>
-                            <select wire:model="banner.city_id" aria-label="Select a city" data-control="select2"
-                                data-placeholder="Select a city..." id="city_id" name="city_id"
-                                class="form-select form-select-solid form-select-lg fw-bold @error('city_id') is-invalid @enderror">
-                                <option>{{__("Select...")}}</option>
-                                @foreach ($cities as $city)
-                                <option value="{{$city->id}}">{{$city->en_name}}</option>
-                                @endforeach
-                            </select>
+                        <div class="col-lg-8 fv-row">
+                            <div wire:ignore>
+                                <select wire:model="city_id" data-control="select2" id="city_id" name="city_id"
+                                    class="form-select form-select-solid form-select-lg fw-bold">
+                                    <option>{{__("Select...")}}</option>
+                                    @foreach ($cities as $city)
+                                    <option value="{{$city->id}}">{{$city->en_name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <x-error-select field="city_id" />
                         </div>
-                        <x-error field="banner.city_id" />
                     </div>
                     <!--end::Input group-->
                     <!--begin::Input group-->
@@ -158,7 +159,7 @@
                                 <div class="symbol symbol-150 mt-5">
                                     <img alt="" src="{{ asset($banner->image) }}" />
                                 </div>
-                               
+
                                 @endif
                             </div>
                         </div>

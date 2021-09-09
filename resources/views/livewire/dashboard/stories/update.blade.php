@@ -18,7 +18,8 @@
                         <div class="col-lg-8">
                             <div class="row">
                                 <div class="col-lg-12 fv-row">
-                                    <x-input type="text" field="story.title" wire:model="story.title" placeholder="title" />
+                                    <x-input type="text" field="story.title" wire:model="story.title"
+                                        placeholder="title" />
                                 </div>
                             </div>
                         </div>
@@ -31,17 +32,19 @@
                             <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip"
                                 title="Phone number must be active"></i>
                         </x-label>
-                        <div class="col-lg-8 fv-row" wire:ignore>
-                            <select data-control="select2" wire:model="story.country_id" id="country_id" name="country_id"
-                                class="form-select form-select-solid form-select-lg fw-bold ">
-                                <option>{{__("Select...")}}</option>
-                                @foreach ($countries as $country)
-                                <option value="{{$country->id}}">{{$country->en_name}}</option>
-                                @endforeach
-                            </select>
-
+                        <div class="col-lg-8 fv-row">
+                            <div wire:ignore>
+                                <select data-control="select2" id="country_id" wire:model="country_id"
+                                    name="country_id" class="form-select form-select-solid form-select-lg fw-bold ">
+                                    <option>{{__("Select...")}}</option>
+                                    @foreach ($countries as $country)
+                                    <option value="{{$country->id}}">{{$country->en_name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <x-error-select field="country_id"/>
                         </div>
-                        <x-error field="story.country_id" />
+
                     </div>
                     <!--end::Input group-->
                     <!--begin::Input group-->
@@ -51,17 +54,19 @@
                             <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip"
                                 title="Phone number must be active"></i>
                         </x-label>
-                        <div class="col-lg-8 fv-row" wire:ignore>
-                            <select wire:model="story.city_id" aria-label="Select a city" data-control="select2"
-                                data-placeholder="Select a city..." id="city_id" name="city_id"
-                                class="form-select form-select-solid form-select-lg fw-bold @error('city_id') is-invalid @enderror">
-                                <option>{{__("Select...")}}</option>
-                                @foreach ($cities as $city)
-                                <option value="{{$city->id}}">{{$city->en_name}}</option>
-                                @endforeach
-                            </select>
+                        <div class="col-lg-8 fv-row">
+                            <div wire:ignore>
+                                <select data-control="select2" id="city_id" wire:model="city_id" name="city_id"
+                                    class="form-select form-select-solid form-select-lg fw-bold">
+                                    <option>{{__("Select...")}}</option>
+                                    @foreach ($cities as $city)
+                                    <option value="{{$city->id}}">{{$city->en_name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <x-error-select field="city_id"/>
+
                         </div>
-                        <x-error field="story.city_id" />
                     </div>
                     <!--end::Input group-->
                     <!--begin::Input group-->
@@ -156,7 +161,7 @@
                                 <div class="symbol symbol-150 mt-5">
                                     <img alt="" src="{{ asset($story->image) }}" />
                                 </div>
-                               
+
                                 @endif
                             </div>
                         </div>
@@ -191,8 +196,6 @@
         }).on('change', function () {
             @this.country_id = $(this).val();
         });
-
-        
        
     });
 

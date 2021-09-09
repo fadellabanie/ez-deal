@@ -51,6 +51,30 @@
                     <!--begin::Input group-->
                     <div class="row mb-6">
                         <x-label>
+                            <span class="required">{{__("Attributes")}}</span>
+                            <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip"
+                                title="Phone number must be active"></i>
+                        </x-label>
+                        <div class="col-lg-8 fv-row">
+                            <div wire:ignore>
+                                <select wire:model="attribute_ids" data-control="select2" id="attribute_ids"
+                                    name="attribute_ids" class="form-select form-select-solid form-select-lg fw-bold"
+                                    multiple="multiple">
+                                    <option>{{__("Select...")}}</option>
+                                    @foreach ($attributes as $attribute)
+                                    <option value="{{ $attribute->id }}" @if(in_array($attribute->id, $attribute_ids))
+                                        selected @endif>{{ $attribute->en_name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <x-error-select field="attribute_ids" />
+                        </div>
+                    </div>
+                    <!--end::Input group-->
+
+                    <!--begin::Input group-->
+                    <div class="row mb-6">
+                        <x-label>
                             <span class="required">{{__("Price")}}</span>
                             <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip"
                                 title="Phone number must be active"></i>
@@ -161,18 +185,28 @@
                     <!--end::Input group-->
                 </div>
                 <!--end::Card body-->
-
-
                 <div class="card-footer d-flex justify-content-end py-6 px-9">
                     <a href="{{route('admin.packages.index')}}"
                         class="btn btn-light btn-active-light-primary me-2">{{__("Back")}}</a>
                     <button type="button" class="btn btn-primary" wire:click.prevent="submit()"
                         wire:loading.attr="disabled"
                         wire:loading.class="spinner spinner-white spinner-left">{{__("Save")}}</button>
-
-
                 </div>
             </form>
         </div>
     </div>
 </div>
+
+@section('scripts')
+<script>
+    $(document).ready(function() {
+
+$('#attribute_ids').select2({
+    placeholder: 'select..',
+}).on('change', function () {
+    @this.attribute_ids = $(this).val();
+});  
+});
+
+</script>
+@endsection

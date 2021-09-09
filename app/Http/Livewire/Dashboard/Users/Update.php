@@ -15,19 +15,20 @@ class Update extends Component
     public $avatar;
     public $type;
     public $password;
+    public $city_id;
 
     protected function rules()
     {
         return [
             'user.name' => 'required|min:4|max:100',
-            'user.type' =>  'required|in:admin,personal,company',
+            'type' =>  'required|in:admin,personal,company',
             'user.trading_certification' =>  'required_if:type,company',
             'user.email' => 'required|string|email|unique:users,email,' . $this->user->id,
             'user.mobile' =>  'required|unique:users,mobile,' . $this->user->id,
             'user.whatsapp_mobile' =>  'required|unique:users,whatsapp_mobile,' . $this->user->id,
             'password' => 'nullable|min:8|max:15',
             'user.country_code' => 'required',
-            'user.city_id' => 'required',
+            'city_id' => 'required',
         ];
     }
 

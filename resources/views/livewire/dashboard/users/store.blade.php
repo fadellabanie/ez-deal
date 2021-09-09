@@ -45,16 +45,17 @@
                                 title="Phone number must be active"></i>
                         </x-label>
                         <div class="col-lg-8 fv-row">
-                            <select wire:model="type" id="type" name="type"
-                                class="form-select form-select-solid form-select-lg fw-bold @error('type') is-invalid @enderror">
-                                <option disable>{{__("Select...")}}</option>
-                                <option value="admin">{{__("Admin")}}</option>
-                                <option value="personal">{{__("personal")}}</option>
-                                <option value="company">{{__("company")}}</option>
-                            </select>
-                            <x-error field="type" />
+                            <div wire:ignore>
+                                <select wire:model="type" id="type" name="type" data-control="select2"
+                                    class="form-select form-select-solid form-select-lg fw-bold">
+                                    <option disable>{{__("Select...")}}</option>
+                                    <option value="admin">{{__("Admin")}}</option>
+                                    <option value="personal">{{__("personal")}}</option>
+                                    <option value="company">{{__("company")}}</option>
+                                </select>
+                            </div>
+                            <x-error-select field="type" />
                         </div>
-
                     </div>
                     <!--end::Input group-->
                     @if ($type == 'company')
@@ -79,11 +80,15 @@
                         <div class="col-lg-8">
                             <div class="row">
                                 <div class="col-lg-4 fv-row">
-                                    <select wire:model="country_code" id="country_code" name="country_code"
-                                        class="form-select form-select-solid form-select-lg fw-bold @error('country_code') is-invalid @enderror">
-                                        <option disable>{{__("Select...")}}</option>
-                                        <option value="SA">Saudi Arabia</option>
-                                    </select>
+                                    <div wire:ignore>
+                                        <select wire:model="country_code" data-control="select2" id="country_code"
+                                            name="country_code"
+                                            class="form-select form-select-solid form-select-lg fw-bold">
+                                            <option disable>{{__("Select...")}}</option>
+                                            <option value="SA">Saudi Arabia</option>
+                                        </select>
+                                    </div>
+                                    <x-error-select field="country_code" />
                                 </div>
                                 <div class="col-lg-4 fv-row">
                                     <x-input type="tel" field="mobile" wire:model="mobile" placeholder="Mobile" />
@@ -119,18 +124,19 @@
                                 title="Phone number must be active"></i>
                         </x-label>
                         <div class="col-lg-8 fv-row">
-                            <select wire:model="city_id" id="city_id" name="city_id"
-                                class="form-select form-select-solid form-select-lg fw-bold @error('city_id') is-invalid @enderror">
-                                <option disable>{{__("Select...")}}</option>
-                                @foreach (cities() as $city)
-                                <option value="{{$city->id}}">{{$city->en_name}}</option>
-                                @endforeach
-                            </select>
-                            <x-error field="city_id" />
+                            <div wire:ignore>
+                                <select data-control="select2" id="city_id" name="city_id"
+                                    class="form-select form-select-solid form-select-lg fw-bold">
+                                    <option>{{__("Select...")}}</option>
+                                    @foreach (cities() as $city)
+                                    <option value="{{$city->id}}">{{$city->en_name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <x-error-select field="city_id" />
                         </div>
                     </div>
                     <!--end::Input group-->
-
 
                     <!--begin::Input group-->
                     <div class="row mb-0">
@@ -197,10 +203,25 @@
     </div>
 </div>
 
-@push('scripts')
-
-
+@section('scripts')
 <script>
+    $(document).ready(function() {
+
+    $('#type').select2({
+        placeholder: 'select..',
+    }).on('change', function () {
+        @this.type = $(this).val();
+    });  $('#city_id').select2({
+        placeholder: 'select..',
+    }).on('change', function () {
+        @this.city_id = $(this).val();
+    });  
+     $('#country_code').select2({
+        placeholder: 'select..',
+    }).on('change', function () {
+        @this.country_code = $(this).val();
+    });  
+});
 
 </script>
-@endpush
+@endsection

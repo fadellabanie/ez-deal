@@ -15,11 +15,13 @@ class Update extends Component
 
     public $story;
     public $image;
+    public $city_id;
+    public $country_id;
 
     protected $rules = [
         'story.title' => 'required|min:4|max:100',
-        'story.city_id' => 'required|exists:cities,id',
-        'story.country_id' => 'required|exists:countries,id',
+        'city_id' => 'required|exists:cities,id',
+        'country_id' => 'required|exists:countries,id',
         'story.start_date' => 'required|after:today',
         'story.end_date' => 'required|after:today',
         'story.status' => 'required',
@@ -47,6 +49,8 @@ class Update extends Component
 
         $this->story->update([
             'user_id'  => Auth::id(),
+            'city_id'  => $validatedData['city_id'],
+            'country_id'  => $validatedData['country_id'],
         ]);
 
         session()->flash('alert', __('Saved Successfully.'));
@@ -57,6 +61,8 @@ class Update extends Component
     public function mount(Story $story)
     {
         $this->story = $story;
+        $this->city_id = $story->city_id;
+        $this->country_id = $story->country_id;
     }
 
     public function render()

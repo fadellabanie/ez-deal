@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Dashboard\Packages;
 
 use App\Models\Package;
+use App\Models\Attribute;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -12,12 +13,14 @@ class Update extends Component
 
     public $package;
     public $icon;
+    public $attribute_ids;
 
     protected $rules = [
         'package.ar_name' => 'required|min:4|max:100',
         'package.en_name' =>'required|min:4|max:100',
         'package.ar_description' => 'required|min:4|max:250',
         'package.en_description' =>'required|min:4|max:250',
+        'attribute_ids' => 'required',
         'package.price' => 'required|numeric',
         'package.color' => 'required',
         'package.days' => 'required|numeric',
@@ -45,9 +48,8 @@ class Update extends Component
             ]);
         }
 
-     //   $this->product->tags()->sync($this->productTags);
+        $this->package->attributes()->sync($validatedData['attribute_ids']);
 
-       // $this->product->timedEvents()->sync($this->productTimedEvents);
 
         session()->flash('alert', __('Saved Successfully.'));
 
@@ -58,9 +60,13 @@ class Update extends Component
     public function mount(Package $package)
     {
         $this->package = $package;
+        $this->attribute_ids =  $package->attributes()->pluck('id')->all();
+        
     }
     public function render()
     {
-        return view('livewire.dashboard.packages.update');
+        return view('livewire.dashboard.packages.update', [
+            'attributes' => Attribute::get(),
+        ]);
     }
 }

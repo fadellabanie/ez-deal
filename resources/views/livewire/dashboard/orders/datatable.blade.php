@@ -25,6 +25,11 @@
                 <div class="d-flex align-items-center position-relative my-1">
                     <x-search-input></x-search-input>
                 </div>
+                <div class="d-flex align-items-center position-relative my-1">
+                    @can('export orders')
+                    <x-export-button></x-export-button>
+                    @endcan
+                </div>
             </div>
         </div>
 

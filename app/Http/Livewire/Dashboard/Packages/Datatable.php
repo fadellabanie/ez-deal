@@ -5,6 +5,9 @@ namespace App\Http\Livewire\Dashboard\Packages;
 use App\Models\Package;
 use Livewire\Component;
 use Livewire\WithPagination;
+use App\Exports\PackageExport;
+use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class Datatable extends Component
 {
@@ -44,6 +47,12 @@ class Datatable extends Component
         $row->delete();
 
         $this->emit('closeDeleteModal'); // Close model to using to jquery
+    }
+    public function export()
+    {
+        $this->authorize('export packages');
+
+        return Excel::download(new PackageExport, 'packages.xlsx');
     }
 
     public function render()

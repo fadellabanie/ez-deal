@@ -5,6 +5,9 @@ namespace App\Http\Livewire\Dashboard\Attributes;
 use App\Models\Attribute;
 use Livewire\Component;
 use Livewire\WithPagination;
+use App\Exports\AttributeExport;
+use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class Datatable extends Component
 {
@@ -45,7 +48,12 @@ class Datatable extends Component
 
         $this->emit('closeDeleteModal'); // Close model to using to jquery
     }
+    public function export()
+    {
+        $this->authorize('export attributes');
 
+        return Excel::download(new AttributeExport, 'attributes.xlsx');
+    }
     public function render()
     {
         return view('livewire.dashboard.attributes.datatable',[

@@ -6,6 +6,9 @@ use App\Models\Order;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Illuminate\Support\Facades\Auth;
+use App\Exports\OrderExport;
+use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class Datatable extends Component
 {
@@ -76,7 +79,12 @@ class Datatable extends Component
         session()->flash('alert', __('Reviewed Successfully.'));
     }
 
+    public function export()
+    {
+        $this->authorize('export orders');
 
+        return Excel::download(new OrderExport, 'orders.xlsx');
+    }
 
     public function render()
     {

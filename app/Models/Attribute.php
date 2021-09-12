@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Services\Translatable;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Activitylog\LogOptions;
+
 class Attribute extends Model
 {
     use HasFactory,Translatable,LogsActivity;

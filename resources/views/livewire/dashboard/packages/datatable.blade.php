@@ -10,12 +10,16 @@
             </div>
 
             <div class="card-toolbar my-1">
-             
+
                 <div class="d-flex align-items-center position-relative my-1">
 
                     <x-search-input></x-search-input>
                 </div>
-
+                <div class="me-6 my-1">
+                    @can('export packages')
+                    <x-export-button></x-export-button>
+                    @endcan
+                </div>
             </div>
         </div>
 
@@ -35,33 +39,29 @@
                                     <x-sort field="name" sortBy="{{$sortBy}}" sortDirection="{{$sortDirection}}">
                                     </x-sort>
                                 </th>
-                                <th wire:click="sortBy('en_description')" data-sort="{{$sortDirection}}" class="min-w-50px">
+                                <th wire:click="sortBy('en_description')" data-sort="{{$sortDirection}}"
+                                    class="min-w-50px">
                                     {{__("Description")}}
-                                    <x-sort field="en_description" sortBy="{{$sortBy}}" sortDirection="{{$sortDirection}}">
+                                    <x-sort field="en_description" sortBy="{{$sortBy}}"
+                                        sortDirection="{{$sortDirection}}">
                                     </x-sort>
                                 </th>
-                                <th wire:click="sortBy('price')" data-sort="{{$sortDirection}}"
-                                    class="min-w-90px">
+                                <th wire:click="sortBy('price')" data-sort="{{$sortDirection}}" class="min-w-90px">
                                     {{__("Price")}}
-                                    <x-sort field="price" sortBy="{{$sortBy}}"
-                                        sortDirection="{{$sortDirection}}">
+                                    <x-sort field="price" sortBy="{{$sortBy}}" sortDirection="{{$sortDirection}}">
                                     </x-sort>
-                                </th>   
-                                <th wire:click="sortBy('days')" data-sort="{{$sortDirection}}"
-                                    class="min-w-90px">
+                                </th>
+                                <th wire:click="sortBy('days')" data-sort="{{$sortDirection}}" class="min-w-90px">
                                     {{__("Days")}}
-                                    <x-sort field="days" sortBy="{{$sortBy}}"
-                                        sortDirection="{{$sortDirection}}">
+                                    <x-sort field="days" sortBy="{{$sortBy}}" sortDirection="{{$sortDirection}}">
                                     </x-sort>
                                 </th>
-                                <th wire:click="sortBy('status')" data-sort="{{$sortDirection}}"
-                                    class="min-w-90px">
+                                <th wire:click="sortBy('status')" data-sort="{{$sortDirection}}" class="min-w-90px">
                                     {{__("status")}}
-                                    <x-sort field="status" sortBy="{{$sortBy}}"
-                                        sortDirection="{{$sortDirection}}">
+                                    <x-sort field="status" sortBy="{{$sortBy}}" sortDirection="{{$sortDirection}}">
                                     </x-sort>
                                 </th>
-                                
+
                                 <th wire:click="sortBy('created_at')" data-sort="{{$sortDirection}}" class="min-w-90px">
                                     {{__("Regester")}}
                                     <x-sort field="created_at" sortBy="{{$sortBy}}" sortDirection="{{$sortDirection}}">
@@ -81,7 +81,7 @@
                                 <td>{{$package->price}}</td>
                                 <td>{{$package->days}}</td>
                                 <td>{!!isActive($package->status)!!}</td>
-                              
+
                                 <td>{{$package->created_at->format('m-d-Y')}}</td>
                                 <td>
                                     <div class="d-flex justify-content-end flex-shrink-0">

@@ -13,7 +13,11 @@
                 <div class="d-flex align-items-center position-relative my-1">
                     <x-search-input></x-search-input>
                 </div>
-
+                <div class="me-6 my-1">
+                    @can('export attributes')
+                    <x-export-button></x-export-button>
+                    @endcan
+                </div>
             </div>
         </div>
 

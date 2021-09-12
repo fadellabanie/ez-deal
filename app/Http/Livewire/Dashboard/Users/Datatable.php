@@ -5,6 +5,9 @@ namespace App\Http\Livewire\Dashboard\Users;
 use App\Models\User;
 use Livewire\Component;
 use Livewire\WithPagination;
+use App\Exports\AppUserExport;
+use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class Datatable extends Component
 {
@@ -72,7 +75,12 @@ class Datatable extends Component
         session()->flash('alert', __('Account UnFreeze Successfully.'));
     }
     
-  
+    public function export()
+    {
+        $this->authorize('export users');
+
+        return Excel::download(new AppUserExport, 'app-users.xlsx');
+    }
 
     public function render()
     {

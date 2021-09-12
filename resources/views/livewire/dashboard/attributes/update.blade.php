@@ -148,16 +148,12 @@
                     <!--end::Input group-->
                 </div>
                 <!--end::Card body-->
-
-
                 <div class="card-footer d-flex justify-content-end py-6 px-9">
                     <a href="{{route('admin.attributes.index')}}"
                         class="btn btn-light btn-active-light-primary me-2">{{__("Back")}}</a>
                     <button type="button" class="btn btn-primary" wire:click.prevent="submit()"
                         wire:loading.attr="disabled"
                         wire:loading.class="spinner spinner-white spinner-left">{{__("Save")}}</button>
-
-
                 </div>
             </form>
         </div>

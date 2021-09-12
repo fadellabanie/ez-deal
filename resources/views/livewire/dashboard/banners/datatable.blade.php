@@ -7,7 +7,15 @@
                 <h3 class="fw-bolder mb-1">{{__("Banners")}}</h3>
                 <div class="fs-6 text-gray-400">{{__("Show All")}}</div>
             </div>
+            <div class="card-toolbar my-1">
+                <div class="me-6 my-1">
+                    @can('export banners')
+                    <x-export-button></x-export-button>
+                    @endcan
+                </div>
+            </div>
         </div>
+
 
         <div class="card-body pt-0">
             <div class="dataTables_wrapper dt-bootstrap4 no-footer">
@@ -20,7 +28,7 @@
                                 <th wire:click="sortBy('id')" data-sort="{{$sortDirection}}" class="min-w-50px">
                                     {{__("#")}}
                                     <x-sort field="id" sortBy="{{$sortBy}}" sortDirection="{{$sortDirection}}">
-                                </x-sort>
+                                    </x-sort>
                                 </th>
                                 <th class="min-w-90px"> {{__("Image")}}</th>
 
@@ -50,7 +58,7 @@
                                     <x-sort field="end_date" sortBy="{{$sortBy}}" sortDirection="{{$sortDirection}}">
                                     </x-sort>
                                 </th>
-                                 <th wire:click="sortBy('status')" data-sort="{{$sortDirection}}" class="min-w-90px">
+                                <th wire:click="sortBy('status')" data-sort="{{$sortDirection}}" class="min-w-90px">
                                     {{__("Status")}}
                                     <x-sort field="status" sortBy="{{$sortBy}}" sortDirection="{{$sortDirection}}">
                                     </x-sort>

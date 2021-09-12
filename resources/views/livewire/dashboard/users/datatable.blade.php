@@ -15,12 +15,17 @@
                     </div>
                     <div class="me-6 my-1">
                         <x-user-type></x-user-type>
-                    </div> 
+                    </div>
                     <div class="me-6 my-1">
                         <x-user-status></x-user-status>
                     </div>
                     <div class="d-flex align-items-center position-relative my-1">
                         <x-search-input></x-search-input>
+                    </div>
+                    <div class="d-flex align-items-center position-relative my-1">
+                        @can('export users')
+                        <x-export-button></x-export-button>
+                        @endcan
                     </div>
                 </div>
             </div>
@@ -57,7 +62,7 @@
                                     <x-sort field="type" sortBy="{{$sortBy}}" sortDirection="{{$sortDirection}}">
                                     </x-sort>
                                 </th>
-                                 <th wire:click="sortBy('status')" data-sort="{{$sortDirection}}" class="min-w-90px">
+                                <th wire:click="sortBy('status')" data-sort="{{$sortDirection}}" class="min-w-90px">
                                     {{__("Status")}}
                                     <x-sort field="status" sortBy="{{$sortBy}}" sortDirection="{{$sortDirection}}">
                                     </x-sort>
@@ -84,7 +89,8 @@
                                             </div>
                                         </div>
                                         <div class="d-flex flex-column justify-content-center">
-                                            <a href="{{route('admin.users.show',$user)}}" class="fs-6 text-gray-800 text-hover-primary">{{$user->name}}</a>
+                                            <a href="{{route('admin.users.show',$user)}}"
+                                                class="fs-6 text-gray-800 text-hover-primary">{{$user->name}}</a>
                                             <div class="fw-bold text-gray-400">{{$user->email}}</div>
                                         </div>
                                     </div>
@@ -98,15 +104,15 @@
                                     <div class="d-flex justify-content-end flex-shrink-0">
                                         <x-edit-button href="{{route('admin.users.edit',$user)}}"></x-edit-button>
                                         <x-delete-record-button wire:click="confirm({{ $user->id }})">
-                                        </x-delete-record-button> 
-                                            @if ($user->status == true)
-                                            <x-freeze-button wire:click="freeze({{ $user->id }})">
-                                            </x-freeze-button>
-                                            @else
-                                            <x-unfreeze-button wire:click="unFreeze({{ $user->id }})">
+                                        </x-delete-record-button>
+                                        @if ($user->status == true)
+                                        <x-freeze-button wire:click="freeze({{ $user->id }})">
+                                        </x-freeze-button>
+                                        @else
+                                        <x-unfreeze-button wire:click="unFreeze({{ $user->id }})">
                                             </x-freeze-button>
                                             @endif
-                                       
+
                                     </div>
                                 </td>
                             </tr>

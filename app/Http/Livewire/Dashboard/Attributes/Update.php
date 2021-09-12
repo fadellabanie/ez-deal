@@ -4,10 +4,10 @@ namespace App\Http\Livewire\Dashboard\Attributes;
 
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use App\Models\Attribute;
 
 class Update extends Component
 {
-
     use WithFileUploads;
 
     public $attribute;

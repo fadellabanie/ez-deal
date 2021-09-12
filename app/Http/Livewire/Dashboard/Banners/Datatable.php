@@ -5,6 +5,9 @@ namespace App\Http\Livewire\Dashboard\Banners;
 use App\Models\AppBanner;
 use Livewire\Component;
 use Livewire\WithPagination;
+use App\Exports\BannerExport;
+use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class Datatable extends Component
 {
@@ -44,6 +47,13 @@ class Datatable extends Component
         $row->delete();
 
         $this->emit('closeDeleteModal'); // Close model to using to jquery
+    }
+    
+    public function export()
+    {
+        $this->authorize('export banner');
+
+        return Excel::download(new BannerExport, 'banners.xlsx');
     }
     public function render()
     {

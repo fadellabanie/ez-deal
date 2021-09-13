@@ -9,10 +9,11 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Http\Controllers\Dashboard\ConstantController;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Activitylog\LogOptions;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable,HasApiTokens,LogsActivity;
+    use HasFactory, Notifiable,HasApiTokens,LogsActivity,HasRoles;
    
     public function getActivitylogOptions(): LogOptions
     {

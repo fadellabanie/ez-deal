@@ -37,33 +37,29 @@
                                     <x-sort field="name" sortBy="{{$sortBy}}" sortDirection="{{$sortDirection}}">
                                     </x-sort>
                                 </th>
-                                <th wire:click="sortBy('en_description')" data-sort="{{$sortDirection}}" class="min-w-50px">
+                                <th wire:click="sortBy('en_description')" data-sort="{{$sortDirection}}"
+                                    class="min-w-50px">
                                     {{__("Description")}}
-                                    <x-sort field="en_description" sortBy="{{$sortBy}}" sortDirection="{{$sortDirection}}">
+                                    <x-sort field="en_description" sortBy="{{$sortBy}}"
+                                        sortDirection="{{$sortDirection}}">
                                     </x-sort>
                                 </th>
-                                <th wire:click="sortBy('price')" data-sort="{{$sortDirection}}"
-                                    class="min-w-90px">
+                                <th wire:click="sortBy('price')" data-sort="{{$sortDirection}}" class="min-w-90px">
                                     {{__("Price")}}
-                                    <x-sort field="price" sortBy="{{$sortBy}}"
-                                        sortDirection="{{$sortDirection}}">
+                                    <x-sort field="price" sortBy="{{$sortBy}}" sortDirection="{{$sortDirection}}">
                                     </x-sort>
-                                </th>   
-                                <th wire:click="sortBy('count')" data-sort="{{$sortDirection}}"
-                                    class="min-w-90px">
+                                </th>
+                                <th wire:click="sortBy('count')" data-sort="{{$sortDirection}}" class="min-w-90px">
                                     {{__("Count")}}
-                                    <x-sort field="count" sortBy="{{$sortBy}}"
-                                        sortDirection="{{$sortDirection}}">
+                                    <x-sort field="count" sortBy="{{$sortBy}}" sortDirection="{{$sortDirection}}">
                                     </x-sort>
                                 </th>
-                                <th wire:click="sortBy('status')" data-sort="{{$sortDirection}}"
-                                    class="min-w-90px">
+                                <th wire:click="sortBy('status')" data-sort="{{$sortDirection}}" class="min-w-90px">
                                     {{__("status")}}
-                                    <x-sort field="status" sortBy="{{$sortBy}}"
-                                        sortDirection="{{$sortDirection}}">
+                                    <x-sort field="status" sortBy="{{$sortBy}}" sortDirection="{{$sortDirection}}">
                                     </x-sort>
                                 </th>
-                                
+
                                 <th wire:click="sortBy('created_at')" data-sort="{{$sortDirection}}" class="min-w-90px">
                                     {{__("Regester")}}
                                     <x-sort field="created_at" sortBy="{{$sortBy}}" sortDirection="{{$sortDirection}}">
@@ -83,13 +79,16 @@
                                 <td>{{$attribute->price}}</td>
                                 <td>{{$attribute->count}}</td>
                                 <td>{!!isActive($attribute->status)!!}</td>
-                              
+
                                 <td>{{$attribute->created_at->format('m-d-Y')}}</td>
                                 <td>
                                     <div class="d-flex justify-content-end flex-shrink-0">
-                                        <x-edit-button href="{{route('admin.attributes.edit',$attribute)}}"></x-edit-button>
-                                        <x-delete-record-button wire:click="confirm({{ $attribute->id }})">
-                                        </x-delete-record-button>
+                                        @can('edit attributes')
+                                        <x-edit-button href="{{route('admin.attributes.edit',$attribute)}}" />
+                                        @endcan
+                                        @can('delete attributes')
+                                        <x-delete-record-button wire:click="confirm({{ $attribute->id }})" />
+                                        @endcan
                                     </div>
                                 </td>
                             </tr>

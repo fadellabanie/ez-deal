@@ -64,12 +64,12 @@
                     <!--begin::Input group-->
                     <div class="row mb-6">
                         <x-label>
-                            <span class="required">{{__("Days")}}</span>
+                            <span class="required">{{__("Count")}}</span>
                             <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip"
                                 title="Phone number must be active"></i>
                         </x-label>
                         <div class="col-lg-8 fv-row">
-                            <x-input type="number" field="days" wire:model="days" placeholder="days" />
+                            <x-input type="number" field="count" wire:model="count" placeholder="count" />
                         </div>
                     </div>
                     <!--end::Input group-->

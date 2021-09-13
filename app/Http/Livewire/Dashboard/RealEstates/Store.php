@@ -7,9 +7,11 @@ use Livewire\Component;
 use App\Models\RealEstate;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class Store extends Component
 {
+    use AuthorizesRequests;
     use WithFileUploads;
 
     public $realestate_type_id,$contract_type_id,$view_id,$price,$space;
@@ -57,6 +59,8 @@ class Store extends Component
 
     public function submit()
     {
+        $this->authorize('create real estates');
+
         $validatedData = $this->validate();
        // dd($validatedData);
         $validatedData['user_id'] = 0;

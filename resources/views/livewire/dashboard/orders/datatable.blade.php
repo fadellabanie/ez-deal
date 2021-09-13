@@ -126,11 +126,15 @@
                                 <td>{{$order->created_at->format('m-d-Y')}}</td>
                                 <td>
                                     <div class="d-flex justify-content-end flex-shrink-0">
-                                        <x-show-button href="{{route('admin.orders.show',$order)}}"></x-show-button>
-
-                                        <x-edit-button href="{{route('admin.orders.edit',$order)}}"></x-edit-button>
-                                        <x-delete-record-button wire:click="confirm({{ $order->id }})">
-                                        </x-delete-record-button>
+                                        @can('show orders')
+                                        <x-show-button href="{{route('admin.orders.show',$order)}}"/>
+                                        @endcan
+                                        @can('edit orders')
+                                        <x-edit-button href="{{route('admin.orders.edit',$order)}}"/>
+                                        @endcan
+                                        @can('delete orders')
+                                        <x-delete-record-button wire:click="confirm({{ $order->id }})"/>
+                                       @endcan
                                     </div>
                                 </td>
                             </tr>

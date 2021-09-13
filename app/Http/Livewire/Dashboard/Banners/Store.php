@@ -7,11 +7,13 @@ use App\Models\City;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class Store extends Component
 {
 
     use WithFileUploads;
+    use AuthorizesRequests;
 
     public $ar_name, $en_name;
     public $ar_description, $en_description;
@@ -37,6 +39,8 @@ class Store extends Component
 
     public function submit()
     {
+        $this->authorize('create banners');
+
         $validatedData = $this->validate();
 
         $validatedData['image'] = ($this->image) ? uploadToPublic('banners', $validatedData['image']) : "";

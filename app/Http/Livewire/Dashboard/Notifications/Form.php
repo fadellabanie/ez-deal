@@ -16,6 +16,7 @@ class Form extends Component
 {
     use NotificationTrait;
     use AuthorizesRequests;
+    use AuthorizesRequests;
 
     public $type;
     public $title;

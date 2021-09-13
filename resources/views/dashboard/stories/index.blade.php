@@ -13,8 +13,9 @@
             </h1>
         </div>
         <div class="d-flex align-items-center py-1">
-          
+            @can('create stories')
             <a href="{{route('admin.stories.create')}}" class="btn btn-sm btn-primary">{{__("Create")}}</a>
+            @endcan
         </div>
     </div>
 </div>

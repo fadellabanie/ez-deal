@@ -15,9 +15,10 @@ class Store extends Component
     public $name, $email, $mobile,$whatsapp_mobile,$trading_certification;
     public $password, $country_code, $city_id,$avatar;
     public $type;
+
     protected $rules = [
         'name' => 'required|min:4|max:100',
-        'type' =>  'required|in:admin,personal,company',
+        'type' =>  'required|in:personal,company',
         'trading_certification' =>  'required_if:type,company',
         'email' =>  'required|unique:users,email',
         'mobile' =>  'required|unique:users,mobile',
@@ -38,6 +39,7 @@ class Store extends Component
        
         $validatedData['avatar'] = ($this->avatar) ? uploadToPublic('users', $validatedData['avatar']) : "";
         $validatedData['password'] = Hash::make($validatedData['password']);
+        $validatedData['verified_at'] = now();
         
        $user = User::create($validatedData);
 

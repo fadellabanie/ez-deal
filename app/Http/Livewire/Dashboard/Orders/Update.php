@@ -4,9 +4,12 @@ namespace App\Http\Livewire\Dashboard\Orders;
 
 use Livewire\Component;
 use App\Models\Order;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class Update extends Component
 {
+    use AuthorizesRequests;
+
     public $order;
     public $images=[];
 
@@ -45,7 +48,9 @@ class Update extends Component
 
     public function submit()
     {
-       $validatedData = $this->validate();
+        $this->authorize('edit orders');
+
+        $this->validate();
 
         $this->order->save();
 

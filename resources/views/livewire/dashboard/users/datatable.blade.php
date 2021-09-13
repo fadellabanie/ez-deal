@@ -102,16 +102,21 @@
                                 <td>{{$user->created_at->format('m-d-Y')}}</td>
                                 <td>
                                     <div class="d-flex justify-content-end flex-shrink-0">
-                                        <x-edit-button href="{{route('admin.users.edit',$user)}}"></x-edit-button>
-                                        <x-delete-record-button wire:click="confirm({{ $user->id }})">
-                                        </x-delete-record-button>
+                                        @can('edit users')
+                                        <x-edit-button href="{{route('admin.users.edit',$user)}}"/>
+                                        @endcan
+                                        @can('delete users')
+                                        <x-delete-record-button wire:click="confirm({{ $user->id }})"/>
+                                        @endcan
+                                        @can('freeze users')
                                         @if ($user->status == true)
                                         <x-freeze-button wire:click="freeze({{ $user->id }})">
                                         </x-freeze-button>
                                         @else
                                         <x-unfreeze-button wire:click="unFreeze({{ $user->id }})">
                                             </x-freeze-button>
-                                            @endif
+                                        @endif
+                                        @endcan
 
                                     </div>
                                 </td>

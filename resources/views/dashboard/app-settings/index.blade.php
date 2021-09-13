@@ -20,7 +20,7 @@
 
 <div class="post d-flex flex-column-fluid" id="kt_post">
     <div id="kt_content_container" class="container">
-        <livewire:dashboard.app-settings.update :appSetting='$appSetting' />
+        <livewire:dashboard.app-settings.update />
     </div>
 </div>
 

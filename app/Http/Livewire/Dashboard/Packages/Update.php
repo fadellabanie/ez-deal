@@ -6,10 +6,12 @@ use App\Models\Package;
 use App\Models\Attribute;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class Update extends Component
 {
     use WithFileUploads;
+    use AuthorizesRequests;
 
     public $package;
     public $icon;
@@ -37,6 +39,8 @@ class Update extends Component
 
     public function submit()
     {
+        $this->authorize('edit packages');
+
        $validatedData = $this->validate();
 
         $this->package->save();

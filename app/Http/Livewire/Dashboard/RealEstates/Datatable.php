@@ -7,10 +7,12 @@ use App\Models\RealEstate;
 use Livewire\WithPagination;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class Datatable extends Component
 {
     use WithPagination;
+    use AuthorizesRequests;
 
     protected $paginationTheme = 'bootstrap';
     public $search;
@@ -39,6 +41,8 @@ class Datatable extends Component
 
     public function confirm($id)
     {
+        $this->authorize('delete real estates');
+
         $this->emit('openDeleteModal'); // Open model to using to jquery
 
         $this->data_id = $id;

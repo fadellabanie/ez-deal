@@ -12,18 +12,23 @@
             <div class="card-toolbar my-1">
                 <div class="me-6 my-1">
                     <x-status></x-status>
-                </div> 
+                </div>
                 <div class="me-6 my-1">
                     <x-city></x-city>
-                </div> 
+                </div>
                 <div class="me-6 my-1">
                     <x-contract-type></x-contract-type>
-                </div> 
-                 <div class="me-6 my-1">
+                </div>
+                <div class="me-6 my-1">
                     <x-realestate-type></x-realestate-type>
                 </div>
                 <div class="d-flex align-items-center position-relative my-1">
                     <x-search-input></x-search-input>
+                </div>
+                <div class="d-flex align-items-center position-relative my-1">
+                    @can('export real estates')
+                    <x-export-button></x-export-button>
+                    @endcan
                 </div>
             </div>
         </div>
@@ -68,11 +73,11 @@
                                     <x-sort field="type" sortBy="{{$sortBy}}" sortDirection="{{$sortDirection}}">
                                     </x-sort>
                                 </th>
-                                 <th wire:click="sortBy('is_active')" data-sort="{{$sortDirection}}" class="min-w-90px">
+                                <th wire:click="sortBy('is_active')" data-sort="{{$sortDirection}}" class="min-w-90px">
                                     {{__("Status")}}
                                     <x-sort field="is_active" sortBy="{{$sortBy}}" sortDirection="{{$sortDirection}}">
                                     </x-sort>
-                                </th> 
+                                </th>
                                 <th wire:click="sortBy('status')" data-sort="{{$sortDirection}}" class="min-w-90px">
                                     {{__("Review")}}
                                     <x-sort field="status" sortBy="{{$sortBy}}" sortDirection="{{$sortDirection}}">
@@ -106,7 +111,7 @@
 
                                 <td>
                                     @if($realEstate->user_id == 0)
-                                        <span
+                                    <span
                                         class="text-muted fw-bold text-muted d-block fs-7">{{__("Add By Admin")}}</span>
                                     @else
                                     <div class="d-flex align-items-center">
@@ -117,20 +122,27 @@
                                                 class="text-muted fw-bold text-muted d-block fs-7">{{$realEstate->user->mobile ?? ""}}</span>
                                         </div>
                                     </div>
-                                @endif
+                                    @endif
                                 </td>
                                 <td>{{$realEstate->contractType->en_name}}</td>
                                 <td>{{$realEstate->realestateType->en_name}}</td>
                                 <td>{!!realEstatesType($realEstate->type)!!}</td>
-                                <td wire:click="changeActive({{$realEstate->id}})">{!!isActive($realEstate->is_active)!!}</td>
-                                <td @if($realEstate->status == false) wire:click="review({{$realEstate->id}})" @endif>{!!review($realEstate->status)!!}</td>
+                                <td wire:click="changeActive({{$realEstate->id}})">
+                                    {!!isActive($realEstate->is_active)!!}</td>
+                                <td @if($realEstate->status == false) wire:click="review({{$realEstate->id}})"
+                                    @endif>{!!review($realEstate->status)!!}</td>
                                 <td>{{$realEstate->created_at->format('m-d-Y')}}</td>
                                 <td>
                                     <div class="d-flex justify-content-end flex-shrink-0">
-                                        <x-show-button href="{{route('admin.real-estates.show',$realEstate)}}"></x-show-button>
-                                        <x-edit-button href="{{route('admin.real-estates.edit',$realEstate)}}"></x-edit-button>
-                                        <x-delete-record-button wire:click="confirm({{ $realEstate->id }})">
-                                        </x-delete-record-button>
+                                        @can('show real estates')
+                                        <x-show-button href="{{route('admin.real-estates.show',$realEstate)}}" />
+                                        @endcan
+                                        @can('edit real estates')
+                                        <x-edit-button href="{{route('admin.real-estates.edit',$realEstate)}}" />
+                                        @endcan
+                                        @can('delete real estates')
+                                        <x-delete-record-button wire:click="confirm({{ $realEstate->id }})" />
+                                        @endcan
                                     </div>
                                 </td>
                             </tr>

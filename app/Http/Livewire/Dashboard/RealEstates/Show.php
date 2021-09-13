@@ -5,9 +5,12 @@ namespace App\Http\Livewire\Dashboard\RealEstates;
 use Livewire\Component;
 use App\Models\RealEstate;
 use App\Http\Interfaces\Upgrades\UpgradeFactory;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class Show extends Component
 {
+    use AuthorizesRequests;
+
     public $realEstate;
     public $data_id;
     public $type;

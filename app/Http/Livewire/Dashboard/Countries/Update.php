@@ -5,10 +5,12 @@ namespace App\Http\Livewire\Dashboard\Countries;
 use Livewire\Component;
 use App\Models\Country;
 use Livewire\WithFileUploads;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class Update extends Component
 {
     use WithFileUploads;
+    use AuthorizesRequests;
 
     public $country;
     public $icon;
@@ -29,6 +31,8 @@ class Update extends Component
 
     public function submit()
     {
+        $this->authorize('edit countries');
+
        $validatedData = $this->validate();
 
         $this->country->save();

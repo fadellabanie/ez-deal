@@ -5,10 +5,12 @@ namespace App\Http\Livewire\Dashboard\Cities;
 use App\Models\City;
 use Livewire\Component;
 use Livewire\WithPagination;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class Datatable extends Component
 {
     use WithPagination;
+    use AuthorizesRequests;
 
     protected $paginationTheme = 'bootstrap';
     public $search;
@@ -33,6 +35,8 @@ class Datatable extends Component
 
     public function confirm($id)
     {
+        $this->authorize('delete cities');
+
         $this->emit('openDeleteModal'); // Open model to using to jquery
       
         $this->data_id = $id;

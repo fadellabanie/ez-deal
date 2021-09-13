@@ -5,9 +5,11 @@ namespace App\Http\Livewire\Dashboard\Orders;
 use Carbon\Carbon;
 use App\Models\Order;
 use Livewire\Component;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class Store extends Component
 {
+    use AuthorizesRequests;
 
     public $realestate_type_id,$contract_type_id,$view_id,$price,$space;
     public $number_building,$age_building,$street_number,$street_width;
@@ -53,6 +55,8 @@ class Store extends Component
 
     public function submit()
     {
+        $this->authorize('create orders');
+
         $validatedData = $this->validate();
 
         $validatedData['user_id'] = 0;

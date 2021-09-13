@@ -6,10 +6,12 @@ use App\Models\City;
 use App\Models\Country;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class Update extends Component
 {
     use WithFileUploads;
+    use AuthorizesRequests;
 
     public $city;
     public $icon;
@@ -31,6 +33,8 @@ class Update extends Component
 
     public function submit()
     {
+        $this->authorize('edit cities');
+
         $validatedData = $this->validate();
 
         $this->city->save();

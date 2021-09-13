@@ -65,9 +65,12 @@
                                 <td>{{$city->created_at->format('m-d-Y')}}</td>
                                 <td>
                                     <div class="d-flex justify-content-end flex-shrink-0">
-                                        <x-edit-button href="{{route('admin.cities.edit',$city)}}"></x-edit-button>
-                                        <x-delete-record-button wire:click="confirm({{ $city->id }})">
-                                        </x-delete-record-button>
+                                        @can('edit cities')
+                                        <x-edit-button href="{{route('admin.cities.edit',$city)}}"/>
+                                        @endcan
+                                        @can('delete cities')
+                                        <x-delete-record-button wire:click="confirm({{ $city->id }})"/>
+                                        @endcan           
                                     </div>
                                 </td>
                             </tr>

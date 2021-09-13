@@ -91,9 +91,12 @@
                                 <td>{!!isActive($story->status)!!}</td>
                                 <td>
                                     <div class="d-flex justify-content-end flex-shrink-0">
-                                        <x-edit-button href="{{route('admin.stories.edit',$story)}}"></x-edit-button>
-                                        <x-delete-record-button wire:click="confirm({{ $story->id }})">
-                                        </x-delete-record-button>
+                                        @can('edit stories')
+                                        <x-edit-button href="{{route('admin.stories.edit',$story)}}"/>
+                                        @endcan
+                                        @can('delete stories')
+                                        <x-delete-record-button wire:click="confirm({{ $story->id }})"/>
+                                    @endcan
                                     </div>
                                 </td>
                             </tr>

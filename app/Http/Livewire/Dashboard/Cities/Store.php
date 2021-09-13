@@ -6,10 +6,12 @@ use App\Models\Country;
 use App\Models\City;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class Store extends Component
 {
     use WithFileUploads;
+    use AuthorizesRequests;
 
     public $ar_name, $en_name;
     public $country_id, $icon, $status;
@@ -28,6 +30,8 @@ class Store extends Component
 
     public function submit()
     {
+        $this->authorize('create cities');
+
         $validatedData = $this->validate();
 
         $validatedData['icon'] = ($this->icon) ? uploadToPublic('cities', $validatedData['icon']) : "";

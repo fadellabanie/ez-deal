@@ -59,9 +59,12 @@
                                 <td>{{$country->created_at->format('m-d-Y')}}</td>
                                 <td>
                                     <div class="d-flex justify-content-end flex-shrink-0">
-                                        <x-edit-button href="{{route('admin.countries.edit',$country)}}"></x-edit-button>
-                                        <x-delete-record-button wire:click="confirm({{ $country->id }})">
-                                        </x-delete-record-button>
+                                        @can('edit countries')
+                                        <x-edit-button href="{{route('admin.countries.edit',$country)}}"/>
+                                        @endcan
+                                        @can('delete countries')
+                                        <x-delete-record-button wire:click="confirm({{ $country->id }})"/>
+                                        @endcan                                    
                                     </div>
                                 </td>
                             </tr>

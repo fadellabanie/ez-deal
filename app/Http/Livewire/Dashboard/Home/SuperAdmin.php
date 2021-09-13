@@ -9,12 +9,17 @@ use Livewire\Component;
 class SuperAdmin extends Component
 {
 
-    public $unReviewOrder;
-    public $unReviewRealEstate;
+    public $unReviewOrders;
+    public $unReviewRealEstates;
+    public $totalRealEstates;
+    public $totalOrders;
+
     public function mount()
     {
-        $this->unReviewOrder = Order::notReview()->count();
-        $this->unReviewRealEstate = RealEstate::notReview()->count();
+        $this->unReviewOrders = Order::notReview()->count();
+        $this->totalOrders = Order::review()->count();
+        $this->unReviewRealEstates = RealEstate::notReview()->count();
+        $this->totalRealEstates = RealEstate::review()->count();
     }
     public function render()
     {

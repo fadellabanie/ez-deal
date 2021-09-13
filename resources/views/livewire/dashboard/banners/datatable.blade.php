@@ -95,9 +95,13 @@
                                 <td>{!!isActive($banner->status)!!}</td>
                                 <td>
                                     <div class="d-flex justify-content-end flex-shrink-0">
-                                        <x-edit-button href="{{route('admin.banners.edit',$banner)}}"></x-edit-button>
-                                        <x-delete-record-button wire:click="confirm({{ $banner->id }})">
-                                        </x-delete-record-button>
+                                        @can('edit banners')
+                                        <x-edit-button href="{{route('admin.banners.edit',$banner)}}"/>
+                                        @endcan
+                                        @can('delete banners')
+                                        <x-delete-record-button wire:click="confirm({{ $banner->id }})"/>
+                                        @endcan      
+                                 
                                     </div>
                                 </td>
                             </tr>

@@ -12,6 +12,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 class Datatable extends Component
 {
     use WithPagination;
+    use AuthorizesRequests;
 
     protected $paginationTheme = 'bootstrap';
     public $search;
@@ -36,6 +37,8 @@ class Datatable extends Component
 
     public function confirm($id)
     {
+        $this->authorize('delete banners');
+
         $this->emit('openDeleteModal'); // Open model to using to jquery
 
         $this->data_id = $id;
@@ -51,7 +54,7 @@ class Datatable extends Component
     
     public function export()
     {
-        $this->authorize('export banner');
+        $this->authorize('export banners');
 
         return Excel::download(new BannerExport, 'banners.xlsx');
     }

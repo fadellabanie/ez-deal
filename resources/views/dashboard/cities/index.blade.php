@@ -13,8 +13,9 @@
             </h1>
         </div>
         <div class="d-flex align-items-center py-1">
-          
+            @can('create cities')
             <a href="{{route('admin.cities.create')}}" class="btn btn-sm btn-primary">{{__("Create")}}</a>
+            @endcan
         </div>
     </div>
 </div>

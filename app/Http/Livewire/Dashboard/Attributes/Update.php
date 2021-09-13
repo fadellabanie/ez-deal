@@ -5,10 +5,12 @@ namespace App\Http\Livewire\Dashboard\Attributes;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use App\Models\Attribute;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class Update extends Component
 {
     use WithFileUploads;
+    use AuthorizesRequests;
 
     public $attribute;
     public $icon;
@@ -33,6 +35,8 @@ class Update extends Component
 
     public function submit()
     {
+        $this->authorize('edit attributes');
+
        $validatedData = $this->validate();
 
         $this->attribute->save();

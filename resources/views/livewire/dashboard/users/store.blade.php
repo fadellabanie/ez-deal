@@ -37,6 +37,7 @@
                         </div>
                     </div>
                     <!--end::Input group-->
+
                     <!--begin::Input group-->
                     <div class="row mb-6">
                         <x-label>
@@ -49,7 +50,7 @@
                                 <select wire:model="type" id="type" name="type" data-control="select2"
                                     class="form-select form-select-solid form-select-lg fw-bold">
                                     <option disable>{{__("Select...")}}</option>
-                                    <option value="admin">{{__("Admin")}}</option>
+                                    {{-- <option value="admin">{{__("Admin")}}</option> --}}
                                     <option value="personal">{{__("personal")}}</option>
                                     <option value="company">{{__("company")}}</option>
                                 </select>
@@ -58,7 +59,7 @@
                         </div>
                     </div>
                     <!--end::Input group-->
-                    @if ($type == 'company')
+     
                     <!--begin::Input group-->
                     <div class="row mb-6">
                         <x-label class="required">{{__("Trading Certification")}}</x-label>
@@ -72,7 +73,8 @@
                         </div>
                     </div>
                     <!--end::Input group-->
-                    @endif
+                  
+
 
                     <!--begin::Input group-->
                     <div class="row mb-6">
@@ -85,7 +87,7 @@
                                             name="country_code"
                                             class="form-select form-select-solid form-select-lg fw-bold">
                                             <option disable>{{__("Select...")}}</option>
-                                            <option value="SA">Saudi Arabia</option>
+                                            <option value="SA">{{__("Saudi Arabia")}}</option>
                                         </select>
                                     </div>
                                     <x-error-select field="country_code" />
@@ -101,6 +103,7 @@
                         </div>
                     </div>
                     <!--end::Input group-->
+
                     <!--begin::Input group-->
                     <div class="row mb-6">
                         <x-label class="required">{{__("Password")}}</x-label>

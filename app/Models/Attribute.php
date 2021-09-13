@@ -30,7 +30,7 @@ class Attribute extends Model
         'ar_description',
         'en_description',
         'price',
-        'days',
+        'count',
         'icon',
         'is_active',
     ];

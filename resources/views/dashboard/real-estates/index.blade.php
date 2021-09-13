@@ -13,8 +13,10 @@
             </h1>
         </div>
         <div class="d-flex align-items-center py-1">
-          
+            @can('create real estates')
+
             <a href="{{route('admin.real-estates.create')}}" class="btn btn-sm btn-primary">{{__("Create")}}</a>
+            @endcan
         </div>
     </div>
 </div>

@@ -5,10 +5,12 @@ namespace App\Http\Livewire\Dashboard\ActivityLog;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Spatie\Activitylog\Models\Activity;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class Datatable extends Component
 {
     use WithPagination;
+    use AuthorizesRequests;
 
     protected $paginationTheme = 'bootstrap';
     public $search;

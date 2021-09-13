@@ -5,13 +5,14 @@ namespace App\Http\Livewire\Dashboard\AppSettings;
 use Livewire\Component;
 use App\Models\AppSetting;
 use Livewire\WithFileUploads;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class Update extends Component
 {
     use WithFileUploads;
+    use AuthorizesRequests;
 
     public $appSetting;
-
 
     protected $rules = [
         'appSetting.facebook' => 'required',
@@ -19,9 +20,8 @@ class Update extends Component
         'appSetting.instagram' => 'required',
         'appSetting.snapchat' => 'required',
         'appSetting.whats_app' => 'required',
-        'appSetting.email' => 'required',
+        'appSetting.email' => 'required|email',
     ];
-
 
     public function submit()
     {
@@ -32,9 +32,9 @@ class Update extends Component
         session()->flash('alert', __('Update Successfully.'));
     }
 
-    public function mount(AppSetting $appSetting)
+    public function mount()
     {
-        $this->appSetting = $appSetting;
+        $this->appSetting = AppSetting::first();
     }
 
     public function render()

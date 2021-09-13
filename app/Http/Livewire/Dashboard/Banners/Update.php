@@ -2,16 +2,18 @@
 
 namespace App\Http\Livewire\Dashboard\Banners;
 
-use App\Models\AppBanner;
 use App\Models\City;
 use Livewire\Component;
+use App\Models\AppBanner;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class Update extends Component
 {
 
     use WithFileUploads;
+    use AuthorizesRequests;
 
     public $banner;
     public $image;
@@ -38,6 +40,8 @@ class Update extends Component
 
     public function submit()
     {
+        $this->authorize('edit banners');
+
         $validatedData = $this->validate();
 
         $this->banner->save();

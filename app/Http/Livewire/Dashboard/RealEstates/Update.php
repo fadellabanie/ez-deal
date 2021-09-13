@@ -6,11 +6,13 @@ use Livewire\Component;
 use App\Models\RealEstate;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class Update extends Component
 {
     use WithFileUploads;
-   
+    use AuthorizesRequests;
+
     public $realEstate;
     public $images=[];
 
@@ -56,6 +58,8 @@ class Update extends Component
 
     public function submit()
     {
+        $this->authorize('edit real estates');
+
        $validatedData = $this->validate();
 
         $this->realEstate->save();

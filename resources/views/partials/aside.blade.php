@@ -73,6 +73,7 @@
 
                 </div>
 
+                @canany(['access users','access premium users'])
 
                 <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                     <span class="menu-link">
@@ -141,8 +142,9 @@
                         </div>
                     </div>
                 </div>
+                @endcan
 
-
+                @can(['access packages','access attributes'])
 
                 <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                     <span class="menu-link">
@@ -165,6 +167,7 @@
                         <span class="menu-arrow"></span>
                     </span>
                     <div class="menu-sub menu-sub-accordion menu-active-bg">
+                        @can('access packages')
 
                         <div class="menu-item">
                             <a class="menu-link   {{Request::segment(2) == 'packages' ? "active" : ""}}"
@@ -188,7 +191,8 @@
                             </a>
 
                         </div>
-
+                        @endcan
+                        @can('access attributes')
                         <div class="menu-item">
                             <a class="menu-link   {{Request::segment(2) == 'attributes' ? "active" : ""}}"
                                 href="{{route('admin.attributes.index')}}">
@@ -211,11 +215,13 @@
                             </a>
 
                         </div>
+
+                        @endcan
                     </div>
-
-
                 </div>
+                @endcan
 
+                @can(['access cities','access countries'])
 
                 <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                     <span class="menu-link">
@@ -239,6 +245,8 @@
                     </span>
                     <div class="menu-sub menu-sub-accordion menu-active-bg">
 
+                        @can(['access countries'])
+
                         <div class="menu-item">
                             <a class="menu-link   {{Request::segment(2) == 'countries' ? "active" : ""}}"
                                 href="{{route('admin.countries.index')}}">
@@ -261,6 +269,8 @@
                             </a>
 
                         </div>
+                        @endcan
+                        @can(['access cities'])
                         <div class="menu-item">
                             <a class="menu-link   {{Request::segment(2) == 'cities' ? "active" : ""}}"
                                 href="{{route('admin.cities.index')}}">
@@ -283,13 +293,14 @@
                             </a>
 
                         </div>
+                        @endcan
 
                     </div>
 
                 </div>
 
-
-
+                @endcan
+                @can(['access real estates'])
                 <div class="menu-item">
                     <a class="menu-link   {{Request::segment(2) == 'real-estates' ? "active" : ""}}"
                         href="{{route('admin.real-estates.index')}}">
@@ -312,8 +323,9 @@
                     </a>
 
                 </div>
+                @endcan
 
-
+                @can(['access orders'])
 
                 <div class="menu-item">
                     <a class="menu-link   {{Request::segment(2) == 'orders' ? "active" : ""}}"
@@ -337,6 +349,8 @@
                     </a>
 
                 </div>
+                @endcan
+                @can(['access stories'])
 
                 <div class="menu-item">
                     <a class="menu-link   {{Request::segment(2) == 'stories' ? "active" : ""}}"
@@ -360,6 +374,9 @@
                     </a>
 
                 </div>
+                @endcan
+                @can(['access banners'])
+
                 <div class="menu-item">
                     <a class="menu-link   {{Request::segment(2) == 'banners' ? "active" : ""}}"
                         href="{{route('admin.banners.index')}}">
@@ -382,7 +399,8 @@
                     </a>
 
                 </div>
-
+                @endcan
+                @canany(['access roles','access admins'])
 
                 <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                     <span class="menu-link">
@@ -405,6 +423,8 @@
                         <span class="menu-arrow"></span>
                     </span>
                     <div class="menu-sub menu-sub-accordion menu-active-bg">
+                        @can('access roles')
+
                         <div class="menu-item">
                             <a class="menu-link   {{Request::segment(2) == 'roles' ? "active" : ""}}"
                                 href="{{route('admin.roles.index')}}">
@@ -427,7 +447,13 @@
                             </a>
 
                         </div>
+                        @endcan
+
+                        @can('access admins')
+
+
                         <div class="menu-item">
+
                             <a class="menu-link   {{Request::segment(2) == 'admins' ? "active" : ""}}"
                                 href="{{route('admin.admins.index')}}">
                                 <span class="menu-icon">
@@ -449,9 +475,11 @@
                             </a>
 
                         </div>
-
+                        @endcan
                     </div>
                 </div>
+                @endcan
+
 
                 <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                     <span class="menu-link">
@@ -474,6 +502,7 @@
                         <span class="menu-arrow"></span>
                     </span>
                     <div class="menu-sub menu-sub-accordion menu-active-bg">
+                        @can(['access notifications'])
 
                         <div class="menu-item">
                             <a class="menu-link   {{Request::segment(2) == 'notifications' ? "active" : ""}}"
@@ -497,6 +526,8 @@
                             </a>
 
                         </div>
+                        @endcan
+                        @can(['access activity logs'])
 
                         <div class="menu-item">
                             <a class="menu-link   {{Request::segment(2) == 'activity-logs' ? "active" : ""}}"
@@ -519,6 +550,8 @@
                                 <span class="menu-title">{{__('Activity Logs')}}</span>
                             </a>
                         </div>
+                        @endcan
+                        @can(['access app settings'])
 
                         <div class="menu-item">
                             <a class="menu-link   {{Request::segment(2) == 'app-settings' ? "active" : ""}}"
@@ -541,8 +574,11 @@
                                 <span class="menu-title">{{__('App Settings')}}</span>
                             </a>
                         </div>
+                        @endcan
                     </div>
                 </div>
+
+
                 <div class="menu-item">
                     <div class="menu-content">
                         <div class="separator mx-1 my-4"></div>

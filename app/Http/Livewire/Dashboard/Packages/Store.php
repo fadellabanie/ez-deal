@@ -7,10 +7,12 @@ use App\Models\Package;
 use Livewire\Component;
 use Illuminate\Support\Str;
 use Livewire\WithFileUploads;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class Store extends Component
 {
     use WithFileUploads;
+    use AuthorizesRequests;
 
     public $ar_name, $en_name, $ar_description, $en_description;
     public $color, $price, $days,$attribute_ids, $icon, $status;
@@ -35,6 +37,8 @@ class Store extends Component
 
     public function submit()
     {
+        $this->authorize('create packages');
+
         $validatedData = $this->validate();
 
         $validatedData['slug'] = Str::slug($validatedData['en_name']);

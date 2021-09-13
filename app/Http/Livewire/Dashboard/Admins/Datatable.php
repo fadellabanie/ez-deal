@@ -5,11 +5,13 @@ namespace App\Http\Livewire\Dashboard\Admins;
 use App\Models\User;
 use Livewire\Component;
 use Livewire\WithPagination;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class Datatable extends Component
 {
 
     use WithPagination;
+    use AuthorizesRequests;
 
     protected $paginationTheme = 'bootstrap';
     public $search;

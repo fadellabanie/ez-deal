@@ -30,8 +30,9 @@ class InsertDataToPermissions extends Migration
         Permission::create(['name' => 'create users']);
         Permission::create(['name' => 'edit users']);
         Permission::create(['name' => 'delete users']);
-        Permission::create(['name' => 'export users']); 
-        
+        Permission::create(['name' => 'export users']);
+        Permission::create(['name' => 'freeze users']);
+
         ## Admins
         Permission::create(['name' => 'access admins']);
         Permission::create(['name' => 'create admins']);
@@ -66,47 +67,44 @@ class InsertDataToPermissions extends Migration
         Permission::create(['name' => 'create banners']);
         Permission::create(['name' => 'edit banners']);
         Permission::create(['name' => 'delete banners']);
-        Permission::create(['name' => 'export banners']); 
-        
+        Permission::create(['name' => 'export banners']);
+
         ## Stories
         Permission::create(['name' => 'access stories']);
         Permission::create(['name' => 'create stories']);
         Permission::create(['name' => 'edit stories']);
         Permission::create(['name' => 'delete stories']);
-        Permission::create(['name' => 'export stories']); 
-        
+        Permission::create(['name' => 'export stories']);
+
         ## Cities
         Permission::create(['name' => 'access cities']);
         Permission::create(['name' => 'create cities']);
         Permission::create(['name' => 'edit cities']);
-        Permission::create(['name' => 'delete cities']); 
-        
+        Permission::create(['name' => 'delete cities']);
+
         ## Country
         Permission::create(['name' => 'access countries']);
         Permission::create(['name' => 'create countries']);
         Permission::create(['name' => 'edit countries']);
-        Permission::create(['name' => 'delete countries']); 
-        
+        Permission::create(['name' => 'delete countries']);
+
         ## Package
         Permission::create(['name' => 'access packages']);
         Permission::create(['name' => 'create packages']);
         Permission::create(['name' => 'edit packages']);
         Permission::create(['name' => 'delete packages']);
-        
+
         ## Attribute
         Permission::create(['name' => 'access attributes']);
         Permission::create(['name' => 'create attributes']);
         Permission::create(['name' => 'edit attributes']);
         Permission::create(['name' => 'delete attributes']);
-        
-        ## Attribute
-        Permission::create(['name' => 'access attributes']);
-        Permission::create(['name' => 'create attributes']);
-        Permission::create(['name' => 'edit attributes']);
-        Permission::create(['name' => 'delete attributes']);  
-        
+
         ## AppSetting
-        Permission::create(['name' => 'edit app settings']);
+        Permission::create(['name' => 'access notifications']);
+        Permission::create(['name' => 'send notifications']);
+        Permission::create(['name' => 'access app settings']);
+        Permission::create(['name' => 'access activity logs']);
     }
 
     /**
@@ -117,7 +115,8 @@ class InsertDataToPermissions extends Migration
     public function down()
     {
         Schema::table('permissions', function (Blueprint $table) {
-            //
+            DB::table('permissions')->truncate();
+            DB::table('role_has_permissions')->truncate();
         });
     }
 }

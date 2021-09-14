@@ -85,7 +85,7 @@ class Datatable extends Component
     public function render()
     {
         return view('livewire.dashboard.users.datatable', [
-            'users' => User::with('city')
+            'users' => User::with('city:id,en_name')
                 ->when('city_id', function ($q) {
                     if ($this->city_id != 'all') {
                         $q->where('city_id', $this->city_id);
@@ -107,7 +107,7 @@ class Datatable extends Component
                     $q->orSearch('mobile', $this->search);
                     $q->orSearch('email', $this->search);
                 })
-                ->select(['id', 'name', 'avatar', 'email', 'mobile', 'type', 'city_id','status','suspend', 'created_at'])
+               // ->select(['id', 'name','city.en_name' ,'avatar', 'email', 'mobile', 'type','status','suspend', 'created_at'])
                 ->orderBy($this->sortBy, $this->sortDirection)
                 ->paginate($this->count),
         ]);

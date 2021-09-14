@@ -1,9 +1,8 @@
-<div wire:ignore.self class="modal fade" tabindex="-1" id="kt_modal_1">
+<div wire:ignore.self class="modal fade" tabindex="-1" id="modal">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Modal title</h5>
-
+                <h5 class="modal-title">{{ $editMode ? __("Update Roles") : __("Create Roles")}}</h5>
                 <!--begin::Close-->
                 <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal"
                     aria-label="Close">
@@ -30,27 +29,25 @@
                 <!--begin::Input group-->
                 <div class="row mb-6">
                     <x-label>
-                        <span class="required">{{__("permission_ids")}}</span>
+                        <span class="required">{{__("Permission")}}</span>
                         <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip"
                             title="Phone number must be active"></i>
                     </x-label>
-                    <div class="col-lg-8 fv-row" wire:ignore>
-                        <select  aria-label="Select a permission_ids" data-control="select2"
-                            data-placeholder="Select a permission_ids..." id="permission_ids"
-                            class="form-select form-select-solid form-select-lg fw-bold @error('permission_ids') is-invalid @enderror"
-                            multiple="multiple">
-                            @foreach($permissions as $permission)
-                            <option value="{{ $permission->id }}" @if(is_array($oldPermissionsIds) &&
-                                in_array($permission->id,$oldPermissionsIds)) selected
-                                @endif>{{$permission->name  }}</option>
-                            @endforeach
-                        </select>
+                    <div class="col-lg-8 fv-row">
+                        <div wire:ignore>
+                            <select data-control="select2" wire:model="permission_ids" id="permission_ids" name="permission_ids" 
+                                class="form-select form-select-solid form-select-lg fw-bold" multiple="multiple">
+                                @foreach($permissions as $permission)
+                                <option value="{{ $permission->id }}" @if(is_array($oldPermissionsIds) &&
+                                    in_array($permission->id,$oldPermissionsIds)) selected
+                                    @endif>{{$permission->name  }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <x-error field="permission_ids" />
                     </div>
-                    <x-error field="permission_ids" />
                 </div>
                 <!--end::Input group-->
-
-
             </div>
 
             <div class="modal-footer">

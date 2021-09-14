@@ -39,17 +39,16 @@
                                     <x-sort field="name" sortBy="{{$sortBy}}" sortDirection="{{$sortDirection}}">
                                     </x-sort>
                                 </th>
-                                <th wire:click="sortBy('city_id')" data-sort="{{$sortDirection}}" class="min-w-50px">
-                                    {{__("City")}}
-                                    <x-sort field="city_id" sortBy="{{$sortBy}}" sortDirection="{{$sortDirection}}">
-                                    </x-sort>
+                                <th>
+                                    {{__("Role")}}
+
                                 </th>
                                 <th wire:click="sortBy('mobile')" data-sort="{{$sortDirection}}" class="min-w-90px">
                                     {{__("Mobile")}}
                                     <x-sort field="mobile" sortBy="{{$sortBy}}" sortDirection="{{$sortDirection}}">
                                     </x-sort>
                                 </th>
-                                 <th wire:click="sortBy('status')" data-sort="{{$sortDirection}}" class="min-w-90px">
+                                <th wire:click="sortBy('status')" data-sort="{{$sortDirection}}" class="min-w-90px">
                                     {{__("Status")}}
                                     <x-sort field="status" sortBy="{{$sortBy}}" sortDirection="{{$sortDirection}}">
                                     </x-sort>
@@ -76,28 +75,25 @@
                                             </div>
                                         </div>
                                         <div class="d-flex flex-column justify-content-center">
-                                            <a href="{{route('admin.users.show',$user)}}" class="fs-6 text-gray-800 text-hover-primary">{{$user->name}}</a>
+                                            <a href="{{route('admin.users.show',$user)}}"
+                                                class="fs-6 text-gray-800 text-hover-primary">{{$user->name}}</a>
                                             <div class="fw-bold text-gray-400">{{$user->email}}</div>
                                         </div>
                                     </div>
                                 </td>
-                                <td>{{$user->city->en_name ?? ""}}</td>
+                                <td>{{$user->roles->map->name}}</td>
                                 <td>{{$user->mobile}}</td>
-                                <td>{!!userStatus($user->status)!!}</td>
+                                <td @if ($user->status == true)
+                                    wire:click="freeze({{ $user->id }})"
+                                    @else
+                                    wire:click="unFreeze({{ $user->id }})"
+                                    @endif>{!!userStatus($user->status)!!}</td>
                                 <td>{{$user->created_at->format('m-d-Y')}}</td>
                                 <td>
                                     <div class="d-flex justify-content-end flex-shrink-0">
                                         <x-edit-button href="{{route('admin.users.edit',$user)}}"></x-edit-button>
                                         <x-delete-record-button wire:click="confirm({{ $user->id }})">
-                                        </x-delete-record-button> 
-                                            @if ($user->status == true)
-                                            <x-freeze-button wire:click="freeze({{ $user->id }})">
-                                            </x-freeze-button>
-                                            @else
-                                            <x-unfreeze-button wire:click="unFreeze({{ $user->id }})">
-                                            </x-freeze-button>
-                                            @endif
-                                       
+                                        </x-delete-record-button>
                                     </div>
                                 </td>
                             </tr>

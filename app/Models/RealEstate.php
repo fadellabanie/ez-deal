@@ -51,7 +51,7 @@ class RealEstate extends Model
     ];
     public function scopeActive($query)
     {
-        return $query->where('is_active', true);
+        return $query->where('is_active', true)->where('end_date','>=',now());
     }
     public function scopeOwner($query)
     {

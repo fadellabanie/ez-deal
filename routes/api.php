@@ -91,6 +91,7 @@ Route::group(['prefix' => 'v1'], function () {
         Route::get('list-on-map', [RealEstateController::class, 'listOnMap']);
         Route::post('upgrade-real-estate', [RealEstateController::class, 'upgrade']);
         Route::get('my-real-estate', [RealEstateController::class, 'myRealEstate']);
+        Route::get('make-my-real-estate-active/{id}', [RealEstateController::class, 'makeActive']);
 
         Route::get('my-favorite', [FavoriteController::class, 'myFavorite']);
         Route::post('add-favorite', [FavoriteController::class, 'addFavorite']);

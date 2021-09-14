@@ -59,7 +59,6 @@
                         </div>
                     </div>
                     <!--end::Input group-->
-     
                     <!--begin::Input group-->
                     <div class="row mb-6">
                         <x-label class="required">{{__("Trading Certification")}}</x-label>
@@ -73,9 +72,6 @@
                         </div>
                     </div>
                     <!--end::Input group-->
-                  
-
-
                     <!--begin::Input group-->
                     <div class="row mb-6">
                         <x-label class="required">{{__("mobile")}}</x-label>

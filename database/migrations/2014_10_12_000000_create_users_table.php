@@ -47,6 +47,7 @@ class CreateUsersTable extends Migration
              'email' => 'admin@admin.com',
              'password' => Hash::make('12345678'),
              'type' => 'admin',
+             'created_at' => now(),
          ]);
     }
 

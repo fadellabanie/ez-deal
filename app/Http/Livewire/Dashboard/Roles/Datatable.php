@@ -18,7 +18,7 @@ class Datatable extends Component
     public $data_id;
     public $permission_ids;
     public $oldPermissionsIds;
-    public $editMode,$name;
+    public $editMode, $name;
 
     public $count = 10;
     public $sortBy = 'id';
@@ -40,25 +40,25 @@ class Datatable extends Component
         $this->resetValidation();
     }
 
-        public function store()
+    public function store()
     {
-      
         $this->editMode = false;
-        
+
         $validatedData = $this->validate();
-        dd( $validatedData);
+
         $role = Role::create($validatedData);
+
         $role->syncPermissions($validatedData['permission_ids']);
+
         session()->flash('alert', __('Saved Successfully.'));
 
         $this->emit('Modal'); // Close model to using to jquery
 
         $this->resetForm();
-        
     }
     public function edit($id)
     {
-      //  $this->authorize('edit roles');
+        //  $this->authorize('edit roles');
         $this->editMode = true;
 
         $data = Role::findOrFail($id);
@@ -66,7 +66,7 @@ class Datatable extends Component
         $this->oldPermissionsIds = $data->permissions->pluck('id')->toArray();
         $this->name = $data->name;
     }
-   
+
     public function update()
     {
         $this->editMode = true;
@@ -78,12 +78,10 @@ class Datatable extends Component
         $this->resetForm();
         $this->emit('Modal'); // Close model to using to jquery
         session()->flash('alert', __('Saved Successfully.'));
-
-
     }
     public function confirm($id)
     {
-      //  $this->authorize('delete roles');
+        //  $this->authorize('delete roles');
         $this->emit('openDeleteModal');
         $this->selectedId = $id;
     }
@@ -92,7 +90,7 @@ class Datatable extends Component
     {
         Role::findOrFail($this->selectedId)->delete();
     }
-    
+
     public function sortBy($field)
     {
         if ($this->sortDirection == 'asc') {
@@ -107,7 +105,7 @@ class Datatable extends Component
     {
         return view('livewire.dashboard.roles.datatable', [
             'roles' => Role::with('permissions')->orderBy($this->sortBy, $this->sortDirection)
-                            ->paginate($this->count),
+                ->paginate($this->count),
             'permissions' => Permission::get()
         ]);
     }

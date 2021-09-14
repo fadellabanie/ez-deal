@@ -30,6 +30,15 @@
                     <x-export-button></x-export-button>
                     @endcan
                 </div>
+                <div class="d-flex align-items-center position-relative my-1">
+                 
+                    <button class="btn btn-sm btn-info" wire:click="NotifyUnActiveRealEstate"
+                        wire:loading.class="spinner spinner-white spinner-left">
+                        {{__("Notify")}}</button>
+
+
+                    
+                </div>
             </div>
         </div>
 
@@ -71,6 +80,11 @@
                                 <th wire:click="sortBy('type')" data-sort="{{$sortDirection}}" class="min-w-90px">
                                     {{__("Type")}}
                                     <x-sort field="type" sortBy="{{$sortBy}}" sortDirection="{{$sortDirection}}">
+                                    </x-sort>
+                                </th>
+                                <th wire:click="sortBy('end_date')" data-sort="{{$sortDirection}}" class="min-w-90px">
+                                    {{__("End Date")}}
+                                    <x-sort field="end_date" sortBy="{{$sortBy}}" sortDirection="{{$sortDirection}}">
                                     </x-sort>
                                 </th>
                                 <th wire:click="sortBy('is_active')" data-sort="{{$sortDirection}}" class="min-w-90px">
@@ -126,9 +140,10 @@
                                 </td>
                                 <td>{{$realEstate->contractType->en_name}}</td>
                                 <td>{{$realEstate->realestateType->en_name}}</td>
+                                <td>{{$realEstate->end_date}}</td>
                                 <td>{!!realEstatesType($realEstate->type)!!}</td>
                                 <td wire:click="changeActive({{$realEstate->id}})">
-                                    {!!isActive($realEstate->is_active)!!}</td>
+                                    {!!isActive($realEstate->type,$realEstate->end_date)!!}</td>
                                 <td @if($realEstate->status == false) wire:click="review({{$realEstate->id}})"
                                     @endif>{!!review($realEstate->status)!!}</td>
                                 <td>{{$realEstate->created_at->format('m-d-Y')}}</td>

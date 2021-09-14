@@ -11,17 +11,12 @@
                     <div class="fs-6 text-gray-400">{{__("Show All")}}</div>
                 </div>
 
-
                 <div class="card-toolbar">
-                    <button type="button" wire:click="resetForm()" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_1">
+                    <button type="button" wire:click="resetForm()" class="btn btn-primary" data-bs-toggle="modal"
+                        data-bs-target="#modal">
                         <i class="la la-plus"></i>{{__("New Record")}}
-                       
+
                     </button>
-                    
-
-             
-
-
                 </div>
             </div>
 
@@ -47,11 +42,8 @@
                             <tbody class="fs-6">
                                 @forelse($roles as $role)
                                 <tr wire:loading.class="opacity-50">
-
-
-
                                     <td>{{$role->name}}</td>
-                                    <td> {{implode(',',$role->permissions->pluck('name')->toArray()) }}</td>
+                                    <td> {{Str::ucfirst(implode(',',$role->permissions->pluck('name')->toArray())) }}</td>
                                     <td>
                                         <div class="d-flex justify-content-end flex-shrink-0">
                                             @can('edit roles')
@@ -87,21 +79,20 @@
                         </div>
                     </div>
                 </div>
-                <!--end::Table-->
-
-                <!--end::Table container-->
             </div>
-            <!--end::Card body-->
         </div>
         <x-delete-modal></x-delete-modal>
     </div>
 
     @section('scripts')
- 
+
 
     <script type="text/javascript">
-        window.livewire.on('modal', () => {
+        window.livewire.on('Modal', () => {
             $('#modal').modal('show');
+        });  
+         window.livewire.on('Modal', () => {
+            $('#modal').modal('hide');
         }); 
         window.livewire.on('openDeleteModal', () => {
             $('#deleteModal').modal('show');
@@ -112,6 +103,19 @@
     </script>
 
     <script>
+        $(document).ready(function() {
+
+    $('#permission_ids').select2({
+        placeholder: 'select..',
+    }).on('change', function () {
+        @this.permission_ids = $(this).val();
+    }); 
+});
+
+    </script>
+
+    {{-- 
+    <script>
         $(document).ready(function () {
             $('#permission_ids').select2();
             $('#permission_ids').on('change', function (e) {
@@ -120,6 +124,6 @@
             });
         });
     
-    </script>
-    
+    </script> --}}
+
     @endsection

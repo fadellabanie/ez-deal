@@ -17,7 +17,7 @@
                         <x-user-type></x-user-type>
                     </div> 
                     <div class="me-6 my-1">
-                        <x-user-status></x-user-status>
+                        <x-package></x-package>
                     </div>
                     <div class="d-flex align-items-center position-relative my-1">
                         <x-search-input></x-search-input>

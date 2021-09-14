@@ -87,6 +87,22 @@ class RealEstateController extends Controller
 
         return new RealestateCollection($realEstates);
     }
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function makeActive($id)
+    {
+        $realEstate = RealEstate::whereId($id)->Where('user_id', Auth::id())->first();
+        if (!$realEstate)  return $this->respondNoContent();
+
+        $realEstate->update([
+            'end_date' => now()->addDays(30)
+        ]);
+
+        return $this->successStatus(__("Active RealEstate Successfully"));
+    }
 
     /**
      * Display a listing of the resource.
@@ -95,12 +111,11 @@ class RealEstateController extends Controller
      */
     public function listOnMap(Request $request)
     {
-        $realEstates = RealEstate::
-        when($request->filled('city_id'), function ($q) use ($request) {
-            $q->where('city_id', $request->city_id);
-        })->when($request->filled('realestate_type_id'), function ($q) use ($request) {
-            $q->where('realestate_type_id', $request->realestate_type_id);
-        })
+        $realEstates = RealEstate::when($request->filled('city_id'), function ($q) use ($request) {
+                $q->where('city_id', $request->city_id);
+            })->when($request->filled('realestate_type_id'), function ($q) use ($request) {
+                $q->where('realestate_type_id', $request->realestate_type_id);
+            })
             ->when($request->filled('contract_type_id'), function ($q) use ($request) {
                 $q->where('contract_type_id', $request->contract_type_id);
             })
@@ -111,7 +126,7 @@ class RealEstateController extends Controller
             })->when($request->filled('space_from') || $request->filled('space_to'), function ($q) use ($request) {
                 $q->whereBetween('space', [$request->space_from, $request->space_to]);
             })
-        ->active()->get();
+            ->active()->get();
 
         return new RealEstateMapCollection($realEstates);
     }
@@ -144,7 +159,7 @@ class RealEstateController extends Controller
     public function store(StoreRequest $request)
     {
         $request['user_id'] = Auth::id();
-        $request['end_date'] = Carbon::now()->addDays(15);
+        $request['end_date'] = Carbon::now()->addDays(30);
         $request['is_active'] = true;
 
         $realEstate = RealEstate::create($request->all());

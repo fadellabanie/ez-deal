@@ -65,7 +65,7 @@ class Store extends Component
        // dd($validatedData);
         $validatedData['user_id'] = 0;
         $validatedData['neighborhood'] =  $validatedData['neighborhood'] ??  $validatedData['address'];
-        $validatedData['end_date'] = Carbon::now()->addDays(15);
+        $validatedData['end_date'] = Carbon::now()->addDays(30);
 
         $realEstate = RealEstate::create($validatedData);
         foreach ($validatedData['images'] as $key => $image) {

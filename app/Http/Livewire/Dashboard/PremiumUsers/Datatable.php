@@ -13,7 +13,7 @@ class Datatable extends Component
     protected $paginationTheme = 'bootstrap';
     public $search;
 
-    public $status = 'all';
+    public $package_id = 'all';
     public $type = 'all';
     public $city_id  = 'all';
     public $count = 20;
@@ -38,9 +38,9 @@ class Datatable extends Component
                 $q->where('city_id', $this->city_id);
             }
         })
-        ->when('status', function ($q) {
-            if ($this->status != 'all') {
-                $q->where('status', $this->status);
+        ->when('package_id', function ($q) {
+            if ($this->package_id != 'all') {
+                $q->where('package_id', $this->package_id);
             }
         })
         ->when('type', function ($q) {

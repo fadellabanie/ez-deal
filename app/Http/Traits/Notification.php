@@ -4,6 +4,7 @@ namespace App\Http\Traits;
 
 use App\Models\User;
 use App\Models\NotificationUser;
+use Log;
 
 trait Notification
 {
@@ -15,7 +16,7 @@ trait Notification
             'body' => $message,
             'type' => 'firebase-notification',
         ]);
-        
+
         $fields = array(
             'to' => $to,
             'notification' => array(
@@ -37,6 +38,14 @@ trait Notification
         return $this->sendPushNotification($fields);
     }
 
+    public function sendNotificationToAllUser($users, $title, $message)
+    {
+        $users = User::WhereIn('id', $users)->select('device_token')->get();
+   
+        foreach ($users as  $user) {
+            $this->send($user->device_token, $title, $message);
+        }
+    }
     private function sendPushNotification($fields)
     {
         $data = json_encode($fields);

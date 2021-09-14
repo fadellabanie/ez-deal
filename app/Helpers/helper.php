@@ -10,6 +10,7 @@ use App\Models\View;
 use App\Models\Country;
 use App\Models\ContractType;
 use App\Models\RealestateType;
+use App\Models\Package;
 use Illuminate\Support\Facades\Storage;
 
 if (!function_exists('getCountry')) {
@@ -54,6 +55,13 @@ if (!function_exists('realestateType')) {
 	{
 		$realestateTypes = RealestateType::get();
 		return $realestateTypes;
+	}
+}
+if (!function_exists('packages')) {
+	function packages()
+	{
+		$packages = Package::get();
+		return $packages;
 	}
 }
 
@@ -113,12 +121,12 @@ if (!function_exists('uploadToPublic')) {
 }
 
 if (!function_exists('isActive')) {
-	function isActive($type)
+	function isActive($type,$end_date)
 	{
 
-		if ($type == 1) {
+		if ($type == 1 || $end_date >= now()) {
 			return '<div class="badge badge-light-success fw-bolder">' . __("Active") . '</div>';
-		} elseif ($type == 0) {
+		} else{
 			return '<div class="badge badge-light-danger fw-bolder">' . __("Not Active") . '</div>';
 		}
 	}

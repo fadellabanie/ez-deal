@@ -14,7 +14,7 @@ class Update extends Component
     use AuthorizesRequests;
 
     public $realEstate;
-    public $images=[];
+    public $images = [];
 
     protected $rules = [
         'realEstate.name' => 'required',
@@ -33,17 +33,18 @@ class Update extends Component
         'realEstate.video_url' => 'nullable',
         'realEstate.type_of_owner' => 'required',
         'realEstate.number_card' => 'required',
-        'neighborhood' => 'nullable',
+        'realEstate.neighborhood' => 'nullable',
         'realEstate.elevator' => 'required',
         'realEstate.parking' => 'required',
         'realEstate.ac' => 'required',
+        'realEstate.note' => 'nullable',
         'realEstate.furniture' => 'required',
         'realEstate.lat' =>  ['required', 'regex:/^[-]?(([0-8]?[0-9])\.(\d+))|(90(\.0+)?)$/'],
         'realEstate.lng' => ['required', 'regex:/^[-]?((((1[0-7][0-9])|([0-9]?[0-9]))\.(\d+))|180(\.0+)?)$/'],
         'realEstate.address' => 'required',
-        'realEstate.images.*' => 'nullable',
+        'images.*' => 'nullable',
     ];
-    
+
     public function updated($propertyName)
     {
         $this->validateOnly($propertyName);
@@ -60,21 +61,21 @@ class Update extends Component
     {
         $this->authorize('edit real estates');
 
-       $validatedData = $this->validate();
-
-        $this->realEstate->save();
+        $validatedData = $this->validate();
+       // dd($validatedData);
 
         if ($this->images) {
-            
             foreach ($validatedData['images'] as $image) {
                 DB::table('realestate_media')->insert([
                     'realestate_id' => $this->realEstate->id,
-                    'image' =>  uploadToPublic('realEstates', $image),
+                    'image' => uploadToPublic('real-estates', $image),
                 ]);
             }
         }
 
-        session()->flash('alert', __('Saved Successfully.'));
+        $this->realEstate->save();
+
+        session()->flash('alert', __('Update Successfully.'));
 
         return redirect()->route('admin.real-estates.index');
     }

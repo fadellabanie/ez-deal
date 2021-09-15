@@ -38,12 +38,13 @@ class Update extends Component
         $this->country->save();
 
         if ($this->icon) {
+            
             $this->country->update([
                 'icon' => uploadToPublic('countries',$validatedData['icon']),
             ]);
         }
 
-        session()->flash('alert', __('Saved Successfully.'));
+        session()->flash('alert', __('Update Successfully.'));
 
         return redirect()->route('admin.countries.index');
     }

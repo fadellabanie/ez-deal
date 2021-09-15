@@ -25,12 +25,15 @@
                             <div class="col-lg-4">
                                 <x-label class="required">{{__("Type")}}</x-label>
                                 <div class="col-lg-12">
-                                    <select class="form-select form-select-solid form-select-l"
-                                        wire:model="realEstate.type">
-                                        <option value="">{{__("Select Type")}}</option>
-                                        <option value="normal">{{__("Normal")}}</option>
-                                        <option value="special">{{__("special")}}</option>
-                                    </select>
+                                    <div wire:ignore>
+                                        <select wire:model="realEstate.type" id="type" name="type" data-control="select2"
+                                            class="form-select form-select-solid form-select-l">
+                                            <option value="">{{__("Select Type")}}</option>
+                                            <option value="normal">{{__("Normal")}}</option>
+                                            <option value="special">{{__("special")}}</option>
+                                        </select>
+                                    </div>
+                                    <x-error-select field="realEstate.type" />
                                 </div>
                             </div>
 
@@ -44,19 +47,53 @@
                             <div class="col-lg-4">
                                 <x-label class="required">{{__("Contract Type")}}</x-label>
                                 <div class="col-lg-12">
-                                    <x-contract-type></x-contract-type>
+                                    <div wire:ignore>
+                                        <select wire:model="realEstate.contract_type_id" id="contract_type_id"
+                                            name="contract_type_id" data-control="select2"
+                                            class="form-select form-select-solid form-select-l">
+                                            <option value="">{{__("Select Type")}}</option>
+
+                                            @foreach (contractTypes() as $contractType)
+                                            <option value="{{$contractType->id}}">{{$contractType->en_name}}
+                                            </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <x-error-select field="realEstate.contract_type_id" />
                                 </div>
                             </div>
                             <div class="col-lg-4">
-                                <x-label class="required">{{__("Real Estate Type")}}</x-label>
+                                <x-label class="required col-lg-12">{{__("Real Estate Type")}}</x-label>
                                 <div class="col-lg-12">
-                                    <x-realestate-type></x-realestate-type>
+                                    <div wire:ignore>
+                                        <select wire:model="realEstate.realestate_type_id" id="realestate_type_id"
+                                            name="realestate_type_id" data-control="select2"
+                                            class="form-select form-select-solid form-select-l">
+                                            <option value="">{{__("Select Type")}}</option>
+
+                                            @foreach (realestateType() as $realestateType)
+                                            <option value="{{$realestateType->id}}">{{$realestateType->en_name}}
+                                            </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <x-error-select field="realEstate.realestate_type_id" />
                                 </div>
                             </div>
                             <div class="col-lg-4">
                                 <x-label class="required">{{__("View")}}</x-label>
                                 <div class="col-lg-12">
-                                    <x-views-type></x-views-type>
+                                    <div wire:ignore>
+                                        <select wire:model="realEstate.view_id" id="view_id" name="view_id" data-control="select2"
+                                            class="form-select form-select-solid form-select-l">
+                                            <option value="">{{__("Select Type")}}</option>
+
+                                            @foreach (viewTypes() as $view)
+                                            <option value="{{$view->id}}">{{$view->en_name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <x-error-select field="realEstate.view_id" />
                                 </div>
                             </div>
 
@@ -84,13 +121,34 @@
                             <div class="col-lg-3">
                                 <x-label class="required">{{__("Cities")}}</x-label>
                                 <div class="col-lg-12">
-                                    <x-city></x-city>
+                                    <div wire:ignore>
+                                        <select wire:model="realEstate.city_id" id="city_id" name="city_id" data-control="select2"
+                                            class="form-select form-select-solid form-select-l">
+                                            <option value="">{{__("Select Type")}}</option>
+
+                                            @foreach (cities() as $city)
+                                            <option value="{{$city->id}}">{{$city->en_name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <x-error-select field="realEstate.city_id" />
+
                                 </div>
                             </div>
                             <div class="col-lg-3">
                                 <x-label class="required">{{__("Countries")}}</x-label>
                                 <div class="col-lg-12">
-                                    <x-countries></x-countries>
+                                    <div wire:ignore>
+                                        <select wire:model="realEstate.country_id" id="country_id" name="country_id"
+                                            data-control="select2" class="form-select form-select-solid form-select-l">
+                                            <option value="">{{__("Select Type")}}</option>
+
+                                            @foreach (countries() as $country)
+                                            <option value="{{$country->id}}">{{$country->en_name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <x-error-select field="realEstate.country_id" />
                                 </div>
                             </div>
 
@@ -239,14 +297,14 @@
                             <div class="col-lg-3">
                                 <x-label class="required">{{__("Lat")}}</x-label>
                                 <div class="col-lg-12">
-                                    <x-input type="text" field="lat" wire:model="realEstate.lat" placeholder="lat"
+                                    <x-input type="text"  disabled  field="lat" wire:model="realEstate.lat" placeholder="lat"
                                         dsiable />
                                 </div>
                             </div>
                             <div class="col-lg-3">
                                 <x-label class="required">{{__("lng")}}</x-label>
                                 <div class="col-lg-12">
-                                    <x-input type="text" field="lng" wire:model="realEstate.lng" placeholder="lng"
+                                    <x-input type="text"  disabled field="lng" wire:model="realEstate.lng" placeholder="lng"
                                         dsiable />
                                 </div>
                             </div>
@@ -254,7 +312,7 @@
                                 <x-label class="required col-lg-8">{{__("Address")}}</x-label>
                                 <div class="col-lg-12">
                                     <x-input type="text" field="address" wire:model="realEstate.address"
-                                        placeholder="address" />
+                                        placeholder="address" disabled/>
                                 </div>
                             </div>
                             <div class="col-lg-3">
@@ -312,18 +370,17 @@
                                 </div>
 
                                 @if($images)
-                                @foreach ($images as $image)
-                                <div class="symbol symbol-750 mt-5">
-                                    <img alt="" src="{{ $image->temporaryUrl() }}" />
-                                </div>
-                                @endforeach
-                                @elseif($realEstate->images)
-                                @foreach ($realEstate->images as $image)
-                                <div class="symbol symbol-150 mt-5">
-                                    <img alt="" src="{{ asset($realEstate->image) }}" />
-                                </div>
-                                @endforeach
-
+                                    @foreach ($images as $image)
+                                    <div class="symbol symbol-750 mt-5">
+                                        <img alt="" src="{{ $image->temporaryUrl() }}" />
+                                    </div>
+                                    @endforeach
+                                @elseif($realEstate->medias)
+                                    @foreach ($realEstate->medias as $media)
+                                    <div class="symbol symbol-150 mt-5">
+                                        <img alt="" src="{{ asset($media->image) }}" />
+                                    </div>
+                                    @endforeach
                                 @endif
 
                             </div>
@@ -344,3 +401,39 @@
         </div>
     </div>
 </div>
+
+<script>
+    $(document).ready(function() {
+
+    $('#type').select2({
+        placeholder: 'select..',
+    }).on('change', function () {
+        @this.type = $(this).val();
+    });  $('#city_id').select2({
+        placeholder: 'select..',
+    }).on('change', function () {
+        @this.city_id = $(this).val();
+    });  
+     $('#country_id').select2({
+        placeholder: 'select..',
+    }).on('change', function () {
+        @this.country_id = $(this).val();
+    });   
+    $('#contract_type_id').select2({
+        placeholder: 'select..',
+    }).on('change', function () {
+        @this.contract_type_id = $(this).val();
+    }); 
+      $('#view_id').select2({
+        placeholder: 'select..',
+    }).on('change', function () {
+        @this.view_id = $(this).val();
+    });  
+     $('#realestate_type_id').select2({
+        placeholder: 'select..',
+    }).on('change', function () {
+        @this.realestate_type_id = $(this).val();
+    });  
+});
+
+</script>

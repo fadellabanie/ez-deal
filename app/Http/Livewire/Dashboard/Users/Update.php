@@ -57,7 +57,7 @@ class Update extends Component
             ]);
         }
 
-        session()->flash('alert', __('Saved Successfully.'));
+        session()->flash('alert', __('Update Successfully.'));
 
         return redirect()->route('admin.users.index');
     }

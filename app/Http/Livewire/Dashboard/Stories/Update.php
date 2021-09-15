@@ -53,7 +53,7 @@ class Update extends Component
             'country_id'  => $validatedData['country_id'],
         ]);
 
-        session()->flash('alert', __('Saved Successfully.'));
+        session()->flash('alert', __('Update Successfully.'));
 
         return redirect()->route('admin.stories.index');
     }

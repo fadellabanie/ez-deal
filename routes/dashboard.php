@@ -22,6 +22,7 @@ Route::group(['prefix' => 'admin','as' => 'admin.','middleware'=>'auth'], functi
     Route::resource('roles', App\Http\Controllers\Dashboard\RoleController::class);
     Route::resource('activity-logs', App\Http\Controllers\Dashboard\ActivityLogController::class);
     Route::resource('app-settings', App\Http\Controllers\Dashboard\AppSettingController::class);
+    Route::resource('static-pages', App\Http\Controllers\Dashboard\StaticPageController::class);
     
   
     Route::get('admin',function(){

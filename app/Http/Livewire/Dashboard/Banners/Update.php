@@ -56,7 +56,7 @@ class Update extends Component
             'city_id'  => $validatedData['city_id'],
         ]);
        
-        session()->flash('alert', __('Saved Successfully.'));
+        session()->flash('alert', __('Update Successfully.'));
 
         return redirect()->route('admin.banners.index');
     }

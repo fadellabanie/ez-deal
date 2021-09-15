@@ -55,7 +55,7 @@ class Update extends Component
         $this->package->attributes()->sync($validatedData['attribute_ids']);
 
 
-        session()->flash('alert', __('Saved Successfully.'));
+        session()->flash('alert', __('Update Successfully.'));
 
         return redirect()->route('admin.packages.index');
 

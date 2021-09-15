@@ -18,7 +18,6 @@ class Store extends Component
     public $color, $price, $days,$attribute_ids, $icon, $status;
 
     protected $rules = [
-
         'ar_name' => 'required|min:4|max:100',
         'en_name' => 'required|min:4|max:100',
         'ar_description' => 'required|min:4|max:250',

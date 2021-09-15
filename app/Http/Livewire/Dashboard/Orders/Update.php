@@ -54,7 +54,7 @@ class Update extends Component
 
         $this->order->save();
 
-        session()->flash('alert', __('Saved Successfully.'));
+        session()->flash('alert', __('Update Successfully.'));
 
         return redirect()->route('admin.orders.index');
         

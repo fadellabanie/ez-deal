@@ -121,7 +121,7 @@ if (!function_exists('uploadToPublic')) {
 }
 
 if (!function_exists('isActive')) {
-	function isActive($type,$end_date)
+	function isActive($type,$end_date="")
 	{
 
 		if ($type == 1 || $end_date >= now()) {

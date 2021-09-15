@@ -29,7 +29,7 @@
                                         <div class="d-flex align-items-center mb-1">
                                             <a href="#"
                                                 class="text-gray-800 text-hover-primary fs-2 fw-bolder me-3">{{$realEstate->name}}</a>
-                                            {!!isActive($realEstate->is_active)!!}
+                                            {!!isActive($realEstate->type,$realEstate->end_date)!!}
                                         </div>
                                         <!--end::Status-->
                                         <!--begin::Description-->
@@ -39,9 +39,9 @@
                                         <!--end::Description-->
                                     </div>
                                     <div class="d-flex my-4">
-                                       
+
                                         <x-publish wire:click="conformPublish()"></x-publish>
-                                      
+
                                     </div>
                                 </div>
                             </div>
@@ -61,6 +61,7 @@
                             </div>
                             <div id="kt_customer_view_payment_method" class="card-body pt-0">
                                 <div class="py-0" data-kt-customer-payment-method="row">
+                                    @if ($realEstate->user != 0)
                                     <div class="py-3 d-flex flex-stack flex-wrap">
                                         <div class="d-flex align-items-center collapsible rotate"
                                             data-bs-toggle="collapse" href="#kt_customer_view_payment_method_1"
@@ -103,8 +104,53 @@
                                             <!--end::Summary-->
                                         </div>
                                         <!--end::Toggle-->
-
                                     </div>
+                                    @else
+                                    <div class="py-3 d-flex flex-stack flex-wrap">
+                                        <div class="d-flex align-items-center collapsible rotate"
+                                            data-bs-toggle="collapse" href="#kt_customer_view_payment_method_1"
+                                            role="button" aria-expanded="false"
+                                            aria-controls="kt_customer_view_payment_method_1">
+                                            <div class="me-3 rotate-90">
+                                                <!--begin::Svg Icon | path: icons/duotone/Navigation/Angle-right.svg-->
+                                                <span class="svg-icon svg-icon-3">
+                                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                                        xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
+                                                        height="24px" viewBox="0 0 24 24" version="1.1">
+                                                        <g stroke="none" stroke-width="1" fill="none"
+                                                            fill-rule="evenodd">
+                                                            <polygon points="0 0 24 0 24 24 0 24"></polygon>
+                                                            <path
+                                                                d="M6.70710678,15.7071068 C6.31658249,16.0976311 5.68341751,16.0976311 5.29289322,15.7071068 C4.90236893,15.3165825 4.90236893,14.6834175 5.29289322,14.2928932 L11.2928932,8.29289322 C11.6714722,7.91431428 12.2810586,7.90106866 12.6757246,8.26284586 L18.6757246,13.7628459 C19.0828436,14.1360383 19.1103465,14.7686056 18.7371541,15.1757246 C18.3639617,15.5828436 17.7313944,15.6103465 17.3242754,15.2371541 L12.0300757,10.3841378 L6.70710678,15.7071068 Z"
+                                                                fill="#000000" fill-rule="nonzero"
+                                                                transform="translate(12.000003, 11.999999) rotate(-270.000000) translate(-12.000003, -11.999999)">
+                                                            </path>
+                                                        </g>
+                                                    </svg>
+                                                </span>
+                                            </div>
+                                            <img src="{{asset($realEstate->user->avatar ?? Auth::user()->avatar)}}" class="w-40px me-3"
+                                                alt="">
+                                            <div class="me-3">
+                                                <div class="d-flex align-items-center">
+                                                    <div class="text-gray-800 fw-bolder">
+                                                        <a href="#"
+                                                            class="text-gray-800 text-hover-primary fs-3 fw-bolder me-1">
+                                                            {{$realEstate->user->name ?? "admin-".Auth::user()->name}}
+                                                        </a>
+                                                    </div>
+                                                    <div class="badge badge-light-primary ms-5">
+                                                        {{$realEstate->user->type ?? "admin"}}</div>
+                                                </div>
+                                                <div class="text-muted">{{$realEstate->user->mobile ?? "admin-".Auth::user()->mobile}}</div>
+                                                <div class="text-muted">{{$realEstate->user->email ?? "admin-".Auth::user()->email}}</div>
+                                            </div>
+                                            <!--end::Summary-->
+                                        </div>
+                                        <!--end::Toggle-->
+                                    </div>
+                                    @endif
+
                                     <!--end::Header-->
                                     <!--begin::Body-->
                                     <div id="kt_customer_view_payment_method_1" class="collapse show fs-6 ps-10"
@@ -311,20 +357,12 @@
                                                     <a class="d-block bgi-no-repeat bgi-size-cover bgi-position-center card-rounded position-relative min-h-175px mb-5"
                                                         style="background-image:url('{{asset($media->image ?? "")}}')"
                                                         data-fslightbox="lightbox-video-tutorials">
-                                                        <img src="{{asset($media->image ?? "")}}"
+                                                        <img src=""
                                                             class="position-absolute top-50 start-50 translate-middle"
                                                             alt="">
                                                     </a>
                                                     <!--end::Image-->
-                                                    <!--begin::Body-->
-                                                    <div class="m-0">
-                                                        <!--begin::Title-->
-                                                        <a href="../../demo1/dist/pages/profile/overview.html"
-                                                            class="fs-4 text-dark fw-bolder text-hover-primary text-dark lh-base">Metronic
-                                                            Admin - How To Started the Dashboard Tutorial</a>
-                                                        <!--end::Title-->
-                                                    </div>
-                                                    <!--end::Body-->
+                                                    
                                                 </div>
                                                 <!--end::Feature post-->
                                             </div>

@@ -2,34 +2,31 @@
 
 namespace App\Models;
 
-use App\Services\Translatable;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use App\Services\Translatable;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Activitylog\LogOptions;
-class City extends Model
-{  
+
+class StaticPage extends Model
+{
     use HasFactory,Translatable,LogsActivity;
 
-    protected $translatedAttributes = [
-        'name'
-    ];
+   
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()
         ->logOnly(['*']);
     }
     protected $fillable = [
-        'country_id',
-        'ar_name',
-        'en_name',
-        'icon',
-        'status',
+        'type',
+        'ar_title',
+        'en_title',
+        'ar_description',
+        'en_description',
     ];
 
-    public function country()
-    {
-        return $this->belongsTo(Country::class);
-    }
-
+    protected $translatedAttributes = [
+        'name','description'
+    ];
 }

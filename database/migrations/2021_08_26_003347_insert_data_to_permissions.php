@@ -104,7 +104,13 @@ class InsertDataToPermissions extends Migration
         Permission::create(['name' => 'access notifications']);
         Permission::create(['name' => 'send notifications']);
         Permission::create(['name' => 'access app settings']);
-        Permission::create(['name' => 'access activity logs']);
+        Permission::create(['name' => 'access activity logs']); 
+        
+        ## Static Page
+        Permission::create(['name' => 'access static page']);
+        Permission::create(['name' => 'create static page']);
+        Permission::create(['name' => 'edit static page']);
+        Permission::create(['name' => 'delete static page']);
     }
 
     /**

@@ -19,17 +19,21 @@
                             <div class="col-lg-8">
                                 <x-label class="required col-lg-6">{{__("Name")}}</x-label>
                                 <div class="col-lg-12">
-                                    <x-input type="text" field="name" wire:model="name" placeholder="name" />
+                                    <x-input type="text" field="name" wire:model="name" placeholder="Enter name" />
                                 </div>
                             </div>
                             <div class="col-lg-4">
                                 <x-label class="required">{{__("Type")}}</x-label>
                                 <div class="col-lg-12">
-                                    <select class="form-select form-select-solid form-select-l" wire:model="type">
-                                        <option value="">{{__("Select Type")}}</option>
-                                        <option value="normal">{{__("Normal")}}</option>
-                                        <option value="special">{{__("special")}}</option>
-                                    </select>
+                                    <div wire:ignore>
+                                        <select wire:model="type" id="type" name="type" data-control="select2"
+                                            class="form-select form-select-solid form-select-l">
+                                            <option value="">{{__("Select Type")}}</option>
+                                            <option value="normal">{{__("Normal")}}</option>
+                                            <option value="special">{{__("special")}}</option>
+                                        </select>
+                                    </div>
+                                    <x-error-select field="type" />
                                 </div>
                             </div>
 
@@ -43,27 +47,60 @@
                             <div class="col-lg-4">
                                 <x-label class="required col-lg-12">{{__("Contract Type")}}</x-label>
                                 <div class="col-lg-12">
-                                    <x-contract-type></x-contract-type>
+                                    <div wire:ignore>
+                                        <select wire:model="contract_type_id" id="contract_type_id"
+                                            name="contract_type_id" data-control="select2"
+                                            class="form-select form-select-solid form-select-l">
+                                            <option value="">{{__("Select Type")}}</option>
+
+                                            @foreach (contractTypes() as $contractType)
+                                            <option value="{{$contractType->id}}">{{$contractType->en_name}}
+                                            </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <x-error-select field="contract_type_id" />
                                 </div>
                             </div>
                             <div class="col-lg-4">
                                 <x-label class="required col-lg-12">{{__("Real Estate Type")}}</x-label>
                                 <div class="col-lg-12">
-                                    <x-realestate-type></x-realestate-type>
+                                    <div wire:ignore>
+                                        <select wire:model="realestate_type_id" id="realestate_type_id"
+                                            name="realestate_type_id" data-control="select2"
+                                            class="form-select form-select-solid form-select-l">
+                                            <option value="">{{__("Select Type")}}</option>
+
+                                            @foreach (realestateType() as $realestateType)
+                                            <option value="{{$realestateType->id}}">{{$realestateType->en_name}}
+                                            </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <x-error-select field="realestate_type_id" />
                                 </div>
                             </div>
                             <div class="col-lg-4">
                                 <x-label class="required">{{__("View")}}</x-label>
                                 <div class="col-lg-12">
-                                    <x-views-type></x-views-type>
+                                    <div wire:ignore>
+                                        <select wire:model="view_id" id="view_id" name="view_id" data-control="select2"
+                                            class="form-select form-select-solid form-select-l">
+                                            <option value="">{{__("Select Type")}}</option>
 
+                                            @foreach (viewTypes() as $view)
+                                            <option value="{{$view->id}}">{{$view->en_name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <x-error-select field="view_id" />
                                 </div>
                             </div>
 
                         </div>
                     </div>
                     <!--end::Input group-->
-                    
+
 
                     <!--begin::Input group-->
                     <div class="row mb-6">
@@ -71,25 +108,47 @@
                             <div class="col-lg-3">
                                 <x-label class="required">{{__("Price")}}</x-label>
                                 <div class="col-lg-12">
-                                    <x-input type="number" field="price" wire:model="price" placeholder="price" />
+                                    <x-input type="number" field="price" wire:model="price" placeholder="Enter price" />
                                 </div>
                             </div>
                             <div class="col-lg-3">
                                 <x-label class="required">{{__("Space")}}</x-label>
                                 <div class="col-lg-12">
-                                    <x-input type="number" field="space" wire:model="space" placeholder="space" />
+                                    <x-input type="number" field="space" wire:model="space" placeholder="Enter space" />
                                 </div>
                             </div>
                             <div class="col-lg-3">
                                 <x-label class="required">{{__("Cities")}}</x-label>
+
                                 <div class="col-lg-12">
-                                    <x-city></x-city>
+                                    <div wire:ignore>
+                                        <select wire:model="city_id" id="city_id" name="city_id" data-control="select2"
+                                            class="form-select form-select-solid form-select-l">
+                                            <option value="">{{__("Select Type")}}</option>
+
+                                            @foreach (cities() as $city)
+                                            <option value="{{$city->id}}">{{$city->en_name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <x-error-select field="city_id" />
+
                                 </div>
                             </div>
                             <div class="col-lg-3">
                                 <x-label class="required">{{__("Countries")}}</x-label>
                                 <div class="col-lg-12">
-                                    <x-countries></x-countries>
+                                    <div wire:ignore>
+                                        <select wire:model="country_id" id="country_id" name="country_id"
+                                            data-control="select2" class="form-select form-select-solid form-select-l">
+                                            <option value="">{{__("Select Type")}}</option>
+
+                                            @foreach (countries() as $country)
+                                            <option value="{{$country->id}}">{{$country->en_name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <x-error-select field="country_id" />
                                 </div>
                             </div>
 
@@ -104,28 +163,28 @@
                                 <x-label class="required col-lg-8">{{__("Number Building")}}</x-label>
                                 <div class="col-lg-12">
                                     <x-input type="number" field="number_building" wire:model="number_building"
-                                        placeholder="number_building" />
+                                        placeholder="Enter number building" />
                                 </div>
                             </div>
                             <div class="col-lg-3">
                                 <x-label class="required col-lg-8">{{__("Age Building")}}</x-label>
                                 <div class="col-lg-12">
-                                    <x-input type="text" field="age_building" wire:model="age_building"
-                                        placeholder="age_building" />
+                                    <x-input type="number" field="age_building" wire:model="age_building"
+                                        placeholder="Enter age building" />
                                 </div>
                             </div>
                             <div class="col-lg-3">
                                 <x-label class="required col-lg-8">{{__("Stree Width")}}</x-label>
                                 <div class="col-lg-12">
-                                    <x-input type="text" field="street_width" wire:model="street_width"
-                                        placeholder="street_width" />
+                                    <x-input type="number" field="street_width" wire:model="street_width"
+                                        placeholder="Enter street width" />
                                 </div>
                             </div>
                             <div class="col-lg-3">
                                 <x-label class="required col-lg-8">{{__("Street Number")}}</x-label>
                                 <div class="col-lg-12">
-                                    <x-input type="text" field="street_number" wire:model="street_number"
-                                        placeholder="street_number" />
+                                    <x-input type="number" field="street_number" wire:model="street_number"
+                                        placeholder="Enter street number" />
                                 </div>
                             </div>
                         </div>
@@ -139,14 +198,14 @@
                                 <x-label class="required col-lg-8">{{__("Type Of User")}}</x-label>
                                 <div class="col-lg-12">
                                     <x-input type="text" field="type_of_owner" wire:model="type_of_owner"
-                                        placeholder="type_of_owner" />
+                                        placeholder="Enter type of owner" />
                                 </div>
                             </div>
                             <div class="col-lg-3">
                                 <x-label class="required col-lg-8">{{__("Number Card")}}</x-label>
                                 <div class="col-lg-12">
                                     <x-input type="text" field="number_card" wire:model="number_card"
-                                        placeholder="number_card" />
+                                        placeholder="Enter number card" />
                                 </div>
                             </div>
                             <div class="col-lg-3 ">
@@ -159,7 +218,7 @@
                                 <x-label>{{__("Video Url")}}</x-label>
                                 <div class="col-lg-12">
                                     <x-input type="text" field="video_url" wire:model="video_url"
-                                        placeholder="video_url" />
+                                        placeholder="Enter video url" />
                                 </div>
                             </div>
 
@@ -242,8 +301,8 @@
                                         placeholder="lat" dsiable />
                                 </div>
                             </div>
-                            <div class="col-lg-3" wire:ignore>
-                                <x-label class="required">{{__("lng")}}</x-label>
+                            <div class="col-lg-3">
+                                <x-label class="required" wire:ignore>{{__("lng")}}</x-label>
                                 <div class="col-lg-12">
                                     <x-input type="text" disabled id="lng" field="lng" wire:model="lng"
                                         placeholder="lng" dsiable />
@@ -260,7 +319,7 @@
                                 <x-label class="required col-lg-8">{{__("Neighborhood")}}</x-label>
                                 <div class="col-lg-12">
                                     <x-input type="text" field="neighborhood" wire:model="neighborhood"
-                                        placeholder="neighborhood" />
+                                        placeholder="Enter neighborhood" />
                                 </div>
                             </div>
 
@@ -329,7 +388,7 @@
                         <!--begin::Label-->
                     </div>
                     <!--end::Input group-->
-                    
+
                 </div>
                 <!--end::Card body-->
                 <div class="card-footer d-flex justify-content-end py-6 px-9">
@@ -350,7 +409,41 @@
 <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBSV3uGzoiW9CdrhOvSukkk6pLzhnBaotI&callback=initMap&libraries=places&v=weekly">
 </script>
+<script>
+    $(document).ready(function() {
 
+    $('#type').select2({
+        placeholder: 'select..',
+    }).on('change', function () {
+        @this.type = $(this).val();
+    });  $('#city_id').select2({
+        placeholder: 'select..',
+    }).on('change', function () {
+        @this.city_id = $(this).val();
+    });  
+     $('#country_id').select2({
+        placeholder: 'select..',
+    }).on('change', function () {
+        @this.country_id = $(this).val();
+    });   
+    $('#contract_type_id').select2({
+        placeholder: 'select..',
+    }).on('change', function () {
+        @this.contract_type_id = $(this).val();
+    }); 
+      $('#view_id').select2({
+        placeholder: 'select..',
+    }).on('change', function () {
+        @this.view_id = $(this).val();
+    });  
+     $('#realestate_type_id').select2({
+        placeholder: 'select..',
+    }).on('change', function () {
+        @this.realestate_type_id = $(this).val();
+    });  
+});
+
+</script>
 <script>
     var lat, lng;
     var markers = [];

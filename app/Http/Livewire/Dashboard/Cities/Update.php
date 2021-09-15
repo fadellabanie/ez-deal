@@ -44,8 +44,7 @@ class Update extends Component
                 'icon' => uploadToPublic('cities', $validatedData['icon']),
             ]);
         }
-
-        session()->flash('alert', __('Saved Successfully.'));
+        session()->flash('alert', __('Update Successfully.'));
 
         return redirect()->route('admin.cities.index');
     }

@@ -38,7 +38,7 @@
                         <div class="col-lg-8 fv-row" wire:ignore>
                             <select wire:model="city.country_id" data-control="select2" id="country_id"
                                 name="country_id"
-                                class="form-select form-select-solid form-select-lg fw-bold @error('country_id') is-invalid @enderror">
+                                class="form-select form-select-solid form-select-lg fw-bold">
                                 <option>{{__("Select...")}}</option>
                                 @foreach ($countries as $country)
                                 <option value="{{$country->id}}">{{$country->en_name}}</option>

@@ -2,9 +2,10 @@
 
 namespace App\Http\Traits;
 
+use Log;
 use App\Models\User;
 use App\Models\NotificationUser;
-use Log;
+use Illuminate\Support\Facades\Hash;
 
 trait Elm
 {
@@ -23,7 +24,7 @@ trait Elm
         &response_mode=form_post
         &client_id=16371621
         &redirect_uri=http://ezdeal.net 
-        &nonce=b55224f7-e83d-4250-aa4a-451d32666e59
+        &nonce='.Hash::make(time()).'
         &ui_locales=ar
         &prompt=login
         &max_age='.time().'

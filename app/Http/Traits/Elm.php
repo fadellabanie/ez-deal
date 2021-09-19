@@ -25,7 +25,7 @@ trait Elm
         &nonce=GUID_RANDOM (example: b55224f7-e83d-4250-aa4a-451d32666e59)
         &ui_locales=ar
         &prompt=login
-        &max_age='.now());
+        &max_age='.now()->format('Y-m-d H:i:s'));
         curl_setopt($ch, CURLOPT_POST, true);
         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);

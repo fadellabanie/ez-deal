@@ -14,6 +14,7 @@ trait Elm
         $data = json_encode($fields);
 
         $headers = array('Content-Type: application/json');
+      
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, 'https://iam.elm.sa/authservice/authorize?
@@ -22,10 +23,12 @@ trait Elm
         &response_mode=form_post
         &client_id=16371621
         &redirect_uri=https://www.service_provider.com/callback 
-        &nonce=GUID_RANDOM (example: b55224f7-e83d-4250-aa4a-451d32666e59)
+        &nonce=b55224f7-e83d-4250-aa4a-451d32666e59
         &ui_locales=ar
         &prompt=login
-        &max_age='.now()->format('Y-m-d H:i:s'));
+        &max_age='.now()->format('Y-m-d H:i:s').'
+        &state=donn'
+    );
         curl_setopt($ch, CURLOPT_POST, true);
         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);

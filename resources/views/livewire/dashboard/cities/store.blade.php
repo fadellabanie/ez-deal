@@ -36,17 +36,19 @@
                             <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip"
                                 title="Phone number must be active"></i>
                         </x-label>
-                        <div class="col-lg-8 fv-row" wire:ignore>
-                            <select wire:model="country_id" aria-label="Select a country" data-control="select2"
-                                data-placeholder="Select a country..." id="country_id" name="country_id"
-                                class="form-select form-select-solid form-select-lg fw-bold @error('country_id') is-invalid @enderror">
-                                <option>{{__("Select...")}}</option>
-                                @foreach ($countries as $country)
-                                <option value="{{$country->id}}">{{$country->en_name}}</option>
-                                @endforeach
-                            </select>
+                        <div class="col-lg-8 fv-row">
+                            <div wire:ignore>
+                                <select wire:model="country_id"  data-control="select2"
+                                   id="country_id" name="country_id"
+                                    class="form-select form-select-solid form-select-lg fw-bold ">
+                                    <option>{{__("Select...")}}</option>
+                                    @foreach ($countries as $country)
+                                    <option value="{{$country->id}}">{{$country->en_name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <x-error field="country_id" />
                         </div>
-                        <x-error field="country_id" />
                     </div>
                     <!--end::Input group-->
 

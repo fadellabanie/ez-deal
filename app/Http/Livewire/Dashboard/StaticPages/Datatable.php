@@ -32,24 +32,6 @@ class Datatable extends Component
     {
         $this->resetPage();
     }
-
-    public function confirm($id)
-    {
-        $this->authorize('delete packages');
-
-        $this->emit('openDeleteModal'); // Open model to using to jquery
-      
-        $this->data_id = $id;
-    }
-
-    public function destroy()
-    {
-        $row = StaticPage::findOrFail($this->data_id);
-        $row->delete();
-
-        $this->emit('closeDeleteModal'); // Close model to using to jquery
-    }
-
     public function render()
     {
         return view('livewire.dashboard.static-pages.datatable',[

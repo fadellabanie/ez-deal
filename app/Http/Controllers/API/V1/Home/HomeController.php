@@ -12,10 +12,12 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\Stories\StoryTinyResource;
 use App\Http\Resources\Constants\AppSettingResource;
 use App\Http\Resources\HomeBanners\HomeBannerTinyResource;
+use App\Http\Traits\Elm;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
+    use Elm;
     /**
      * Display a listing of the resource.
      *
@@ -50,5 +52,10 @@ class HomeController extends Controller
         $data['app_setting'] = AppSettingResource::collection($appSetting);
 
         return $this->respondWithCollection($data);
+    }
+
+    public function testElm(Request $request)
+    {
+        $this->login($request->all());
     }
 }

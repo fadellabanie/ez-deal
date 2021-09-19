@@ -40,20 +40,13 @@
                             @forelse($staticPages as $key => $staticPage)
                             <tr wire:loading.class="opacity-50">
                                 <td>{{$staticPage->iteration}}</td>
-
                                 <td>{{$staticPage->en_title}}</td>
                                 <td>{{$staticPage->type}}</td>
-                             
-
-                            
                                 <td>
                                     <div class="d-flex justify-content-end flex-shrink-0">
-                                        @can('edit static pages')
+                                       
                                         <x-edit-button href="{{route('admin.static-pages.edit',$staticPage)}}" />
-                                        @endcan
-                                        @can('delete static pages')
-                                        <x-delete-record-button wire:click="confirm({{ $staticPage->id }})" />
-                                        @endcan
+                                      
                                     </div>
                                 </td>
                             </tr>

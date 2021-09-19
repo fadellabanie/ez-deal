@@ -39,6 +39,7 @@ class RealEstate extends Model
         'is_active',
         'number_of_views',
         'status',
+        'cancel_reason',
         'type',
         'type_of_owner',
         'number_card',

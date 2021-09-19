@@ -11,7 +11,6 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class Update extends Component
 {
-
     use WithFileUploads;
     use AuthorizesRequests;
 

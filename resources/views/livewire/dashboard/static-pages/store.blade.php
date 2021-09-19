@@ -73,7 +73,16 @@
                                 title="Phone number must be active"></i>
                         </x-label>
                         <div class="col-lg-8 fv-row">
-                            <x-input type="text" field="type" wire:model="type" placeholder="type" />
+                            <div wire:ignore>
+                                <select wire:model="type" data-control="type"
+                                     id="type" name="type"
+                                    class="form-select form-select-solid form-select-lg fw-bold">
+                                    <option>{{__("Select...")}}</option>
+                                    <option value="privacy-policy">{{__("Privacy Policy")}}</option>
+                                    <option value="terms-and-conditions">{{__("Terms And Conditions")}}</option>
+                                </select>
+                            </div>
+                            <x-error field="type" />
                         </div>
                     </div>
                     <!--end::Input group-->

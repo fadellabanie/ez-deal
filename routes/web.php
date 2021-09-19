@@ -22,6 +22,11 @@ Route::get('/test', function () {
     $test =  Hash::make('12345678');
     return $test;
 });
+Route::get('/mobile-app-terms-and-conditions', function () {
+   
+    $terms = App\Models\StaticPage::where('type','terms-and-conditions')->first();
+    return view('mobile-web-views.static-page',compact('terms'));
+});
 
 
 Auth::routes();

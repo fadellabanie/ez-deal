@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 class CreateStaticPagesTable extends Migration
 {
@@ -22,6 +23,15 @@ class CreateStaticPagesTable extends Migration
             $table->longText('en_description');
             $table->timestamps();
         });
+
+        DB::table('static_pages')->insert([
+            'type' => 'type',
+            'ar_title' => 'ar_title',
+            'en_title' => 'en_title',
+            'ar_description' => 'ar_description',
+            'en_description' => 'en_description',
+            'created_at' => now(),
+        ]);
     }
 
     /**

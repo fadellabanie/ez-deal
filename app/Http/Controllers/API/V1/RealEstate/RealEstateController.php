@@ -92,16 +92,26 @@ class RealEstateController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function makeActive($id)
+    public function makeActive(Request $request)
     {
-        $realEstate = RealEstate::whereId($id)->Where('user_id', Auth::id())->first();
+        $realEstate = RealEstate::whereId($request->is_active)->Where('user_id', Auth::id())->first();
         if (!$realEstate)  return $this->respondNoContent();
 
-        $realEstate->update([
-            'end_date' => now()->addDays(30)
-        ]);
+        if($request->is_active == true){
+            $realEstate->update([
+                'end_date' => now()->addDays(30)
+            ]);
+            return $this->successStatus(__("Active RealEstate Successfully"));
 
-        return $this->successStatus(__("Active RealEstate Successfully"));
+        }else{
+            $realEstate->update([
+                'is_active' => false,
+                'status' => false,
+                'cancel_reason' => $request->cancel_reason
+            ]);
+            return $this->successStatus(__("unActive RealEstate Successfully"));
+        }
+
     }
 
     /**

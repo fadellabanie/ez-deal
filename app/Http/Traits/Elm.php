@@ -22,11 +22,11 @@ trait Elm
         &response_type= id_token
         &response_mode=form_post
         &client_id=16371621
-        &redirect_uri=https://www.service_provider.com/callback 
+        &redirect_uri=http://ezdeal.net 
         &nonce=b55224f7-e83d-4250-aa4a-451d32666e59
         &ui_locales=ar
         &prompt=login
-        &max_age='.now()->format('Y-m-d H:i:s').'
+        &max_age='.time().'
         &state=done'
     );
         curl_setopt($ch, CURLOPT_POST, true);

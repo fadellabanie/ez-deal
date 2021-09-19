@@ -56,6 +56,6 @@ class HomeController extends Controller
 
     public function testElm(Request $request)
     {
-        $this->login($request->all());
+        return $this->login($request->all());
     }
 }

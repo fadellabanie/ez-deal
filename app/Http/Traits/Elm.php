@@ -27,7 +27,7 @@ trait Elm
         &ui_locales=ar
         &prompt=login
         &max_age='.now()->format('Y-m-d H:i:s').'
-        &state=donn'
+        &state=done'
     );
         curl_setopt($ch, CURLOPT_POST, true);
         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);

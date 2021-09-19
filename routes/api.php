@@ -32,7 +32,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 Route::group(['prefix' => 'v1'], function () {
-    Route::post('elm', [HomeController::class, 'testElm']);
+    Route::get('elm', [HomeController::class, 'testElm']);
     Route::post('now', function(){
         return now()->format('Y-m-d H:i:s');
     });

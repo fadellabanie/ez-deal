@@ -38,6 +38,6 @@ trait Elm
         curl_close($ch);
 
         
-        dd($result);
+        return($result);
     }
 }

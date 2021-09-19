@@ -18,7 +18,7 @@ trait Elm
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, 'https://iam.elm.sa/authservice/authorize?
-        scope=openid
+        scope=YCGSmmnz7eWXV9dK
         &response_type= id_token
         &response_mode=form_post
         &client_id=16371621
@@ -29,6 +29,7 @@ trait Elm
         &max_age='.time().'
         &state=done'
     );
+   
         curl_setopt($ch, CURLOPT_POST, true);
         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);

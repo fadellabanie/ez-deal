@@ -2,20 +2,13 @@
 
 namespace App\Http\Traits;
 
-use Log;
-use App\Models\User;
-use App\Models\NotificationUser;
 use Illuminate\Support\Facades\Hash;
 
 trait Elm
 {
   
-    private function login($fields)
+    private function login()
     {
-       
-        
-      
-
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, 'https://iam.elm.sa/authservice/authorize?
         scope=openid
@@ -26,17 +19,16 @@ trait Elm
         &nonce=b55224f7-e83d-'.rand(1000,9999).'-'.rand(1000,9999).'-451d32666e59
         &ui_locales=ar
         &prompt=login
-        &max_age='.time().'
+        &max_age='.now().'
         &state='. Hash::make(hash('sha256',time()))
     );
-   
+    
         curl_setopt($ch, CURLOPT_POST, true);
     
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         $result = curl_exec($ch);
         curl_close($ch);
 
-        
         return($result);
     }
 }

@@ -19,7 +19,7 @@ trait Elm
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, 'https://iam.elm.sa/authservice/authorize?
-        scope=YCGSmmnz7eWXV9dK
+        scope=openid
         &response_type= id_token
         &response_mode=form_post
         &client_id=16371621

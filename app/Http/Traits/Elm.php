@@ -23,7 +23,7 @@ trait Elm
         &response_mode=form_post
         &client_id=16371621
         &redirect_uri=http://ezdeal.net 
-        &nonce='.Hash::make(time()).'
+        &nonce=b55224f7-e83d-4250-aa4a-'.Hash::make(time()).'
         &ui_locales=ar
         &prompt=login
         &max_age='.time().'

@@ -18,6 +18,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('elm', [App\Http\Controllers\HomeController::class, 'testElm']);
+
 Route::get('/test', function () {
     $test =  Hash::make('12345678');
     return $test;

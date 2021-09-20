@@ -3,9 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Traits\Elm;
 
 class HomeController extends Controller
 {
+
+    use Elm;
+
     /**
      * Create a new controller instance.
      *
@@ -13,7 +17,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+       // $this->middleware('auth');
     }
 
     /**
@@ -24,5 +28,11 @@ class HomeController extends Controller
     public function index()
     {
         return view('home');
+    }
+
+    public function testElm(Request $request)
+    {
+      
+        return $this->login($request->all());
     }
 }

@@ -29,7 +29,7 @@ trait Elm
         &max_age='.time().'
         &state='. Hash::make(hash('sha256',time()))
     );
-   dd($ch);
+   
         curl_setopt($ch, CURLOPT_POST, true);
     
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);

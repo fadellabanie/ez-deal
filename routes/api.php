@@ -32,6 +32,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 Route::group(['prefix' => 'v1'], function () {
+    Route::get('elm', [HomeController::class, 'testElm']);
     
     Route::post('now', function(){
         return time();

@@ -26,8 +26,8 @@ trait Elm
         &nonce=b55224f7-e83d-4250-aa4a-'.Hash::make(time()).'
         &ui_locales=ar
         &prompt=login
-        &max_age='.time().'
-        &state='.Hash::make(time())
+        &max_age='.time()
+     
     );
    
         curl_setopt($ch, CURLOPT_POST, true);

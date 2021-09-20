@@ -18,11 +18,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('elm', [App\Http\Controllers\HomeController::class, 'testElm']);
+Route::get('elm', [App\Http\Controllers\HomeController::class, 'testElm'])->name('elm');
 
 Route::get('/test', function () {
-    $test =  Hash::make('12345678');
-    return $test;
+    return now();
+    return time();
+
 });
 Route::get('/mobile-app-terms-and-conditions', function () {
    

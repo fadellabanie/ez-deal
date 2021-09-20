@@ -27,7 +27,7 @@ trait Elm
         &ui_locales=ar
         &prompt=login
         &max_age='.time().'
-        &state=done'
+        &state='.Hash::make(time())
     );
    
         curl_setopt($ch, CURLOPT_POST, true);

@@ -23,7 +23,8 @@ class Show extends Component
 
     public function mount(RealEstate $realEstate)
     {
-        $this->realEstate = $realEstate;
+        $this->realEstate = RealEstate::with('user','medias')->whereId($realEstate->id)->first();
+       // dd($this->realEstate);
     }
 
 

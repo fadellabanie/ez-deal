@@ -15,8 +15,12 @@
                             <!--begin::Image-->
                             <div
                                 class="d-flex flex-center flex-shrink-0 bg-light rounded w-100px h-100px w-lg-150px h-lg-150px me-7 mb-4">
+                              
+                                @if ($realEstate->medias)
                                 <img class="mw-50px mw-lg-75px"
-                                    src="{{asset($realEstate->medias->first()->image ?? "")}}" alt="image" />
+                                src="{{asset($realEstate->medias->first()->image ?? "")}}" alt="image" />
+                                @endif
+                              
                             </div>
                             <!--end::Image-->
                             <!--begin::Wrapper-->
@@ -61,7 +65,8 @@
                             </div>
                             <div id="kt_customer_view_payment_method" class="card-body pt-0">
                                 <div class="py-0" data-kt-customer-payment-method="row">
-                                    @if ($realEstate->user != 0)
+                                  
+                                    @if ($realEstate->user)
                                     <div class="py-3 d-flex flex-stack flex-wrap">
                                         <div class="d-flex align-items-center collapsible rotate"
                                             data-bs-toggle="collapse" href="#kt_customer_view_payment_method_1"
@@ -129,8 +134,8 @@
                                                     </svg>
                                                 </span>
                                             </div>
-                                            <img src="{{asset($realEstate->user->avatar ?? Auth::user()->avatar)}}" class="w-40px me-3"
-                                                alt="">
+                                            <img src="{{asset($realEstate->user->avatar ?? Auth::user()->avatar)}}"
+                                                class="w-40px me-3" alt="">
                                             <div class="me-3">
                                                 <div class="d-flex align-items-center">
                                                     <div class="text-gray-800 fw-bolder">
@@ -142,8 +147,10 @@
                                                     <div class="badge badge-light-primary ms-5">
                                                         {{$realEstate->user->type ?? "admin"}}</div>
                                                 </div>
-                                                <div class="text-muted">{{$realEstate->user->mobile ?? "admin-".Auth::user()->mobile}}</div>
-                                                <div class="text-muted">{{$realEstate->user->email ?? "admin-".Auth::user()->email}}</div>
+                                                <div class="text-muted">
+                                                    {{$realEstate->user->mobile ?? "admin-".Auth::user()->mobile}}</div>
+                                                <div class="text-muted">
+                                                    {{$realEstate->user->email ?? "admin-".Auth::user()->email}}</div>
                                             </div>
                                             <!--end::Summary-->
                                         </div>
@@ -349,7 +356,8 @@
 
                                         <div class="row g-10">
                                             <!--begin::Col-->
-                                            @foreach ($realEstate->medias as $media)
+                                          
+                                            @forelse ($realEstate->medias as $media)
                                             <div class="col-md-4">
                                                 <!--begin::Feature post-->
                                                 <div class="card-xl-stretch me-md-6">
@@ -362,11 +370,13 @@
                                                             alt="">
                                                     </a>
                                                     <!--end::Image-->
-                                                    
+
                                                 </div>
                                                 <!--end::Feature post-->
                                             </div>
-                                            @endforeach
+                                            @empty
+
+                                            @endforelse
                                             <!--end::Col-->
                                         </div>
                                         <!--end::Details-->

@@ -1,6 +1,7 @@
 <div>
 
-    <!--begin::Post-->
+
+
     <div class="post d-flex flex-column-fluid" id="kt_post">
         <!--begin::Container-->
         <div id="kt_content_container" class="container">
@@ -9,10 +10,10 @@
                 <div class="row g-5 g-xl-8">
                     <div class="col-xl-3">
                         <!--begin::Statistics Widget 5-->
-                        <a href="#" class="card bg-body hoverable card-xl-stretch mb-xl-8">
+                        <a href="#" class="card bg-info hoverable card-xl-stretch mb-5 mb-xl-8">
                             <!--begin::Body-->
                             <div class="card-body">
-                                <!--begin::Svg Icon | path: icons/duotone/Media/Equalizer.svg-->
+                                <!--begin::Svg Icon | path: icons/duotone/Shopping/Chart-pie.svg-->
                                 <span class="svg-icon svg-icon-white svg-icon-3x ms-n1">
                                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                         width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -29,8 +30,8 @@
                                     </svg>
                                 </span>
                                 <!--end::Svg Icon-->
-                                <div class="text-inverse-body fw-bolder fs-2 mb-2 mt-5">{{$totalRealEstates}}</div>
-                                <div class="fw-bold text-inverse-body fs-7">{{__('Total Real Estates')}}</div>
+                                <div class="text-inverse-info fw-bolder fs-2 mb-2 mt-5">{{$totalRealEstates}}</div>
+                                <div class="fw-bold text-inverse-info fs-7">{{__("Total Real Estates")}}</div>
                             </div>
                             <!--end::Body-->
                         </a>
@@ -127,8 +128,132 @@
             </div>
         </div>
         <!--end::Container-->
+
     </div>
     <!--end::Post-->
+    <div class="post d-flex flex-column-fluid" id="kt_post">
+        <div id="kt_content_container" class="container">
+            <div class="row g-5 g-xl-8">
+                <div class="col-xl-8">
+                    <div class="card card-xl-stretch mb-5 mb-xl-8">
+                        <div class="card-header border-0 pt-5">
+                            <h3 class="card-title align-items-start flex-column">
+                                <span class="card-label fw-bolder fs-3 mb-1">{{__("Latest Real Estates")}}</span>
+                            </h3>
+                        </div>
+                        <!--begin::Body-->
+                        <div class="card-body py-3">
+                            <!--begin::Table container-->
+                            <div class="table-responsive">
+                                <!--begin::Table-->
+                                <table class="table align-middle gs-0 gy-5">
+                                    <!--begin::Table head-->
+                                    <thead>
+                                        <tr>
+                                            <th class="p-0 w-250px"></th>
+                                            <th class="p-0 min-w-100px"></th>
+                                            <th class="p-0 min-w-100px"></th>
+                                            <th class="p-0 min-w-100px"></th>
+                                            <th class="p-0 min-w-40px"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($latestRealEstates as $last)
+                                        <tr>
 
+                                            <td>
+                                                <a href="{{route('admin.real-estates.show',$last)}}"
+                                                    class="text-dark fw-bolder text-hover-primary mb-1 fs-6">{{$last->name}}</a>
+                                                <span
+                                                    class="text-muted fw-bold d-block fs-7">{{$last->user->name ?? ""}}</span>
+                                            </td>
+                                            <td class="text-end">
+                                                <span
+                                                    class="badge badge-light-danger fw-bold me-1">{{$last->realestateType->en_name}}</span>
+                                                <span
+                                                    class="badge badge-light-info fw-bold me-1">{{$last->contractType->en_name}}</span>
+                                            </td>
+                                            <td class="text-end">
+                                                <span class="text-muted fw-bold">{{$last->price}}</span>
+                                            </td>
+                                            <td class="text-end">
+                                                @can('show real estates')
+                                                <x-show-button href="{{route('admin.real-estates.show',$last)}}" />
+                                                @endcan
+                                            </td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4">
+                    <!--begin::Tables Widget 4-->
+                    <div class="card card-xl-stretch mb-5 mb-xl-8">
+                        <!--begin::Header-->
+                        <div class="card-header border-0 pt-5">
+                            <h3 class="card-title align-items-start flex-column">
+                                <span class="card-label fw-bolder fs-3 mb-1">{{__("New Members")}}</span>
+                            </h3>
+                          
+                        </div>
+                        <!--end::Header-->
+                        <!--begin::Body-->
+                        <div class="card-body py-3">
+                            <div class="tab-content">
+                                <!--begin::Tap pane-->
+                                <div class="tab-pane fade show active" id="kt_table_widget_4_tab_1">
+                                    <!--begin::Table container-->
+                                    <div class="table-responsive">
+                                        <!--begin::Table-->
+                                        <table class="table align-middle gs-0 gy-3">
+                                            <!--begin::Table head-->
+                                            <thead>
+                                                <tr>
+                                                    <th class="p-0 w-50px"></th>
+                                                    <th class="p-0 min-w-150px"></th>
+                                                    <th class="p-0 min-w-140px"></th>
+                                                    <th class="p-0 min-w-120px"></th>
+                                                </tr>
+                                            </thead>
+                                            <!--end::Table head-->
+                                            <!--begin::Table body-->
+                                            <tbody>
+                                                @foreach ($users as $user)
+                                                <tr>
+                                                    <td>
+                                                        <div class="symbol symbol-50px">
+                                                            <span class="symbol-label bg-light-danger text-danger fw-bolder">{{Str::upper(substr($user->name,0,2))}}</span>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <a href="#" class="text-dark fw-bolder text-hover-primary mb-1 fs-6">{{$user->name}}</a>
+                                                        <span class="text-muted fw-bold d-block fs-7">{{$user->type}}</span>
+                                                    </td>
+                                                    <td>
+                                                        @can('show users')
+                                                        <x-show-button href="{{route('admin.users.show',$user)}}" />
+                                                        @endcan
+                                                    </td>
+                                                </tr>
+                                                @endforeach
+                                            </tbody>
+                                            <!--end::Table body-->
+                                        </table>
+                                    </div>
+                                    <!--end::Table-->
+                                </div>
+                                <!--end::Tap pane-->
+                            </div>
+                        </div>
+                        <!--end::Body-->
+                    </div>
+                    <!--end::Tables Widget 4-->
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div>

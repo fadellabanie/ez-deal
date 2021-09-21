@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,8 +22,11 @@ Route::get('/', function () {
 Route::get('elm', [App\Http\Controllers\HomeController::class, 'testElm'])->name('elm');
 
 Route::get('/test', function () {
-    return now();
-    return time();
+    Mail::send('social@ezdeal.net', function($message) {
+        $message->subject("A new Member has been Registered" );
+        $message->from('noreply@mydomain.net', 'Your application title');
+        $message->to('fadel.labanie@gmail.com');
+    });
 
 });
 Route::get('/mobile-app-terms-and-conditions', function () {

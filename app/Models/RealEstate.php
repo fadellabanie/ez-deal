@@ -60,11 +60,11 @@ class RealEstate extends Model
     }
     public function scopeNotReview($query)
     {
-        return $query->where('status',false)->where('review_at',Null);
+        return $query->where('status',false)->where('review_at', null);
     } 
      public function scopeReview($query)
     {
-        return $query->where('status',true)->where('review_at','!=',Null);
+        return $query->where('status',true)->where('review_at','!=',null);
     }
     public function city()
     {

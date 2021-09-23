@@ -61,7 +61,8 @@ Route::group(['prefix' => 'v1'], function () {
     Route::get('counties', [ConstantController::class, 'getCountry']);
     Route::get('views', [ConstantController::class, 'getView']);
     Route::get('creation-constant', [ConstantController::class, 'getCreationConst']);
-    
+    Route::get('list-on-map', [RealEstateController::class, 'listOnMap']);
+
 
     Route::group(['middleware' => 'auth:api'], function () {
         Route::get('logout', [AuthController::class, 'logout']);
@@ -82,7 +83,7 @@ Route::group(['prefix' => 'v1'], function () {
         Route::get('features', FeatureController::class);
 
         Route::apiResource('real-estates', RealEstateController::class)->except('index','show');
-        Route::get('list-on-map', [RealEstateController::class, 'listOnMap']);
+
         Route::post('upgrade-real-estate', [RealEstateController::class, 'upgrade']);
         Route::get('my-real-estate', [RealEstateController::class, 'myRealEstate']);
         Route::post('make-my-real-estate-active/{id}', [RealEstateController::class, 'makeActive']);

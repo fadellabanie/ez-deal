@@ -53,18 +53,14 @@ Route::group(['prefix' => 'v1'], function () {
     Route::get('real-estates/{real_estate}', [RealEstateController::class, 'show']);
 
 
-
-    // $middleware = ['api'];
-    // if (\Request::header('Authorization'))
-    //     $middleware = array_merge(['auth:api']);
-
-    // Route::group(['middleware' => $middleware], function () {
-    //     Route::get('orders', [OrderController::class, 'index']);
-    //     Route::get('orders/{order}', [OrderController::class, 'show']);
-
-    // });
     Route::apiResource('packages', PackageController::class);
 
+    Route::get('real-estate-types', [ConstantController::class, 'getRealEstateType']);
+    Route::get('contract-types', [ConstantController::class, 'getContractType']);
+    Route::get('cities', [ConstantController::class, 'getCity']);
+    Route::get('counties', [ConstantController::class, 'getCountry']);
+    Route::get('views', [ConstantController::class, 'getView']);
+    Route::get('creation-constant', [ConstantController::class, 'getCreationConst']);
     
 
     Route::group(['middleware' => 'auth:api'], function () {
@@ -75,13 +71,6 @@ Route::group(['prefix' => 'v1'], function () {
         Route::post('update', [UserController::class, 'update']);
         Route::get('my-notifications', [UserController::class, 'myNotification']);
 
-
-        Route::get('real-estate-types', [ConstantController::class, 'getRealEstateType']);
-        Route::get('contract-types', [ConstantController::class, 'getContractType']);
-        Route::get('cities', [ConstantController::class, 'getCity']);
-        Route::get('counties', [ConstantController::class, 'getCountry']);
-        Route::get('views', [ConstantController::class, 'getView']);
-        Route::get('creation-constant', [ConstantController::class, 'getCreationConst']);
 
         Route::post('upload', [GeneralController::class, 'upload']);
 

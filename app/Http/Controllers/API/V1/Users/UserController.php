@@ -32,7 +32,8 @@ class UserController extends Controller
             $user->update([
                 'email' => $request->email,
                 'name' => $request->username,
-                'avatar' => upload($request->avatar, 'users'),
+                //'avatar' => upload($request->avatar, 'users'),
+                'avatar' => $request->avatar,
             ]);
         } else {
 

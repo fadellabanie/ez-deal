@@ -28,7 +28,7 @@ class UpdateRequest extends APIRequest
         return [
             'email' => 'nullable|string|email|unique:users,email,'.Auth::user()->id,
             'username' => 'nullable',
-            'avatar' => 'nullable|mimes:jpeg,png,jpg,svg|max:2048',
+            'avatar' => 'nullable',
         ];
     }
 }

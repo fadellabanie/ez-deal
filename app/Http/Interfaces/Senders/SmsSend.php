@@ -2,9 +2,7 @@
 
 namespace App\Http\Interfaces\Senders;
 
-use App\Models\User;
 use App\Http\Traits\Sms;
-use Illuminate\Support\Facades\Log;
 use App\Http\Interfaces\Senders\SendableInterface;
 
 class SmsSend implements SendableInterface

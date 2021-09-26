@@ -53,6 +53,7 @@
                                 class="form-select form-select-solid form-select-lg fw-bold @error('type') is-invalid @enderror">
                                 <option value="sms">{{__("SMS")}}</option>
                                 <option value="firebase-notification">{{__("Notification")}}</option>
+                                <option value="email">{{__("Email")}}</option>
                             </select>
                         </div>
                         <x-error field="type" />

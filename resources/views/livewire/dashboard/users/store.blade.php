@@ -210,7 +210,8 @@
         placeholder: 'select..',
     }).on('change', function () {
         @this.type = $(this).val();
-    });  $('#city_id').select2({
+    });
+      $('#city_id').select2({
         placeholder: 'select..',
     }).on('change', function () {
         @this.city_id = $(this).val();

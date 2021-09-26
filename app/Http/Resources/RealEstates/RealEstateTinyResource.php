@@ -32,6 +32,7 @@ class RealEstateTinyResource extends JsonResource
             'city' => $this->city->name,
             'price' => $this->price,
             'space' => $this->space,
+            'address' => $this->address,
             'number_building' => $this->number_building,
             'street_width' => $this->street_width,
             'street_number' => $this->street_number,

@@ -49,6 +49,26 @@
                     <!--begin::Input group-->
                     <div class="row mb-6">
                         <x-label>
+                            <span class="required">{{__("Type")}}</span>
+                            <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip"
+                                title="Phone number must be active"></i>
+                        </x-label>
+                        <div class="col-lg-8 fv-row">
+                            <div wire:ignore>
+                                <select data-control="select2" id="type" name="type" wire:model="type"
+                                    class="form-select form-select-solid form-select-lg fw-bold">
+                                    <option>{{__("Select...")}}</option>
+                                    <option value="top">{{__("Top")}}</option>
+                                    <option value="bottom">{{__("Bottom")}}</option>
+                                </select>
+                            </div>
+                            <x-error-select field="type" />
+                        </div>
+                    </div>
+                    <!--end::Input group-->
+                    <!--begin::Input group-->
+                    <div class="row mb-6">
+                        <x-label>
                             <span class="required">{{__("City")}}</span>
                             <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip"
                                 title="Phone number must be active"></i>
@@ -188,6 +208,11 @@
             placeholder: '',
         }).on('change', function () {
             @this.city_id = $(this).val();
+        }); 
+        $('#type').select2({
+            placeholder: '',
+        }).on('change', function () {
+            @this.type = $(this).val();
         });  
        
     });

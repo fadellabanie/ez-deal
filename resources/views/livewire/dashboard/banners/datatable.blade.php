@@ -1,7 +1,6 @@
 <div>
     <x-alert id='alert' class="alert-success"></x-alert>
     <div class="card card-flush mt-6 mt-xl-9">
-
         <div class="card-header mt-5">
             <div class="card-title flex-column">
                 <h3 class="fw-bolder mb-1">{{__("Banners")}}</h3>
@@ -15,8 +14,6 @@
                 </div>
             </div>
         </div>
-
-
         <div class="card-body pt-0">
             <div class="dataTables_wrapper dt-bootstrap4 no-footer">
                 <div class="table-responsive">
@@ -31,7 +28,11 @@
                                     </x-sort>
                                 </th>
                                 <th class="min-w-90px"> {{__("Image")}}</th>
-
+                                <th wire:click="sortBy('type')" data-sort="{{$sortDirection}}" class="min-w-50px">
+                                    {{__("Type")}}
+                                    <x-sort field="type" sortBy="{{$sortBy}}" sortDirection="{{$sortDirection}}">
+                                    </x-sort>
+                                </th>
                                 <th wire:click="sortBy('en_name')" data-sort="{{$sortDirection}}" class="min-w-50px">
                                     {{__("Name")}}
                                     <x-sort field="en_name" sortBy="{{$sortBy}}" sortDirection="{{$sortDirection}}">
@@ -47,7 +48,6 @@
                                     <x-sort field="city_id" sortBy="{{$sortBy}}" sortDirection="{{$sortDirection}}">
                                     </x-sort>
                                 </th>
-
                                 <th wire:click="sortBy('start_date')" data-sort="{{$sortDirection}}" class="min-w-90px">
                                     {{__("Start Date")}}
                                     <x-sort field="start_date" sortBy="{{$sortBy}}" sortDirection="{{$sortDirection}}">
@@ -71,12 +71,12 @@
                             @forelse($banners as $key => $banner)
                             <tr wire:loading.class="opacity-50">
                                 <td>{{$loop->iteration}}</td>
-
                                 <td>
                                     <div class="cursor-pointer symbol symbol-30px symbol-md-40px">
                                         <img src="{{asset($banner->image)}}">
                                     </div>
                                 </td>
+                                <td>{{$banner->type}}</td>
                                 <td>{{$banner->en_name}}</td>
                                 <td>
                                     <div class="d-flex align-items-center">
@@ -89,7 +89,6 @@
                                     </div>
                                 </td>
                                 <td>{{$banner->city->en_name}}</td>
-
                                 <td>{{$banner->start_date}}</td>
                                 <td>{{$banner->end_date}}</td>
                                 <td>{!!isActive($banner->status)!!}</td>
@@ -101,7 +100,6 @@
                                         @can('delete banners')
                                         <x-delete-record-button wire:click="confirm({{ $banner->id }})"/>
                                         @endcan      
-                                 
                                     </div>
                                 </td>
                             </tr>
@@ -126,7 +124,6 @@
                 </div>
             </div>
             <!--end::Table-->
-
             <!--end::Table container-->
         </div>
         <!--end::Card body-->

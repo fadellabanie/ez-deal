@@ -1,8 +1,12 @@
 <?php
 
+use App\Models\User;
+use App\Mail\AdvertisementEmail;
+use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
+use Spatie\Permission\Models\Permission;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,20 +25,24 @@ Route::get('/', function () {
 
 Route::get('elm', [App\Http\Controllers\HomeController::class, 'testElm'])->name('elm');
 
-Route::get('/test', function () {
-    Mail::send('social@ezdeal.net', function($message) {
-        $message->subject("A new Member has been Registered" );
-        $message->from('noreply@mydomain.net', 'Your application title');
-        $message->to('fadel.labanie@gmail.com');
-    });
+Route::get('/email', function () {
+    Mail::to('Ezdeal.sa@gmail.com')->send(new AdvertisementEmail());
 
+return 'done';
 });
 Route::get('/mobile-app-terms-and-conditions', function () {
    
     $terms = App\Models\StaticPage::where('type','terms-and-conditions')->first();
     return view('mobile-web-views.static-page',compact('terms'));
 });
-
+Route::get('/give-role', function () {
+    //$role = Role::create(['name' => 'Super Admin']);
+    $role = Role::where('name' , 'Super Admin')->first();
+    $permissions = Permission::get();
+    $role->syncPermissions($permissions);
+    $user = User::find(1);
+    $user->assignRole('Super Admin');
+});
 
 Auth::routes();
 

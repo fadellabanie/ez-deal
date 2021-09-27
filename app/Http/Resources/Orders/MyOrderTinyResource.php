@@ -20,6 +20,7 @@ class MyOrderTinyResource extends JsonResource
             'id' => $this->id,
             'user_mobile' => $this->user->mobile,
             'city' => $this->city->name,
+            'realestate_type' => $this->realestateType->name,
             'price' => $this->price,
             'space' => $this->space,
             'age_building' => $this->age_building,

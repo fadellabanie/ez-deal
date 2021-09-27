@@ -31,7 +31,7 @@ class RealEstateController extends Controller
     public function index(Request $request)
     {
 
-        $realEstates = RealEstate::when($request->filled('city_id'), function ($q) use ($request) {
+        $realEstates = RealEstate::with('user')->when($request->filled('city_id'), function ($q) use ($request) {
             $q->where('city_id', $request->city_id);
         })->when($request->filled('realestate_type_id'), function ($q) use ($request) {
             $q->where('realestate_type_id', $request->realestate_type_id);
@@ -186,7 +186,6 @@ class RealEstateController extends Controller
         $senderFactory = new SenderFactory();
 
         $senderFactory->initialize('firebase-notification', Auth::user()->device_token, $body, $title);
-
 
         return $this->successStatus(__("Add Real Estate Success"));
     }

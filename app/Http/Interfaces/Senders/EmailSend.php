@@ -2,12 +2,13 @@
 
 namespace App\Http\Interfaces\Senders;
 
-use App\Http\Traits\Sms;
+
+use App\Mail\AdvertisementEmail;
+use Illuminate\Support\Facades\Mail;
 use App\Http\Interfaces\Senders\SendableInterface;
 
-class SmsSend implements SendableInterface
+class EmailSend implements SendableInterface
 {
-    use Sms;
 
     public $to; ## Mobile Number 966530976456
     public $message; ## English Message
@@ -20,6 +21,6 @@ class SmsSend implements SendableInterface
 
     public function notifiable()
     {
-       $this->sendSMS($this->to, $this->message);
+        Mail::to($this->to)->send(new AdvertisementEmail($this->message));
     }
 }

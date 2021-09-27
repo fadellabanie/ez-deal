@@ -20,6 +20,10 @@ class SenderFactory
             case 'sms':
                 $class =  new SmsSend($to, $message);
                 $class->notifiable();
+                return $class; 
+            case 'email':
+                $class =  new EmailSend($to, $message);
+                $class->notifiable();
                 return $class;
             default:
                 throw new \Exception("Sender method not supported");

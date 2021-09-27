@@ -48,21 +48,24 @@ class Form extends Component
     {
         //$this->authorize('send notifications');
         $validatedData = $this->validate();
-
+       
         $user = User::find($validatedData['user']);
-       // dd($validatedData);
+
         $senderFactory = new SenderFactory();
 
         if ($validatedData['type'] == 'sms') {
-
             $senderFactory->initialize('sms', $user->mobile, $validatedData['content']);
         } elseif ($validatedData['type'] == 'firebase-notification') {
-
             $senderFactory->initialize('firebase-notification', $user->device_token, $validatedData['content'], $validatedData['title']);
+        }elseif ($validatedData['type'] == 'email') {
+            $senderFactory->initialize('email', $user->email, $validatedData['content']);
         }
 
         $this->resetForm();
+
         session()->flash('alert', __('Sending Successfully.'));
+
+        return redirect()->route('admin.notifications.index');
     }
 
     public function render()

@@ -26,7 +26,7 @@ Route::get('/', function () {
 Route::get('elm', [App\Http\Controllers\HomeController::class, 'testElm'])->name('elm');
 
 Route::get('/email', function () {
-    Mail::to('Ezdeal.sa@gmail.com')->send(new AdvertisementEmail());
+  //  Mail::to('Ezdeal.sa@gmail.com')->send(new AdvertisementEmail());
 
 return 'done';
 });

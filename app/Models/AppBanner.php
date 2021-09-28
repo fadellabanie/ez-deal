@@ -10,18 +10,19 @@ use Spatie\Activitylog\LogOptions;
 
 class AppBanner extends Model
 {
-    use HasFactory,Translatable,LogsActivity;
-  
+    use HasFactory, Translatable, LogsActivity;
+
     protected $translatedAttributes = [
-        'name','description'
+        'name', 'description'
     ];
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()
-        ->logOnly(['*']);
+            ->logOnly(['*']);
     }
 
     protected $fillable = [
+        'type',
         'user_id',
         'make_by',
         'en_name',
@@ -38,11 +39,22 @@ class AppBanner extends Model
     public function scopeActive($query)
     {
         return $query->where('status', true);
-    } 
-     public function scopeMyStory($query,$city_id =1 )
-    {
-        return $query->where('city_id',$city_id);
     }
+    public function scopeMyStory($query, $city_id = 1)
+    {
+        return $query->where('city_id', $city_id);
+    }
+    public function scopeTop($query)
+    {
+        return $query->where('type', 'top');
+    }
+    public function scopeBottom($query)
+    {
+        return $query->where('type', 'bottom');
+    }
+    #################
+    ### Relations ###
+    #################
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -51,5 +63,4 @@ class AppBanner extends Model
     {
         return $this->belongsTo(City::class);
     }
- 
 }

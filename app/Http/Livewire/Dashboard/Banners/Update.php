@@ -19,6 +19,7 @@ class Update extends Component
     public $city_id;
 
     protected $rules = [
+        'banner.type' => 'required|in:top,bottom',
         'banner.ar_name' => 'required|min:4|max:100',
         'banner.en_name' => 'required|min:4|max:100',
         'banner.ar_description' => 'required|min:4|max:250',

@@ -26,6 +26,7 @@ class BannerUpgrade implements UpgradeableInterface
             'start_date'=> now(),
             'end_date'=>$this->end_date,
             'status'=> true,
+            'type'=> 'bottom', // new request from abd allazeez // 27-9
         ]);
     }
 }

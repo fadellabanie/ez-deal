@@ -17,11 +17,12 @@ class Store extends Component
 
     public $ar_name, $en_name;
     public $ar_description, $en_description;
-    public $city_id;
+    public $city_id,$type;
     public $end_date, $start_date;
     public $image, $status;
   
     protected $rules = [
+        'type' => 'required|in:top,bottom',
         'ar_name' => 'required|min:4|max:100',
         'en_name' => 'required|min:4|max:100',
         'ar_description' => 'required|min:4|max:250',

@@ -13,6 +13,7 @@ class BannerExport implements FromCollection, WithHeadings, ShouldAutoSize, With
     public function headings(): array
     {
         return [
+            'Type',
             'User',
             'Make By',
             'Arabic Name',
@@ -31,6 +32,7 @@ class BannerExport implements FromCollection, WithHeadings, ShouldAutoSize, With
     {
         return AppBanner::with(['user', 'city'])
             ->select(
+                'type',
                 'user_id',
                 'make_by',
                 'en_name',
@@ -49,6 +51,7 @@ class BannerExport implements FromCollection, WithHeadings, ShouldAutoSize, With
     public function map($appBanner): array
     {
         return [
+            $appBanner->type,
             $appBanner->user->name,
             $appBanner->make_by,
             $appBanner->en_name,

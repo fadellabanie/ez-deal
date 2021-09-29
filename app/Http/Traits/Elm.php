@@ -11,9 +11,10 @@ trait Elm
     {
         $nonuce = rand(1000, 9999) . '-' . rand(1000, 9999);
         $time = time();
-        $file = base_path() . '/iamtest.spname.pem';
-       
-      
+        $file = base_path() . '/iamtest.spname.key';
+
+        $privateKey = file_get_contents($file);
+
         $url = ('https://iambeta.elm.sa/authservice/authorize?
         scope=openid
         &response_type= id_token
@@ -25,10 +26,15 @@ trait Elm
         &prompt=login
         &max_age=' . $time);
 
+        //  dd($privateKey);
+
+        $state = hash_hmac('sha256', $url, $privateKey);
 
         $ch = curl_init();
-        curl_setopt($ch,CURLOPT_URL,
-        'https://iambeta.elm.sa/authservice/authorize?
+        curl_setopt(
+            $ch,
+            CURLOPT_URL,
+            'https://iambeta.elm.sa/authservice/authorize?
         scope=openid
         &response_type= id_token
         &response_mode=form_post
@@ -38,16 +44,15 @@ trait Elm
         &ui_locales=ar
         &prompt=login
         &max_age=' . $time . '
-        &state=' . Hash::make($url)
+        &state=' . $state
         );
+        // dd($ch);
 
-
-        dd($ch);
         curl_setopt($ch, CURLOPT_POST, true);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         $result = curl_exec($ch);
         curl_close($ch);
-
-        return ($result);
+      
+        return $result;
     }
 }

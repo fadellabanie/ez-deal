@@ -43,6 +43,7 @@ class Kernel extends HttpKernel
 
         'api' => [
             'throttle:api',
+            'ApiLocalization',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
     ];
@@ -64,6 +65,7 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+        'ApiLocalization' => \App\Http\Middleware\ApiLocalization::class,
         'check.user.subscribe' => \App\Http\Middleware\CheckUserSubscribe::class,
         'check.user.limit.feature.attribute' => \App\Http\Middleware\CheckUserLimitFeatureAttribute::class,
     ];

@@ -8,7 +8,6 @@ trait Translatable
 {
     public function __get($key)
     {
-        
         if (isset($this->translatedAttributes) && in_array($key, $this->translatedAttributes)) {
             $key = App::getLocale() . '_' . $key ;
         }

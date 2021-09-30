@@ -18,7 +18,7 @@ trait Elm
         &response_mode=form_post&client_id=16371621&redirect_uri=http://ezdeal.net/api/v1/home
         &nonce=b55224f7-e83d-' . $nonce . '-451d32666e59&ui_locales=ar&prompt=login&max_age=' . $time);
 
-        $state = hash_hmac('sha256', $url, $privateKey); ## Hash url use privatekey
+        $state = hash_hmac('sha256', $url, 'PKCS12_DhRJLb5utiylvK3'); ## Hash url use privatekey
        
         $ch = curl_init();                              ## Send request in state hash of url
         curl_setopt(
@@ -36,7 +36,7 @@ trait Elm
         &max_age=' . $time . '
         &state=' . $state
         );
-       
+      //dd($ch);
         curl_setopt($ch, CURLOPT_POST, true);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         $result = curl_exec($ch);

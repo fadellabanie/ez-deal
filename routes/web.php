@@ -23,7 +23,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::post('elm', [App\Http\Controllers\HomeController::class, 'testElm'])->name('elm');
+Route::get('elm', [App\Http\Controllers\HomeController::class, 'testElm'])->name('elm');
 
 Route::get('/email', function () {
   //  Mail::to('Ezdeal.sa@gmail.com')->send(new AdvertisementEmail());

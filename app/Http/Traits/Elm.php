@@ -11,11 +11,10 @@ trait Elm
     private function login()
     {
         $nonce = rand(1000, 9999) . '-' . rand(1000, 9999);
-        //$time = time();
         $time = Carbon::now()->timestamp;
 
-        $file = base_path() . '/certificate.pfx';  ## File generate from commend documentation
-        $pfxContent = file_get_contents($file);       ## Get content for file
+        $file = base_path() . '/certificate.pfx';  
+        $pfxContent = file_get_contents($file);    
         $certPassword = '16371621';
         openssl_pkcs12_read($pfxContent, $certs, $certPassword);
         $privateKey = $certs['pkey'];
@@ -25,15 +24,12 @@ trait Elm
 
 
         $requestUrl = 'https://iambeta.elm.sa/authservice/authorize?scope=openid&response_type=id_token&response_mode=form_post&client_id=16371621&redirect_uri=http://ezdeal.net/api/v1/home&nonce=b55224f7-e83d-' . $nonce . '-451d32666e59&ui_locales=ar&prompt=login&max_age=' . $time . '&state=' . $state;
-       // $requestUrl = 'https://www.google.com/';
-
-       
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $requestUrl);
         curl_setopt( $ch, CURLOPT_IPRESOLVE, CURL_IPRESOLVE_V4);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_PROXY, 443);
+      
         $responseData = curl_exec($ch);
         if (curl_errno($ch)) {
             return curl_error($ch);

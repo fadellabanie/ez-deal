@@ -13,6 +13,7 @@ use App\Http\Controllers\API\V1\Packages\FeatureController;
 use App\Http\Controllers\API\V1\Packages\PackageController;
 use App\Http\Controllers\API\V1\Favorites\FavoriteController;
 use App\Http\Controllers\API\V1\RealEstate\RealEstateController;
+use Carbon\Carbon;
 
 
 /*
@@ -35,7 +36,7 @@ Route::group(['prefix' => 'v1'], function () {
     Route::get('elm', [HomeController::class, 'testElm']);
     
     Route::get('now', function(){
-        return time();
+        return Carbon::now()->timestamp;
     });
 
     Route::post('login', [AuthController::class, 'login']);

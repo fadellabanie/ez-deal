@@ -21,21 +21,16 @@ trait Elm
         &nonce=b55224f7-e83d-' . $nonce . '-451d32666e59&ui_locales=ar&prompt=login&max_age=' . $time);
 
 
+       
         if (!openssl_pkcs12_read($pfxContent, $x509certdata, $certPassword)) {
             dd("error");
         } else {
-
+           
             $CertPriv   = array();
             $CertPriv   = openssl_x509_parse(openssl_x509_read($x509certdata['cert']));
 
             $PrivateKey = $x509certdata['pkey'];
             //  dd($PrivateKey);
-            $pub_key = openssl_pkey_get_public($x509certdata['cert']);
-            $keyData = openssl_pkey_get_details($pub_key);
-
-            $PublicKey  = $keyData['key'];
-
-
 
             $state = hash_hmac('sha256', $url, $PrivateKey); ## Hash url use privatekey
 

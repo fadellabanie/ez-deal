@@ -16,11 +16,9 @@ trait Elm
         $certPassword = '16371621';
         openssl_pkcs12_read($pfxContent, $certs, $certPassword);
         
-        $url = ('https://iambeta.elm.sa/authservice/authorize?scope=openid&response_type= id_token
-        &response_mode=form_post&client_id=16371621&redirect_uri=http://ezdeal.net/api/v1/home
-        &nonce=b55224f7-e83d-' . $nonce . '-451d32666e59&ui_locales=ar&prompt=login&max_age=' . $time);
-
-     
+        $url = ('https://iambeta.elm.sa/authservice/authorize?scope=openid&response_type=id_token&response_mode=form_post&client_id=16371621&redirect_uri=http://ezdeal.net/api/v1/home&nonce=b55224f7-e83d-'.$nonce.'-451d32666e59&ui_locales=ar&prompt=login&max_age='.$time);
+        
+  
             $PrivateKey = $certs['pkey'];
              // dd($PrivateKey);
             //openssl_private_decrypt($url,$state,$PrivateKey);

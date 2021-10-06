@@ -30,7 +30,7 @@ trait Elm
             CURLOPT_URL,
             'https://iambeta.elm.sa/authservice/authorize?
             scope=openid
-            &response_type= id_token
+            &response_type=id_token
             &response_mode=form_post
             &client_id=16371621
             &redirect_uri=http://ezdeal.net/api/v1/home
@@ -41,8 +41,7 @@ trait Elm
             &state=' . $state
         );
         //dd($ch);
-      
-        curl_setopt( $ch, CURLOPT_CUSTOMREQUEST, 'GET' );
+        curl_setopt($ch, CURLOPT_POST, true);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         $result = curl_exec($ch);
         curl_close($ch);

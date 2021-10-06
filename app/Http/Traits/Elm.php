@@ -14,27 +14,21 @@ trait Elm
         $file = base_path() . '/certificate.pfx';  ## File generate from commend documentation
         $pfxContent = file_get_contents($file);       ## Get content for file
         $certPassword = '16371621';
-        $key = openssl_pkcs12_read($pfxContent, $certs, $certPassword);
-
+        openssl_pkcs12_read($pfxContent, $certs, $certPassword);
+        
         $url = ('https://iambeta.elm.sa/authservice/authorize?scope=openid&response_type= id_token
         &response_mode=form_post&client_id=16371621&redirect_uri=http://ezdeal.net/api/v1/home
         &nonce=b55224f7-e83d-' . $nonce . '-451d32666e59&ui_locales=ar&prompt=login&max_age=' . $time);
 
 
-       
-        if (!openssl_pkcs12_read($pfxContent, $x509certdata, $certPassword)) {
-            dd("error");
-        } else {
-           
-            $CertPriv   = array();
-            $CertPriv   = openssl_x509_parse(openssl_x509_read($x509certdata['cert']));
 
-            $PrivateKey = $x509certdata['pkey'];
-            //  dd($PrivateKey);
-
-            $state = hash_hmac('sha256', $url, $PrivateKey); ## Hash url use privatekey
-
-        }
+     
+            $PrivateKey = $certs['pkey'];
+             // dd($PrivateKey);
+            //openssl_private_decrypt($url,$state,$PrivateKey);
+            $state = hash_hmac('sha256', $url, $PrivateKey, true); ## Hash url use privatekey
+            
+        
         $ch = curl_init();                              ## Send request in state hash of url
         curl_setopt(
             $ch,

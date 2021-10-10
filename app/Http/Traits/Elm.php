@@ -27,9 +27,9 @@ trait Elm
             
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $requestUrl);
-        curl_setopt($ch, CURLOPT_IPRESOLVE, CURL_IPRESOLVE_V4);
+        //curl_setopt($ch, CURLOPT_IPRESOLVE, CURL_IPRESOLVE_V4);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_POST, TRUE);
+       // curl_setopt($ch, CURLOPT_POST, TRUE);
         curl_setopt($ch, CURLOPT_HEADER, false);
 
         $responseData = curl_exec($ch);

@@ -67,8 +67,8 @@ return [
     |
     */
 
-    'timezone' => 'Asia/Riyadh',
-    //'timezone' => 'Asia/Kuwait',
+    //'timezone' => 'Asia/Riyadh',
+    'timezone' => 'Asia/Kuwait',
 
     /*
     |--------------------------------------------------------------------------

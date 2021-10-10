@@ -28,13 +28,13 @@ trait Elm
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $requestUrl);
        // curl_setopt( $ch, CURLOPT_IPRESOLVE, CURL_IPRESOLVE_V4);
-       // curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
       
         $responseData = curl_exec($ch);
         if (curl_errno($ch)) {
             return curl_error($ch);
         }
         curl_close($ch);
-        return $responseData;
+         $responseData;
     }
 }

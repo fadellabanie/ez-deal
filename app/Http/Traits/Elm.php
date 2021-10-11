@@ -41,7 +41,7 @@ trait Elm
         $responseData = curl_exec($ch);
 
         if (curl_errno($ch)) {
-           // return curl_error($ch);
+            return curl_error($ch);
             return curl_getinfo($ch);
 
         }

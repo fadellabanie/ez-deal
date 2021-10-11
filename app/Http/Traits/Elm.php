@@ -17,22 +17,21 @@ trait Elm
         $file = base_path() . '/certificate.pfx';
         $pfxContent = file_get_contents($file);
         $certPassword = '16371621';
+
+        
         openssl_pkcs12_read($pfxContent, $certs, $certPassword);
+       
         $privateKey = $certs['pkey'];
 
         $url = 'https://iambeta.elm.sa/authservice/authorize?scope=openid&response_type=id_token&response_mode=form_post&client_id=16371621&redirect_uri=http://ezdeal.net/api/v1/home&nonce=b55224f7-e83d-' . $nonce . '-451d32666e59&ui_locales=ar&prompt=login&max_age=' . $time;
 
-        $state = hash_hmac('sha256', $url, $privateKey);
-
+        $state = hash_hmac('sha256', $url, $privateKey,false);
+         
         $requestUrl = 'https://iambeta.elm.sa/authservice/authorize?scope=openid&response_type=id_token&response_mode=form_post&client_id=16371621&redirect_uri=http://ezdeal.net/api/v1/home&nonce=b55224f7-e83d-' . $nonce . '-451d32666e59&ui_locales=ar&prompt=login&max_age=' . $time . '&state=' . $state;
 
-        $responseData = Http::get($requestUrl);
-        return $responseData;
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $requestUrl);
-        //curl_setopt($ch, CURLOPT_IPRESOLVE, CURL_IPRESOLVE_V4);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        // curl_setopt($ch, CURLOPT_POST, TRUE);
         curl_setopt($ch, CURLOPT_HEADER, false);
 
         $responseData = curl_exec($ch);

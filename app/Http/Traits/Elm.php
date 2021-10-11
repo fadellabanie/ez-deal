@@ -22,11 +22,11 @@ trait Elm
        
         $privateKey = $certs['pkey'];
 
-        $url = 'https://iambeta.elm.sa/authservice/authorize?scope=openid&response_type=id_token&response_mode=form_post&client_id=16371621&redirect_uri=http://ezdeal.net/api/v1/home&nonce=b55224f7-e83d-' . $nonce . '-451d32666e59&ui_locales=ar&prompt=login&max_age=' . $time;
+        $url = 'https://iambeta.elm.sa/authservice/authorize?scope=openid&response_type=id_token&response_mode=form_post&client_id=16371621&redirect_uri=https://ezdeal.net/api/v1/home&nonce=b55224f7-e83d-' . $nonce . '-451d32666e59&ui_locales=ar&prompt=login&max_age=' . $time;
 
         $state = hash_hmac('sha256', $url, $privateKey);
          
-        $requestUrl = 'https://iambeta.elm.sa/authservice/authorize?scope=openid&response_type=id_token&response_mode=form_post&client_id=16371621&redirect_uri=http://ezdeal.net/api/v1/home&nonce=b55224f7-e83d-' . $nonce . '-451d32666e59&ui_locales=ar&prompt=login&max_age=' . $time . '&state=' . $state;
+        $requestUrl = 'https://iambeta.elm.sa/authservice/authorize?scope=openid&response_type=id_token&response_mode=form_post&client_id=16371621&redirect_uri=https://ezdeal.net/api/v1/home&nonce=b55224f7-e83d-' . $nonce . '-451d32666e59&ui_locales=ar&prompt=login&max_age=' . $time . '&state=' . $state;
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $requestUrl);
@@ -34,14 +34,16 @@ trait Elm
         curl_setopt($ch, CURLOPT_HEADER, false);
         curl_setopt( $ch, CURLOPT_IPRESOLVE, CURL_IPRESOLVE_V4);
         curl_setopt($ch, CURLOPT_TIMEOUT, 5);
-        curl_setopt($ch, CURLOPT_PORT, 80);
+        //curl_setopt($ch, CURLOPT_PORT, 80);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_ANY);
 
         $responseData = curl_exec($ch);
 
         if (curl_errno($ch)) {
-            return curl_error($ch);
+           // return curl_error($ch);
+            return curl_getinfo($ch);
+
         }
         curl_close($ch);
         return $responseData;

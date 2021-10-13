@@ -27,6 +27,7 @@ class StoreRequest extends APIRequest
         return [
             'realestate_type_id' => 'required|exists:realestate_types,id',
             'contract_type_id' => 'required|exists:contract_types,id',
+            'neighborhood_id' => 'required|exists:neighborhoods,id',
             'view_id' => 'required|exists:views,id',
             'price' => 'required|gt:0',
             'space' => 'required|gt:0',

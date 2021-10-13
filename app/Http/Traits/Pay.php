@@ -26,7 +26,7 @@ trait Pay
     public function pay()
     {
         $id = Hash::make(now());
-      
+
         $encrypted = $this->encryptx(json_encode([
             'amt' => "150",
             'action' => "1",
@@ -37,16 +37,34 @@ trait Pay
             'responseURL' => URL::to('/api/v1/response/success'),
             'errorURL' => URL::to('/api/v1/response/failure')
         ]), 'test');
-       
+
         $response = Http::acceptJson()
             ->withBody(json_encode([
                 'id' => $id,
-                'trandata' => [$encrypted],
+                'trandata' => $encrypted,
                 'responseURL' => URL::to('/api/v1/response/success'),
                 'errorURL' => URL::to('/api/v1/response/failure'),
             ]), 'application/json')
             ->post('https://securepayments.alrajhibank.com.sa/pg/payment/hosted.htm');
 
         return $response;
+    }
+    
+   public function decrypt($code, $key)
+    {
+        $string = hex2bin(trim($code));
+        $code = unpack('C*', $string);
+        $chars = array_map("chr", $code);
+        $code = join($chars);
+        $code = base64_encode($code);
+        $decrypted = openssl_decrypt($code, "AES-256-CBC", $key, OPENSSL_ZERO_PADDING, "PGKEYENCDECIVSPC");
+        $pad = ord($decrypted[strlen($decrypted) - 1]);
+        if ($pad > strlen($decrypted)) {
+            return false;
+        }
+        if (strspn($decrypted, chr($pad), strlen($decrypted) - $pad) != $pad) {
+            return false;
+        }
+        return urldecode(substr($decrypted, 0, -1 * $pad));
     }
 }

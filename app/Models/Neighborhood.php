@@ -8,8 +8,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Activitylog\LogOptions;
 
-class City extends Model
-{  
+class Neighborhood extends Model
+{
     use HasFactory,Translatable,LogsActivity;
 
     protected $translatedAttributes = [
@@ -22,6 +22,7 @@ class City extends Model
     }
     protected $fillable = [
         'country_id',
+        'city_id',
         'ar_name',
         'en_name',
         'icon',
@@ -31,6 +32,10 @@ class City extends Model
     public function country()
     {
         return $this->belongsTo(Country::class);
+    } 
+    public function city()
+    {
+        return $this->belongsTo(City::class);
     }
 
 }

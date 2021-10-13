@@ -74,6 +74,10 @@ class RealEstate extends Model
     {
         return $this->belongsTo(Country::class);
     }
+    public function neighborhood()
+    {
+        return $this->belongsTo(Neighborhood::class);
+    }
     public function user()
     {
         return $this->belongsTo(User::class);

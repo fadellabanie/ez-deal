@@ -21,6 +21,7 @@ class CreateRealestatesTable extends Migration
             $table->unsignedBigInteger('view_id')->index();
             $table->unsignedBigInteger('city_id')->index();
             $table->unsignedBigInteger('country_id')->index();
+            $table->unsignedBigInteger('neighborhood_id')->index();
             $table->string('name');
             $table->decimal('price',15);
             $table->float('space');

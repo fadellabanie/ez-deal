@@ -25,7 +25,7 @@ class Order extends Model
         'view_id',
         'city_id',
         'country_id',
-        'neighborhood',
+        'neighborhood_id',
         'price',
         'space',
         'number_building',
@@ -70,6 +70,10 @@ class Order extends Model
     public function country()
     {
         return $this->belongsTo(Country::class);
+    } 
+    public function neighborhood()
+    {
+        return $this->belongsTo(Neighborhood::class);
     }
     public function user()
     {

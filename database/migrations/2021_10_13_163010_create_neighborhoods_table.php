@@ -24,7 +24,7 @@ class CreateNeighborhoodsTable extends Migration
             $table->boolean('status')->default(true);
             $table->timestamps();
         });
-        DB::table('cities')->insert([
+        DB::table('neighborhoods')->insert([
             'country_id' => 1,
             'city_id' => 1,
             'ar_name' => '1 جده',

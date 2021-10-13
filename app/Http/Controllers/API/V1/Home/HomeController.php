@@ -11,11 +11,12 @@ use App\Http\Resources\Stories\StoryTinyResource;
 use App\Http\Resources\Constants\AppSettingResource;
 use App\Http\Resources\HomeBanners\HomeBannerTinyResource;
 use App\Http\Traits\Elm;
+use App\Http\Traits\Pay;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
-    use Elm;
+    use Elm,Pay;
     /**
      * Display a listing of the resource.
      *
@@ -60,5 +61,9 @@ class HomeController extends Controller
     public function testElm(Request $request)
     {
         return $this->login($request->all());
+    }
+    public function testPay(Request $request)
+    {
+        return $this->pay();
     }
 }

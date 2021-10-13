@@ -15,7 +15,6 @@ use App\Http\Controllers\API\V1\Favorites\FavoriteController;
 use App\Http\Controllers\API\V1\RealEstate\RealEstateController;
 use Carbon\Carbon;
 
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -38,6 +37,15 @@ Route::group(['prefix' => 'v1'], function () {
     Route::get('now', function(){
         return Carbon::now()->timestamp;
     });
+    
+    Route::post('pay', [HomeController::class, 'testPay']);
+    Route::get('response/success', function () {
+        return 'success';
+    })->name('response/success');
+    
+    Route::get('response/failure', function () {
+        return 'failed';
+    })->name('response/failure');
 
     Route::post('login', [AuthController::class, 'login']);
     Route::post('register', [AuthController::class, 'register']);

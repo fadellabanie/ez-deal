@@ -29,7 +29,7 @@ trait Pay
         $id = '948e6Xe0cZMrGbA';
        
         $encrypted = $this->encryptx(json_encode([
-            'amt' => "12.00",
+            'amt' => "12.0",
             'action' => "1",
             'password' => 'G6q5!#YqM1e$v1G',
             'id' => $id,

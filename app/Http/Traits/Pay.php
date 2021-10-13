@@ -3,6 +3,7 @@
 namespace App\Http\Traits;
 
 
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
 
@@ -24,23 +25,25 @@ trait Pay
     }
     public function pay()
     {
+        $id = Hash::make(now());
+      
         $encrypted = $this->encryptx(json_encode([
             'amt' => "150",
             'action' => "1",
             'password' => 'G6q5!#YqM1e$v1G',
-            'id' => '948e6Xe0cZMrGbA',
+            'id' => $id,
             'currencyCode' => "682",
             'trackId' => "1",
-            'responseURL' => redirect()->route('response/success'),
-            'errorURL' => redirect()->route('response/failure')
+            'responseURL' => URL::to('/api/v1/response/success'),
+            'errorURL' => URL::to('/api/v1/response/failure')
         ]), 'test');
-        //     dd($encrypted);
+       
         $response = Http::acceptJson()
             ->withBody(json_encode([
-                'id' => '948e6Xe0cZMrGbA',
-                'trandata' => $encrypted,
-                'responseURL' => redirect('/'),
-                'errorURL' => redirect()->route('response/failure'),
+                'id' => $id,
+                'trandata' => [$encrypted],
+                'responseURL' => URL::to('/api/v1/response/success'),
+                'errorURL' => URL::to('/api/v1/response/failure'),
             ]), 'application/json')
             ->post('https://securepayments.alrajhibank.com.sa/pg/payment/hosted.htm');
 

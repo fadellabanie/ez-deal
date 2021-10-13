@@ -25,18 +25,19 @@ trait Pay
     }
     public function pay()
     {
-        $id = Hash::make(now());
-
+        $trackId = Hash::make(now());
+        $id = '948e6Xe0cZMrGbA';
+       
         $encrypted = $this->encryptx(json_encode([
-            'amt' => "150",
+            'amt' => "12.00",
             'action' => "1",
             'password' => 'G6q5!#YqM1e$v1G',
             'id' => $id,
             'currencyCode' => "682",
-            'trackId' => "1",
+            'trackId' => $trackId,
             'responseURL' => URL::to('/api/v1/response/success'),
             'errorURL' => URL::to('/api/v1/response/failure')
-        ]), 'test');
+        ]), '12762428866412762428866412762428');
 
         $response = Http::acceptJson()
             ->withBody(json_encode([
@@ -46,7 +47,7 @@ trait Pay
                 'errorURL' => URL::to('/api/v1/response/failure'),
             ]), 'application/json')
             ->post('https://securepayments.alrajhibank.com.sa/pg/payment/hosted.htm');
-
+               
         return $response;
     }
     

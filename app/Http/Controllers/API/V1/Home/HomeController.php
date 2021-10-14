@@ -64,6 +64,20 @@ class HomeController extends Controller
     }
     public function testPay(Request $request)
     {
-        return $this->pay();
+        $response = $this->pay($request);
+    
+        if($response['status'] == 2){
+            return $this->errorStatus($response['errorText'].'-'.$response['error'].'-'.$response['status']);
+        }else{
+            //dd($response['PaymentID']);
+            return $this->respondWithItemName('url',"https://securepayments.alrajhibank.com.sa/pg/paymentpage.htm?PaymentID=".$response['PaymentID']);
+        }
+      //  return $this->successStatus($response);
+    }
+    public function success(Request $request)
+    {
+        $bodyContent = $request->json();
+        $content =  json_encode($bodyContent);
+        dd($bodyContent);
     }
 }

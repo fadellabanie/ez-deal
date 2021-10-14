@@ -1,0 +1,46 @@
+[{"id":"B4v1pBTzYuJq702","amt":"1","action":"1","password":"r$0IU8E1Bn$xv0!","currencyCode":"682","trackId":"R7JTRnftHG","responseURL":"http:\/\/127.0.0.1:8000\/final_result","errorURL":"http:\/\/127.0.0.1:8000\/final_result","udf1":null,"udf2":null,"udf3":null,"udf4":null,"udf5":null,"udf6":null,"udf7":null,"udf8":null,"udf9":null,"udf10":null,"langid":null}]
+Ahmad Almatari to Everyone (12:39 PM)
+https://securepayments.alrajhibank.com.sa/pg/paymentpage.htm?PaymentID=100201931620827468
+5105105105105100
+Ahmad Almatari to Everyone (12:43 PM)
+[
+    {
+        //Redirection Parameters
+        "paymentId": "100201935166676976",
+        "trandata": "<encrypted trandata>",
+        "error": "",
+        "errorText": ""
+    }
+]
+Ahmad Almatari to Everyone (12:44 PM)
+[
+    {
+        "date": "0705",
+        "authRespCode": "00",
+        "authCode": "000000",
+        "transId": 202118653809102,
+        "trackId": "123456789",
+        "udf5": "",
+        "cardType": "MasterCard",
+        "udf6": "",
+        "udf10": "",
+        "amt": "1.0",
+        "udf3": "",
+        "udf4": "",
+        "udf1": "",
+        "udf2": "",
+        "result": "CAPTURED",
+        "ref": "118661000084",
+        "udf9": "",
+        "paymentId": 600202118653948072,
+        "udf7": "",
+        "udf8": "",
+        "fcCustId": "0",
+        "paymentTimestamp": "2021-07-05T13: 39: 41.570Z"
+    }
+]
+
+
+fkvixmK6RFiYc6Vtjbh1jb:APA91bHmpuZ27GNzWk_PcbseMuwwypYhi5NkFNNC24ACpPiB89Zq-GbzYfSUhMzPXhOo4kX724NyDUCUgSllG874ki55RLhYK8bvvRN7M3DQKdx8MiYI0vV1SdNipYJzSaMnnoBAcb41
+
+cw-Mc02qQQGQ1nVrRiVXoT:APA91bEIDar753wYX-S308JX5iQArjZLhm46GNZehb96lAnI5nKbzFbQEWjwJbT2LvZWcXLFpDuHebzIr5ya2V_WcxN46_8qouAQ5TiSARVnszp4B_CMz59hLnsUlz8Dl2P7i5QWcdIW

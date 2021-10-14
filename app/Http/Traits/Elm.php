@@ -24,14 +24,13 @@ trait Elm
         $url = 'https://iambeta.elm.sa/authservice/authorize?scope=openid&response_type=id_token&response_mode=form_post&client_id=16371621&redirect_uri=https://ezdeal.net/api/v1/home&nonce=b55224f7-e83d-' . $nonce . '-451d32666e59&ui_locales=ar&prompt=login&max_age=' . $time;
 
         $state = hash_hmac('sha256', $url, $privateKey);
-       // $state = hash_hmac('sha256', $url, $privateKey);
 
            //step 1  rsa with sha256
+           openssl_sign($state, $tt, $privateKey, 'sha256');
            //step 2  encode base_64  from step 1 
-            openssl_sign($state, $tt, $privateKey, 'sha256');
+           $state = base64_encode($tt);
           
            //step 3  encode url  from step 2 
-           $state = base64_encode($tt);
        
         $requestUrl = 'https://iambeta.elm.sa/authservice/authorize?scope=openid&response_type=id_token&response_mode=form_post&client_id=16371621&redirect_uri=https://ezdeal.net/api/v1/home&nonce=b55224f7-e83d-' . $nonce . '-451d32666e59&ui_locales=ar&prompt=login&max_age=' . $time . '&state=' . $state;
         // echo($requestUrl);

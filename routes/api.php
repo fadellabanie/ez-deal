@@ -39,9 +39,12 @@ Route::group(['prefix' => 'v1'], function () {
     });
     
     Route::post('pay', [HomeController::class, 'testPay']);
-    Route::get('response/success', function () {
-        return 'success';
-    })->name('response/success');
+    Route::post('response/success', [HomeController::class, 'success'])->name('response/success');
+
+    // Route::get('response/success', function () {
+    //     return 'success';
+    // })->name('response/success');
+    
     
     Route::get('response/failure', function () {
         return 'failed';

@@ -2,6 +2,7 @@
 
 namespace App\Http\Traits;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
@@ -26,63 +27,38 @@ trait Pay
 
     public function pay($request)
     {
-
-       // dd(json_encode($request->all()));
-        $trackId = 1;
+      
         $id = '948e6Xe0cZMrGbA';
-    //    $test =  json_encode([
-    //         'amt' => "12.0",
-    //         'action' => "1",
-    //         'password' => 'G6q5!#YqM1e$v1G',
-    //         'id' => $id,
-    //         'currencyCode' => "682",
-    //         'trackId' => $trackId,
-    //         'responseURL' => URL::to('/api/v1/response/success'),
-    //         'errorURL' => URL::to('/api/v1/response/failure')
-    //     ]);
-        //dd($test);
+        
         $encrypted = $this->encryptx(json_encode($request->all()), '12762428866412762428866412762428');
-          //  dd( $encrypted );
-
-
         $row =  json_encode([[
             'id' => $id,
             'trandata' => $encrypted,
             'responseURL' => URL::to('/api/v1/response/success'),
             'errorURL' => URL::to('/api/v1/response/failure'),
         ]]);
-           // dd($row);
+        // dd($row);
         $response = Http::acceptJson()
             ->withBody($row, 'application/json')
             ->post('https://securepayments.alrajhibank.com.sa/pg/payment/hosted.htm');
-          
-          if($response[0]['status'] == 2){
+
+        if ($response[0]['status'] == 2) {
             return $response[0];
-         }else{
-            $data['PaymentID'] =  strstr($response[0]['result'], ':',true);
+        } else {
+            $data['PaymentID'] =  strstr($response[0]['result'], ':', true);
             $data['status'] = strstr($response[0]['result'], ':');
+
+            DB::table('payment_reports')->insert([
+                'amount' => $request[0]['amt'],
+                'track_id' => $request[0]['trackId'],
+                'trandata' =>  $encrypted,
+                'payment_id' =>  $data['PaymentID'],
+            ]);
             return ($data);
-            // $url = 'https://securepayments.alrajhibank.com.sa/pg/paymentpage.htm?PaymentID='.$data['PaymentID'];
-            // $response['status'] =  $url;
-            // $response['status'] = 1;
-            // dd($response);
-            //dd($data['PaymentID']);
-        //     $response = Http::acceptJson()
-        //    // ->withHeaders(['application/html'])
-        //     ->get('https://securepayments.alrajhibank.com.sa/pg/paymentpage.htm?PaymentID='.$data['PaymentID']);
-            return($response);
-            //return $data;
-         }
-      
-      
-    
-
-
-      
-
+        }
     }
-    
-   public function decrypt($code, $key)
+
+    public function decrypt($code, $key)
     {
         $string = hex2bin(trim($code));
         $code = unpack('C*', $string);

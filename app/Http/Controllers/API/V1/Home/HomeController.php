@@ -62,7 +62,7 @@ class HomeController extends Controller
     {
         return $this->login($request->all());
     }
-    public function testPay(Request $request)
+    public function pay(Request $request)
     {
         $response = $this->pay($request);
     

@@ -38,7 +38,7 @@ Route::group(['prefix' => 'v1'], function () {
         return Carbon::now()->timestamp;
     });
     
-    Route::post('pay', [HomeController::class, 'testPay']);
+    Route::post('pay', [HomeController::class, 'pay']);
     Route::post('response/success', [HomeController::class, 'success'])->name('response/success');
 
     // Route::get('response/success', function () {

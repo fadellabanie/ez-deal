@@ -4,6 +4,7 @@ namespace App\Http\Traits;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
 use Maatwebsite\Excel\Concerns\ToArray;
@@ -49,6 +50,7 @@ trait Pay
             $data['status'] = strstr($response[0]['result'], ':');
 
             DB::table('payment_reports')->insert([
+                'user' => Auth::id(),
                 'amount' => $request[0]['amt'],
                 'track_id' => $request[0]['trackId'],
                 'trandata' =>  $encrypted,

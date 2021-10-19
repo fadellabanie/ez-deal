@@ -15,6 +15,7 @@ class CreatePaymentReportsTable extends Migration
     {
         Schema::create('payment_reports', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id')->index();
             $table->double('amount');
             $table->longText('track_id');
             $table->longText('trandata');

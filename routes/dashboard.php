@@ -17,6 +17,7 @@ Route::group(['prefix' => 'admin','as' => 'admin.','middleware'=>'auth'], functi
     Route::resource('banners', App\Http\Controllers\Dashboard\BannerController::class);
     Route::resource('cities', App\Http\Controllers\Dashboard\CityController::class);
     Route::resource('countries', App\Http\Controllers\Dashboard\CountryController::class);
+    Route::resource('neighborhoods', App\Http\Controllers\Dashboard\NeighborhoodController::class);
     Route::resource('notifications', App\Http\Controllers\Dashboard\NotificationController::class);
     
     Route::resource('roles', App\Http\Controllers\Dashboard\RoleController::class);

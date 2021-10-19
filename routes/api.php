@@ -38,17 +38,19 @@ Route::group(['prefix' => 'v1'], function () {
         return Carbon::now()->timestamp;
     });
     
-    Route::post('pay', [HomeController::class, 'pay']);
-    Route::post('response/success', [HomeController::class, 'success'])->name('response/success');
+    Route::post('pay', [PaymentController::class, 'pay']);
+
+    Route::post('response/success', [PaymentController::class, 'success'])->name('response/success');
+    Route::post('response/failure', [PaymentController::class, 'failure'])->name('response/failure');
 
     // Route::get('response/success', function () {
     //     return 'success';
     // })->name('response/success');
     
     
-    Route::get('response/failure', function () {
-        return 'failed';
-    })->name('response/failure');
+   // Route::get('response/failure', function () {
+    //    return 'failed';
+   // })->name('response/failure');
 
     Route::post('login', [AuthController::class, 'login']);
     Route::post('register', [AuthController::class, 'register']);

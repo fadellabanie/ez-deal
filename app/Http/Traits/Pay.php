@@ -49,7 +49,7 @@ trait Pay
             $data['status'] = strstr($response[0]['result'], ':');
 
             DB::table('payment_reports')->insert([
-                'user' => Auth::id(),
+                'user_id' => Auth::id(),
                 'amount' => $request[0]['amt'],
                 'track_id' => $request[0]['trackId'],
                 'trandata' =>  $encrypted,

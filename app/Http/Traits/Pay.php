@@ -26,7 +26,7 @@ trait Pay
         return $encrypted;
     }
 
-    public function payment($request)
+    public function paymentOnline($request)
     {
         $id = '948e6Xe0cZMrGbA';
         

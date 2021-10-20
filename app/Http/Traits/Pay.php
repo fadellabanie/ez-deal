@@ -26,9 +26,8 @@ trait Pay
         return $encrypted;
     }
 
-    public function pay($request)
+    public function payment($request)
     {
-      
         $id = '948e6Xe0cZMrGbA';
         
         $encrypted = $this->encryptx(json_encode($request->all()), '12762428866412762428866412762428');

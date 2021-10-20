@@ -38,7 +38,6 @@ Route::group(['prefix' => 'v1'], function () {
     Route::get('now', function(){
         return Carbon::now()->timestamp;
     });
-    Route::post('pay', [PaymentController::class, 'pay']);
     Route::post('response/success', [PaymentController::class, 'success'])->name('response/success');
     Route::post('response/failure', [PaymentController::class, 'failure'])->name('response/failure');
 
@@ -109,6 +108,7 @@ Route::group(['prefix' => 'v1'], function () {
 
         Route::post('un-favorite', [FavoriteController::class, 'unFavorite']);
 
+        Route::post('pay', [PaymentController::class, 'pay']);
 
        
 

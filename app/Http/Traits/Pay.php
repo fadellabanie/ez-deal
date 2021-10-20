@@ -30,7 +30,7 @@ trait Pay
     {
         $id = '948e6Xe0cZMrGbA';
         
-        $encrypted = $this->encryptx(json_encode($request->all()), '12762428866412762428866412762428');
+        $encrypted = $this->encryptx(json_encode($request), '12762428866412762428866412762428');
         $row =  json_encode([[
             'id' => $id,
             'trandata' => $encrypted,

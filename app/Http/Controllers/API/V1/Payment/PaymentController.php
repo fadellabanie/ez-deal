@@ -14,6 +14,7 @@ class PaymentController extends Controller
   
     public function pay(Request $request)
     {
+      
         $response = $this->payment($request->all());
     
         if($response['status'] == 2){ 

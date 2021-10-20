@@ -28,6 +28,7 @@ trait Pay
 
     public function paymentOnline($request)
     {
+        dd( URL::to('/api/v1/response/success'));
         $id = '948e6Xe0cZMrGbA';
         
         $encrypted = $this->encryptx(json_encode($request), '12762428866412762428866412762428');

@@ -14,7 +14,7 @@ class PaymentController extends Controller
   
     public function pay(Request $request)
     {
-        $response = $this->payment($request->al());
+        $response = $this->payment($request->all());
     
         if($response['status'] == 2){ 
             return $this->errorStatus($response['errorText'].'-'.$response['error'].'-'.$response['status']);

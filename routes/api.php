@@ -39,6 +39,10 @@ Route::group(['prefix' => 'v1'], function () {
         return Carbon::now()->timestamp;
     });
     
+    Route::post('response/success', [PaymentController::class, 'success'])->name('response/success');
+    Route::post('response/failure', [PaymentController::class, 'failure'])->name('response/failure');
+
+    
    
     // Route::get('response/success', function () {
     //     return 'success';
@@ -107,9 +111,7 @@ Route::group(['prefix' => 'v1'], function () {
 
         Route::post('pay', [PaymentController::class, 'pay']);
 
-        Route::post('response/success', [PaymentController::class, 'success'])->name('response/success');
-        Route::post('response/failure', [PaymentController::class, 'failure'])->name('response/failure');
-    
+       
 
         // Route::apiResource('case', CaseController::class);
 

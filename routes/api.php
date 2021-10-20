@@ -34,10 +34,14 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::group(['prefix' => 'v1'], function () {
     Route::get('elm', [HomeController::class, 'testElm']);
+   
     
     Route::get('now', function(){
         return Carbon::now()->timestamp;
-    });
+    });  
+    
+ 
+    Route::post('test', [PaymentController::class, 'success'])->name('response/success');
     Route::post('response/success', [PaymentController::class, 'success'])->name('response/success');
     Route::post('response/failure', [PaymentController::class, 'failure'])->name('response/failure');
 

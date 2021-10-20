@@ -18,7 +18,8 @@ class CreatePaymentReportsTable extends Migration
             $table->unsignedBigInteger('user_id')->index();
             $table->double('amount');
             $table->longText('track_id');
-            $table->longText('trandata');
+            $table->longText('trandata_request');
+            $table->longText('trandata_respond');
             $table->string('payment_id');
             $table->timestamps();
         });

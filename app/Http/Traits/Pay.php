@@ -53,8 +53,9 @@ trait Pay
                 'user_id' => Auth::id() ?? 1,
                 'amount' => $request[0]['amt'],
                 'track_id' => $request[0]['trackId'],
-                'trandata' =>  $encrypted,
+                'trandata_request' =>  $encrypted,
                 'payment_id' =>  $data['PaymentID'],
+                'created_at' =>  now(),
             ]);
             return ($data);
         }

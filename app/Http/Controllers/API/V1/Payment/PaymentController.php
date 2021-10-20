@@ -26,7 +26,7 @@ class PaymentController extends Controller
     {
         $bodyContent = $request->json();
         $content =  json_encode($bodyContent);
-        dd($bodyContent);
+        dd($content);
       // PaymentReport::
      //  $this->sendNotificationToAllUser();
        return $this->successStatus('Payment Successfully');

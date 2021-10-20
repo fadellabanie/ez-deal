@@ -24,12 +24,12 @@ class PaymentController extends Controller
     }
     public function success(Request $request)
     {
-        $bodyContent = $request->json();
+        $bodyContent = $request->getContent();
         $content =  json_encode($bodyContent);
-        dd($content);
+        dd($bodyContent);
       // PaymentReport::
      //  $this->sendNotificationToAllUser();
-       return $this->successStatus('Payment Successfully');
+      // return $this->successStatus('Payment Successfully');
     } 
     public function failure(Request $request)
     {

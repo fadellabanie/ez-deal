@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\API\V1\Payment;
 
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Http\Traits\Pay;
+use Illuminate\Http\Request;
+use App\Models\PaymentReport;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class PaymentController extends Controller
 {
@@ -24,12 +26,17 @@ class PaymentController extends Controller
     {
         $bodyContent = $request->json();
         $content =  json_encode($bodyContent);
-        dd($bodyContent);
+        dd(Auth::id());
+      // PaymentReport::
+     //  $this->sendNotificationToAllUser();
+       return $this->successStatus('Payment Successfully');
     } 
     public function failure(Request $request)
     {
         $bodyContent = $request->json();
         $content =  json_encode($bodyContent);
-        dd($bodyContent);
+       // dd($bodyContent);
+       return $this->errorStatus('Payment have error');
+
     }
 }

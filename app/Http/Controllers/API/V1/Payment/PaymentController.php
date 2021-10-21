@@ -54,10 +54,11 @@ class PaymentController extends Controller
         $payment = PaymentReport::where('payment_id', $data[0])->select('user_id')->first();
 
         $user = User::find($payment->user_id);
-
+        
         $title = __("Payment");
         $body = __("Payment Successfully");
         $this->send($user->device_token, $title, $body);
+
         return 'Done';
         // return $this->successStatus('Payment Successfully');
     }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Traits;
 
+use App\Models\Package;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Auth;
@@ -51,6 +52,7 @@ trait Pay
 
             DB::table('payment_reports')->insert([
                 'user_id' => Auth::id() ?? 1,
+                'package_id' => Package::where('price',$request[0]['amt'])->pluck('id')->first(),
                 'amount' => $request[0]['amt'],
                 'track_id' => $request[0]['trackId'],
                 'trandata_request' =>  $encrypted,

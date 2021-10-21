@@ -16,10 +16,11 @@ class AdvertisementEmail extends Mailable
      *
      * @return void
      */
-    public  $content;
-    public function __construct($content)
+    public  $report;
+
+    public function __construct($report)
     {
-        $this->content = $content;
+        $this->report = $report;
     }
 
     /**

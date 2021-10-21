@@ -17,9 +17,10 @@ class Update extends Component
     public $banner;
     public $image;
     public $city_id;
+    public $type;
 
     protected $rules = [
-        'banner.type' => 'required|in:top,bottom',
+        'type' => 'required|in:top,bottom',
         'banner.ar_name' => 'required|min:4|max:100',
         'banner.en_name' => 'required|min:4|max:100',
         'banner.ar_description' => 'required|min:4|max:250',
@@ -54,6 +55,7 @@ class Update extends Component
         $this->banner->update([
             'user_id'  => Auth::id(),
             'city_id'  => $validatedData['city_id'],
+            'type'  => $validatedData['type'],
         ]);
        
         session()->flash('alert', __('Update Successfully.'));
@@ -65,6 +67,7 @@ class Update extends Component
     {
         $this->banner = $banner;
         $this->city_id = $banner->city_id;
+        $this->type = $banner->type;
     }
 
     public function render()

@@ -31,8 +31,8 @@ trait Pay
     {
        
         $id = '948e6Xe0cZMrGbA';
-        
-        $encrypted = $this->encryptx(json_encode($request), '12762428866412762428866412762428');
+        //dd($request);
+        $encrypted = $this->encryptx(json_encode([$request[0]]), '12762428866412762428866412762428');
         $row =  json_encode([[
             'id' => $id,
             'trandata' => $encrypted,
@@ -52,7 +52,7 @@ trait Pay
 
             DB::table('payment_reports')->insert([
                 'user_id' => Auth::id() ?? 1,
-                'package_id' => Package::where('price',$request[0]['amt'])->pluck('id')->first(),
+                'package_id' => Package::whereId($request['package_id'])->pluck('id')->first(),
                 'amount' => $request[0]['amt'],
                 'track_id' => $request[0]['trackId'],
                 'trandata_request' =>  $encrypted,

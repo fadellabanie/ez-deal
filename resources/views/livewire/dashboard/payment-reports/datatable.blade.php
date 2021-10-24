@@ -5,22 +5,13 @@
         <div class="card-header mt-5">
 
             <div class="card-title flex-column">
-                <h3 class="fw-bolder mb-1">{{__("Activity Logges")}}</h3>
+                <h3 class="fw-bolder mb-1">{{__("Payment Reports")}}</h3>
                 <div class="fs-6 text-gray-400">{{__("Show All")}}</div>
             </div>
 
             <div class="card-toolbar my-1">
                 <div class="me-6 my-1">
                     <x-status></x-status>
-                </div>
-                <div class="me-6 my-1">
-                    <x-city></x-city>
-                </div>
-                <div class="me-6 my-1">
-                    <x-contract-type></x-contract-type>
-                </div>
-                <div class="me-6 my-1">
-                    <x-realestate-type></x-realestate-type>
                 </div>
                 <div class="d-flex align-items-center position-relative my-1">
                     <x-search-input></x-search-input>
@@ -36,42 +27,53 @@
                         role="grid">
                         <thead class="fs-7 text-gray-400 text-uppercase">
                             <tr role="row">
-
                             <tr>
                                 <th wire:click="sortBy('id')" data-sort="{{$sortDirection}}">{{__("#")}}
                                     <x-sort field="id" sortBy="{{$sortBy}}" sortDirection="{{$sortDirection}}"></x-sort>
                                 </th>
-                                <th wire:click="sortBy('subject_type')" data-sort="{{$sortDirection}}">
-                                    {{__("Model Name")}}
-                                    <x-sort field="subject_type" sortBy="{{$sortBy}}"
+                                <th wire:click="sortBy('package_id')" data-sort="{{$sortDirection}}">
+                                    {{__("package")}}
+                                    <x-sort field="package_id" sortBy="{{$sortBy}}"
                                         sortDirection="{{$sortDirection}}"></x-sort>
                                 </th>
-                                <th wire:click="sortBy('subject_type')" data-sort="{{$sortDirection}}">{{__("Subject")}}
-                                    <x-sort field="subject_type" sortBy="{{$sortBy}}"
+                                <th wire:click="sortBy('user_id')" data-sort="{{$sortDirection}}">{{__("user_id")}}
+                                    <x-sort field="user_id" sortBy="{{$sortBy}}"
                                         sortDirection="{{$sortDirection}}"></x-sort>
                                 </th>
-                                <th wire:click="sortBy('description')" data-sort="{{$sortDirection}}">{{__("Action")}}
-                                    <x-sort field="description" sortBy="{{$sortBy}}" sortDirection="{{$sortDirection}}">
+                                <th wire:click="sortBy('amt')" data-sort="{{$sortDirection}}">{{__("Amount")}}
+                                    <x-sort field="amount" sortBy="{{$sortBy}}" sortDirection="{{$sortDirection}}">
                                     </x-sort>
                                 </th>
-                                <th wire:click="sortBy('causer_type')" data-sort="{{$sortDirection}}">{{__("User")}}
-                                    <x-sort field="causer_type" sortBy="{{$sortBy}}" sortDirection="{{$sortDirection}}">
+                                <th wire:click="sortBy('track_id')" data-sort="{{$sortDirection}}">{{__("Track ID")}}
+                                    <x-sort field="track_id" sortBy="{{$sortBy}}" sortDirection="{{$sortDirection}}">
                                     </x-sort>
                                 </th>
-                                <th wire:click="sortBy('created_at')" data-sort="{{$sortDirection}}">{{__("Time")}}
+                                <th wire:click="sortBy('trans_id')" data-sort="{{$sortDirection}}">{{__("Trans ID")}}
+                                    <x-sort field="trans_id" sortBy="{{$sortBy}}" sortDirection="{{$sortDirection}}">
+                                    </x-sort>
+                                </th>
+                                <th wire:click="sortBy('card_type')" data-sort="{{$sortDirection}}">{{__("Card Type")}}
+                                    <x-sort field="card_type" sortBy="{{$sortBy}}" sortDirection="{{$sortDirection}}">
+                                    </x-sort>
+                                </th>
+                                <th wire:click="sortBy('result')" data-sort="{{$sortDirection}}">{{__("Result")}}
+                                    <x-sort field="result" sortBy="{{$sortBy}}" sortDirection="{{$sortDirection}}">
+                                    </x-sort>
+                                </th>
+                                <th wire:click="sortBy('ref')" data-sort="{{$sortDirection}}">{{__("Ref")}}
+                                    <x-sort field="ref" sortBy="{{$sortBy}}" sortDirection="{{$sortDirection}}">
+                                    </x-sort>
+                                </th>
+                                <th wire:click="sortBy('created_at')" data-sort="{{$sortDirection}}">{{__("Created")}}
                                     <x-sort field="created_at" sortBy="{{$sortBy}}" sortDirection="{{$sortDirection}}">
                                     </x-sort>
                                 </th>
-                                <th wire:click="sortBy('created_at')" data-sort="{{$sortDirection}}">{{__("Sinc")}}
-                                    <x-sort field="created_at" sortBy="{{$sortBy}}" sortDirection="{{$sortDirection}}">
-                                    </x-sort>
-                                </th>
-                                <th>{{ __('Actions') }}</th>
+                            
                             </tr>
 
                         </thead>
                         <tbody class="fs-6">
-                            @forelse($activities as $key => $log)
+                            @forelse($reports as $key => $report)
                             <tr wire:loading.class="opacity-50">
                             <tr>
                                 <td>
@@ -79,42 +81,51 @@
                                 </td>
                                 <td>
                                     <span class="d-inline-block" data-toggle="tooltip">
-                                        {{ explode('\\',$log->subject_type)[2] ?? ("Subject") }}
+                                        {{$report->package->en_name}}
                                     </span>
                                 </td>
                                 <td>
                                     <span class="d-inline-block" data-toggle="tooltip">
-                                        {{ $log->subject->en_name ?? $log->subject->en_question ?? __("Subject Name not found") }}
+                                        <a href="{{route('admin.users.show',$report->user->id ?? 0)}}"
+                                            target="_blank">{{ $report->user->name ?? __("User") }}</a>
                                     </span>
                                 </td>
                                 <td>
                                     <span class="d-inline-block" data-toggle="tooltip">
-                                        {{ $log->description ?? '' }}
+                                        {{$report->amount}}
                                     </span>
                                 </td>
                                 <td>
                                     <span class="d-inline-block" data-toggle="tooltip">
-                                        <a href="{{route('admin.users.show',$log->causer->id ?? 0)}}"
-                                            target="_blank">{{ $log->causer->name ?? __("User") }}</a>
+                                        {{$report->track_id}}
+                                    </span>
+                                </td>             
+                                <td>
+                                    <span class="d-inline-block" data-toggle="tooltip">
+                                        {{$report->trans_id}}
                                     </span>
                                 </td>
                                 <td>
                                     <span class="d-inline-block" data-toggle="tooltip">
-                                        {{$log->created_at}}
+                                        {{$report->card_type}}
                                     </span>
                                 </td>
                                 <td>
                                     <span class="d-inline-block" data-toggle="tooltip">
-                                        {{$log->created_at->diffforhumans()}}
+                                        {{$report->result}}
                                     </span>
                                 </td>
                                 <td>
                                     <span class="d-inline-block" data-toggle="tooltip">
-                                        <a class="btn btn-primary font-weight-bolder" data-toggle="modal"
-                                            wire:click="getData({{$log->id}})" data-target="#modal">{{__('View Data')}}
-                                        </a>
+                                        {{$report->ref}}
                                     </span>
                                 </td>
+                                <td>
+                                    <span class="d-inline-block" data-toggle="tooltip">
+                                        {{$report->created_at}}
+                                    </span>
+                                </td>
+                              
                             </tr>
                             @empty
                             <tr>
@@ -132,7 +143,7 @@
                     </div>
                     <div
                         class="col-sm-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-end">
-                        {{$activities->links()}}
+                        {{$reports->links()}}
                     </div>
                 </div>
             </div>

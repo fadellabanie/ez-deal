@@ -26,8 +26,8 @@ class Update extends Component
         'banner.ar_description' => 'required|min:4|max:250',
         'banner.en_description' => 'required|min:4|max:250',
         'city_id' => 'required|exists:cities,id',
-        'banner.start_date' => 'required|after:today',
-        'banner.end_date' => 'required|after:today',
+        'banner.start_date' => 'required|after:yesterday',
+        'banner.end_date' => 'required|after:yesterday',
         'banner.status' => 'required',
         'image' => 'nullable',
     ];

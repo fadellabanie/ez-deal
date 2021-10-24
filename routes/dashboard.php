@@ -15,6 +15,7 @@ Route::group(['prefix' => 'admin','as' => 'admin.','middleware'=>'auth'], functi
     
     Route::resource('stories', App\Http\Controllers\Dashboard\StoryController::class);
     Route::resource('banners', App\Http\Controllers\Dashboard\BannerController::class);
+    Route::resource('payment-reports', App\Http\Controllers\Dashboard\PaymentReportController::class)->only('index');
     Route::resource('cities', App\Http\Controllers\Dashboard\CityController::class);
     Route::resource('countries', App\Http\Controllers\Dashboard\CountryController::class);
     Route::resource('neighborhoods', App\Http\Controllers\Dashboard\NeighborhoodController::class);

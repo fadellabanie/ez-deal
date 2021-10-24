@@ -39,7 +39,7 @@ class CreateAppBannersTable extends Migration
             'image' => 'image.png',
             'status' => true,
             'start_date' => now(),
-            'end_date' => now()->addDays(15),
+            'end_date' => now()->addDays(350),
             'created_at' => now(),
             'updated_at' => now(),
         ]);
@@ -53,7 +53,7 @@ class CreateAppBannersTable extends Migration
             'image' => 'image.png',
             'status' => true,
             'start_date' => now(),
-            'end_date' => now()->addDays(15),
+            'end_date' => now()->addDays(350),
             'created_at' => now(),
             'updated_at' => now(),
         ]);

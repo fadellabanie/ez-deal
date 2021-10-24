@@ -29,21 +29,22 @@ class PaymentController extends Controller
         $bodyContent = $request->getContent();
         $content =  json_encode($bodyContent);
         $data = explode("&", $content);
+        $payment_id = explode("=", $data[0]);
         $trandata_respond = explode("=", $data[3]);
 
-        //dd($trandata_respond);
+        //dd($data);
 
-        DB::table('payment_reports')->where('payment_id', $data[0])->update([
+        DB::table('payment_reports')->where('payment_id', $payment_id[1])->update([
             'trandata_respond' => $trandata_respond[1]
         ]);
 
         $decryptResponse = $this->decrypt($trandata_respond[1], '12762428866412762428866412762428');
         $response = json_decode($decryptResponse)[0];
 
-        DB::table('payment_reports')->where('payment_id', $data[0])->update([
+        DB::table('payment_reports')->where('payment_id', $payment_id[1])->update([
             'trandata_respond' => $trandata_respond[1],
-            'data' => $response->data,
-            'transId' => $response->transId,
+           // 'date' => $response->date,
+            'trans_id' => $response->transId,
             'card_type' => $response->cardType,
             'result' => $response->result,
             'ref' => $response->ref,
@@ -51,7 +52,7 @@ class PaymentController extends Controller
             'payment_timestamp' => $response->paymentTimestamp,
         ]);
 
-        $payment = PaymentReport::where('payment_id', $data[0])->select('user_id')->first();
+        $payment = PaymentReport::where('payment_id',$payment_id[1])->select('user_id')->first();
 
         $user = User::find($payment->user_id);
         

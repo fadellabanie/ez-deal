@@ -39,6 +39,7 @@ class RealEstateTinyResource extends JsonResource
             'street_number' => $this->street_number,
             'age_building' => $this->age_building,
             'neighborhood' => $this->neighborhood->name,
+            'species' => $this->species ?? "",
             'view' => $this->view->name,
             'number_of_views' => $this->number_of_views,
             'is_favorites' => $is_favorites == null ? false : true,

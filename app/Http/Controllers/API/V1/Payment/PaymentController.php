@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers\API\V1\Payment;
 
+use App\Models\User;
 use App\Http\Traits\Pay;
 use Illuminate\Http\Request;
 use App\Models\PaymentReport;
+use App\Mail\AdvertisementEmail;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class PaymentController extends Controller
 {
@@ -43,7 +45,7 @@ class PaymentController extends Controller
 
         DB::table('payment_reports')->where('payment_id', $payment_id[1])->update([
             'trandata_respond' => $trandata_respond[1],
-           // 'date' => $response->date,
+            // 'date' => $response->date,
             'trans_id' => $response->transId,
             'card_type' => $response->cardType,
             'result' => $response->result,
@@ -52,13 +54,15 @@ class PaymentController extends Controller
             'payment_timestamp' => $response->paymentTimestamp,
         ]);
 
-        $payment = PaymentReport::where('payment_id',$payment_id[1])->select('user_id')->first();
+        $paymentReport = PaymentReport::where('payment_id', $payment_id[1])->select('user_id')->first();
 
-        $user = User::find($payment->user_id);
-        
+        $user = User::find($paymentReport->user_id);
+
         $title = __("Payment");
         $body = __("Payment Successfully");
         $this->send($user->device_token, $title, $body);
+
+        Mail::to($user->email)->send(new AdvertisementEmail($paymentReport));
 
         return 'Done';
         // return $this->successStatus('Payment Successfully');

@@ -29,6 +29,7 @@ class UpdateRequest extends APIRequest
             'contract_type_id' => 'required|exists:contract_types,id',
             'neighborhood_id' => 'required|exists:neighborhoods,id',
             'view_id' => 'required|exists:views,id',
+            'species' => 'required',
             'price' => 'required|gt:0',
             'space' => 'required|gt:0',
             'number_building' => 'required|gt:0',

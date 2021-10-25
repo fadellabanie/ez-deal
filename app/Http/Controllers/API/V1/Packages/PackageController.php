@@ -22,7 +22,6 @@ class PackageController extends Controller
         $packages =  Package::active()->get();
 
         return new PackageCollection($packages);
-
     } 
 
     /**

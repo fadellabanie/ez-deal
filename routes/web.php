@@ -2,6 +2,7 @@
 
 use App\Models\User;
 use App\Mail\AdvertisementEmail;
+use App\Models\PaymentReport;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
@@ -27,8 +28,8 @@ Route::get('elm', [App\Http\Controllers\HomeController::class, 'testElm'])->name
 
 Route::get('/email', function () {
   //  Mail::to('Ezdeal.sa@gmail.com')->send(new AdvertisementEmail());
-
-return 'done';
+ $report = PaymentReport::find(9);
+return view('emails.advertisement',compact('report'));
 });
 Route::get('/mobile-app-terms-and-conditions', function () {
    

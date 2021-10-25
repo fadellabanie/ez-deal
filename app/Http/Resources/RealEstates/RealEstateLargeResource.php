@@ -44,6 +44,7 @@ class RealEstateLargeResource extends JsonResource
             'ac' => (Boolean)$this->ac,
             'furniture' => (Boolean)$this->furniture,
             'note' => $this->note,
+            'species' => $this->species ?? "",
             'type' => $this->type,
             'type_of_owner' => $this->type_of_owner,
             'number_card' => $this->number_card,

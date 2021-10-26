@@ -12,8 +12,6 @@ trait Elm
     private function login()
     {
 
-    
-        /*
         $nonce = rand(1000, 9999) . '-' . rand(1000, 9999);
         $time = Carbon::now()->timestamp;
 
@@ -27,14 +25,12 @@ trait Elm
         $url = 'https://iambeta.elm.sa/authservice/authorize?scope=openid&response_type=id_token&response_mode=form_post&client_id=16371621&redirect_uri=https://ezdeal.net/api/v1/home&nonce=b55224f7-e83d-' . $nonce . '-451d32666e59&ui_locales=ar&prompt=login&max_age=' . $time;
 
         $state = hash_hmac('sha256', $url, $privateKey);
-           //step 1  rsa with sha256
-           openssl_sign($state, $code, $privateKey, 'sha256');
-           //step 2  encode base_64  from step 1 
-           dd( $code);
-           $state = base64_encode($code);
-           //step 3  encode url  from step 2 
+        //step 1  rsa with sha256
+        openssl_sign($state, $code, $privateKey, 'sha256');
+        //step 2  encode base_64  from step 1 
+        $state = base64_encode($code);
+        //step 3  encode url  from step 2 
         $requestUrl = 'https://iambeta.elm.sa/authservice/authorize?scope=openid&response_type=id_token&response_mode=form_post&client_id=16371621&redirect_uri=https://ezdeal.net/api/v1/home&nonce=b55224f7-e83d-' . $nonce . '-451d32666e59&ui_locales=ar&prompt=login&max_age=' . $time . '&state=' . $state;
-        dd($requestUrl);
         // echo('<br/>');
 
         $ch = curl_init();
@@ -55,6 +51,5 @@ trait Elm
         }
         curl_close($ch);
         return $responseData;
-        */
     }
 }

@@ -32,13 +32,14 @@ trait Elm
         $newState = base64_encode($state);
         //save state to use later
         $savedState=base64_encode(hash('sha256',$newState,true));
+        
         //  $user=  Auth::user();
         //$this->repo->createActivation($user,$savedState);
         //return the url
-       // return response()->json(['state' => $savedState, "url" => $content . "&state=" . //urlencode($newState)]);
-       
+        //return response()->json(['state' => $savedState, "url" => $content . "&state=" . urlencode($newState)]);
+        $requestUrl =  $content . "&state=" . urlencode($newState);
         $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $content);
+        curl_setopt($ch, CURLOPT_URL, $requestUrl);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_HEADER, false);
         curl_setopt($ch, CURLOPT_IPRESOLVE, CURL_IPRESOLVE_V4);
@@ -55,6 +56,7 @@ trait Elm
         }
         curl_close($ch);
         return $responseData;
+
 
         ##############################################################
         /*

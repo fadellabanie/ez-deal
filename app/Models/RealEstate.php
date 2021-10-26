@@ -14,6 +14,9 @@ class RealEstate extends Model
 
     use HasFactory;
 
+    Const SELL = 1;
+    Const RENT = 2;
+    Const INVESTMENT = 3;
 
     protected $fillable = [
         'user_id',

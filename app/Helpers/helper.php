@@ -11,7 +11,23 @@ use App\Models\Country;
 use App\Models\ContractType;
 use App\Models\RealestateType;
 use App\Models\Package;
+use App\Models\RealEstate;
 use Illuminate\Support\Facades\Storage;
+
+if (!function_exists('species')) {
+	function species($type)
+	{
+		if($type == RealEstate::SELL){
+			return __("sell");
+
+		}elseif($type == RealEstate::RENT){
+			return __("rent");
+
+		}elseif($type == RealEstate::INVESTMENT){
+			return __("investment");
+		}
+	}
+}
 
 if (!function_exists('getCountry')) {
 	function getCountry($city_id)

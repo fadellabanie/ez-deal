@@ -171,7 +171,6 @@ class RealEstateController extends Controller
         $request['user_id'] = Auth::id();
         $request['end_date'] = Carbon::now()->addDays(30);
         $request['is_active'] = true;
-      
 
         $realEstate = RealEstate::create($request->all());
         foreach ($request->images as $key => $image) {

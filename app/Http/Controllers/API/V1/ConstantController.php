@@ -16,6 +16,7 @@ use App\Http\Resources\Constants\ContractTypeResource;
 use App\Http\Resources\Constants\RealEstateTypeResource;
 use App\Http\Resources\Constants\ConstResource;
 use App\Http\Resources\Constants\NeighborhoodResource;
+use Illuminate\Http\Request;
 
 class ConstantController extends Controller
 {
@@ -76,9 +77,9 @@ class ConstantController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function getNeighborhood()
+    public function getNeighborhood(Request $request)
     {
-        $data = Neighborhood::get();
+        $data = Neighborhood::where('city_id',$request->city_id)->get();
      
         return $this->respondWithCollection(NeighborhoodResource::collection($data));
     } 

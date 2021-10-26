@@ -104,7 +104,8 @@ class ConstantController extends Controller
         $data['views'] = View::get();
         $data['contract_type'] = ContractType::get();
         $data['realestate_type'] = RealestateType::get();
-        $data['neighborhoods'] = Neighborhood::get();
+        $data['cities'] = City::get();
+        ظظ$data['neighborhoods'] = Neighborhood::get();
 
      
         return $this->respondWithCollection(new ConstResource($data));

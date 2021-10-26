@@ -18,6 +18,7 @@ class ConstResource extends JsonResource
            'views' => ViewResource::collection($this['views']),
            'contract_type' => ContractTypeResource::collection($this['contract_type']),
             'realestate_type' => RealEstateTypeResource::collection($this['realestate_type']),
+            'cities' =>CityResource::collection($this['cities']),
         ];
     }
 }

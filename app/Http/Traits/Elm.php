@@ -35,8 +35,28 @@ trait Elm
         //  $user=  Auth::user();
         //$this->repo->createActivation($user,$savedState);
         //return the url
-        return response()->json(['state' => $savedState, "url" => $content . "&state=" . urlencode($newState)]);
+       // return response()->json(['state' => $savedState, "url" => $content . "&state=" . //urlencode($newState)]);
+       
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $content);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HEADER, false);
+        curl_setopt($ch, CURLOPT_IPRESOLVE, CURL_IPRESOLVE_V4);
+        //curl_setopt($ch, CURLOPT_TIMEOUT, 5);
+        //curl_setopt($ch, CURLOPT_PORT, 81);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_ANY);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
 
+        $responseData = curl_exec($ch);
+
+        if (curl_errno($ch)) {
+            return curl_error($ch);
+        }
+        curl_close($ch);
+        return $responseData;
+
+        ##############################################################
         /*
         $nonce = rand(1000, 9999) . '-' . rand(1000, 9999);
         $time = Carbon::now()->timestamp;

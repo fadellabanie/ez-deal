@@ -27,7 +27,7 @@ class RealEstate extends Model
         'country_id',
         'name',
         'species',
-        'neighborhood',
+        'neighborhood_id',
         'price',
         'space',
         'number_building',

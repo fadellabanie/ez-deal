@@ -29,10 +29,12 @@ trait Pay
 
     public function paymentOnline($request)
     {
-       
+        $package_id = $request['package_id'];
+        unset($request['package_id']);
+       // dd($request);
         $id = '948e6Xe0cZMrGbA';
         //dd($request);
-        $encrypted = $this->encryptx(json_encode([$request[0]]), '12762428866412762428866412762428');
+        $encrypted = $this->encryptx(json_encode([$request]), '12762428866412762428866412762428');
         $row =  json_encode([[
             'id' => $id,
             'trandata' => $encrypted,
@@ -52,9 +54,9 @@ trait Pay
 
             DB::table('payment_reports')->insert([
                 'user_id' => Auth::id() ?? 1,
-                'package_id' => Package::whereId($request['package_id'])->pluck('id')->first(),
-                'amount' => $request[0]['amt'],
-                'track_id' => $request[0]['trackId'],
+                'package_id' => Package::whereId($package_id)->pluck('id')->first(),
+                'amount' => $request['amt'],
+                'track_id' => $request['trackId'],
                 'trandata_request' =>  $encrypted,
                 'payment_id' =>  $data['PaymentID'],
                 'created_at' =>  now(),

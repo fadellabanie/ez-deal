@@ -28,7 +28,7 @@ class CreateRealestatesTable extends Migration
             $table->decimal('lat', 10, 8)->nullable();
             $table->decimal('lng', 11, 8)->nullable();
             $table->string('address')->nullable();
-            $table->string('neighborhood');
+            //$table->string('neighborhood');
             $table->float('number_building');
             $table->float('age_building');
             $table->float('street_width');

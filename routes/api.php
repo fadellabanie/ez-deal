@@ -82,6 +82,7 @@ Route::group(['prefix' => 'v1'], function () {
     Route::get('creation-constant', [ConstantController::class, 'getCreationConst']);
     Route::get('list-on-map', [RealEstateController::class, 'listOnMap']);
 
+    Route::get('before-create-realState', [ConstantController::class, 'beforeCreateRealState']);
 
     Route::group(['middleware' => 'auth:api'], function () {
         Route::get('logout', [AuthController::class, 'logout']);
@@ -113,6 +114,7 @@ Route::group(['prefix' => 'v1'], function () {
         Route::post('un-favorite', [FavoriteController::class, 'unFavorite']);
 
         Route::post('pay', [PaymentController::class, 'pay']);
+
 
        
 

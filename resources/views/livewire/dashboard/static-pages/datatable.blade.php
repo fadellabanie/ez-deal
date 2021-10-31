@@ -39,14 +39,12 @@
                         <tbody class="fs-6">
                             @forelse($staticPages as $key => $staticPage)
                             <tr wire:loading.class="opacity-50">
-                                <td>{{$staticPage->iteration}}</td>
+                                <td>{{$loop->iteration}}</td>
                                 <td>{{$staticPage->en_title}}</td>
                                 <td>{{$staticPage->type}}</td>
                                 <td>
                                     <div class="d-flex justify-content-end flex-shrink-0">
-                                       
                                         <x-edit-button href="{{route('admin.static-pages.edit',$staticPage)}}" />
-                                      
                                     </div>
                                 </td>
                             </tr>

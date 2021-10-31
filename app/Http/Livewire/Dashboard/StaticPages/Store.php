@@ -15,8 +15,8 @@ class Store extends Component
     protected $rules = [
         'ar_title' => 'required|min:4|max:100',
         'en_title' => 'required|min:4|max:100',
-        'ar_description' => 'required|min:4|max:250',
-        'en_description' => 'required|min:4|max:250',
+        'ar_description' => 'required|min:4',
+        'en_description' => 'required|min:4',
         'type' => 'required',
        
     ];
@@ -34,7 +34,12 @@ class Store extends Component
        // $this->authorize('create static pages');
 
         $validatedData = $this->validate();
+        $staticPage = StaticPage::whereType('before-create')->count();
 
+        if($staticPage == 2){
+            session()->flash('alert', __('can not create more then 2 before create type.'));
+            return redirect()->route('admin.static-pages.index');
+        }
         StaticPage::create($validatedData);
       
         $this->reset();

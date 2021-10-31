@@ -77,6 +77,7 @@
                                     <option>{{__("Select...")}}</option>
                                     <option value="privacy-policy">{{__("Privacy Policy")}}</option>
                                     <option value="terms-and-conditions">{{__("Terms And Conditions")}}</option>
+                                    <option value="before-create">{{__("Terms And Conditions befor create")}}</option>
                                 </select>
                             </div>
                             <x-error field="staticPage.type" />

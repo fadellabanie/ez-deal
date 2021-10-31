@@ -5,18 +5,20 @@ namespace App\Http\Controllers\API\V1;
 use App\Models\City;
 use App\Models\View;
 use App\Models\Country;
-use App\Models\Neighborhood;
+use App\Models\StaticPage;
 use App\Models\ContractType;
+use App\Models\Neighborhood;
+use Illuminate\Http\Request;
 use App\Models\RealestateType;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Constants\CityResource;
 use App\Http\Resources\Constants\ViewResource;
-use App\Http\Resources\Constants\CountryResource;
-use App\Http\Resources\Constants\ContractTypeResource;
-use App\Http\Resources\Constants\RealEstateTypeResource;
 use App\Http\Resources\Constants\ConstResource;
+use App\Http\Resources\Constants\CountryResource;
+use App\Http\Resources\Constants\StaticPageResource;
+use App\Http\Resources\Constants\ContractTypeResource;
 use App\Http\Resources\Constants\NeighborhoodResource;
-use Illuminate\Http\Request;
+use App\Http\Resources\Constants\RealEstateTypeResource;
 
 class ConstantController extends Controller
 {
@@ -93,6 +95,17 @@ class ConstantController extends Controller
         $data = View::get();
      
         return $this->respondWithCollection(ViewResource::collection($data));
+    } 
+    
+    /* Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function beforeCreateRealState()
+    {
+        $data = StaticPage::where('type','before-create')->get();
+     
+        return $this->respondWithCollection(StaticPageResource::collection($data));
     }
     /**
      * Display a listing of the resource.

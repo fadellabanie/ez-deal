@@ -55,10 +55,13 @@ class PaymentController extends Controller
         }else{
             */
             DB::table('payment_reports')->where('payment_id', $payment_id[1])->update([
+                
                 'trandata_respond' => $trandata_respond[1],
+
                 // 'date' => $response->date,
                 // 'trans_id' => $response->transId,
                 'trans_id' => $response->trackId,
+
                 'card_type' => $response->cardType,
                 'result' => $response->result,
                 'ref' => $response->ref,

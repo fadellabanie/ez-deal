@@ -14,7 +14,7 @@ trait Elm
         $currenTime = new \DateTime("now", new \DateTimeZone("Asia/Riyadh"));
         $maxAge = $currenTime->getTimestamp();
         $client_id = "16371621";
-        $redirect_uri = "https://ezdeal.net/api/v1/home";
+        $redirect_uri = "http://ezdeal.net/api/v1/home";
         $nonce = uniqid();
         $ui_locales = "ar";
 
@@ -28,6 +28,10 @@ trait Elm
         openssl_sign($content, $state, openssl_pkey_get_private($privateKey), 'RSA-SHA256');
         $newState = base64_encode($state);
         $savedState = base64_encode(hash('sha256', $newState, true));
-        return response()->json(['state' => $savedState, "url" => $content . "&state=" . urlencode($newState)]);
+
+        return response()->json([
+            'state' => $savedState,
+             "url" => $content . "&state=" . urlencode($newState)
+        ]);
     }
 }

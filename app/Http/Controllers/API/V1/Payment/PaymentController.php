@@ -42,7 +42,8 @@ class PaymentController extends Controller
 
         $decryptResponse = $this->decrypt($trandata_respond[1], '12762428866412762428866412762428');
         $response = json_decode($decryptResponse)[0];
-      
+       // dd($response);
+       /*
         if($response->card_type == ''){
             DB::table('payment_reports')->where('payment_id', $payment_id[1])->update([
                 'trandata_respond' => $trandata_respond[1],
@@ -52,6 +53,7 @@ class PaymentController extends Controller
                 'payment_timestamp' => $response->paymentTimestamp,
             ]);
         }else{
+            */
             DB::table('payment_reports')->where('payment_id', $payment_id[1])->update([
                 'trandata_respond' => $trandata_respond[1],
                 // 'date' => $response->date,
@@ -63,7 +65,7 @@ class PaymentController extends Controller
                 'fc_cust_id' => $response->fcCustId,
                 'payment_timestamp' => $response->paymentTimestamp,
             ]);
-        }
+        //}
             
         $paymentReport = PaymentReport::with('package','user')->where('payment_id', $payment_id[1])->first();
 

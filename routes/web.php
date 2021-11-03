@@ -27,18 +27,19 @@ Route::get('/', function () {
 Route::get('elm', [App\Http\Controllers\HomeController::class, 'testElm'])->name('elm');
 
 Route::get('/email', function () {
-  //  Mail::to('Ezdeal.sa@gmail.com')->send(new AdvertisementEmail());
- $report = PaymentReport::find(9);
-return view('emails.advertisement',compact('report'));
+    $report = PaymentReport::with('package', 'user')->where('id', 9)->first();
+    Mail::to('Ezdeal.sa@gmail.com')->send(new AdvertisementEmail($report));
+   // dd($paymentReport);
+    return view('emails.advertisement', compact('report'));
 });
 Route::get('/mobile-app-terms-and-conditions', function () {
-   
-    $terms = App\Models\StaticPage::where('type','terms-and-conditions')->first();
-    return view('mobile-web-views.static-page',compact('terms'));
+
+    $terms = App\Models\StaticPage::where('type', 'terms-and-conditions')->first();
+    return view('mobile-web-views.static-page', compact('terms'));
 });
 Route::get('/give-role', function () {
     //$role = Role::create(['name' => 'Super Admin']);
-    $role = Role::where('name' , 'Super Admin')->first();
+    $role = Role::where('name', 'Super Admin')->first();
     $permissions = Permission::get();
     $role->syncPermissions($permissions);
     $user = User::find(1);

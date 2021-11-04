@@ -221,7 +221,7 @@
                 </div>
                 @endcan
 
-                @can(['access cities','access countries','access neighborhoods'])
+                {{--  @can(['access cities','access countries','access neighborhoods'])  --}}
 
                 <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                     <span class="menu-link">
@@ -245,7 +245,7 @@
                     </span>
                     <div class="menu-sub menu-sub-accordion menu-active-bg">
 
-                        @can(['access countries'])
+                        {{--  @can(['access countries'])  --}}
 
                         <div class="menu-item">
                             <a class="menu-link   {{Request::segment(2) == 'countries' ? " active" : "" }}"
@@ -269,8 +269,8 @@
                             </a>
 
                         </div>
-                        @endcan
-                        @can(['access cities'])
+                        {{--  @endcan
+                        @can(['access cities'])  --}}
                         <div class="menu-item">
                             <a class="menu-link   {{Request::segment(2) == 'cities' ? " active" : "" }}"
                                 href="{{route('admin.cities.index')}}">
@@ -293,9 +293,9 @@
                             </a>
 
                         </div>
-                        @endcan
+                        {{--  @endcan
 
-                        @can(['access neighborhoods'])
+                        @can(['access neighborhoods'])  --}}
                         <div class="menu-item">
                             <a class="menu-link   {{Request::segment(2) == 'neighborhoods' ? " active" : "" }}"
                                 href="{{route('admin.neighborhoods.index')}}">
@@ -318,13 +318,13 @@
                             </a>
 
                         </div>
-                        @endcan
+                        {{--  @endcan  --}}
 
                     </div>
 
                 </div>
 
-                @endcan
+                {{--  @endcan  --}}
                 @can(['access real estates'])
                 <div class="menu-item">
                     <a class="menu-link   {{Request::segment(2) == 'real-estates' ? " active" : "" }}"

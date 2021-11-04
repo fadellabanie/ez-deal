@@ -114,6 +114,7 @@ Route::group(['prefix' => 'v1'], function () {
         Route::post('un-favorite', [FavoriteController::class, 'unFavorite']);
 
         Route::post('pay', [PaymentController::class, 'pay']);
+        Route::post('check-pay', [PaymentController::class, 'checkPay']);
 
 
        

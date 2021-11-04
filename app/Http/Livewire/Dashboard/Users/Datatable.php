@@ -77,7 +77,7 @@ class Datatable extends Component
     
     public function export()
     {
-        $this->authorize('export users');
+      //  $this->authorize('export users');
 
         return Excel::download(new AppUserExport, 'app-users.xlsx');
     }

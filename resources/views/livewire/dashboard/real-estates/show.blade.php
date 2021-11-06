@@ -206,7 +206,7 @@
                                                         <tr>
                                                             <td class="text-muted min-w-125px w-125px">
                                                                 {{__("Neighborhood")}}</td>
-                                                            <td class="text-gray-800">{{$realEstate->neighborhood}}</td>
+                                                            <td class="text-gray-800">{{$realEstate->neighborhood->en_name}}</td>
                                                         </tr>
                                                         <tr>
                                                             <td class="text-muted min-w-125px w-125px">

@@ -86,7 +86,13 @@ class InsertDataToPermissions extends Migration
         Permission::create(['name' => 'access countries']);
         Permission::create(['name' => 'create countries']);
         Permission::create(['name' => 'edit countries']);
-        Permission::create(['name' => 'delete countries']);
+        Permission::create(['name' => 'delete countries']); 
+        
+        ## Country
+        Permission::create(['name' => 'access neighborhoods']);
+        Permission::create(['name' => 'create neighborhoods']);
+        Permission::create(['name' => 'edit neighborhoods']);
+        Permission::create(['name' => 'delete neighborhoods']);
 
         ## Package
         Permission::create(['name' => 'access packages']);

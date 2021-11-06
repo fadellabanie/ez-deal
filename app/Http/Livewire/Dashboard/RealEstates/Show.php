@@ -18,7 +18,7 @@ class Show extends Component
 
     protected $rules = [
         'type' => 'required',
-        'end_date' => 'required|after:today',
+        'end_date' => 'required|after:yesterday',
     ];
 
     public function mount(RealEstate $realEstate)

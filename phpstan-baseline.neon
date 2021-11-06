@@ -1,0 +1,2157 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^PHPDoc type array of property App\\\\Exceptions\\\\Handler\\:\\:\\$dontFlash is not covariant with PHPDoc type array\\<string\\> of overridden property Illuminate\\\\Foundation\\\\Exceptions\\\\Handler\\:\\:\\$dontFlash\\.$#"
+			count: 1
+			path: app/Exceptions/Handler.php
+
+		-
+			message: "#^PHPDoc type array of property App\\\\Exceptions\\\\Handler\\:\\:\\$dontReport is not covariant with PHPDoc type array\\<string\\> of overridden property Illuminate\\\\Foundation\\\\Exceptions\\\\Handler\\:\\:\\$dontReport\\.$#"
+			count: 1
+			path: app/Exceptions/Handler.php
+
+		-
+			message: "#^Method Carbon\\\\Carbon\\:\\:addMinute\\(\\) invoked with 1 parameter, 0 required\\.$#"
+			count: 1
+			path: app/Http/Controllers/API/V1/Auth/AuthController.php
+
+		-
+			message: "#^PHPDoc tag @param for parameter \\$request with type App\\\\Http\\\\Requests\\\\Api\\\\Auth\\\\LoginRequest is incompatible with native type App\\\\Http\\\\Requests\\\\Api\\\\Auth\\\\ChangePasswordRequest\\.$#"
+			count: 1
+			path: app/Http/Controllers/API/V1/Auth/AuthController.php
+
+		-
+			message: "#^PHPDoc tag @param references unknown parameter\\: \\$request$#"
+			count: 1
+			path: app/Http/Controllers/API/V1/Auth/AuthController.php
+
+		-
+			message: "#^Parameter \\#1 \\$data of static method App\\\\Services\\\\SubscriptionService\\:\\:subscription\\(\\) expects array, App\\\\Http\\\\Requests\\\\Api\\\\Auth\\\\RegisterRequest given\\.$#"
+			count: 1
+			path: app/Http/Controllers/API/V1/Auth/AuthController.php
+
+		-
+			message: "#^Called 'first' on Laravel collection, but could have been retrieved as a query\\.$#"
+			count: 1
+			path: app/Http/Controllers/API/V1/Home/HomeController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\API\\\\V1\\\\Home\\\\HomeController\\:\\:login\\(\\) invoked with 1 parameter, 0 required\\.$#"
+			count: 1
+			path: app/Http/Controllers/API/V1/Home/HomeController.php
+
+		-
+			message: "#^Offset 0 does not exist on Illuminate\\\\Http\\\\Client\\\\Response\\.$#"
+			count: 4
+			path: app/Http/Controllers/API/V1/Home/HomeController.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Controllers\\\\API\\\\V1\\\\NotificationController\\:\\:\\$notification\\.$#"
+			count: 1
+			path: app/Http/Controllers/API/V1/NotificationController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\API\\\\V1\\\\Order\\\\OrderController\\:\\:destroy\\(\\) should return Illuminate\\\\Http\\\\Response but returns App\\\\Http\\\\Traits\\\\Response\\.$#"
+			count: 1
+			path: app/Http/Controllers/API/V1/Order/OrderController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\API\\\\V1\\\\Order\\\\OrderController\\:\\:index\\(\\) should return Illuminate\\\\Http\\\\Response but returns App\\\\Http\\\\Resources\\\\Orders\\\\OrderCollection\\.$#"
+			count: 1
+			path: app/Http/Controllers/API/V1/Order/OrderController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\API\\\\V1\\\\Order\\\\OrderController\\:\\:indexGuest\\(\\) should return Illuminate\\\\Http\\\\Response but returns App\\\\Http\\\\Resources\\\\Orders\\\\OrderCollection\\.$#"
+			count: 1
+			path: app/Http/Controllers/API/V1/Order/OrderController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\API\\\\V1\\\\Order\\\\OrderController\\:\\:myOrder\\(\\) should return Illuminate\\\\Http\\\\Response but returns App\\\\Http\\\\Resources\\\\Orders\\\\MyOrderCollection\\.$#"
+			count: 1
+			path: app/Http/Controllers/API/V1/Order/OrderController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\API\\\\V1\\\\Order\\\\OrderController\\:\\:update\\(\\) should return Illuminate\\\\Http\\\\Response but returns App\\\\Http\\\\Traits\\\\Response\\.$#"
+			count: 1
+			path: app/Http/Controllers/API/V1/Order/OrderController.php
+
+		-
+			message: "#^PHPDoc tag @param for parameter \\$request with type Illuminate\\\\Http\\\\Request is not subtype of native type App\\\\Http\\\\Requests\\\\Api\\\\Orders\\\\StoreRequest\\.$#"
+			count: 1
+			path: app/Http/Controllers/API/V1/Order/OrderController.php
+
+		-
+			message: "#^PHPDoc tag @param for parameter \\$request with type Illuminate\\\\Http\\\\Request is not subtype of native type App\\\\Http\\\\Requests\\\\Api\\\\Orders\\\\UpdateRequest\\.$#"
+			count: 1
+			path: app/Http/Controllers/API/V1/Order/OrderController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\API\\\\V1\\\\Packages\\\\FeatureController\\:\\:__invoke\\(\\) should return Illuminate\\\\Http\\\\Response but returns App\\\\Http\\\\Resources\\\\Features\\\\FeatureCollection\\.$#"
+			count: 1
+			path: app/Http/Controllers/API/V1/Packages/FeatureController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\API\\\\V1\\\\Packages\\\\PackageController\\:\\:destroy\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/API/V1/Packages/PackageController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\API\\\\V1\\\\Packages\\\\PackageController\\:\\:index\\(\\) should return Illuminate\\\\Http\\\\Response but returns App\\\\Http\\\\Resources\\\\Packages\\\\PackageCollection\\.$#"
+			count: 1
+			path: app/Http/Controllers/API/V1/Packages/PackageController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\API\\\\V1\\\\Packages\\\\PackageController\\:\\:show\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/API/V1/Packages/PackageController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\API\\\\V1\\\\Packages\\\\PackageController\\:\\:store\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/API/V1/Packages/PackageController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\API\\\\V1\\\\Packages\\\\PackageController\\:\\:update\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/API/V1/Packages/PackageController.php
+
+		-
+			message: "#^PHPDoc tag @param for parameter \\$request with type Illuminate\\\\Http\\\\Request is not subtype of native type App\\\\Http\\\\Requests\\\\Api\\\\Orders\\\\StoreRequest\\.$#"
+			count: 1
+			path: app/Http/Controllers/API/V1/Packages/PackageController.php
+
+		-
+			message: "#^PHPDoc tag @param for parameter \\$request with type Illuminate\\\\Http\\\\Request is not subtype of native type App\\\\Http\\\\Requests\\\\Api\\\\Orders\\\\UpdateRequest\\.$#"
+			count: 1
+			path: app/Http/Controllers/API/V1/Packages/PackageController.php
+
+		-
+			message: "#^PHPDoc tag @param references unknown parameter\\: \\$id$#"
+			count: 1
+			path: app/Http/Controllers/API/V1/Packages/PackageController.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$paymentId\\.$#"
+			count: 1
+			path: app/Http/Controllers/API/V1/Payment/PaymentController.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$paymentTimestamp\\.$#"
+			count: 1
+			path: app/Http/Controllers/API/V1/Payment/PaymentController.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$trackId\\.$#"
+			count: 1
+			path: app/Http/Controllers/API/V1/Payment/PaymentController.php
+
+		-
+			message: "#^Called 'first' on Laravel collection, but could have been retrieved as a query\\.$#"
+			count: 1
+			path: app/Http/Controllers/API/V1/Payment/PaymentController.php
+
+		-
+			message: "#^Offset 0 does not exist on Illuminate\\\\Http\\\\Client\\\\Response\\.$#"
+			count: 4
+			path: app/Http/Controllers/API/V1/Payment/PaymentController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\API\\\\V1\\\\RealEstate\\\\RealEstateController\\:\\:destroy\\(\\) should return Illuminate\\\\Http\\\\Response but returns App\\\\Http\\\\Traits\\\\Response\\.$#"
+			count: 1
+			path: app/Http/Controllers/API/V1/RealEstate/RealEstateController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\API\\\\V1\\\\RealEstate\\\\RealEstateController\\:\\:index\\(\\) should return Illuminate\\\\Http\\\\Response but returns App\\\\Http\\\\Resources\\\\RealEstates\\\\RealEstateCollection\\.$#"
+			count: 1
+			path: app/Http/Controllers/API/V1/RealEstate/RealEstateController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\API\\\\V1\\\\RealEstate\\\\RealEstateController\\:\\:indexGuest\\(\\) should return Illuminate\\\\Http\\\\Response but returns App\\\\Http\\\\Resources\\\\RealEstates\\\\RealEstateCollection\\.$#"
+			count: 1
+			path: app/Http/Controllers/API/V1/RealEstate/RealEstateController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\API\\\\V1\\\\RealEstate\\\\RealEstateController\\:\\:listOnMap\\(\\) should return Illuminate\\\\Http\\\\Response but returns App\\\\Http\\\\Resources\\\\RealEstatesMap\\\\RealEstateMapCollection\\.$#"
+			count: 1
+			path: app/Http/Controllers/API/V1/RealEstate/RealEstateController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\API\\\\V1\\\\RealEstate\\\\RealEstateController\\:\\:myRealEstate\\(\\) should return Illuminate\\\\Http\\\\Response but returns App\\\\Http\\\\Resources\\\\RealEstates\\\\RealEstateCollection\\.$#"
+			count: 1
+			path: app/Http/Controllers/API/V1/RealEstate/RealEstateController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\API\\\\V1\\\\RealEstate\\\\RealEstateController\\:\\:update\\(\\) should return Illuminate\\\\Http\\\\Response but returns App\\\\Http\\\\Traits\\\\Response\\.$#"
+			count: 1
+			path: app/Http/Controllers/API/V1/RealEstate/RealEstateController.php
+
+		-
+			message: "#^PHPDoc tag @param for parameter \\$request with type Illuminate\\\\Http\\\\Request is not subtype of native type App\\\\Http\\\\Requests\\\\Api\\\\RealEstates\\\\StoreRequest\\.$#"
+			count: 1
+			path: app/Http/Controllers/API/V1/RealEstate/RealEstateController.php
+
+		-
+			message: "#^PHPDoc tag @param for parameter \\$request with type Illuminate\\\\Http\\\\Request is not subtype of native type App\\\\Http\\\\Requests\\\\Api\\\\RealEstates\\\\UpdateRequest\\.$#"
+			count: 1
+			path: app/Http/Controllers/API/V1/RealEstate/RealEstateController.php
+
+		-
+			message: "#^Right side of \\|\\| is always false\\.$#"
+			count: 3
+			path: app/Http/Controllers/API/V1/RealEstate/RealEstateController.php
+
+		-
+			message: "#^Call to an undefined static method App\\\\Models\\\\Story\\:\\:MyStory\\(\\)\\.$#"
+			count: 1
+			path: app/Http/Controllers/API/V1/Stories/StoryController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\API\\\\V1\\\\Stories\\\\StoryController\\:\\:destroy\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/API/V1/Stories/StoryController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\API\\\\V1\\\\Stories\\\\StoryController\\:\\:index\\(\\) should return Illuminate\\\\Http\\\\Response but returns App\\\\Http\\\\Resources\\\\Stories\\\\StoryCollection\\.$#"
+			count: 1
+			path: app/Http/Controllers/API/V1/Stories/StoryController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\API\\\\V1\\\\Stories\\\\StoryController\\:\\:show\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/API/V1/Stories/StoryController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\API\\\\V1\\\\Stories\\\\StoryController\\:\\:update\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/API/V1/Stories/StoryController.php
+
+		-
+			message: "#^PHPDoc tag @param for parameter \\$request with type Illuminate\\\\Http\\\\Request is not subtype of native type App\\\\Http\\\\Requests\\\\Api\\\\Stories\\\\StoreRequest\\.$#"
+			count: 1
+			path: app/Http/Controllers/API/V1/Stories/StoryController.php
+
+		-
+			message: "#^PHPDoc tag @param references unknown parameter\\: \\$id$#"
+			count: 1
+			path: app/Http/Controllers/API/V1/Stories/StoryController.php
+
+		-
+			message: "#^Parameter \\#1 \\$data of static method App\\\\Services\\\\SubscriptionService\\:\\:subscription\\(\\) expects array, Illuminate\\\\Http\\\\Request given\\.$#"
+			count: 1
+			path: app/Http/Controllers/API/V1/Users/UserController.php
+
+		-
+			message: "#^Called 'first' on Laravel collection, but could have been retrieved as a query\\.$#"
+			count: 1
+			path: app/Http/Controllers/Controller.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Controller\\:\\:errorForbidden\\(\\) has invalid return type App\\\\Http\\\\Traits\\\\Response\\.$#"
+			count: 1
+			path: app/Http/Controllers/Controller.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Controller\\:\\:errorInternalError\\(\\) has invalid return type App\\\\Http\\\\Traits\\\\Response\\.$#"
+			count: 1
+			path: app/Http/Controllers/Controller.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Controller\\:\\:errorNotFound\\(\\) has invalid return type App\\\\Http\\\\Traits\\\\Response\\.$#"
+			count: 1
+			path: app/Http/Controllers/Controller.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Controller\\:\\:errorUnauthorized\\(\\) has invalid return type App\\\\Http\\\\Traits\\\\Response\\.$#"
+			count: 1
+			path: app/Http/Controllers/Controller.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Controller\\:\\:errorWrongArgs\\(\\) has invalid return type App\\\\Http\\\\Traits\\\\Response\\.$#"
+			count: 1
+			path: app/Http/Controllers/Controller.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\ActivityLogController\\:\\:create\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/ActivityLogController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\ActivityLogController\\:\\:destroy\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/ActivityLogController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\ActivityLogController\\:\\:edit\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/ActivityLogController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\ActivityLogController\\:\\:index\\(\\) should return Illuminate\\\\Http\\\\Response but returns Illuminate\\\\View\\\\View\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/ActivityLogController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\ActivityLogController\\:\\:show\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/ActivityLogController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\ActivityLogController\\:\\:store\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/ActivityLogController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\ActivityLogController\\:\\:update\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/ActivityLogController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\AdminController\\:\\:create\\(\\) should return Illuminate\\\\Http\\\\Response but returns Illuminate\\\\View\\\\View\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/AdminController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\AdminController\\:\\:destroy\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/AdminController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\AdminController\\:\\:edit\\(\\) should return Illuminate\\\\Http\\\\Response but returns Illuminate\\\\View\\\\View\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/AdminController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\AdminController\\:\\:index\\(\\) should return Illuminate\\\\Http\\\\Response but returns Illuminate\\\\View\\\\View\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/AdminController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\AdminController\\:\\:show\\(\\) should return Illuminate\\\\Http\\\\Response but returns Illuminate\\\\View\\\\View\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/AdminController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\AdminController\\:\\:store\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/AdminController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\AdminController\\:\\:update\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/AdminController.php
+
+		-
+			message: "#^PHPDoc tag @param references unknown parameter\\: \\$id$#"
+			count: 2
+			path: app/Http/Controllers/Dashboard/AdminController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\AppSettingController\\:\\:create\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/AppSettingController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\AppSettingController\\:\\:destroy\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/AppSettingController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\AppSettingController\\:\\:edit\\(\\) should return Illuminate\\\\Http\\\\Response but returns Illuminate\\\\View\\\\View\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/AppSettingController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\AppSettingController\\:\\:index\\(\\) should return Illuminate\\\\Http\\\\Response but returns Illuminate\\\\View\\\\View\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/AppSettingController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\AppSettingController\\:\\:show\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/AppSettingController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\AppSettingController\\:\\:store\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/AppSettingController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\AppSettingController\\:\\:update\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/AppSettingController.php
+
+		-
+			message: "#^PHPDoc tag @param references unknown parameter\\: \\$id$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/AppSettingController.php
+
+		-
+			message: "#^Parameter \\#1 \\$view of function view expects view\\-string\\|null, string given\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/AppSettingController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\AttributeController\\:\\:create\\(\\) should return Illuminate\\\\Http\\\\Response but returns Illuminate\\\\View\\\\View\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/AttributeController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\AttributeController\\:\\:destroy\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/AttributeController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\AttributeController\\:\\:edit\\(\\) should return Illuminate\\\\Http\\\\Response but returns Illuminate\\\\View\\\\View\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/AttributeController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\AttributeController\\:\\:index\\(\\) should return Illuminate\\\\Http\\\\Response but returns Illuminate\\\\View\\\\View\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/AttributeController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\AttributeController\\:\\:show\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/AttributeController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\AttributeController\\:\\:store\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/AttributeController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\AttributeController\\:\\:update\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/AttributeController.php
+
+		-
+			message: "#^PHPDoc tag @param references unknown parameter\\: \\$id$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/AttributeController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\BannerController\\:\\:create\\(\\) should return Illuminate\\\\Http\\\\Response but returns Illuminate\\\\View\\\\View\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/BannerController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\BannerController\\:\\:destroy\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/BannerController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\BannerController\\:\\:edit\\(\\) should return Illuminate\\\\Http\\\\Response but returns Illuminate\\\\View\\\\View\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/BannerController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\BannerController\\:\\:index\\(\\) should return Illuminate\\\\Http\\\\Response but returns Illuminate\\\\View\\\\View\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/BannerController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\BannerController\\:\\:show\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/BannerController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\BannerController\\:\\:store\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/BannerController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\BannerController\\:\\:update\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/BannerController.php
+
+		-
+			message: "#^PHPDoc tag @param references unknown parameter\\: \\$id$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/BannerController.php
+
+		-
+			message: "#^Class App\\\\Models\\\\City referenced with incorrect case\\: App\\\\Models\\\\city\\.$#"
+			count: 2
+			path: app/Http/Controllers/Dashboard/CityController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\CityController\\:\\:create\\(\\) should return Illuminate\\\\Http\\\\Response but returns Illuminate\\\\View\\\\View\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/CityController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\CityController\\:\\:destroy\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/CityController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\CityController\\:\\:edit\\(\\) should return Illuminate\\\\Http\\\\Response but returns Illuminate\\\\View\\\\View\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/CityController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\CityController\\:\\:index\\(\\) should return Illuminate\\\\Http\\\\Response but returns Illuminate\\\\View\\\\View\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/CityController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\CityController\\:\\:show\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/CityController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\CityController\\:\\:store\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/CityController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\CityController\\:\\:update\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/CityController.php
+
+		-
+			message: "#^PHPDoc tag @param references unknown parameter\\: \\$id$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/CityController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\CountryController\\:\\:create\\(\\) should return Illuminate\\\\Http\\\\Response but returns Illuminate\\\\View\\\\View\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/CountryController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\CountryController\\:\\:destroy\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/CountryController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\CountryController\\:\\:edit\\(\\) should return Illuminate\\\\Http\\\\Response but returns Illuminate\\\\View\\\\View\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/CountryController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\CountryController\\:\\:show\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/CountryController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\CountryController\\:\\:store\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/CountryController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\CountryController\\:\\:update\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/CountryController.php
+
+		-
+			message: "#^PHPDoc tag @param references unknown parameter\\: \\$id$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/CountryController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\NeighborhoodController\\:\\:create\\(\\) should return Illuminate\\\\Http\\\\Response but returns Illuminate\\\\View\\\\View\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/NeighborhoodController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\NeighborhoodController\\:\\:destroy\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/NeighborhoodController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\NeighborhoodController\\:\\:edit\\(\\) should return Illuminate\\\\Http\\\\Response but returns Illuminate\\\\View\\\\View\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/NeighborhoodController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\NeighborhoodController\\:\\:show\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/NeighborhoodController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\NeighborhoodController\\:\\:store\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/NeighborhoodController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\NeighborhoodController\\:\\:update\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/NeighborhoodController.php
+
+		-
+			message: "#^PHPDoc tag @param references unknown parameter\\: \\$id$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/NeighborhoodController.php
+
+		-
+			message: "#^Parameter \\#1 \\$view of function view expects view\\-string\\|null, string given\\.$#"
+			count: 3
+			path: app/Http/Controllers/Dashboard/NeighborhoodController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\NotificationController\\:\\:create\\(\\) should return Illuminate\\\\Http\\\\Response but returns Illuminate\\\\View\\\\View\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/NotificationController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\NotificationController\\:\\:destroy\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/NotificationController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\NotificationController\\:\\:edit\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/NotificationController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\NotificationController\\:\\:index\\(\\) should return Illuminate\\\\Http\\\\Response but returns Illuminate\\\\View\\\\View\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/NotificationController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\NotificationController\\:\\:show\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/NotificationController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\NotificationController\\:\\:store\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/NotificationController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\NotificationController\\:\\:update\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/NotificationController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\OrderController\\:\\:create\\(\\) should return Illuminate\\\\Http\\\\Response but returns Illuminate\\\\View\\\\View\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/OrderController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\OrderController\\:\\:destroy\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/OrderController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\OrderController\\:\\:edit\\(\\) should return Illuminate\\\\Http\\\\Response but returns Illuminate\\\\View\\\\View\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/OrderController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\OrderController\\:\\:index\\(\\) should return Illuminate\\\\Http\\\\Response but returns Illuminate\\\\View\\\\View\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/OrderController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\OrderController\\:\\:show\\(\\) should return Illuminate\\\\Http\\\\Response but returns Illuminate\\\\View\\\\View\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/OrderController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\OrderController\\:\\:store\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/OrderController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\OrderController\\:\\:update\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/OrderController.php
+
+		-
+			message: "#^PHPDoc tag @param references unknown parameter\\: \\$id$#"
+			count: 2
+			path: app/Http/Controllers/Dashboard/OrderController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\PackageController\\:\\:create\\(\\) should return Illuminate\\\\Http\\\\Response but returns Illuminate\\\\View\\\\View\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/PackageController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\PackageController\\:\\:destroy\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/PackageController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\PackageController\\:\\:edit\\(\\) should return Illuminate\\\\Http\\\\Response but returns Illuminate\\\\View\\\\View\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/PackageController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\PackageController\\:\\:index\\(\\) should return Illuminate\\\\Http\\\\Response but returns Illuminate\\\\View\\\\View\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/PackageController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\PackageController\\:\\:show\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/PackageController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\PackageController\\:\\:store\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/PackageController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\PackageController\\:\\:update\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/PackageController.php
+
+		-
+			message: "#^PHPDoc tag @param references unknown parameter\\: \\$id$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/PackageController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\PaymentReportController\\:\\:create\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/PaymentReportController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\PaymentReportController\\:\\:destroy\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/PaymentReportController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\PaymentReportController\\:\\:edit\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/PaymentReportController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\PaymentReportController\\:\\:index\\(\\) should return Illuminate\\\\Http\\\\Response but returns Illuminate\\\\View\\\\View\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/PaymentReportController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\PaymentReportController\\:\\:show\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/PaymentReportController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\PaymentReportController\\:\\:store\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/PaymentReportController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\PaymentReportController\\:\\:update\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/PaymentReportController.php
+
+		-
+			message: "#^PHPDoc tag @param references unknown parameter\\: \\$id$#"
+			count: 2
+			path: app/Http/Controllers/Dashboard/PaymentReportController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\PremiumUserController\\:\\:create\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/PremiumUserController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\PremiumUserController\\:\\:destroy\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/PremiumUserController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\PremiumUserController\\:\\:edit\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/PremiumUserController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\PremiumUserController\\:\\:index\\(\\) should return Illuminate\\\\Http\\\\Response but returns Illuminate\\\\View\\\\View\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/PremiumUserController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\PremiumUserController\\:\\:show\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/PremiumUserController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\PremiumUserController\\:\\:store\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/PremiumUserController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\PremiumUserController\\:\\:update\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/PremiumUserController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\RealEstateController\\:\\:create\\(\\) should return Illuminate\\\\Http\\\\Response but returns Illuminate\\\\View\\\\View\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/RealEstateController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\RealEstateController\\:\\:destroy\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/RealEstateController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\RealEstateController\\:\\:edit\\(\\) should return Illuminate\\\\Http\\\\Response but returns Illuminate\\\\View\\\\View\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/RealEstateController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\RealEstateController\\:\\:index\\(\\) should return Illuminate\\\\Http\\\\Response but returns Illuminate\\\\View\\\\View\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/RealEstateController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\RealEstateController\\:\\:show\\(\\) should return Illuminate\\\\Http\\\\Response but returns Illuminate\\\\View\\\\View\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/RealEstateController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\RealEstateController\\:\\:store\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/RealEstateController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\RealEstateController\\:\\:update\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/RealEstateController.php
+
+		-
+			message: "#^PHPDoc tag @param references unknown parameter\\: \\$id$#"
+			count: 2
+			path: app/Http/Controllers/Dashboard/RealEstateController.php
+
+		-
+			message: "#^Class App\\\\Models\\\\City referenced with incorrect case\\: App\\\\Models\\\\city\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/RoleController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\RoleController\\:\\:create\\(\\) should return Illuminate\\\\Http\\\\Response but returns Illuminate\\\\View\\\\View\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/RoleController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\RoleController\\:\\:destroy\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/RoleController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\RoleController\\:\\:edit\\(\\) should return Illuminate\\\\Http\\\\Response but returns Illuminate\\\\View\\\\View\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/RoleController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\RoleController\\:\\:index\\(\\) should return Illuminate\\\\Http\\\\Response but returns Illuminate\\\\View\\\\View\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/RoleController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\RoleController\\:\\:show\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/RoleController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\RoleController\\:\\:store\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/RoleController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\RoleController\\:\\:update\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/RoleController.php
+
+		-
+			message: "#^PHPDoc tag @param references unknown parameter\\: \\$id$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/RoleController.php
+
+		-
+			message: "#^Parameter \\#1 \\$view of function view expects view\\-string\\|null, string given\\.$#"
+			count: 2
+			path: app/Http/Controllers/Dashboard/RoleController.php
+
+		-
+			message: "#^Class App\\\\Models\\\\StaticPage referenced with incorrect case\\: App\\\\Models\\\\staticPage\\.$#"
+			count: 2
+			path: app/Http/Controllers/Dashboard/StaticPageController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\StaticPageController\\:\\:create\\(\\) should return Illuminate\\\\Http\\\\Response but returns Illuminate\\\\View\\\\View\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/StaticPageController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\StaticPageController\\:\\:destroy\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/StaticPageController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\StaticPageController\\:\\:edit\\(\\) should return Illuminate\\\\Http\\\\Response but returns Illuminate\\\\View\\\\View\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/StaticPageController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\StaticPageController\\:\\:index\\(\\) should return Illuminate\\\\Http\\\\Response but returns Illuminate\\\\View\\\\View\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/StaticPageController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\StaticPageController\\:\\:show\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/StaticPageController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\StaticPageController\\:\\:store\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/StaticPageController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\StaticPageController\\:\\:update\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/StaticPageController.php
+
+		-
+			message: "#^PHPDoc tag @param references unknown parameter\\: \\$id$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/StaticPageController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\StoryController\\:\\:create\\(\\) should return Illuminate\\\\Http\\\\Response but returns Illuminate\\\\View\\\\View\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/StoryController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\StoryController\\:\\:destroy\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/StoryController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\StoryController\\:\\:edit\\(\\) should return Illuminate\\\\Http\\\\Response but returns Illuminate\\\\View\\\\View\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/StoryController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\StoryController\\:\\:index\\(\\) should return Illuminate\\\\Http\\\\Response but returns Illuminate\\\\View\\\\View\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/StoryController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\StoryController\\:\\:show\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/StoryController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\StoryController\\:\\:store\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/StoryController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\StoryController\\:\\:update\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/StoryController.php
+
+		-
+			message: "#^PHPDoc tag @param references unknown parameter\\: \\$id$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/StoryController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\UserController\\:\\:create\\(\\) should return Illuminate\\\\Http\\\\Response but returns Illuminate\\\\View\\\\View\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/UserController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\UserController\\:\\:destroy\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/UserController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\UserController\\:\\:edit\\(\\) should return Illuminate\\\\Http\\\\Response but returns Illuminate\\\\View\\\\View\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/UserController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\UserController\\:\\:index\\(\\) should return Illuminate\\\\Http\\\\Response but returns Illuminate\\\\View\\\\View\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/UserController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\UserController\\:\\:show\\(\\) should return Illuminate\\\\Http\\\\Response but returns Illuminate\\\\View\\\\View\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/UserController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\UserController\\:\\:store\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/UserController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Dashboard\\\\UserController\\:\\:update\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/Dashboard/UserController.php
+
+		-
+			message: "#^PHPDoc tag @param references unknown parameter\\: \\$id$#"
+			count: 2
+			path: app/Http/Controllers/Dashboard/UserController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\HomeController\\:\\:login\\(\\) invoked with 1 parameter, 0 required\\.$#"
+			count: 1
+			path: app/Http/Controllers/HomeController.php
+
+		-
+			message: "#^Called 'first' on Laravel collection, but could have been retrieved as a query\\.$#"
+			count: 1
+			path: app/Http/Interfaces/Senders/FirebaseNotificationSend.php
+
+		-
+			message: "#^Unreachable statement \\- code above always terminates\\.$#"
+			count: 1
+			path: app/Http/Interfaces/Senders/SenderFactory.php
+
+		-
+			message: "#^Called 'first' on Laravel collection, but could have been retrieved as a query\\.$#"
+			count: 1
+			path: app/Http/Interfaces/Senders/SmsSend.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Models\\\\RealEstate\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<App\\\\Models\\\\RealEstate\\>\\:\\:\\$medias\\.$#"
+			count: 1
+			path: app/Http/Interfaces/Upgrades/BannerUpgrade.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Models\\\\RealEstate\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<App\\\\Models\\\\RealEstate\\>\\:\\:\\$medias\\.$#"
+			count: 1
+			path: app/Http/Interfaces/Upgrades/CityStoreUpgrade.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Models\\\\RealEstate\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<App\\\\Models\\\\RealEstate\\>\\:\\:\\$medias\\.$#"
+			count: 1
+			path: app/Http/Interfaces/Upgrades/CountryStoreUpgrade.php
+
+		-
+			message: "#^Unreachable statement \\- code above always terminates\\.$#"
+			count: 1
+			path: app/Http/Interfaces/Upgrades/UpgradeFactory.php
+
+		-
+			message: "#^Call to an undefined static method App\\\\Models\\\\Attribute\\:\\:search\\(\\)\\.$#"
+			count: 1
+			path: app/Http/Livewire/Dashboard/Attributes/Datatable.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Livewire\\\\Dashboard\\\\Attributes\\\\Update\\:\\:\\$package\\.$#"
+			count: 1
+			path: app/Http/Livewire/Dashboard/Attributes/Update.php
+
+		-
+			message: "#^Called 'first' on Laravel collection, but could have been retrieved as a query\\.$#"
+			count: 1
+			path: app/Http/Livewire/Dashboard/Notifications/Form.php
+
+		-
+			message: "#^Call to an undefined static method App\\\\Models\\\\Package\\:\\:search\\(\\)\\.$#"
+			count: 1
+			path: app/Http/Livewire/Dashboard/Packages/Datatable.php
+
+		-
+			message: "#^Access to an undefined property Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<Spatie\\\\Permission\\\\Models\\\\Permission\\>\\|Spatie\\\\Permission\\\\Models\\\\Permission\\:\\:\\$name\\.$#"
+			count: 1
+			path: app/Http/Livewire/Dashboard/Permissions/Datatable.php
+
+		-
+			message: "#^Access to constant LARGE_NUMBER_OF_PAGINATE on an unknown class App\\\\Http\\\\Controllers\\\\General\\\\ConstantController\\.$#"
+			count: 1
+			path: app/Http/Livewire/Dashboard/Permissions/Datatable.php
+
+		-
+			message: "#^Access to constant SORT_ASC on an unknown class App\\\\Http\\\\Controllers\\\\General\\\\ConstantController\\.$#"
+			count: 1
+			path: app/Http/Livewire/Dashboard/Permissions/Datatable.php
+
+		-
+			message: "#^Parameter \\#1 \\$view of function view expects view\\-string\\|null, string given\\.$#"
+			count: 1
+			path: app/Http/Livewire/Dashboard/Permissions/Datatable.php
+
+		-
+			message: "#^Method Carbon\\\\Carbon\\:\\:subDay\\(\\) invoked with 1 parameter, 0 required\\.$#"
+			count: 1
+			path: app/Http/Livewire/Dashboard/RealEstates/Datatable.php
+
+		-
+			message: "#^Access to an undefined property Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<Spatie\\\\Permission\\\\Models\\\\Role\\>\\|Spatie\\\\Permission\\\\Models\\\\Role\\:\\:\\$name\\.$#"
+			count: 1
+			path: app/Http/Livewire/Dashboard/Roles/Datatable.php
+
+		-
+			message: "#^Call to an undefined method App\\\\Http\\\\Livewire\\\\Dashboard\\\\Users\\\\Datatable\\:\\:authorize\\(\\)\\.$#"
+			count: 1
+			path: app/Http/Livewire/Dashboard/Users/Datatable.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Livewire\\\\Dashboard\\\\Users\\\\Update\\:\\:\\$country_code\\.$#"
+			count: 1
+			path: app/Http/Livewire/Dashboard/Users/Update.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Middleware\\\\CheckUserLimitFeatureAttribute\\:\\:errorForbidden\\(\\) has invalid return type App\\\\Http\\\\Traits\\\\Response\\.$#"
+			count: 1
+			path: app/Http/Middleware/CheckUserLimitFeatureAttribute.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Middleware\\\\CheckUserLimitFeatureAttribute\\:\\:errorInternalError\\(\\) has invalid return type App\\\\Http\\\\Traits\\\\Response\\.$#"
+			count: 1
+			path: app/Http/Middleware/CheckUserLimitFeatureAttribute.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Middleware\\\\CheckUserLimitFeatureAttribute\\:\\:errorNotFound\\(\\) has invalid return type App\\\\Http\\\\Traits\\\\Response\\.$#"
+			count: 1
+			path: app/Http/Middleware/CheckUserLimitFeatureAttribute.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Middleware\\\\CheckUserLimitFeatureAttribute\\:\\:errorUnauthorized\\(\\) has invalid return type App\\\\Http\\\\Traits\\\\Response\\.$#"
+			count: 1
+			path: app/Http/Middleware/CheckUserLimitFeatureAttribute.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Middleware\\\\CheckUserLimitFeatureAttribute\\:\\:errorWrongArgs\\(\\) has invalid return type App\\\\Http\\\\Traits\\\\Response\\.$#"
+			count: 1
+			path: app/Http/Middleware/CheckUserLimitFeatureAttribute.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Middleware\\\\CheckUserSubscribe\\:\\:errorForbidden\\(\\) has invalid return type App\\\\Http\\\\Traits\\\\Response\\.$#"
+			count: 1
+			path: app/Http/Middleware/CheckUserSubscribe.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Middleware\\\\CheckUserSubscribe\\:\\:errorInternalError\\(\\) has invalid return type App\\\\Http\\\\Traits\\\\Response\\.$#"
+			count: 1
+			path: app/Http/Middleware/CheckUserSubscribe.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Middleware\\\\CheckUserSubscribe\\:\\:errorNotFound\\(\\) has invalid return type App\\\\Http\\\\Traits\\\\Response\\.$#"
+			count: 1
+			path: app/Http/Middleware/CheckUserSubscribe.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Middleware\\\\CheckUserSubscribe\\:\\:errorUnauthorized\\(\\) has invalid return type App\\\\Http\\\\Traits\\\\Response\\.$#"
+			count: 1
+			path: app/Http/Middleware/CheckUserSubscribe.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Middleware\\\\CheckUserSubscribe\\:\\:errorWrongArgs\\(\\) has invalid return type App\\\\Http\\\\Traits\\\\Response\\.$#"
+			count: 1
+			path: app/Http/Middleware/CheckUserSubscribe.php
+
+		-
+			message: "#^Access to an undefined property Illuminate\\\\Auth\\\\AuthManager\\:\\:\\$user\\.$#"
+			count: 1
+			path: app/Http/Middleware/IsAdmin.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Constants\\\\AppSettingResource\\:\\:\\$email\\.$#"
+			count: 1
+			path: app/Http/Resources/Constants/AppSettingResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Constants\\\\AppSettingResource\\:\\:\\$facebook\\.$#"
+			count: 1
+			path: app/Http/Resources/Constants/AppSettingResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Constants\\\\AppSettingResource\\:\\:\\$id\\.$#"
+			count: 1
+			path: app/Http/Resources/Constants/AppSettingResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Constants\\\\AppSettingResource\\:\\:\\$instagram\\.$#"
+			count: 1
+			path: app/Http/Resources/Constants/AppSettingResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Constants\\\\AppSettingResource\\:\\:\\$snapchat\\.$#"
+			count: 1
+			path: app/Http/Resources/Constants/AppSettingResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Constants\\\\AppSettingResource\\:\\:\\$twitter\\.$#"
+			count: 1
+			path: app/Http/Resources/Constants/AppSettingResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Constants\\\\AppSettingResource\\:\\:\\$whats_app\\.$#"
+			count: 1
+			path: app/Http/Resources/Constants/AppSettingResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Constants\\\\CityResource\\:\\:\\$id\\.$#"
+			count: 1
+			path: app/Http/Resources/Constants/CityResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Constants\\\\CityResource\\:\\:\\$name\\.$#"
+			count: 1
+			path: app/Http/Resources/Constants/CityResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Constants\\\\ContractTypeResource\\:\\:\\$id\\.$#"
+			count: 1
+			path: app/Http/Resources/Constants/ContractTypeResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Constants\\\\ContractTypeResource\\:\\:\\$name\\.$#"
+			count: 1
+			path: app/Http/Resources/Constants/ContractTypeResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Constants\\\\CountryResource\\:\\:\\$id\\.$#"
+			count: 1
+			path: app/Http/Resources/Constants/CountryResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Constants\\\\CountryResource\\:\\:\\$name\\.$#"
+			count: 1
+			path: app/Http/Resources/Constants/CountryResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Constants\\\\ImageResource\\:\\:\\$id\\.$#"
+			count: 1
+			path: app/Http/Resources/Constants/ImageResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Constants\\\\ImageResource\\:\\:\\$image\\.$#"
+			count: 1
+			path: app/Http/Resources/Constants/ImageResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Constants\\\\NeighborhoodResource\\:\\:\\$id\\.$#"
+			count: 1
+			path: app/Http/Resources/Constants/NeighborhoodResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Constants\\\\NeighborhoodResource\\:\\:\\$name\\.$#"
+			count: 1
+			path: app/Http/Resources/Constants/NeighborhoodResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Constants\\\\NotificationResource\\:\\:\\$body\\.$#"
+			count: 1
+			path: app/Http/Resources/Constants/NotificationResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Constants\\\\NotificationResource\\:\\:\\$id\\.$#"
+			count: 1
+			path: app/Http/Resources/Constants/NotificationResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Constants\\\\NotificationResource\\:\\:\\$read_at\\.$#"
+			count: 1
+			path: app/Http/Resources/Constants/NotificationResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Constants\\\\NotificationResource\\:\\:\\$title\\.$#"
+			count: 1
+			path: app/Http/Resources/Constants/NotificationResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Constants\\\\RealEstateTypeResource\\:\\:\\$id\\.$#"
+			count: 1
+			path: app/Http/Resources/Constants/RealEstateTypeResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Constants\\\\RealEstateTypeResource\\:\\:\\$name\\.$#"
+			count: 1
+			path: app/Http/Resources/Constants/RealEstateTypeResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Constants\\\\StaticPageResource\\:\\:\\$description\\.$#"
+			count: 1
+			path: app/Http/Resources/Constants/StaticPageResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Constants\\\\StaticPageResource\\:\\:\\$id\\.$#"
+			count: 1
+			path: app/Http/Resources/Constants/StaticPageResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Constants\\\\ViewResource\\:\\:\\$id\\.$#"
+			count: 1
+			path: app/Http/Resources/Constants/ViewResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Constants\\\\ViewResource\\:\\:\\$name\\.$#"
+			count: 1
+			path: app/Http/Resources/Constants/ViewResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Favorites\\\\FavoriteTinyResource\\:\\:\\$neighborhood\\.$#"
+			count: 1
+			path: app/Http/Resources/Favorites/FavoriteTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Favorites\\\\FavoriteTinyResource\\:\\:\\$realEstate\\.$#"
+			count: 28
+			path: app/Http/Resources/Favorites/FavoriteTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Favorites\\\\FavoriteTinyResource\\:\\:\\$user\\.$#"
+			count: 3
+			path: app/Http/Resources/Favorites/FavoriteTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Features\\\\FeatureTinyResource\\:\\:\\$count\\.$#"
+			count: 1
+			path: app/Http/Resources/Features/FeatureTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Features\\\\FeatureTinyResource\\:\\:\\$description\\.$#"
+			count: 1
+			path: app/Http/Resources/Features/FeatureTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Features\\\\FeatureTinyResource\\:\\:\\$icon\\.$#"
+			count: 1
+			path: app/Http/Resources/Features/FeatureTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Features\\\\FeatureTinyResource\\:\\:\\$id\\.$#"
+			count: 1
+			path: app/Http/Resources/Features/FeatureTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Features\\\\FeatureTinyResource\\:\\:\\$name\\.$#"
+			count: 1
+			path: app/Http/Resources/Features/FeatureTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Features\\\\FeatureTinyResource\\:\\:\\$price\\.$#"
+			count: 1
+			path: app/Http/Resources/Features/FeatureTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\HomeBanners\\\\HomeBannerTinyResource\\:\\:\\$id\\.$#"
+			count: 1
+			path: app/Http/Resources/HomeBanners/HomeBannerTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\HomeBanners\\\\HomeBannerTinyResource\\:\\:\\$image\\.$#"
+			count: 1
+			path: app/Http/Resources/HomeBanners/HomeBannerTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\HomeBanners\\\\HomeBannerTinyResource\\:\\:\\$name\\.$#"
+			count: 1
+			path: app/Http/Resources/HomeBanners/HomeBannerTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Orders\\\\MyOrderTinyResource\\:\\:\\$address\\.$#"
+			count: 1
+			path: app/Http/Resources/Orders/MyOrderTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Orders\\\\MyOrderTinyResource\\:\\:\\$age_building\\.$#"
+			count: 1
+			path: app/Http/Resources/Orders/MyOrderTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Orders\\\\MyOrderTinyResource\\:\\:\\$city\\.$#"
+			count: 1
+			path: app/Http/Resources/Orders/MyOrderTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Orders\\\\MyOrderTinyResource\\:\\:\\$id\\.$#"
+			count: 1
+			path: app/Http/Resources/Orders/MyOrderTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Orders\\\\MyOrderTinyResource\\:\\:\\$neighborhood\\.$#"
+			count: 1
+			path: app/Http/Resources/Orders/MyOrderTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Orders\\\\MyOrderTinyResource\\:\\:\\$number_of_views\\.$#"
+			count: 1
+			path: app/Http/Resources/Orders/MyOrderTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Orders\\\\MyOrderTinyResource\\:\\:\\$price\\.$#"
+			count: 1
+			path: app/Http/Resources/Orders/MyOrderTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Orders\\\\MyOrderTinyResource\\:\\:\\$realestateType\\.$#"
+			count: 1
+			path: app/Http/Resources/Orders/MyOrderTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Orders\\\\MyOrderTinyResource\\:\\:\\$space\\.$#"
+			count: 1
+			path: app/Http/Resources/Orders/MyOrderTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Orders\\\\MyOrderTinyResource\\:\\:\\$status\\.$#"
+			count: 1
+			path: app/Http/Resources/Orders/MyOrderTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Orders\\\\MyOrderTinyResource\\:\\:\\$street_number\\.$#"
+			count: 1
+			path: app/Http/Resources/Orders/MyOrderTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Orders\\\\MyOrderTinyResource\\:\\:\\$street_width\\.$#"
+			count: 1
+			path: app/Http/Resources/Orders/MyOrderTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Orders\\\\MyOrderTinyResource\\:\\:\\$user\\.$#"
+			count: 1
+			path: app/Http/Resources/Orders/MyOrderTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Orders\\\\MyOrderTinyResource\\:\\:\\$view\\.$#"
+			count: 1
+			path: app/Http/Resources/Orders/MyOrderTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Orders\\\\OrderLargeResource\\:\\:\\$ac\\.$#"
+			count: 1
+			path: app/Http/Resources/Orders/OrderLargeResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Orders\\\\OrderLargeResource\\:\\:\\$address\\.$#"
+			count: 1
+			path: app/Http/Resources/Orders/OrderLargeResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Orders\\\\OrderLargeResource\\:\\:\\$age_building\\.$#"
+			count: 1
+			path: app/Http/Resources/Orders/OrderLargeResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Orders\\\\OrderLargeResource\\:\\:\\$city\\.$#"
+			count: 1
+			path: app/Http/Resources/Orders/OrderLargeResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Orders\\\\OrderLargeResource\\:\\:\\$contractType\\.$#"
+			count: 1
+			path: app/Http/Resources/Orders/OrderLargeResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Orders\\\\OrderLargeResource\\:\\:\\$country\\.$#"
+			count: 1
+			path: app/Http/Resources/Orders/OrderLargeResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Orders\\\\OrderLargeResource\\:\\:\\$created_at\\.$#"
+			count: 1
+			path: app/Http/Resources/Orders/OrderLargeResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Orders\\\\OrderLargeResource\\:\\:\\$elevator\\.$#"
+			count: 1
+			path: app/Http/Resources/Orders/OrderLargeResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Orders\\\\OrderLargeResource\\:\\:\\$furniture\\.$#"
+			count: 1
+			path: app/Http/Resources/Orders/OrderLargeResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Orders\\\\OrderLargeResource\\:\\:\\$id\\.$#"
+			count: 1
+			path: app/Http/Resources/Orders/OrderLargeResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Orders\\\\OrderLargeResource\\:\\:\\$lat\\.$#"
+			count: 1
+			path: app/Http/Resources/Orders/OrderLargeResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Orders\\\\OrderLargeResource\\:\\:\\$lng\\.$#"
+			count: 1
+			path: app/Http/Resources/Orders/OrderLargeResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Orders\\\\OrderLargeResource\\:\\:\\$name\\.$#"
+			count: 1
+			path: app/Http/Resources/Orders/OrderLargeResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Orders\\\\OrderLargeResource\\:\\:\\$note\\.$#"
+			count: 1
+			path: app/Http/Resources/Orders/OrderLargeResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Orders\\\\OrderLargeResource\\:\\:\\$number_building\\.$#"
+			count: 1
+			path: app/Http/Resources/Orders/OrderLargeResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Orders\\\\OrderLargeResource\\:\\:\\$number_card\\.$#"
+			count: 1
+			path: app/Http/Resources/Orders/OrderLargeResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Orders\\\\OrderLargeResource\\:\\:\\$number_of_views\\.$#"
+			count: 1
+			path: app/Http/Resources/Orders/OrderLargeResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Orders\\\\OrderLargeResource\\:\\:\\$parking\\.$#"
+			count: 1
+			path: app/Http/Resources/Orders/OrderLargeResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Orders\\\\OrderLargeResource\\:\\:\\$price\\.$#"
+			count: 1
+			path: app/Http/Resources/Orders/OrderLargeResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Orders\\\\OrderLargeResource\\:\\:\\$realestateType\\.$#"
+			count: 1
+			path: app/Http/Resources/Orders/OrderLargeResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Orders\\\\OrderLargeResource\\:\\:\\$space\\.$#"
+			count: 1
+			path: app/Http/Resources/Orders/OrderLargeResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Orders\\\\OrderLargeResource\\:\\:\\$street_number\\.$#"
+			count: 1
+			path: app/Http/Resources/Orders/OrderLargeResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Orders\\\\OrderLargeResource\\:\\:\\$street_width\\.$#"
+			count: 1
+			path: app/Http/Resources/Orders/OrderLargeResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Orders\\\\OrderLargeResource\\:\\:\\$type\\.$#"
+			count: 1
+			path: app/Http/Resources/Orders/OrderLargeResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Orders\\\\OrderLargeResource\\:\\:\\$type_of_owner\\.$#"
+			count: 1
+			path: app/Http/Resources/Orders/OrderLargeResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Orders\\\\OrderLargeResource\\:\\:\\$user\\.$#"
+			count: 4
+			path: app/Http/Resources/Orders/OrderLargeResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Orders\\\\OrderLargeResource\\:\\:\\$video_url\\.$#"
+			count: 1
+			path: app/Http/Resources/Orders/OrderLargeResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Orders\\\\OrderLargeResource\\:\\:\\$view\\.$#"
+			count: 1
+			path: app/Http/Resources/Orders/OrderLargeResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Orders\\\\OrderTinyResource\\:\\:\\$address\\.$#"
+			count: 1
+			path: app/Http/Resources/Orders/OrderTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Orders\\\\OrderTinyResource\\:\\:\\$age_building\\.$#"
+			count: 1
+			path: app/Http/Resources/Orders/OrderTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Orders\\\\OrderTinyResource\\:\\:\\$city\\.$#"
+			count: 1
+			path: app/Http/Resources/Orders/OrderTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Orders\\\\OrderTinyResource\\:\\:\\$id\\.$#"
+			count: 1
+			path: app/Http/Resources/Orders/OrderTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Orders\\\\OrderTinyResource\\:\\:\\$neighborhood\\.$#"
+			count: 1
+			path: app/Http/Resources/Orders/OrderTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Orders\\\\OrderTinyResource\\:\\:\\$number_building\\.$#"
+			count: 1
+			path: app/Http/Resources/Orders/OrderTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Orders\\\\OrderTinyResource\\:\\:\\$number_of_views\\.$#"
+			count: 1
+			path: app/Http/Resources/Orders/OrderTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Orders\\\\OrderTinyResource\\:\\:\\$price\\.$#"
+			count: 1
+			path: app/Http/Resources/Orders/OrderTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Orders\\\\OrderTinyResource\\:\\:\\$realestateType\\.$#"
+			count: 1
+			path: app/Http/Resources/Orders/OrderTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Orders\\\\OrderTinyResource\\:\\:\\$space\\.$#"
+			count: 1
+			path: app/Http/Resources/Orders/OrderTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Orders\\\\OrderTinyResource\\:\\:\\$street_number\\.$#"
+			count: 1
+			path: app/Http/Resources/Orders/OrderTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Orders\\\\OrderTinyResource\\:\\:\\$street_width\\.$#"
+			count: 1
+			path: app/Http/Resources/Orders/OrderTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Orders\\\\OrderTinyResource\\:\\:\\$user\\.$#"
+			count: 1
+			path: app/Http/Resources/Orders/OrderTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Orders\\\\OrderTinyResource\\:\\:\\$view\\.$#"
+			count: 1
+			path: app/Http/Resources/Orders/OrderTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Packages\\\\PackageTinyResource\\:\\:\\$color\\.$#"
+			count: 1
+			path: app/Http/Resources/Packages/PackageTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Packages\\\\PackageTinyResource\\:\\:\\$description\\.$#"
+			count: 1
+			path: app/Http/Resources/Packages/PackageTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Packages\\\\PackageTinyResource\\:\\:\\$icon\\.$#"
+			count: 1
+			path: app/Http/Resources/Packages/PackageTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Packages\\\\PackageTinyResource\\:\\:\\$id\\.$#"
+			count: 1
+			path: app/Http/Resources/Packages/PackageTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Packages\\\\PackageTinyResource\\:\\:\\$name\\.$#"
+			count: 1
+			path: app/Http/Resources/Packages/PackageTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Packages\\\\PackageTinyResource\\:\\:\\$price\\.$#"
+			count: 1
+			path: app/Http/Resources/Packages/PackageTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\RealEstates\\\\RealEstateLargeResource\\:\\:\\$ac\\.$#"
+			count: 1
+			path: app/Http/Resources/RealEstates/RealEstateLargeResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\RealEstates\\\\RealEstateLargeResource\\:\\:\\$address\\.$#"
+			count: 1
+			path: app/Http/Resources/RealEstates/RealEstateLargeResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\RealEstates\\\\RealEstateLargeResource\\:\\:\\$age_building\\.$#"
+			count: 1
+			path: app/Http/Resources/RealEstates/RealEstateLargeResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\RealEstates\\\\RealEstateLargeResource\\:\\:\\$city\\.$#"
+			count: 1
+			path: app/Http/Resources/RealEstates/RealEstateLargeResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\RealEstates\\\\RealEstateLargeResource\\:\\:\\$contractType\\.$#"
+			count: 1
+			path: app/Http/Resources/RealEstates/RealEstateLargeResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\RealEstates\\\\RealEstateLargeResource\\:\\:\\$country\\.$#"
+			count: 1
+			path: app/Http/Resources/RealEstates/RealEstateLargeResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\RealEstates\\\\RealEstateLargeResource\\:\\:\\$created_at\\.$#"
+			count: 1
+			path: app/Http/Resources/RealEstates/RealEstateLargeResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\RealEstates\\\\RealEstateLargeResource\\:\\:\\$elevator\\.$#"
+			count: 1
+			path: app/Http/Resources/RealEstates/RealEstateLargeResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\RealEstates\\\\RealEstateLargeResource\\:\\:\\$furniture\\.$#"
+			count: 1
+			path: app/Http/Resources/RealEstates/RealEstateLargeResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\RealEstates\\\\RealEstateLargeResource\\:\\:\\$id\\.$#"
+			count: 1
+			path: app/Http/Resources/RealEstates/RealEstateLargeResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\RealEstates\\\\RealEstateLargeResource\\:\\:\\$lat\\.$#"
+			count: 1
+			path: app/Http/Resources/RealEstates/RealEstateLargeResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\RealEstates\\\\RealEstateLargeResource\\:\\:\\$lng\\.$#"
+			count: 1
+			path: app/Http/Resources/RealEstates/RealEstateLargeResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\RealEstates\\\\RealEstateLargeResource\\:\\:\\$medias\\.$#"
+			count: 1
+			path: app/Http/Resources/RealEstates/RealEstateLargeResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\RealEstates\\\\RealEstateLargeResource\\:\\:\\$name\\.$#"
+			count: 1
+			path: app/Http/Resources/RealEstates/RealEstateLargeResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\RealEstates\\\\RealEstateLargeResource\\:\\:\\$note\\.$#"
+			count: 1
+			path: app/Http/Resources/RealEstates/RealEstateLargeResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\RealEstates\\\\RealEstateLargeResource\\:\\:\\$number_building\\.$#"
+			count: 1
+			path: app/Http/Resources/RealEstates/RealEstateLargeResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\RealEstates\\\\RealEstateLargeResource\\:\\:\\$number_card\\.$#"
+			count: 1
+			path: app/Http/Resources/RealEstates/RealEstateLargeResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\RealEstates\\\\RealEstateLargeResource\\:\\:\\$number_of_views\\.$#"
+			count: 1
+			path: app/Http/Resources/RealEstates/RealEstateLargeResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\RealEstates\\\\RealEstateLargeResource\\:\\:\\$parking\\.$#"
+			count: 1
+			path: app/Http/Resources/RealEstates/RealEstateLargeResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\RealEstates\\\\RealEstateLargeResource\\:\\:\\$price\\.$#"
+			count: 1
+			path: app/Http/Resources/RealEstates/RealEstateLargeResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\RealEstates\\\\RealEstateLargeResource\\:\\:\\$realestateType\\.$#"
+			count: 1
+			path: app/Http/Resources/RealEstates/RealEstateLargeResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\RealEstates\\\\RealEstateLargeResource\\:\\:\\$space\\.$#"
+			count: 1
+			path: app/Http/Resources/RealEstates/RealEstateLargeResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\RealEstates\\\\RealEstateLargeResource\\:\\:\\$species\\.$#"
+			count: 1
+			path: app/Http/Resources/RealEstates/RealEstateLargeResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\RealEstates\\\\RealEstateLargeResource\\:\\:\\$street_number\\.$#"
+			count: 1
+			path: app/Http/Resources/RealEstates/RealEstateLargeResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\RealEstates\\\\RealEstateLargeResource\\:\\:\\$street_width\\.$#"
+			count: 1
+			path: app/Http/Resources/RealEstates/RealEstateLargeResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\RealEstates\\\\RealEstateLargeResource\\:\\:\\$type\\.$#"
+			count: 1
+			path: app/Http/Resources/RealEstates/RealEstateLargeResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\RealEstates\\\\RealEstateLargeResource\\:\\:\\$type_of_owner\\.$#"
+			count: 1
+			path: app/Http/Resources/RealEstates/RealEstateLargeResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\RealEstates\\\\RealEstateLargeResource\\:\\:\\$user\\.$#"
+			count: 4
+			path: app/Http/Resources/RealEstates/RealEstateLargeResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\RealEstates\\\\RealEstateLargeResource\\:\\:\\$video_url\\.$#"
+			count: 1
+			path: app/Http/Resources/RealEstates/RealEstateLargeResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\RealEstates\\\\RealEstateLargeResource\\:\\:\\$view\\.$#"
+			count: 1
+			path: app/Http/Resources/RealEstates/RealEstateLargeResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\RealEstates\\\\RealEstateTinyResource\\:\\:\\$address\\.$#"
+			count: 1
+			path: app/Http/Resources/RealEstates/RealEstateTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\RealEstates\\\\RealEstateTinyResource\\:\\:\\$age_building\\.$#"
+			count: 1
+			path: app/Http/Resources/RealEstates/RealEstateTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\RealEstates\\\\RealEstateTinyResource\\:\\:\\$city\\.$#"
+			count: 1
+			path: app/Http/Resources/RealEstates/RealEstateTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\RealEstates\\\\RealEstateTinyResource\\:\\:\\$id\\.$#"
+			count: 2
+			path: app/Http/Resources/RealEstates/RealEstateTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\RealEstates\\\\RealEstateTinyResource\\:\\:\\$medias\\.$#"
+			count: 1
+			path: app/Http/Resources/RealEstates/RealEstateTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\RealEstates\\\\RealEstateTinyResource\\:\\:\\$neighborhood\\.$#"
+			count: 1
+			path: app/Http/Resources/RealEstates/RealEstateTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\RealEstates\\\\RealEstateTinyResource\\:\\:\\$number_building\\.$#"
+			count: 1
+			path: app/Http/Resources/RealEstates/RealEstateTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\RealEstates\\\\RealEstateTinyResource\\:\\:\\$number_of_views\\.$#"
+			count: 1
+			path: app/Http/Resources/RealEstates/RealEstateTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\RealEstates\\\\RealEstateTinyResource\\:\\:\\$price\\.$#"
+			count: 1
+			path: app/Http/Resources/RealEstates/RealEstateTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\RealEstates\\\\RealEstateTinyResource\\:\\:\\$realestateType\\.$#"
+			count: 1
+			path: app/Http/Resources/RealEstates/RealEstateTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\RealEstates\\\\RealEstateTinyResource\\:\\:\\$space\\.$#"
+			count: 1
+			path: app/Http/Resources/RealEstates/RealEstateTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\RealEstates\\\\RealEstateTinyResource\\:\\:\\$species\\.$#"
+			count: 1
+			path: app/Http/Resources/RealEstates/RealEstateTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\RealEstates\\\\RealEstateTinyResource\\:\\:\\$street_number\\.$#"
+			count: 1
+			path: app/Http/Resources/RealEstates/RealEstateTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\RealEstates\\\\RealEstateTinyResource\\:\\:\\$street_width\\.$#"
+			count: 1
+			path: app/Http/Resources/RealEstates/RealEstateTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\RealEstates\\\\RealEstateTinyResource\\:\\:\\$type_of_owner\\.$#"
+			count: 1
+			path: app/Http/Resources/RealEstates/RealEstateTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\RealEstates\\\\RealEstateTinyResource\\:\\:\\$user\\.$#"
+			count: 3
+			path: app/Http/Resources/RealEstates/RealEstateTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\RealEstates\\\\RealEstateTinyResource\\:\\:\\$view\\.$#"
+			count: 1
+			path: app/Http/Resources/RealEstates/RealEstateTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\RealEstatesMap\\\\RealEstateMapTinyResource\\:\\:\\$ac\\.$#"
+			count: 1
+			path: app/Http/Resources/RealEstatesMap/RealEstateMapTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\RealEstatesMap\\\\RealEstateMapTinyResource\\:\\:\\$address\\.$#"
+			count: 1
+			path: app/Http/Resources/RealEstatesMap/RealEstateMapTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\RealEstatesMap\\\\RealEstateMapTinyResource\\:\\:\\$age_building\\.$#"
+			count: 1
+			path: app/Http/Resources/RealEstatesMap/RealEstateMapTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\RealEstatesMap\\\\RealEstateMapTinyResource\\:\\:\\$city\\.$#"
+			count: 1
+			path: app/Http/Resources/RealEstatesMap/RealEstateMapTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\RealEstatesMap\\\\RealEstateMapTinyResource\\:\\:\\$contractType\\.$#"
+			count: 1
+			path: app/Http/Resources/RealEstatesMap/RealEstateMapTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\RealEstatesMap\\\\RealEstateMapTinyResource\\:\\:\\$country\\.$#"
+			count: 1
+			path: app/Http/Resources/RealEstatesMap/RealEstateMapTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\RealEstatesMap\\\\RealEstateMapTinyResource\\:\\:\\$elevator\\.$#"
+			count: 1
+			path: app/Http/Resources/RealEstatesMap/RealEstateMapTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\RealEstatesMap\\\\RealEstateMapTinyResource\\:\\:\\$furniture\\.$#"
+			count: 1
+			path: app/Http/Resources/RealEstatesMap/RealEstateMapTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\RealEstatesMap\\\\RealEstateMapTinyResource\\:\\:\\$id\\.$#"
+			count: 1
+			path: app/Http/Resources/RealEstatesMap/RealEstateMapTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\RealEstatesMap\\\\RealEstateMapTinyResource\\:\\:\\$lat\\.$#"
+			count: 1
+			path: app/Http/Resources/RealEstatesMap/RealEstateMapTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\RealEstatesMap\\\\RealEstateMapTinyResource\\:\\:\\$lng\\.$#"
+			count: 1
+			path: app/Http/Resources/RealEstatesMap/RealEstateMapTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\RealEstatesMap\\\\RealEstateMapTinyResource\\:\\:\\$medias\\.$#"
+			count: 1
+			path: app/Http/Resources/RealEstatesMap/RealEstateMapTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\RealEstatesMap\\\\RealEstateMapTinyResource\\:\\:\\$name\\.$#"
+			count: 1
+			path: app/Http/Resources/RealEstatesMap/RealEstateMapTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\RealEstatesMap\\\\RealEstateMapTinyResource\\:\\:\\$neighborhood\\.$#"
+			count: 1
+			path: app/Http/Resources/RealEstatesMap/RealEstateMapTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\RealEstatesMap\\\\RealEstateMapTinyResource\\:\\:\\$note\\.$#"
+			count: 1
+			path: app/Http/Resources/RealEstatesMap/RealEstateMapTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\RealEstatesMap\\\\RealEstateMapTinyResource\\:\\:\\$number_building\\.$#"
+			count: 1
+			path: app/Http/Resources/RealEstatesMap/RealEstateMapTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\RealEstatesMap\\\\RealEstateMapTinyResource\\:\\:\\$number_card\\.$#"
+			count: 1
+			path: app/Http/Resources/RealEstatesMap/RealEstateMapTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\RealEstatesMap\\\\RealEstateMapTinyResource\\:\\:\\$number_of_views\\.$#"
+			count: 1
+			path: app/Http/Resources/RealEstatesMap/RealEstateMapTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\RealEstatesMap\\\\RealEstateMapTinyResource\\:\\:\\$parking\\.$#"
+			count: 1
+			path: app/Http/Resources/RealEstatesMap/RealEstateMapTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\RealEstatesMap\\\\RealEstateMapTinyResource\\:\\:\\$price\\.$#"
+			count: 1
+			path: app/Http/Resources/RealEstatesMap/RealEstateMapTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\RealEstatesMap\\\\RealEstateMapTinyResource\\:\\:\\$realestateType\\.$#"
+			count: 1
+			path: app/Http/Resources/RealEstatesMap/RealEstateMapTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\RealEstatesMap\\\\RealEstateMapTinyResource\\:\\:\\$space\\.$#"
+			count: 1
+			path: app/Http/Resources/RealEstatesMap/RealEstateMapTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\RealEstatesMap\\\\RealEstateMapTinyResource\\:\\:\\$street_number\\.$#"
+			count: 1
+			path: app/Http/Resources/RealEstatesMap/RealEstateMapTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\RealEstatesMap\\\\RealEstateMapTinyResource\\:\\:\\$street_width\\.$#"
+			count: 1
+			path: app/Http/Resources/RealEstatesMap/RealEstateMapTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\RealEstatesMap\\\\RealEstateMapTinyResource\\:\\:\\$type\\.$#"
+			count: 1
+			path: app/Http/Resources/RealEstatesMap/RealEstateMapTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\RealEstatesMap\\\\RealEstateMapTinyResource\\:\\:\\$type_of_owner\\.$#"
+			count: 1
+			path: app/Http/Resources/RealEstatesMap/RealEstateMapTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\RealEstatesMap\\\\RealEstateMapTinyResource\\:\\:\\$video_url\\.$#"
+			count: 1
+			path: app/Http/Resources/RealEstatesMap/RealEstateMapTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\RealEstatesMap\\\\RealEstateMapTinyResource\\:\\:\\$view\\.$#"
+			count: 1
+			path: app/Http/Resources/RealEstatesMap/RealEstateMapTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Stories\\\\StoryTinyResource\\:\\:\\$id\\.$#"
+			count: 1
+			path: app/Http/Resources/Stories/StoryTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Stories\\\\StoryTinyResource\\:\\:\\$image\\.$#"
+			count: 1
+			path: app/Http/Resources/Stories/StoryTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\Stories\\\\StoryTinyResource\\:\\:\\$title\\.$#"
+			count: 1
+			path: app/Http/Resources/Stories/StoryTinyResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\UserResource\\:\\:\\$avatar\\.$#"
+			count: 1
+			path: app/Http/Resources/UserResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\UserResource\\:\\:\\$created_at\\.$#"
+			count: 1
+			path: app/Http/Resources/UserResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\UserResource\\:\\:\\$email\\.$#"
+			count: 1
+			path: app/Http/Resources/UserResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\UserResource\\:\\:\\$id\\.$#"
+			count: 1
+			path: app/Http/Resources/UserResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\UserResource\\:\\:\\$is_dark\\.$#"
+			count: 1
+			path: app/Http/Resources/UserResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\UserResource\\:\\:\\$mobile\\.$#"
+			count: 1
+			path: app/Http/Resources/UserResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\UserResource\\:\\:\\$name\\.$#"
+			count: 1
+			path: app/Http/Resources/UserResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\UserResource\\:\\:\\$remember_token\\.$#"
+			count: 1
+			path: app/Http/Resources/UserResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\UserResource\\:\\:\\$trading_certification\\.$#"
+			count: 1
+			path: app/Http/Resources/UserResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\UserResource\\:\\:\\$type\\.$#"
+			count: 1
+			path: app/Http/Resources/UserResource.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Resources\\\\UserResource\\:\\:\\$verified_at\\.$#"
+			count: 1
+			path: app/Http/Resources/UserResource.php
+
+		-
+			message: "#^Called 'first' on Laravel collection, but could have been retrieved as a query\\.$#"
+			count: 1
+			path: app/Jobs/NotifyUnActiveRealEstate.php
+
+		-
+			message: "#^Called 'first' on Laravel collection, but could have been retrieved as a query\\.$#"
+			count: 1
+			path: app/Jobs/SubscribeInvoice.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Models\\\\User\\:\\:\\$verified\\.$#"
+			count: 1
+			path: app/Models/User.php
+
+		-
+			message: "#^Class App\\\\Models\\\\RealEstate referenced with incorrect case\\: App\\\\Models\\\\Realestate\\.$#"
+			count: 1
+			path: app/Models/User.php
+
+		-
+			message: "#^Class App\\\\Models\\\\VerifyUser not found\\.$#"
+			count: 1
+			path: app/Models/User.php
+
+		-
+			message: "#^Method App\\\\Models\\\\User\\:\\:verify\\(\\) should return true but return statement is missing\\.$#"
+			count: 1
+			path: app/Models/User.php
+
+		-
+			message: "#^PHPDoc type array of property App\\\\Models\\\\Verify\\:\\:\\$fillable is not covariant with PHPDoc type array\\<string\\> of overridden property Illuminate\\\\Database\\\\Eloquent\\\\Model\\:\\:\\$fillable\\.$#"
+			count: 1
+			path: app/Models/Verify.php
+
+		-
+			message: "#^Call to an undefined method App\\\\Providers\\\\AppServiceProvider\\:\\:orWhere\\(\\)\\.$#"
+			count: 1
+			path: app/Providers/AppServiceProvider.php
+
+		-
+			message: "#^Call to an undefined method App\\\\Providers\\\\AppServiceProvider\\:\\:where\\(\\)\\.$#"
+			count: 2
+			path: app/Providers/AppServiceProvider.php
+
+		-
+			message: "#^Parameter \\#1 \\$relation of method Illuminate\\\\Database\\\\Eloquent\\\\Builder\\<Illuminate\\\\Database\\\\Eloquent\\\\Model\\>\\:\\:orWhereHas\\(\\) expects non\\-empty\\-string, string given\\.$#"
+			count: 1
+			path: app/Providers/AppServiceProvider.php
+
+		-
+			message: "#^Parameter \\#3 \\$default of method Illuminate\\\\Database\\\\Eloquent\\\\Builder\\<Illuminate\\\\Database\\\\Eloquent\\\\Model\\>\\:\\:when\\(\\) expects \\(callable\\(Illuminate\\\\Database\\\\Eloquent\\\\Builder, mixed\\)\\: Illuminate\\\\Database\\\\Eloquent\\\\Builder\\<Illuminate\\\\Database\\\\Eloquent\\\\Model\\>\\|null\\)\\|null, Closure\\(Illuminate\\\\Database\\\\Eloquent\\\\Builder\\)\\: void given\\.$#"
+			count: 1
+			path: app/Providers/AppServiceProvider.php
+

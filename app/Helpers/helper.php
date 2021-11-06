@@ -97,9 +97,9 @@ if (!function_exists('userStatus')) {
 	function userStatus($type)
 	{
 		if ($type == true) {
-			return '<div class="badge badge-light-success fw-bolder">' . __("Active") . '</div>';
+			return '<a href="#"><div class="badge badge-light-success fw-bolder">' . __("Active") . '</div></a>';
 		} elseif ($type == false) {
-			return '<div class="badge badge-light-danger fw-bolder">' . __("Freeze") . '</div>';
+			return '<a href="#"><div class="badge badge-light-danger fw-bolder">' . __("Freeze") . '</div></a>';
 		}
 	}
 }
@@ -141,9 +141,9 @@ if (!function_exists('isActive')) {
 	{
 
 		if ($type == 1 || $end_date >= now()) {
-			return '<div class="badge badge-light-success fw-bolder">' . __("Active") . '</div>';
+			return '<a href="#"><div class="badge badge-light-success fw-bolder">' . __("Active") . '</div></a>';
 		} else{
-			return '<div class="badge badge-light-danger fw-bolder">' . __("Not Active") . '</div>';
+			return '<a href="#"><div class="badge badge-light-danger fw-bolder">' . __("Not Active") . '</div></a>';
 		}
 	}
 }
@@ -153,9 +153,9 @@ if (!function_exists('review')) {
 	{
 
 		if ($type == 1) {
-			return '<div class="badge badge-light-success fw-bolder">' . __("Reviewed") . '</div>';
+			return '<a href="#"><div class="badge badge-light-success fw-bolder">' . __("Reviewed") . '</div>';
 		} elseif ($type == 0) {
-			return '<a href="#" class="badge badge-light-danger fw-bolder">' . __("Not Review") . '</a>';
+			return '<a href="#"><div class="badge badge-light-danger fw-bolder">' . __("Not Review") . '</div></a>';
 		}
 	}
 }

@@ -30,7 +30,7 @@ class Store extends Component
         'city_id' => 'required|exists:cities,id',
         'start_date' => 'required|after:today',
         'end_date' => 'required|after:today',
-        'status' => 'required',
+        'status' => 'sometimes',
         'image' => 'required|image|mimes:jpeg,png,jpg,svg|max:2048',
     ];
     public function updated($propertyName)

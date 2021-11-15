@@ -17,7 +17,7 @@ class Store extends Component
     protected $rules = [
         'ar_name' => 'required|min:4|max:100',
         'en_name' => 'required|min:4|max:100',
-        'status' => 'required',
+        'status' => 'sometimes',
     ];
     public function updated($propertyName)
     {

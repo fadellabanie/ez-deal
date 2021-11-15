@@ -45,7 +45,8 @@
                                 @endforeach
                             </select>
                         </div>
-                        <x-error field="city.country_id" />
+                        <x-error-select field="city.country_idcountry_id" />
+
                     </div>
                     <!--end::Input group-->
 
@@ -61,6 +62,8 @@
                                     id="allowmarketing" checked="checked" />
                                 <label class="form-check-label" for="allowmarketing"></label>
                             </div>
+                            <x-error field="city.status" />
+
                         </div>
                         <!--begin::Label-->
                     </div>

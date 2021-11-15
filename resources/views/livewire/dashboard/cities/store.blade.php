@@ -38,8 +38,7 @@
                         </x-label>
                         <div class="col-lg-8 fv-row">
                             <div wire:ignore>
-                                <select wire:model="country_id"  data-control="select2"
-                                   id="country_id" name="country_id"
+                                <select wire:model="country_id" data-control="select2" id="country_id" name="country_id"
                                     class="form-select form-select-solid form-select-lg fw-bold ">
                                     <option>{{__("Select...")}}</option>
                                     @foreach ($countries as $country)
@@ -47,7 +46,8 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <x-error field="country_id" />
+                            <x-error-select field="country_id" />
+
                         </div>
                     </div>
                     <!--end::Input group-->
@@ -59,11 +59,16 @@
                         <!--begin::Label-->
                         <!--begin::Label-->
                         <div class="col-lg-8 d-flex align-items-center">
-                            <div class="form-check form-check-solid form-switch fv-row">
-                                <input class="form-check-input w-45px h-30px" type="checkbox" wire:model="status"
-                                    id="allowmarketing" checked="checked" />
-                                <label class="form-check-label" for="allowmarketing"></label>
+                            <div wire:ignore>
+                         
+                                <div class="form-check form-check-solid form-switch fv-row">
+                                    <input class="form-check-input w-45px h-30px" type="checkbox" wire:model="status"
+                                        id="allowmarketing" checked="checked" field="status"/>
+                                    <label class="form-check-label" for="allowmarketing"></label>
+                                </div>
                             </div>
+                            <x-error-select field="status" />
+
                         </div>
                         <!--begin::Label-->
                     </div>

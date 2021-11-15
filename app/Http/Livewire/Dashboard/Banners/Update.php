@@ -28,7 +28,7 @@ class Update extends Component
         'city_id' => 'required|exists:cities,id',
         'banner.start_date' => 'required|after:yesterday',
         'banner.end_date' => 'required|after:yesterday',
-        'banner.status' => 'required',
+        'banner.status' => 'sometimes',
         'image' => 'nullable',
     ];
 

@@ -26,7 +26,7 @@ class Update extends Component
         'package.price' => 'required|numeric',
         'package.color' => 'required',
         'package.days' => 'required|numeric',
-        'package.status' => 'required',
+        'package.status' => 'sometimes',
         'package.icon' => 'nullable'
     ];
 

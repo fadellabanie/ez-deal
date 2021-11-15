@@ -18,7 +18,7 @@ class Update extends Component
     protected $rules = [
         'country.ar_name' => 'required|min:4|max:100',
         'country.en_name' => 'required|min:4|max:100',
-        'country.status' => 'required',
+        'country.status' => 'sometimes',
         'icon' => 'nullable',
     ];
 

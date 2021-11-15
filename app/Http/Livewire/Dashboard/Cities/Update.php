@@ -20,7 +20,7 @@ class Update extends Component
         'city.ar_name' => 'required|min:2|max:100',
         'city.en_name' => 'required|min:2|max:100',
         'city.country_id' => 'required',
-        'city.status' => 'required',
+        'city.status' => 'sometimes',
         'icon' => 'nullable',
     ];
 

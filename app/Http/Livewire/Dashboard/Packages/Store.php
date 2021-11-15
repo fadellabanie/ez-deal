@@ -27,7 +27,7 @@ class Store extends Component
         'price' => 'required|numeric',
         'days' => 'required|numeric',
         'icon' => 'required|image|mimes:jpeg,png,jpg,svg|max:2048',
-        'status' => 'required',
+        'status' => 'sometimes',
     ];
     public function updated($propertyName)
     {

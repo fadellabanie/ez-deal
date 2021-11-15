@@ -17,7 +17,7 @@ class Update extends Component
     protected $rules = [
         'neighborhood.ar_name' => 'required|min:4|max:100',
         'neighborhood.en_name' => 'required|min:4|max:100',
-        'neighborhood.status' => 'required',
+        'neighborhood.status' => 'sometimes',
     ];
 
     public function submit()

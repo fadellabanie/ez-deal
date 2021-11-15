@@ -24,7 +24,7 @@ class Store extends Component
         'start_date' => 'required|after:today',
         'end_date' => 'required|after:today',
         'image' => 'required|image|mimes:jpeg,png,jpg,svg|max:2048',
-        'status' => 'required',
+        'status' => 'sometimes',
     ];
     public function updated($propertyName)
     {

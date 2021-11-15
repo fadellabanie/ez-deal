@@ -116,8 +116,9 @@ class ConstantController extends Controller
     {
         $data['views'] = View::get();
         $data['contract_type'] = ContractType::get();
-        $data['realestate_type'] = RealestateType::get();
         $data['cities'] = City::get();
+        $data['realestate_type'] = RealestateType::get();
+
         //$data['neighborhoods'] = Neighborhood::get();
 
      

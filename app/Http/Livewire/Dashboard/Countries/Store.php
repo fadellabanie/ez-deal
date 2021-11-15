@@ -20,7 +20,7 @@ class Store extends Component
         'ar_name' => 'required|min:4|max:100',
         'en_name' => 'required|min:4|max:100',
         'icon' => 'required|image|mimes:jpeg,png,jpg,svg|max:2048',
-        'status' => 'required',
+        'status' => 'sometimes',
     ];
     public function updated($propertyName)
     {

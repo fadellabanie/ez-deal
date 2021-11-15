@@ -24,7 +24,7 @@ class Update extends Component
         'country_id' => 'required|exists:countries,id',
         'story.start_date' => 'required|after:today',
         'story.end_date' => 'required|after:today',
-        'story.status' => 'required',
+        'story.status' => 'sometimes',
         'image' => 'nullable',
     ];
 

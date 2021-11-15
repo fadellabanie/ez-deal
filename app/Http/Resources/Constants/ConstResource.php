@@ -15,10 +15,10 @@ class ConstResource extends JsonResource
     public function toArray($request)
     {
         return [
-           'views' => ViewResource::collection($this['views']),
-           'contract_type' => ContractTypeResource::collection($this['contract_type']),
+            'views' => ViewResource::collection($this['views']),
+            'contract_type' => ContractTypeResource::collection($this['contract_type']),
+            'cities' => CityResource::collection($this['cities']),
             'realestate_type' => RealEstateTypeResource::collection($this['realestate_type']),
-            'cities' =>CityResource::collection($this['cities']),
         ];
     }
 }
